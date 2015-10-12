@@ -1,0 +1,107 @@
+[MUSIC] Hi, and
+welcome to lecture two of module two. In this lecture, we'll talk about
+the Flow of Control structures in Ruby. The if, the else, the case. Ruby also adds two new ones, until and
+unless, we'll talk about those. There's also the while and for. We'll talk about what is true and
+what is false when comparing things. And, what in the world
+is this === operator? So, the if, the elsif are probably
+structures with which a lot of us are familiar from
+other programming languages. The difference is that in Ruby there's no
+parentheses or curly braces when you find those, and you use end to
+close the flow control block. So whether it's just if statement,
+or if and else statement, you're always going to
+have the end at the end. So in this case you have the a variable
+which gets assigned a value of five. So when you assign it,
+it's a single equals. When you're comparing,
+it's a double equals and in this case five matches the second
+condition, so you print out a five. Now Ruby also adds this
+interesting keyword unless, and unless is basically if something
+is not equal to something else. So, in this case,
+a is five, unless a is six. Do what you got to do, so
+that's what's printed out. A is not six. Then there is your while loop, so you have a variable,
+which gets assigned a value of ten. And while a is greater than nine, you keep
+on executing the contents of the loop. In this case, you're subtracting one from
+a, every time going through the loop, so this will only execute
+once because the second time, a is going to be not greater than nine. So therefore the only output
+from this loop is gonna be 10. Then you have a Ruby specific one which
+is the opposite of while, it's until. So a is nine. Until a is greater than or equal to
+ten keep on printing a value of nines, so this will also only execute
+once because the second time through the loop it's gonna be ten so
+it will not execute. Now Ruby gets even more expressive
+in that there's this modifier form, so the modifier form lets you
+print things out in one line. So puts one liner if A is five and B is zero, so
+it almost reads like very natural English. And this applies to while as well. So you have a variable called times two
+which initially gets assigned to two, and you keep on multiplying this variable by two as long as this variable
+times two is less than a hundred. So can you guess what
+the answer to this one is? If you guessed 128, you are correct. Now, the next thing we'll talk
+about is the true and false. What is true and what is false in Ruby? As it turns out, the only things which
+are false are gonna be your false literal or false object and nil object. Everything else is true, so
+if you're used to from other languages for example that zero is false,
+that's not true in Ruby. In Ruby, zero is true. Or a false literal string is false? No it's not, it's true. Or an empty string maybe you're used
+to from some other languages that empty string is a false value. That's not true either. So the only things which are false in Ruby are going to be a false literal or
+a nil object. Everything else is going to be true. Now if you're using a string literal,
+for example, nil or false or really any other string literal
+in your if statement, you are going to get a warning from an interpreter that
+says string literal in condition. Because you're not saying
+if false equals false or doing any other comparisons, so if
+the interpreter says to you really did you really mean to just say a string as
+your condition of your if statement. That's always gonna be true so
+why would do that? So it's almost like it's clueing
+you in that there's an issue. Triple equals. So you're gonna see this in some cases. So most of the time,
+you should be using a double equals and that's what most Ruby objects use,
+double equals. But sometimes there is this interesting
+implementation of a triple equals, and triple equals basically is
+a special kind of equals. So for example,
+to jump straight into examples, you have a regular expression, and
+regular expressions are outside the scope of this course but they're
+pretty cool so you should check them out. You have a regular expression,
+sera, which is === to coursera. Is it really equal? No, of course not. One is a string and one is a regular
+expression, they're not really equal. We're not even asking if they're equal. But, it would be cool to say, does this
+regular expression match a string literal, and that's what this triple equal does. Now, as you could see here, a triple equals will also work if you're
+just comparing a string to itself. That's also fine because triple equals
+most of the time just delegates to a double equals, so it's almost
+like a super set of a double equals. Another example is integer
+class equal to 21. Well no, one is integer class and
+one is a value 21. But it would be pretty cool to
+know if this value, whatever value you're looking at is an integer,
+and the triple equal lets you do that. Next, we'll talk about case expressions,
+and the case expressions
+have two flavors in Ruby. One flavor is very similar to your series
+of if statements, if else statements. So it's very similar to the if else
+that we already saw in previous slides. And this is just sort of a different
+keyword, it's case instead of if else. So, that's the first flavor. The second flavor is more interesting
+in that you actually specify the target next to the case key word, and then what happens is that each clause inside
+the when gets compared to that target. And we see an example of
+that in the next slide. And that's actually where the triple
+equals, which we just covered in the previous slide, comes in, it's also
+called the case equality operator. So, when things are being compared for an each when clause, it's actually using
+the triple equals operator for that. Now, just one last note on the case
+expressions is that if you're used to the C style,
+the C family of languages where you have a fall-through logic inside your
+case statements, that's not the case. Ruby, one case, the only case that
+actually matches gets executed and no other cases. So to show you an example of
+the two flavors we just discussed, the first flavor is very simple. You have, for example a variable,
+but then the actual comparisons inside the case have
+nothing to do with that variable. I mean you can compare that variable, you
+could compare other statements, you could have a default statement, really has
+nothing to do with the actual variable. It's almost like an if else. That's the first flavor. The second flavor, you have the actual
+target right next to the case so every condition in the case implicitly compares
+itself to actual targets. In this case, you have regular expression doing the triple
+equals, that's what case uses, uses the triple equals operator to
+compare itself to a name target. For loop I did say we're going
+to talk about it, but I lied. For loop is hardly used in Ruby and
+preference is given to each and times. So the times we already
+saw all the way back in beginning of the last lecture,
+and we also going to see each, and I'll talk about both of these when we
+talk about blocks, which is coming up. Now if you do want to see an example
+of a for loop, Ruby does have one. So you have a for some integer in a range, a range again is a data type
+which we haven't talked about, so you could say for
+i in this range of 0 to 2, print out the variable i and
+you have 0, 1, and 2. So this is your typical for
+loop, but like I said, for loops exist in Ruby, but
+they are not used much. So in summary, there are lots
+of options for flow of control. You have if, else, the cases,
+the while loops, the until, the unless. And then you also have the modifier form, which is a very interesting way
+to be very expressive in Ruby. And what you should remember
+is that non-nil and non-false values are always gonna be true. And the only things which are gonna be
+false are your false and your nil object. So what's next? Next we're gonna talk about
+the functions and the methods in Ruby.
