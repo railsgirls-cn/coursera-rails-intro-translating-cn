@@ -21,7 +21,7 @@
 3. 使用 github 作为翻译工具。 Why Github? 给大家看一篇北京教练[翟英昌](http://weibo.com/u/2682424731?topnav=1&amp;wvr=5&amp;topsug=1)的文章[『协同写作的力量——中国开发者 9 天完成《Swift 语言》中文版』](http://36kr.com/p/212811.html?vt=0)
 4. 校对
 
-**如果想帮忙翻译或者校对，请联系「翻译小组」管理员文洋：[ywen8@asu.edu](mailto:ywen8@asu.edu)，谢谢！**
+**如果想帮忙翻译或者校对，请联系「翻译小组」管理员文洋[@sundevilyang](https://github.com/sundevilyang)：[ywen8@asu.edu](mailto:ywen8@asu.edu)，谢谢！**
 
 
 
@@ -73,8 +73,8 @@
 4. 运行 `git checkout develop` 来切换到新分支
 5. 运行 `git remote add upstream https://github.com/railsgirls-cn/coursera-rails-intro-translating-cn` 项目的库添加为远端库
 6. 运行 `git remote update`更新
-7. 运行 `git fetch upstream gh-pages` 拉取我的库的更新到本地
-8. 运行 `git rebase upstream/gh-pages` 将我的更新合并到你的分支
+7. 运行 `git fetch upstream master` 拉取我的库的更新到本地
+8. 运行 `git rebase upstream/master` 将我的更新合并到你的分支
 
 这是一个初始化流程，只需要做一遍就行，之后请一直在develop分支进行修改。
 
