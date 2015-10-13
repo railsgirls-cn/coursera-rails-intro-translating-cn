@@ -1,0 +1,94 @@
+[MUSIC] Welcome. We have now developed application
+using the Coursera API, and we have also deployed at the Heroku, and
+it would be nice to have a way to test it. So, I showed you guys, at the end of module two how to
+perform unitesting with RSpec. It turns out there's another type of
+testing called black box testing. And the idea of black box
+testing is that you don't care if application of your test is
+written in Ruby, in Java or C#. You're treating it as a black box. And actually we created a whole get
+to have a repository right here. Which is publicly available for
+you guys to follow along and to see how black box testing is done. So why should we even use Ruby for
+black box testing? Well it turns out that when we
+combine Rspec and Capybara Ruby gems. These two frameworks come together,
+and you can write very intuitive, and expressive tests. For example,
+can you tell what the following test does? Well, we're trying to
+describe a recipes app, and we're saying that when
+you visit a certain page. Expect the page content to have
+the content of Chocolate Tea. Very intuitive, very expressive,
+you could tell right away what it does. Just to show you guys the Capybara
+webpage, what capybara is. It's an acceptance test framework for
+web applications. It helps you test web applications
+by simulating how a real user will interact with your app and its agnostic about the driver running
+your test, as we'll see in a minute. So just to show what the Capybara
+black box tests look like, just jump into my Sublime for
+this particular depository. And it looks something like this. So first of all,
+you're gonna have the .rspec file, which is going to say that we're
+going to be requiring spec_helper and the .rspec, if you remember from lecture,
+from module 2 is generated when you do rspec dash dash. So .rspec says requires spec_helper. Spec_helper is this file where you could. Include certain things that all
+your tests are going to need. This has the rspec,
+capybara, a few other gems and it's going to say that the rspec should include the capybara dsl,
+certain langauge that capybara provides. Let's take a look at the test. We are specifying that we're going
+to be using the selenium driver for this particular test and
+the application host, the actual application we test in,
+is not a local host. It's the actual website. We could actually copy and paste this and go into Firefox and
+actually see what this does. This is just a URL to our
+application obviously. So we're telling Capybara that
+we want to use this application, this URL, to test the application and
+the the words of the test be, well test #1 is going
+to be visit the root. And you the is a described
+block inside a describe. So the outer describe has
+the whole thing in it and then you could also have nested context. So we have a nested describe that says,
+for all of these between this describe and
+the end. The before is gonna be visit
+the root of application. So when you visit the root it displays
+Johns Hopkins somewhere on the page. So you basically get this
+variable called page after you interact with a website and
+it says, expect this page. To have_content Johns Hopkins. We know that the default is gonna be
+Johns Hopkins and as you could see. That Johns Hopkins indeed does
+appear on the default of a page. So that is exactly what we're testing for. We're testing for Johns Hopkins
+appearing somewhere on the page. So this is a pretty simple matcher. Now, but you can get much more complex. Because Capybara also has support for
+Expat. And this is not a course in Expat. I'm not going to cover it here. But just to show you guys it's possible,
+for example, you could say, it displays a table element that
+has a row with three columns in it. And where you express that in expat
+is by saying table, TR, and so on. Count with TG elements and
+the count should be three. Or you could say column one should
+have a thumbnail inside image tag. So table, tr, image,
+is just gonna be inside the first column. Or you can say, visit and
+just visit the root, visit the. Well, yes, visit the root, and then
+provide a request parameter looking for diet, which is gonna bring back
+The Meat We Eat, which is, as you could see here,
+when you actually do that. The Meat We Eat is one of
+the things on the page, so we're basically testing for that. We're writing a test
+that's gonna show us that, that's gonna confirm that The Meat We Eat
+actually does appear on the page. So let's actually run this and
+see if this actually works. I mean it almost sounds funny you
+write in some English statements. And you're expecting it to work. So we're gonna do rspec and
+--format documentation. Where to actually illustrate very
+nicely what the output of test is. When we ran this, you're going to see
+that it's actually bringing up Firefox. And it's actually
+interacting as a user would. Let's see that again. So it's actually going to that page,
+whatever that page is. And it's actually
+querying the web page and we are using XPath to confirm the output
+of content, which is pretty cool. Now this is nice but
+especially when you run a lot of tests. You probably don't want Firefox to
+be flashing in front of the eyes the whole time. So, it's kinda cool to show this,
+that it's actually doing it, and it actually is invoking Firefox. But in reality, especially when
+you have a lot of tests, and you want to run those tests often,
+which is a good practice. You probably don't want to be flashing. So that is where the PhantomJS
+part of it comes in. So PhantomJS,
+which we installed in module 1 is a headless browser,
+which basically means it's a browser. But it's not a real browser like Firefox
+which actually displays something, it's headless. And Capybara actually has a gem called poltergeist which is a PhantomJS
+driver for Capybara. So basically all you really have to do
+to switch from one driver to another is to comment out selenium, and instead use poltergeist which
+is a cut where phantom driver. And now when you run the tests, Firefox
+no longer flashing in front of your eyes. And instead your tests run in
+the terminal and the output is the same. So that's sort of just to show
+you how to do black box testing. Feel free to actually check out the GitHub repository right here. Actually, right over here. The read me file does have
+pretty good instructions on which gems you need to install
+before you're able to run it. Where as we rspec, selenium web driver,
+capybara, poltergeist. If you're using rbenv,
+you're also gonna need to do rbenv rehash, because any time you install
+something that has for example rspec, that has an executable after you install
+that gem, you have to do rbenv rehash. So that's with the regular mode. And there's also the headless mode
+which we just saw using PhantomJS. And all you have to do run it is just
+to switch from the selenium driver to poltergeist driver.

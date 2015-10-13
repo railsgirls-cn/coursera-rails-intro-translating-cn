@@ -1,0 +1,465 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:08.032
+[MUSIC]
+
+2
+00:00:08.032 --> 00:00:10.790
+Hi and welcome to lecture 14.
+
+3
+00:00:10.790 --> 00:00:15.670
+In this lecture we'll discuss the three
+levels of access control in Ruby.
+
+4
+00:00:15.670 --> 00:00:18.680
+We'll talk about the whole idea of
+control and access in the first place.
+
+5
+00:00:19.790 --> 00:00:24.690
+As well as how private is
+private access in Ruby?
+
+6
+00:00:24.690 --> 00:00:29.330
+So, the idea of access control is as
+follows, when designing your class,
+
+7
+00:00:29.330 --> 00:00:32.570
+it's important to think about how
+much you want to expose to the world.
+
+8
+00:00:33.810 --> 00:00:37.930
+You want to write your class in
+a way that, when something changes,
+
+9
+00:00:37.930 --> 00:00:41.175
+some internal details
+change in your class,
+
+10
+00:00:41.175 --> 00:00:46.610
+not everybody outside of your class has
+to all of a sudden change everything.
+
+11
+00:00:46.610 --> 00:00:52.360
+You want to keep your presentation,
+the internal representation private.
+
+12
+00:00:52.360 --> 00:00:54.240
+That's the idea of encapsulation and
+
+13
+00:00:54.240 --> 00:00:58.900
+it applies to not just Ruby but other
+languages, other OO languages as well.
+
+14
+00:01:00.500 --> 00:01:06.010
+On top of that, Ruby also provides
+three levels of access control.
+
+15
+00:01:06.010 --> 00:01:08.320
+Public, protected, and private.
+
+16
+00:01:08.320 --> 00:01:10.720
+And we'll see what this means in a minute.
+
+17
+00:01:12.930 --> 00:01:15.820
+So the idea of encapsulation is files.
+
+18
+00:01:15.820 --> 00:01:20.000
+Let's say you have a car class
+that maybe has a speed and
+
+19
+00:01:20.000 --> 00:01:24.200
+comfort, which are used to
+calculate the rating of a car.
+
+20
+00:01:24.200 --> 00:01:28.620
+And you have a rating method that right
+now happens to return the rating,
+
+21
+00:01:28.620 --> 00:01:30.690
+which is an instance variable.
+
+22
+00:01:30.690 --> 00:01:32.360
+But maybe we're wrong,
+
+23
+00:01:32.360 --> 00:01:36.330
+you're gonna incorporate some other
+factors how you calculate the rating.
+
+24
+00:01:36.330 --> 00:01:42.470
+So, that's fine because people who
+depend on the car class, they're
+
+25
+00:01:42.470 --> 00:01:46.430
+still gonna have this rating method and
+to them it doesn't mean anything.
+
+26
+00:01:46.430 --> 00:01:49.920
+It's just a rating method,
+which is just a method that they call.
+
+27
+00:01:49.920 --> 00:01:52.750
+And even if internal representation
+
+28
+00:01:52.750 --> 00:01:56.990
+changes on how you calculate
+the rating that's okay.
+
+29
+00:01:56.990 --> 00:01:59.710
+It's not going to affect the outside API.
+
+30
+00:02:01.770 --> 00:02:05.160
+So there are two ways you could
+specify access control in Ruby.
+
+31
+00:02:06.660 --> 00:02:09.940
+Number one,
+you could specify public, protected,
+
+32
+00:02:09.940 --> 00:02:14.825
+or private keywords, and everything
+until the next access control keyword
+
+33
+00:02:14.825 --> 00:02:16.305
+will be at that access control level.
+
+34
+00:02:17.305 --> 00:02:20.055
+Now this is in addition to
+what I mentioned before,
+
+35
+00:02:20.055 --> 00:02:24.195
+that by default all Ruby
+methods are public.
+
+36
+00:02:24.195 --> 00:02:28.215
+So if you don't specify any of these,
+your methods are gonna be public.
+
+37
+00:02:30.280 --> 00:02:35.500
+The second way is you could define
+the methods regularly without specifying
+
+38
+00:02:35.500 --> 00:02:38.050
+whether they are public,
+private, or protected.
+
+39
+00:02:38.050 --> 00:02:44.390
+And then you could have
+a comma-separated list of methods using
+
+40
+00:02:44.390 --> 00:02:48.750
+the method symbols to specify whether
+they are private, protected or public.
+
+41
+00:02:50.520 --> 00:02:52.280
+So let's see both of these.
+
+42
+00:02:52.280 --> 00:02:56.800
+We have the class on the left
+that starts out as private.
+
+43
+00:02:56.800 --> 00:02:58.970
+So, this method, test1, and
+
+44
+00:02:58.970 --> 00:03:04.430
+any other method defined here
+will be private until protected.
+
+45
+00:03:04.430 --> 00:03:08.132
+And this method over here, and
+all the other methods will be protected.
+
+46
+00:03:08.132 --> 00:03:09.753
+And then you have public,
+
+47
+00:03:09.753 --> 00:03:14.660
+which basically says that any methods
+defined here are gonna be public.
+
+48
+00:03:14.660 --> 00:03:18.960
+And you obviously need public here because
+otherwise they would be protected.
+
+49
+00:03:18.960 --> 00:03:23.135
+Whereas usually, if you wouldn’t have any
+of these private, protected, or public.
+
+50
+00:03:23.135 --> 00:03:27.275
+Or if you would have this method
+all the way up before private
+
+51
+00:03:27.275 --> 00:03:33.105
+you wouldn't need any keyword because it
+methods by default in Ruby are public.
+
+52
+00:03:33.105 --> 00:03:35.555
+Because the idea is if
+you are creating a method
+
+53
+00:03:35.555 --> 00:03:38.865
+you probably want somebody from
+outside the class to call the method.
+
+54
+00:03:40.445 --> 00:03:44.850
+The other way to do it is you
+define the method regular.
+
+55
+00:03:44.850 --> 00:03:48.530
+And then you say, oh by the way
+test1 method that I defined earlier,
+
+56
+00:03:48.530 --> 00:03:50.600
+I want it to be private.
+
+57
+00:03:50.600 --> 00:03:54.290
+And you could do this using a comma
+separated list of method names.
+
+58
+00:03:56.110 --> 00:04:02.190
+Now let's talk about what the public,
+protected, and private actually means.
+
+59
+00:04:02.190 --> 00:04:07.240
+So, public methods means there's
+no access control enforced.
+
+60
+00:04:07.240 --> 00:04:11.720
+Anybody from outside the class, or from
+inside the class, can call this method.
+
+61
+00:04:13.680 --> 00:04:16.820
+Protected means, it can be invoked, but
+
+62
+00:04:16.820 --> 00:04:21.670
+only by the objects of a defining class or
+its subclasses.
+
+63
+00:04:21.670 --> 00:04:27.040
+Nobody from outside, unless you're
+a subclass, can call a protected method.
+
+64
+00:04:28.410 --> 00:04:30.600
+And the third level is really interesting.
+
+65
+00:04:30.600 --> 00:04:35.770
+Private methods cannot be invoked
+with an explicit receiver.
+
+66
+00:04:35.770 --> 00:04:41.750
+So you cannot say, for example, so let's
+say you create an instance of a class.
+
+67
+00:04:42.810 --> 00:04:43.810
+Let's say call it person1.
+
+68
+00:04:43.810 --> 00:04:48.890
+You cannot say person1.private method.
+
+69
+00:04:48.890 --> 00:04:52.465
+But not only that,
+even to say something like
+
+70
+00:04:52.465 --> 00:04:57.570
+self.private method inside
+the class itself you cannot do.
+
+71
+00:04:58.990 --> 00:05:01.180
+And there is a minor exception
+which we'll see in a minute.
+
+72
+00:05:02.650 --> 00:05:04.660
+So let's see an example of this.
+
+73
+00:05:04.660 --> 00:05:09.780
+Let's say we have a person that
+has my age getter and age setter.
+
+74
+00:05:10.990 --> 00:05:13.780
+So to say something like self.my_age,
+
+75
+00:05:13.780 --> 00:05:19.230
+even inside the construct of
+a person class, is illegal.
+
+76
+00:05:20.330 --> 00:05:24.600
+You cannot use self or any other
+receiver to call a private method.
+
+77
+00:05:24.600 --> 00:05:29.350
+The only exception is
+to call an age setter.
+
+78
+00:05:30.350 --> 00:05:35.150
+And the reason is because calling
+an age setter, without the receiver,
+
+79
+00:05:35.150 --> 00:05:39.050
+without itself, as we discussed earlier,
+when we talked about classes
+
+80
+00:05:39.050 --> 00:05:43.880
+is kind of useless because
+the Ruby interpreter
+
+81
+00:05:43.880 --> 00:05:49.030
+would interpret the age
+as a local variable.
+
+82
+00:05:49.030 --> 00:05:52.420
+And every time you finish the constructor,
+
+83
+00:05:52.420 --> 00:05:54.850
+the age local variable
+would go out of scope.
+
+84
+00:05:54.850 --> 00:06:03.440
+So only meaningful way of calling age
+setter, is to call it using self.
+
+85
+00:06:03.440 --> 00:06:08.580
+So therefore, this is an exception, when
+you're trying to set a variable value,
+
+86
+00:06:08.580 --> 00:06:13.140
+you are allowed to code self, even if
+the age setter is a private method.
+
+87
+00:06:15.505 --> 00:06:19.805
+In summary, public and
+private access controls are used the most.
+
+88
+00:06:19.805 --> 00:06:22.475
+Sometimes you'll see protected but
+
+89
+00:06:22.475 --> 00:06:27.415
+most of the time you'll see people just
+using public, if a methods a public.
+
+90
+00:06:27.415 --> 00:06:30.335
+Or not using anything because
+by default methods a public.
+
+91
+00:06:31.785 --> 00:06:35.295
+Or using private if you don't
+want anybody calling the methods.
+
+92
+00:06:36.660 --> 00:06:40.540
+And private methods are very interesting
+in that they are not callable from
+
+93
+00:06:40.540 --> 00:06:44.690
+outside or inside the class
+with an explicit receiver, and
+
+94
+00:06:44.690 --> 00:06:48.160
+the exception to that is a setter method.
+
+95
+00:06:48.160 --> 00:06:51.760
+A method that's trying to set a value.
+
+96
+00:06:51.760 --> 00:06:56.290
+Those methods I allow to be called
+will be receiver as we saw.
+
+97
+00:06:57.810 --> 00:06:58.630
+What's next?
+
+98
+00:06:58.630 --> 00:07:01.552
+Next, we talk about
+introduction to unit testing.

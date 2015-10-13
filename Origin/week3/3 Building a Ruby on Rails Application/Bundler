@@ -1,0 +1,427 @@
+WEBVTT
+
+1
+00:00:00.503 --> 00:00:08.133
+[MUSIC]
+
+2
+00:00:08.133 --> 00:00:10.760
+Hi, and welcome to lecture eight.
+
+3
+00:00:10.760 --> 00:00:13.520
+In this lecture,
+we’ll discuss Bundler, and
+
+4
+00:00:13.520 --> 00:00:16.700
+how Bundler lets you manage gems
+inside your Rails application.
+
+5
+00:00:18.040 --> 00:00:22.970
+So if you go to bundler.io you
+will see that Bundler basically
+
+6
+00:00:22.970 --> 00:00:26.430
+provides a consistent environment for
+Ruby projects by tracking and
+
+7
+00:00:26.430 --> 00:00:29.790
+installing the exact gems and
+versions that are needed.
+
+8
+00:00:31.170 --> 00:00:36.410
+So, it lets you specify gems
+from the Rails application and
+
+9
+00:00:36.410 --> 00:00:39.590
+the way you do that is you
+specify that inside the Gemfile.
+
+10
+00:00:41.650 --> 00:00:46.440
+And this is the preferred way to manage
+gem dependencies in Rails, because Bundler
+
+11
+00:00:46.440 --> 00:00:52.840
+is able to resolve a lot of dependencies
+and it tries to make everybody happy.
+
+12
+00:00:52.840 --> 00:00:57.570
+So for example, you have gem 1
+that depends on certain other gem
+
+13
+00:00:58.660 --> 00:01:04.980
+with one version and
+gem 2 which depends on that same gem.
+
+14
+00:01:04.980 --> 00:01:08.372
+Maybe they're different or
+a little bit of a different version.
+
+15
+00:01:08.372 --> 00:01:11.800
+Bundler is gonna try to
+make both those gems happy.
+
+16
+00:01:13.710 --> 00:01:19.370
+To use it all you do is you just run
+bundle install to install new gems.
+
+17
+00:01:19.370 --> 00:01:22.490
+Or you just do bundle, which is
+the same as running bundle install.
+
+18
+00:01:24.910 --> 00:01:29.070
+And if you want to modify version
+of an already installed gem,
+
+19
+00:01:29.070 --> 00:01:32.020
+you do bundle update
+instead of bundle install.
+
+20
+00:01:34.620 --> 00:01:39.910
+You could also instruct Rails in
+the Gemfile to only load certain gems
+
+21
+00:01:39.910 --> 00:01:42.170
+in specific Rails environments.
+
+22
+00:01:42.170 --> 00:01:45.250
+So for
+example you do group development and
+
+23
+00:01:45.250 --> 00:01:49.890
+test to tell it these gems are only
+gonna be available in development and
+
+24
+00:01:49.890 --> 00:01:52.730
+test environments but
+not in production environment.
+
+25
+00:01:53.950 --> 00:01:56.570
+So which version of a gem gets installed?
+
+26
+00:01:56.570 --> 00:02:00.280
+Well, if you don't specify anything,
+you get the latest.
+
+27
+00:02:00.280 --> 00:02:03.383
+You could also specify an exact version or
+
+28
+00:02:03.383 --> 00:02:08.090
+an approximate version of the gem
+that you wanna be installed.
+
+29
+00:02:08.090 --> 00:02:10.800
+So, for example,
+in this case you get the latest.
+
+30
+00:02:10.800 --> 00:02:17.282
+In this case you get an exact version.
+
+31
+00:02:17.282 --> 00:02:21.906
+In this case you get something greater
+than 1.0, even if it's version four or
+
+32
+00:02:21.906 --> 00:02:25.170
+five, or whatever the latest is,
+passed this version.
+
+33
+00:02:27.910 --> 00:02:30.970
+You can also specify lower and
+upper bounds.
+
+34
+00:02:30.970 --> 00:02:37.930
+For example, in this case, you're saying
+greater than 1.1, and the less than 2.0.
+
+35
+00:02:37.930 --> 00:02:42.942
+Now, the reason you do this is
+that a lot of times when gems or
+
+36
+00:02:42.942 --> 00:02:50.180
+when software in general goes to the next
+version they might break certain features.
+
+37
+00:02:50.180 --> 00:02:54.709
+Whereas if they just updating
+the version let's say 1.2,
+
+38
+00:02:54.709 --> 00:02:58.380
+1.3 they're usually not
+gonna break the API.
+
+39
+00:02:58.380 --> 00:03:03.174
+And because this is so
+common results of this operator which is
+
+40
+00:03:03.174 --> 00:03:08.338
+called the Pessimistic Version Constraint,
+which means that you
+
+41
+00:03:08.338 --> 00:03:13.501
+are pessimistic about the next
+version not breaking something and
+
+42
+00:03:13.501 --> 00:03:17.925
+therefore you wanna lock in to
+only use a specific range of
+
+43
+00:03:17.925 --> 00:03:22.010
+versions which do not
+include the next big version.
+
+44
+00:03:23.020 --> 00:03:29.370
+And the way this works, Bundler figures
+aside, is that it drops a final digit,
+
+45
+00:03:30.650 --> 00:03:36.480
+and then it increments the digit to
+get the upper limit version number.
+
+46
+00:03:36.480 --> 00:03:42.600
+So in this case, it drops one,
+in this case, and
+
+47
+00:03:42.600 --> 00:03:46.660
+it increments this to be 2.0.
+
+48
+00:03:46.660 --> 00:03:50.480
+So, basically,
+these statements are equivalent.
+
+49
+00:03:50.480 --> 00:03:55.440
+You could even do it this way
+by specifying the exact range or
+
+50
+00:03:55.440 --> 00:03:59.670
+you could say, eh, just use
+the pessimistic version constraint and
+
+51
+00:03:59.670 --> 00:04:04.820
+the way it figures this out
+is it drops the final digit.
+
+52
+00:04:04.820 --> 00:04:10.400
+And then it increments the first digit
+to get the upper limit less than
+
+53
+00:04:10.400 --> 00:04:12.760
+that limit which is 2.0.
+
+54
+00:04:12.760 --> 00:04:15.110
+Bundler also loads the gem.
+
+55
+00:04:15.110 --> 00:04:18.630
+It doesn't just download
+it from the internet.
+
+56
+00:04:18.630 --> 00:04:24.088
+So as the application starts,
+it actually requires that gem and
+
+57
+00:04:24.088 --> 00:04:30.770
+sometimes the name to require is going
+to be different from an actual gem name.
+
+58
+00:04:30.770 --> 00:04:35.540
+So, for example,
+this what used to be the case of sqlite3.
+
+59
+00:04:35.540 --> 00:04:40.440
+The gem name was called one name, but
+when you required, you actually had
+
+60
+00:04:40.440 --> 00:04:43.910
+to require something else,
+you could specify that to the Bundler.
+
+61
+00:04:45.030 --> 00:04:48.300
+And the interesting part is that it's so
+
+62
+00:04:48.300 --> 00:04:52.430
+modular that you could even use
+a different version of Rails.
+
+63
+00:04:52.430 --> 00:04:56.960
+So let's say you're using version 3 and
+then you wanna upgrade to version 4,
+
+64
+00:04:56.960 --> 00:05:02.640
+all you have to do is just specify
+different version in your Gemfile and then
+
+65
+00:05:02.640 --> 00:05:07.620
+the run bundle update, and that's gonna
+update your Rails to a different version.
+
+66
+00:05:07.620 --> 00:05:12.650
+Now you might have other issues
+on upgrading but as far as
+
+67
+00:05:12.650 --> 00:05:17.690
+trick version usage this works
+to change your versions.
+
+68
+00:05:19.250 --> 00:05:24.530
+One more things is that the Gemfile.lock
+is the file that actually has
+
+69
+00:05:24.530 --> 00:05:30.540
+the exact versions, and that's a file that
+gets updated when you run bundle update,
+
+70
+00:05:30.540 --> 00:05:36.636
+or bundle, depending on if it's a new gem
+or if you're updating an existing gem.
+
+71
+00:05:36.636 --> 00:05:38.950
+One last thing, bundle exec,
+
+72
+00:05:38.950 --> 00:05:44.920
+sometimes you'll see people running
+bundle exec rake, or bundle exec rails.
+
+73
+00:05:44.920 --> 00:05:49.272
+And the reason for
+that is that what bundle exec
+
+74
+00:05:49.272 --> 00:05:53.560
+does is that it uses
+the executable of a gem.
+
+75
+00:05:53.560 --> 00:05:59.082
+For example, Rails or
+Rake that is specified in the Gemfile
+
+76
+00:05:59.082 --> 00:06:04.510
+of a current app to use when
+you're running bundle exec.
+
+77
+00:06:04.510 --> 00:06:09.550
+So what I mean by that is that,
+let's say you have three or four different
+
+78
+00:06:09.550 --> 00:06:15.260
+versions for, let's say the rake gem
+specified, so which one is it gonna use.
+
+79
+00:06:15.260 --> 00:06:18.160
+Well, it might not be so deterministic.
+
+80
+00:06:18.160 --> 00:06:23.676
+So, void to specify an exact version is,
+or the version,
+
+81
+00:06:23.676 --> 00:06:28.310
+at least, that you are specifying in
+the Gemfile is to use bundle exec,
+
+82
+00:06:28.310 --> 00:06:32.040
+rake a bundle exec rails and
+then you know for
+
+83
+00:06:32.040 --> 00:06:36.620
+sure that you're getting
+the version that's in the Gemfile.
+
+84
+00:06:36.620 --> 00:06:40.940
+So in summary Bundler
+manages gem dependencies and
+
+85
+00:06:40.940 --> 00:06:43.200
+it loads up the gems on
+an application startup.
+
+86
+00:06:44.930 --> 00:06:46.430
+What's next?
+
+87
+00:06:46.430 --> 00:06:51.156
+Next we're gonna try to integrate the
+HTTParty with Rails since now we know how
+
+88
+00:06:51.156 --> 00:06:52.880
+to do that by using Bundler.

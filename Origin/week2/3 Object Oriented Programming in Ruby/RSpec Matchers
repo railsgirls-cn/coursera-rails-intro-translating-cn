@@ -1,0 +1,266 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:08.284
+[MUSIC]
+
+2
+00:00:08.284 --> 00:00:10.994
+Hi and welcome to lecture 17.
+
+3
+00:00:10.994 --> 00:00:14.232
+In this lecture,
+we'll continue our discussion of RSpec and
+
+4
+00:00:14.232 --> 00:00:15.735
+talk about RSpec Matchers.
+
+5
+00:00:17.540 --> 00:00:24.210
+So RSpec hangs the to and the not_to
+methods on all outcome of expectations.
+
+6
+00:00:24.210 --> 00:00:29.615
+As we've seen in the previous lecture and
+the to and the not_to methods
+
+7
+00:00:29.615 --> 00:00:35.218
+are just basically methods that take
+one parameter, which is a matcher.
+
+8
+00:00:35.218 --> 00:00:40.748
+So the examples of a matcher could be,
+for example, be_true, be_false,
+
+9
+00:00:40.748 --> 00:00:46.420
+the ones we've seen in the previous
+lecture, eq 3, for example.
+
+10
+00:00:46.420 --> 00:00:51.200
+Raise_error, where you pass in
+what error you're trying to raise.
+
+11
+00:00:53.000 --> 00:00:54.790
+So, it'll go something like this.
+
+12
+00:00:54.790 --> 00:00:56.779
+It would be expect some condition,
+
+13
+00:00:56.779 --> 00:01:02.170
+let's say calculator at 2 plus 2 to
+be_true, or to equal some number.
+
+14
+00:01:03.720 --> 00:01:07.750
+If the object on which the test
+is operating has a predicate,
+
+15
+00:01:07.750 --> 00:01:12.220
+which is just a boolean method,
+you automatically get the be
+
+16
+00:01:12.220 --> 00:01:16.970
+underscore whatever that
+predicate condition is, matcher.
+
+17
+00:01:18.310 --> 00:01:22.913
+So for example, be_nil is a valid
+matcher since every Ruby object has
+
+18
+00:01:22.913 --> 00:01:27.320
+a nil method and this object nil,
+
+19
+00:01:27.320 --> 00:01:31.610
+you could test it by saying be that
+you expected something to be nil.
+
+20
+00:01:33.580 --> 00:01:39.340
+So, here's an example, that for example,
+in our calculator example, maybe we have
+
+21
+00:01:39.340 --> 00:01:45.770
+an expectation example that says it should
+sum two odd numbers and become even.
+
+22
+00:01:45.770 --> 00:01:50.171
+I know you could test it as by saying
+expect, the condition which is
+
+23
+00:01:50.171 --> 00:01:55.123
+calculator.add(3, 3).to be_even or
+another way of saying that is
+
+24
+00:01:55.123 --> 00:02:00.530
+you could say expect, the calculator,
+3 plus 3, not_to be_odd.
+
+25
+00:02:00.530 --> 00:02:03.670
+And these are perfectly legal and
+
+26
+00:02:03.670 --> 00:02:06.830
+they read very much like
+an English language sentence.
+
+27
+00:02:09.170 --> 00:02:12.660
+When you actually run
+these guys using RSpec,
+
+28
+00:02:12.660 --> 00:02:18.600
+you'll get three dots because by this time
+we have fixed our calculator example and
+
+29
+00:02:18.600 --> 00:02:24.180
+now it's outputting green, which
+means that the tests actually passed.
+
+30
+00:02:24.180 --> 00:02:29.200
+Now, let's say you actually wanna
+see which tests are passing,
+
+31
+00:02:29.200 --> 00:02:30.840
+not just a bunch of dots.
+
+32
+00:02:30.840 --> 00:02:35.310
+Which, this may be good if you're just
+trying to get all the tests to pass, but
+
+33
+00:02:35.310 --> 00:02:36.320
+let's say later on for
+
+34
+00:02:36.320 --> 00:02:40.960
+the computation purposes, you actually
+wanna know what is your software doing?
+
+35
+00:02:40.960 --> 00:02:42.970
+What does your software support?
+
+36
+00:02:42.970 --> 00:02:48.350
+So then you could say rspec --format
+documentation or even just -f d, and
+
+37
+00:02:48.350 --> 00:02:54.830
+it will tell you that Calculator
+should add 2 numbers correctly.
+
+38
+00:02:54.830 --> 00:02:58.330
+And if it's green,
+you see that these things actually work.
+
+39
+00:02:58.330 --> 00:03:04.680
+So if you wrote your examples,
+your expectations correctly,
+
+40
+00:03:04.680 --> 00:03:08.160
+you'll actually see what behavior is
+being supported by your application
+
+41
+00:03:10.600 --> 00:03:13.950
+and many more matchers that RSpec offers.
+
+42
+00:03:13.950 --> 00:03:20.158
+If you go to this page over
+here in relishapp.com/rspec and
+
+43
+00:03:20.158 --> 00:03:26.750
+so on, you see what things like, for
+example be_within, right because,
+
+44
+00:03:26.750 --> 00:03:31.902
+you don't want to be testing the floating
+point number for exactly being equal.
+
+45
+00:03:31.902 --> 00:03:36.530
+You wanna be testing within its own range,
+or
+
+46
+00:03:36.530 --> 00:03:41.020
+contain exactly maybe a list
+containing certain elements that, for
+
+47
+00:03:41.020 --> 00:03:46.360
+example, you could expect that the list
+not_to be_empty and things like that.
+
+48
+00:03:46.360 --> 00:03:48.260
+And it's very intuitive.
+
+49
+00:03:48.260 --> 00:03:50.130
+And I think it's a great
+testing framework.
+
+50
+00:03:51.170 --> 00:03:51.670
+And again,
+
+51
+00:03:51.670 --> 00:03:55.550
+if you prefer mini tests, go with that
+as long as the tests get written.
+
+52
+00:03:57.770 --> 00:04:03.090
+So RSpec has a lot of built-in matchers
+readily available for simplifying writing
+
+53
+00:04:03.090 --> 00:04:09.230
+tests and it's a great framework to
+use for testing your applications.
+
+54
+00:04:10.480 --> 00:04:11.770
+What's next?
+
+55
+00:04:11.770 --> 00:04:16.015
+We'll jump into Module 3, which is
+Introduction to Ruby on Rails, and
+
+56
+00:04:16.015 --> 00:04:17.764
+I will see you in that module.

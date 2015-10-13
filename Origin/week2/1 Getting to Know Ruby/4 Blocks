@@ -1,0 +1,353 @@
+WEBVTT
+
+1
+00:00:00.560 --> 00:00:08.220
+[MUSIC]
+
+2
+00:00:08.220 --> 00:00:11.010
+Hi and welcome to lecture four.
+
+3
+00:00:11.010 --> 00:00:13.926
+In lecture four we'll talk about blocks,
+
+4
+00:00:13.926 --> 00:00:19.030
+how they're used as well as how to
+incorporate them into your own methods.
+
+5
+00:00:21.430 --> 00:00:26.070
+Some people get thrown off by blocks in
+Ruby, because other languages don't have
+
+6
+00:00:26.070 --> 00:00:31.072
+blocks, but just think of them as
+chunks of code that are being executed.
+
+7
+00:00:31.072 --> 00:00:36.370
+You pass them in between either curly
+braces, or the keywords do and end, and
+
+8
+00:00:37.390 --> 00:00:42.000
+they're passed into methods as
+a last parameter in to a method.
+
+9
+00:00:43.290 --> 00:00:46.640
+The convention is that
+you use the curly braces
+
+10
+00:00:46.640 --> 00:00:51.500
+when the block content is a single line,
+and if a block content spans
+
+11
+00:00:51.500 --> 00:00:56.330
+multiple lines you pass it in
+between the do and end key words.
+
+12
+00:00:58.180 --> 00:01:03.660
+And blocks are often used as iterators,
+so we saw this example all the way back.
+
+13
+00:01:04.800 --> 00:01:09.500
+You have a number and a times method,
+then you pass the block and
+
+14
+00:01:09.500 --> 00:01:11.520
+the block basically just executes.
+
+15
+00:01:12.700 --> 00:01:18.040
+So in this case, the times method
+knows that it needs to yield
+
+16
+00:01:18.040 --> 00:01:21.210
+the control to a block and
+then the block will execute.
+
+17
+00:01:22.690 --> 00:01:26.260
+The block can also accept parameters or
+arguments.
+
+18
+00:01:26.260 --> 00:01:29.470
+So in this case its
+the same method times and
+
+19
+00:01:29.470 --> 00:01:33.020
+you could pass in a parameter
+in between the pipes like so.
+
+20
+00:01:34.700 --> 00:01:40.610
+So in this case, it just happens to
+be that the parameter to the block,
+
+21
+00:01:40.610 --> 00:01:46.390
+which is passed as the last parameter
+to a times method, is index.
+
+22
+00:01:46.390 --> 00:01:51.550
+Where, index of which iteration
+inside the loop are you in?
+
+23
+00:01:51.550 --> 00:01:56.400
+So, in this case, we say, if index is
+greater than zero, print it, otherwise,
+
+24
+00:01:56.400 --> 00:01:57.720
+do not print it.
+
+25
+00:01:57.720 --> 00:02:02.940
+So, in this case,
+the iterations are zero in the one, and
+
+26
+00:02:02.940 --> 00:02:06.110
+only one is printed because that's
+the one that's greater than zero.
+
+27
+00:02:06.110 --> 00:02:10.330
+Now, we could have written exactly
+the same block in this way,
+
+28
+00:02:10.330 --> 00:02:12.290
+as well, two times, and
+
+29
+00:02:12.290 --> 00:02:17.551
+because it's a single line, we'll use
+curly braces instead of using do and end.
+
+30
+00:02:18.790 --> 00:02:22.530
+So the same thing is happening,
+you have an index parameter,
+
+31
+00:02:22.530 --> 00:02:25.930
+put index if index greater than zero,
+and the output is still one.
+
+32
+00:02:28.380 --> 00:02:34.090
+If you want to use blocks in the method
+that you are going to be writing, there
+
+33
+00:02:34.090 --> 00:02:39.240
+are two ways to actually do that, there
+is an implicit way and the explicit way.
+
+34
+00:02:39.240 --> 00:02:44.240
+The implicit way is everything
+is happening the same as it
+
+35
+00:02:44.240 --> 00:02:49.260
+would be happening otherwise,
+and you check for
+
+36
+00:02:49.260 --> 00:02:54.890
+the existence of a block with a built
+in method called block given,
+
+37
+00:02:54.890 --> 00:02:59.810
+and if a block is given you
+yield the control to the block.
+
+38
+00:02:59.810 --> 00:03:05.060
+The explicit method is
+you declare block as
+
+39
+00:03:05.060 --> 00:03:11.200
+a last parameter of a method with
+this ampersand in front of it,
+
+40
+00:03:11.200 --> 00:03:15.330
+and then you use a call method to call
+the block, so let's see both of these.
+
+41
+00:03:16.540 --> 00:03:19.160
+The implicit method is as follows.
+
+42
+00:03:19.160 --> 00:03:22.520
+You have this method called
+two_times_implicit, so
+
+43
+00:03:22.520 --> 00:03:24.860
+basically this method is
+gonna do something two times.
+
+44
+00:03:26.230 --> 00:03:28.810
+You right away check, is the block given?
+
+45
+00:03:30.120 --> 00:03:34.960
+If a block is not given, you either
+going to return, if you don't check for
+
+46
+00:03:34.960 --> 00:03:39.060
+the existence of a block and try to yield
+to a block when the block wasn't passed
+
+47
+00:03:39.060 --> 00:03:40.970
+in, an exception will be thrown.
+
+48
+00:03:42.750 --> 00:03:47.660
+So in this case,
+if you just say two times implicit, and
+
+49
+00:03:47.660 --> 00:03:49.600
+you don't pass a block,
+that's what happens,
+
+50
+00:03:49.600 --> 00:03:54.510
+you just come back from it with a null
+block string, which you return.
+
+51
+00:03:54.510 --> 00:03:58.610
+But if a block is given, so in this case,
+you're telling it to print, hello.
+
+52
+00:03:58.610 --> 00:04:00.780
+Hello will be printed two times.
+
+53
+00:04:01.880 --> 00:04:03.410
+That's the implicit way.
+
+54
+00:04:03.410 --> 00:04:09.010
+And the explicit way is very similar,
+but in the explicit way,
+
+55
+00:04:09.010 --> 00:04:15.560
+you're actually declaring that this
+method might be accepting a block.
+
+56
+00:04:16.790 --> 00:04:21.130
+And then you check for
+the existence of a block similarly
+
+57
+00:04:21.130 --> 00:04:25.260
+over .nil call to see if
+a block was given or not.
+
+58
+00:04:25.260 --> 00:04:28.700
+If a block is not given,
+you return right away, otherwise,
+
+59
+00:04:28.700 --> 00:04:34.590
+you call the block very similar
+to yielding to a block.
+
+60
+00:04:34.590 --> 00:04:37.070
+So, the explicit way is
+a little more direct.
+
+61
+00:04:37.070 --> 00:04:40.550
+You are saying, I want to call the block,
+which basically does the same thing.
+
+62
+00:04:40.550 --> 00:04:44.150
+It yields to the block, and
+it prints out Hello two times.
+
+63
+00:04:44.150 --> 00:04:47.670
+So these two ways are very similar,
+and it depends on the taste,
+
+64
+00:04:47.670 --> 00:04:48.360
+how you wanna use them.
+
+65
+00:04:50.300 --> 00:04:54.520
+In summary, blocks are just code
+that you pass into methods.
+
+66
+00:04:54.520 --> 00:04:58.720
+And again, this might take a little
+while to get used to just because
+
+67
+00:04:58.720 --> 00:05:00.800
+they are not very common
+in other languages.
+
+68
+00:05:02.280 --> 00:05:05.670
+And if you want to incorporate
+the blocks into your own methods,
+
+69
+00:05:05.670 --> 00:05:11.930
+you could even do it implicitly by sort of
+pretending like a block doesn't exist and
+
+70
+00:05:11.930 --> 00:05:17.060
+yielding to it if it does, or you can
+explicitly declare it in your method and
+
+71
+00:05:17.060 --> 00:05:20.705
+then call it and make sure to check for
+nil in that case as well.
+
+72
+00:05:22.645 --> 00:05:23.725
+That's it for this lecture.
+
+73
+00:05:23.725 --> 00:05:26.925
+In the next lecture, we'll talk about
+files and environment variables.

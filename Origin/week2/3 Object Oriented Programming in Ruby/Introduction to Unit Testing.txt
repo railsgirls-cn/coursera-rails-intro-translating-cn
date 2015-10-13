@@ -1,0 +1,104 @@
+[MUSIC] Hi and welcome to lecture 15. In this lecture we'll
+talk about unit testing. The idea of unit testing is writing
+test code that tests your life code. So why do people write unit tests? Well how do you know if
+your code actually works? You really have no idea until you run it,
+until you exercise your code and you get results that you're expecting. This is especially true in Ruby,
+which is a dynamic language, so for
+a static type language like Java for example, if you make a typo,
+your editor will probably tell you that. There's a typo here, Ruby,
+because it's a dynamic language, a lot of times the editor will
+not pick up the typos for you. Another reason to write unit tests is
+if you want to refactor your code. And if you want to refactor your code, if
+you want to modify the structure of a code of confidence and
+make sure we didn't break anything. Well the way to do that is to add unit
+tests because if you have unit tests which are passing before you change anything and
+then you make the change and unit test is still passing,
+that means that you didn't break anything. Another reason to write
+unit tests is because, a lot of times, it will serve
+as documentation for developers. So let's say a developer wants to use your
+code, and he's not sure exactly how to instantiate certain things and
+what needs to be instantiated. He could just take a look at your unit
+test, how you were exercising your code. Even though your purpose is really for
+testing the code. But still it's code that
+actually exercises your code so a developer could look at the code and
+know exactly how to run your code. So Ruby takes this idea of
+testing very seriously, and even ships with test unit framework. In Ruby 1.8, the test unit framework
+was bloated with extra libraries and different graphical tools which
+are not necessary for unit testing. So in Ruby 1.9,
+it was stripped down to minimum. Now the new framework is
+officially called MiniTest, but it's still just a drop-in
+replacement for Test Unit. So, I'm going to refer to it as
+Test Unit and MiniTest interchangeably. Test Unit is a member of the XUnit family, so a lot of languages actually
+have very similar frameworks. For example, Java has JUnit,
+C++ has CppUnit. And the basic idea to all these
+frameworks is that you write a class where you extend it from it,
+now the test class. So in the case of Ruby's test unit
+test case you prefix the method names in that class with test underscore in the
+case of Ruby, and every test underscore method becomes it's own unique test that
+gets run when this class gets executed. If one of the methods fails, if one of the test methods fails,
+others still keep going. This is actually a good thing. So this way if you run tests, let's say
+ten tests and if it would not keep going, so the second you hit your first failing
+test the whole thing would stop. And you would think that you'd
+only have one test to fix, when in reality you really
+have many more tests to fix. So this is actually a good thing. And you can use setup and
+teardown methods. Setup for setting up things and
+teardown for tearing things down. And the code in those
+methods will run before exit, before every test method
+in your test class. So lets bring this down to a real example. Let's say you're writing
+a calculator class that has a constructor and has add,
+subtract and divide methods. And you made a mistake where for add method you accidentally said one
+minus two, as opposed to one plus two. And with the subtract method you said
+one plus two, instead of one minus two. Nobody complains, looks like a good class,
+and it should work. But you don't really know if
+it actually works or not. So what you could do is you
+could write a test class. Basically call it calculator test,
+call it anything you want, which extends from test unit test case. And then the setup method, which is going
+to apply to all of these test cases, you're going to instantiate
+a variable called calc, which is an instance variable by
+doing calculator.new('test') and then in each one of these test methods, you're going to write
+what's called assertions. So you want to have assert_equal 4,
+@calc.add(2, 2). So basically you have
+the expected your first value and the actual as your second value. For, how I always remember this is its
+how the word each is spelled E-A-C-H. So the expected goes first and
+the actual goes second. So in this case you're saying assert that I want to get a value
+four by adding two plus two. Or in this case assert that I'm going
+to get a two when I'm subtracting four minus two. In case of division, it's the same thing. Assert that I'll get two when
+I'm dividing four by two. Now when you actually run this what
+you're gonna get is a bunch of failures. So, in this case, it's gonna say, test addition, try doing an assertion
+that two plus two is four. And four was expected,
+but you actually got zero. Because, you remember, we made a mistake
+in how we wrote the calculator class and therefore the results don't match and
+this will tell you that what you think is gonna work is really not gonna work
+because you made a mistake and then you could go back and
+look at your code and fix it. The same thing in subtract case,
+you are trying to, the expected value would be two because
+you are trying to do four minus two, but in reality the actual value is six. And this is actually great because yeah,
+of course you could test it by hand and do it once and forget about it. But you actually have a test
+that you could run every time you ship your product to make
+sure that nothing broke. And if you make a change and you refactor
+your calculator class you will know that it still works or
+if something broke by running this test. So, you are able to automate this test
+because now you have your regular Ruby code that's out there and
+you could automate it as part of a build process and have the build
+process report the results to you. If the things work,
+if the things do not work. And there are many different assertions,
+several I so far showed assert equal. Results that say true and there are many
+more asserts that you could use. Now, here's the tricky case
+let's say you wanna test that when you divide a number by
+zero an exception gets thrown. Well this is weird because if you just write the code as let's say
+divide something by zero. It's not gonna be an assertion that fails. Your code will report as an error. Because you're not allowed
+to divide by zero. So the way to get around that
+in Ruby is an assert_raise assertion that basically you specify what
+is the assertion that you're expecting and then in the coding block you specify
+when the exception will occur. So in this case your saying when
+you 're dividing one by zero, when you passing one and zero to the divide method of a calculator
+you will get a ZeroDivisionError. And you could actually run this
+directly from the editor and the dot as opposed to the F
+before we'd get an F. F means the test is failing. Dot means that the test is passing. So you can see there's one tests,
+one assertion. No failures no errors its all good. In summary, assertions allow
+you to exercise your code and see that it actually works and
+unit tests in general give you great confidence to restructure or
+refactor your code and you could even automate them and
+make them part of a build process. And this way,
+you’ll have feedback when you are ready to ship your code some
+confidence that your code actually works. Next, we’ll talk about RSpec.

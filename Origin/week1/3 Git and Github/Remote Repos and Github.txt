@@ -1,0 +1,74 @@
+[MUSIC] Hi, and welcome to this lecture. We'll discuss interacting remote
+repositories, now that we finished talking about how to interact with a local Git
+repository in the previous lecture. We'll also talk about GitHub. So now that we have our local Git repository that's
+keeping track of our code. A lot of times it will make sense to
+interact to remote repository and the way to do that is
+just to add the alias. So you do git remote add alias. Well the alias could be whatever
+you want to call it, and then the remote url is actually
+remote url over remote repository. So that's how you link the two together. Now if you've gone the other direction,
+of you actually cloned a repository from a remote source,
+then origin is gonna be the default alias. You clone the repository. So, either way, to push your
+code out to a remote repository you do git push, and then alias,
+whatever the alias is. For a cloned repo it wold be origin. And a branch name, which for now we're
+just going to assume master because we haven't talked about branches and
+we're not going to. So it would be git push or
+example, origin, master. Now a good place to push
+things out to is Github. Github is a web-based hosting service for
+software projects that use Git. So why use Github? And the question is really why is most
+of the world nowadays using Github? Github is community oriented and
+most importantly it's like social networking,
+it has social networking functionality. It has feeds, followers,
+people watching projects, it's almost like Facebook for developers. It has interesting social
+networking graphs, for example you could see who
+committed some code at 2 a.m., in the morning a couple weeks ago and this
+in general just different charts of what is a time in the day where people usually
+commit code for this project for example. It also has ability to be able to
+make comments on source files. But not just source files, you're able
+to make comments in line, on the web, on the actual line,
+specific source lines of your code. And it goes without saying, that it also has a Wiki,
+where you could document your project. And it has issue tracking, so you could
+create issues for your project, and get help, and then as you resolve them,
+mark those issues as complete. Let's actually go over and
+take a look at GitHub. So, the first time you go to GitHub
+you'll probably see something like this. Which is just a dialog that
+wants you to put in a user name, e-mail, and password,
+and sign up for GitHub. And, it also lists a few
+features that we talked about, specifically the collaboration. And how it's so good for
+development projects, especially if you're working on a team. So then you would actually go in and
+put in your information, your user name, email, and so on. If you're just developing
+an open-source project, that's going to be in
+the public repository. Then that's free, otherwise if you
+want to repository to be private and shielded from other people,
+you would choose a private plan. Which I believe the cheapest
+one is $7 a month. And that is why we decided to put
+our code for this course, for the Ruby on Rails Course,
+on GitHub as well. And we're gonna have URLs to specific
+modules, so each module is it's own repository, so for modules two and
+three, we have a separate repository. As you could see here. And once you get to this URL
+which will be in the notes as you progress through the course, there
+are only a few ways to interact in it. The purely git way is to
+call it a repository. This is just a regular repository and
+remote repository. So you would go over here,
+copy the URL, and then just say get space
+clone space this URL, and boom you would get a repository
+that you're able to interact with. Now you won't be able to push
+any changes to this repository, because you don't have
+privileges to do so. But you could definitely clone it and
+have a repository on your local machine. The other way to interact with it is to
+download the repository's contents as a ZIP file, which is what this
+option lets you do, download ZIP. Lastly, you're more than welcome to just interact with
+the code directly on the website. Now, you might be used to that
+maybe some websites are not so good at letting you search through a code. Well, GitHub is actually pretty amazing at
+searching through a code, and actually, I wanna leave you guys off
+with one little trick, how you could perform a fuzzy
+search on the repository. So, for example, you know there's a file
+called something confusion.rb, but you're not always sure where it is. And all these folders, and how in the
+world are you supposed to find anything. You have to drill into a folder and
+look for it. It's just so annoying. So the way to get around that is, this actually works on all operating
+systems, you could just press T. It's not a command T. It's not a control T. It's just T, so you would do T, which puts you into the search mode, and
+then you're able to do a fuzzy search. For example, do like, confuse. Okay, there's a file. Oh, look at that,
+block_and_hash_confusion. And then you're able to
+right away see the file. And if you want to perform another search,
+you just do another T. You do T and yhen you could start typing
+in whatever file you're looking for. That's a great feature. And with that we're going
+to wrap up Module One and I will see you guys in Module Two.

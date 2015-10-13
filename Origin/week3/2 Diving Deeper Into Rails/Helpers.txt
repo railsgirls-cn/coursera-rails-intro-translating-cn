@@ -1,0 +1,71 @@
+[MUSIC] Hi and welcome to lecture six. In this lecture we'll take about helpers,
+what they are, why they're useful and why you would
+wanna use the link to rails helper. So, to explain the concept of helpers,
+let's take a look at the current time instance variable, which is defined
+in the controller, which is a good thing. So that actually defines the current time,
+but what if we wanna format
+how the time looks? Maybe you wanna have AM,
+PM, or something like that. Where should that code go? Should it go into a View? Well problem with that,
+is that then it becomes non-reuseable. You wouldn't be able to use,
+let's say the time formatting from the hello view
+inside the goodbye view. You'd have to duplicate the code,
+not good. Should it go into the controller? Well, the controller really
+should be view format agnostic. It obviously makes sense for the controller to get the actual time
+object, the actual time instance. But what time instance looks like, that's
+nothing to do with controller's business. Because maybe one of you would
+want to have it look one way, and a different view, you would want
+to have it look a different way. So that's where helpers come in. Helpers are really view helpers. It's a code that should
+not be going to control. It should be going into view,
+but it should be reusable, which is why we put it in
+the separate ruby class. So every time you create,
+you generate a controller. You also get a helper generated. In this case, it's greeter_helper.rb. And in this case,
+we're gonna specify that formatted_time is a method that takes time as a parameter,
+and outputs some kind of a formatted time. Now, the interesting part is that,
+even though helpers are, sort of, generated based on the
+controllers, if this is a GreeterHelper, the methods inside those helpers
+are really available to any view in your application,
+not just your greeter views. So let's say you wanna have,
+you have a different controller, but it has a whole different
+set of views for formatted_time from a greeter controller would still
+be available to that view as well. Okay, so let's see how this is used. Now in your hello view, we just say
+formatted time(@time), and this formatted time is calling a method that
+was defined in our greeter helper module. And you get the time that is formatted. Hooray. Rails actually provides
+many built-in helpers. One of them is a link_to helper. So a link_to helper, all it really
+does is it generates a hyperlink. So in your HTML you have an A tag, so instead of that you get
+the A tag generated for you, for this link to help her, where the first
+parameter is actual name of the link, and the second parameter
+is the path to that link. Now, the path could be either a regular
+string, for example, cnn.com, or it could be a route defined
+in the routes.rb file. So, if you remember, we had that prefix
+column in the Rake routes output. That prefix column combined with a _url or _path gives you a variable
+which you could use as a path. And this is actually the beauty
+of why link_to is useful, is that now instead of
+specifying the exact path, you specify a variable, and
+if that variable ever changes. That's fine. You'll automatically get it
+changed in your page as well, you won't have to modify it explicitly. Now, the _URL and _path, one means a full path and one means a relative path, relative to
+the other files in the application. And really they're almost
+used interchangeably. People tend to prefer
+_path more than _url. But according to the spec, the full
+path is required in case of redirection. We haven't talked about redirection yet,
+but just to let you guys know, that's why there are two of them is that
+_url and _path, _path is mostly used but _url is used in cases of redirection
+when the server instead of actually Returning HTML back, this returns
+a request to a browser that says, hey browser, why don't you go
+somewhere else to get that content that you're requesting,
+and in that case, the browser expects a full path,
+which would be _url. So just to show you how this is used,
+a link too could either be used to a first parameter being the actual name, and
+the second one being the actual path. So in this case, a link to Google. And the second version is,
+the first parameter is a name, and the second parameter is a path
+specified by greeter_goodbye, which is a prefix you see
+when you do reroutes. And the _path,
+which is the ending of that prefix. If you hover over goodbye, you'll see,
+that is actually pointing to this, /greeter/goodbye. So in summary, helper is a basically
+a macros, or formatters for your view. And when using link to, there's no need
+to change things if they path changes. That's why it's more advantageous then
+just using a direct A tag, your HTML tag. You might as well just use the link_to,
+which generates your hyperlink. So what's next? Next we'll talk about HTTParty. And HTTParty is a rails gem. It's actually a ruby gem that enables
+you to interact with web services and at this point, we sort of understand
+how the rails application works, but now I wanna take it
+to the next level and be able to interact with web services,
+and get data that way.

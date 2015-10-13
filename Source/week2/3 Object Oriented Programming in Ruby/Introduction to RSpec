@@ -1,0 +1,491 @@
+WEBVTT
+
+1
+00:00:00.383 --> 00:00:08.170
+[MUSIC]
+
+2
+00:00:08.170 --> 00:00:10.210
+Hi, and welcome to lecture 16.
+
+3
+00:00:10.210 --> 00:00:11.660
+In this lecture,
+
+4
+00:00:11.660 --> 00:00:16.100
+we will continue our journey into unit
+testing Ruby, and we'll talk about RSpec.
+
+5
+00:00:17.540 --> 00:00:22.230
+So, so far we've seen test unit on
+mini test which seems to do a job
+
+6
+00:00:23.420 --> 00:00:27.720
+but knowing Ruby, it would be nice
+if you could write the test even
+
+7
+00:00:27.720 --> 00:00:30.167
+in a more descriptive English-like manner.
+
+8
+00:00:32.080 --> 00:00:33.310
+And with RSpec you can.
+
+9
+00:00:34.480 --> 00:00:37.408
+The writing of the test
+is more intuitive and
+
+10
+00:00:37.408 --> 00:00:42.010
+the output from running the tests
+is a little more intuitive as well.
+
+11
+00:00:43.800 --> 00:00:45.990
+So, how do you get RSpec?
+
+12
+00:00:45.990 --> 00:00:50.310
+Well, you could just install it
+by doing gem installed RSpec.
+
+13
+00:00:50.310 --> 00:00:52.020
+Which will install rspec gem for you.
+
+14
+00:00:53.330 --> 00:00:56.770
+And then when you actually want
+to start writing the rspec
+
+15
+00:00:56.770 --> 00:00:59.460
+examples as they are called or specs.
+
+16
+00:00:59.460 --> 00:01:00.790
+Specifications.
+
+17
+00:01:00.790 --> 00:01:03.585
+You could do rspec -- init.
+
+18
+00:01:04.710 --> 00:01:10.093
+And that will create a specs directory for
+you in which all the specs go,
+
+19
+00:01:10.093 --> 00:01:14.401
+as well as some additional files,
+namely the .rspec and
+
+20
+00:01:14.401 --> 00:01:19.248
+spec_helper in which you could
+put code that applies to all your
+
+21
+00:01:19.248 --> 00:01:24.300
+specifications, which we're not
+gonna talk about at this time.
+
+22
+00:01:26.760 --> 00:01:33.110
+So, the top level method in
+RSpec is called describe.
+
+23
+00:01:34.220 --> 00:01:38.790
+And that's basically a set of related
+tests, or set of related examples.
+
+24
+00:01:41.160 --> 00:01:43.580
+Describe takes either a string or
+
+25
+00:01:43.580 --> 00:01:47.430
+a class which this test is
+describing as we're going to see.
+
+26
+00:01:49.360 --> 00:01:52.840
+All specs will go into a describe block.
+
+27
+00:01:55.460 --> 00:02:00.140
+Now the slight difference here
+between RSpec we are doing things and
+
+28
+00:02:00.140 --> 00:02:04.400
+the test unit is that there's no test case
+
+29
+00:02:04.400 --> 00:02:09.180
+class to subclass, everything
+happens inside the describe method.
+
+30
+00:02:11.140 --> 00:02:12.390
+There's also a before and
+
+31
+00:02:12.390 --> 00:02:16.310
+after methods which are very similar
+to setup and teardown the MiniTest.
+
+32
+00:02:18.160 --> 00:02:22.740
+The difference is that
+where as in MiniTest every
+
+33
+00:02:24.260 --> 00:02:29.090
+test will run the logic and
+sights setup, every time.
+
+34
+00:02:30.720 --> 00:02:35.490
+In RSpec you could specify an all symbol
+
+35
+00:02:36.830 --> 00:02:41.690
+which will basically say,
+only do this once and
+
+36
+00:02:41.690 --> 00:02:46.650
+the logic in the all method or
+
+37
+00:02:46.650 --> 00:02:49.680
+in the all block will
+apply to all the tests.
+
+38
+00:02:49.680 --> 00:02:51.180
+So it's only done once.
+
+39
+00:02:51.180 --> 00:02:52.640
+Now when is this useful?
+
+40
+00:02:52.640 --> 00:02:58.530
+For example, if you are connecting to a
+database in your test, you wouldn't wanna
+
+41
+00:02:58.530 --> 00:03:04.380
+be creating and recreating a connection
+to a database before every single test.
+
+42
+00:03:04.380 --> 00:03:09.330
+Instead, you just wanna do it once
+before you run a group of tests and
+
+43
+00:03:09.330 --> 00:03:14.920
+then close it down at
+the end of a group of tests.
+
+44
+00:03:14.920 --> 00:03:18.510
+The main logic happens
+inside the it method
+
+45
+00:03:18.510 --> 00:03:22.070
+which is used to define
+the actual RSpec specification.
+
+46
+00:03:22.070 --> 00:03:23.220
+Or as it's called, example.
+
+47
+00:03:24.900 --> 00:03:30.120
+It takes an optional string which
+describes the behavior being tested.
+
+48
+00:03:31.730 --> 00:03:37.110
+So let's take a look at a similar
+example from a previous lecture.
+
+49
+00:03:37.110 --> 00:03:39.420
+In a previous lecture we used minitest,
+
+50
+00:03:39.420 --> 00:03:42.470
+now let's see how to do
+the same thing using RSpec.
+
+51
+00:03:42.470 --> 00:03:47.329
+So let's say we have the same
+calculator.rb which has erroneous
+
+52
+00:03:47.329 --> 00:03:53.120
+behavior of subtracting versus adding,
+has a minus in add, and
+
+53
+00:03:53.120 --> 00:03:59.640
+plus in subtract, so
+we have this spec directory.
+
+54
+00:04:00.940 --> 00:04:04.980
+In which we're gonna
+have all our specs and
+
+55
+00:04:04.980 --> 00:04:11.040
+this was created again a few slides
+ago when we did RSpec--init.
+
+56
+00:04:11.040 --> 00:04:15.175
+And basically, there's no class here, so
+
+57
+00:04:15.175 --> 00:04:19.880
+everything happens inside
+the describe method.
+
+58
+00:04:19.880 --> 00:04:25.790
+So you have describe calculator,
+so calculator is our class which
+
+59
+00:04:25.790 --> 00:04:30.856
+we are testing, so
+require_relative and calculator,
+
+60
+00:04:30.856 --> 00:04:35.729
+which is this class right here,
+which has the errors.
+
+61
+00:04:35.729 --> 00:04:40.421
+Now we could also just do describe and
+put some sting in here,
+
+62
+00:04:40.421 --> 00:04:43.140
+instead of doing the calculator.
+
+63
+00:04:43.140 --> 00:04:46.190
+But since we are describing
+the calculator class
+
+64
+00:04:46.190 --> 00:04:49.440
+it sort of makes sense to
+use a calculator constant.
+
+65
+00:04:49.440 --> 00:04:50.700
+In the name of a calculator class.
+
+66
+00:04:52.770 --> 00:04:56.730
+And our before method is going
+to say create me a calculator
+
+67
+00:04:56.730 --> 00:05:01.589
+just by doing calculator.new and so on.
+
+68
+00:05:01.589 --> 00:05:04.150
+And these are the actual specifications.
+
+69
+00:05:04.150 --> 00:05:08.200
+So instead of how in mini
+tests you did test underscore.
+
+70
+00:05:08.200 --> 00:05:12.210
+You do,
+it "should add two numbers correctly" and
+
+71
+00:05:12.210 --> 00:05:15.070
+then the block has
+the actual testing logics.
+
+72
+00:05:15.070 --> 00:05:22.630
+In this case, we are saying
+expect(@calculator.add(2, 2)).to eq 4.
+
+73
+00:05:22.630 --> 00:05:27.550
+Now, it's interesting, how in our spec
+
+74
+00:05:27.550 --> 00:05:31.980
+the mini test expected and
+actual are actually flipped.
+
+75
+00:05:31.980 --> 00:05:35.910
+So as the mini test you have a expected,
+which would be 4,
+
+76
+00:05:35.910 --> 00:05:40.990
+which we expected on the left and
+the actual on the right.
+
+77
+00:05:40.990 --> 00:05:46.720
+In our spec, which I think is a little
+more English like, a little more flowy.
+
+78
+00:05:46.720 --> 00:05:53.765
+How it specifies it, you say expect
+calculator add (2, 2) to eq 4,
+
+79
+00:05:53.765 --> 00:05:58.866
+or expect calculator subtract (4,
+2) to eq 2.
+
+80
+00:05:58.866 --> 00:06:05.250
+In RSpect in general is much more
+intuitive, and much more English-like.
+
+81
+00:06:06.720 --> 00:06:11.482
+So when you actually run this test and
+where you run this test,
+
+82
+00:06:11.482 --> 00:06:16.427
+the test is by just saying RSpec,
+you're going to see that there
+
+83
+00:06:16.427 --> 00:06:21.295
+are two favorites because both
+subtract and the add examples.
+
+84
+00:06:21.295 --> 00:06:24.384
+Right, so this one and this one failed and
+
+85
+00:06:24.384 --> 00:06:29.324
+it's gonna tell you what the fail
+is expected: 4, got: 0, and
+
+86
+00:06:29.324 --> 00:06:32.955
+it's gonna tell you
+exactly where it happened.
+
+87
+00:06:34.160 --> 00:06:40.040
+And so you could see that it's
+actually telling you which features
+
+88
+00:06:40.040 --> 00:06:45.390
+it is testing by saying,
+calculator should add 2 numbers correctly.
+
+89
+00:06:45.390 --> 00:06:49.570
+This is extracted from what you
+specified in your it description,
+
+90
+00:06:49.570 --> 00:06:53.470
+which is very nice.
+
+91
+00:06:53.470 --> 00:06:57.756
+So in summary,
+RSpec makes case testing more intuitive.
+
+92
+00:07:00.256 --> 00:07:04.733
+And, the bottom line is,
+if you use mini-test and
+
+93
+00:07:04.733 --> 00:07:08.110
+you like mini-test, stick with it.
+
+94
+00:07:08.110 --> 00:07:13.020
+If you like the expressiveness of RSpec,
+try that out.
+
+95
+00:07:14.800 --> 00:07:18.510
+And a lot of times,
+people will tell you to write tests.
+
+96
+00:07:18.510 --> 00:07:21.270
+Before you do the code some people do it.
+
+97
+00:07:21.270 --> 00:07:23.425
+Before they write the code
+if it's easier for
+
+98
+00:07:23.425 --> 00:07:26.610
+you to get into testing you can
+write them after you write the code.
+
+99
+00:07:26.610 --> 00:07:31.970
+But the bottom line is it's important
+to realize the importance of writing
+
+100
+00:07:31.970 --> 00:07:38.102
+the test and having the test in place that
+actually test and exercise your code,
+
+101
+00:07:38.102 --> 00:07:43.250
+and what actual framework you use or
+when you write the test is less important.
+
+102
+00:07:45.060 --> 00:07:47.860
+The next lecture we're going
+to wrap up the testing, and
+
+103
+00:07:47.860 --> 00:07:52.780
+actually wrap up the module by
+talking about RSpec Matchers.
+
+104
+00:07:52.780 --> 00:07:56.380
+To see a few more Matchers that
+are available in our spec.

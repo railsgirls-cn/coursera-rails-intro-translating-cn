@@ -1,0 +1,65 @@
+[MUSIC] Hi and welcome to lecture five. In this lecture, we'll talk about how to
+move a business logic out of View and into Controller in order to
+comply with the MVC pattern. We'll also talk about how long
+the controller's instance variables stay in place. If the action method is not really
+doing anything in the controller, meaning it's empty,
+we could just remove it. As long as there is a proper route
+defined and there is a properly named view file/template, the action
+method does not have to be there and Rails will find the correct
+template by convention. So we have these hello action and
+goodbye action. We could just completely comment
+them out or even remove them. And as long as there's a route, defined
+the routes that rb file, that says, when you have a greeter slash hello that should go to the greeter_controller,
+and it should display the hello view. That's all we need, right? So even after removing these methods,
+this will still work. But obviously there's a reason to have the
+actions, the methods, and the controller. They're not just there for direction. And that's where the idea of moving
+business logic out comes in, right? So our app "works", but business logic right now resides
+completely in the view, right? So we create the random names variable,
+and how we choose that random name using the random name
+that sample, and how we create the time. All of that, right now,
+is in the View and that's bad. We want to move a business logic out, we want the View to have as
+little logic as possible. So let's go ahead and move the logic
+from the View into the controller. So our hello method, our hello action,
+is going to become something like this, where we have random_names,
+variable defined here, as our three names. Then, the instance variable name
+is actually how we get the name. And the instance variables from
+the controllers action are actually available in the view. Right, so we define them in
+the action of the controller, but they're available to
+be used in the ERB view. So in this case,
+we're getting a random name. We also have a time, which is the same
+that we used to have in the view. Here's another interesting link. We are gonna try to display the times, we're gonna try to capture the times
+that this page was displayed. So we're gonna have an instance
+variable called times_displayed, which is gonna start over as being 0. And then the idea is, every time this
+action is hit with a new request, we're gonna try to increment
+that request by one and see how many times has
+this page been displayed. So let's see if that actually works. So Greetings, name. Right, so you see what happened here
+is that all the business logic, like how we actually get the name and the definition of that random names
+has been pulled out in the controller. The time now is time. Again, we're just using the instance
+variable from a controller. It was defined and
+instantiated in the controller. But we're actually just using
+it in the ERB template. And then finally,
+this page has been viewed. Times_displayed, we are hoping
+that this will give us the number of times it's been displayed. So we hit it one time, Greetings, Michael. We hit it another time, Greetings, Alex. The time starts to work, but
+this page has been viewed 1 time(s). That's interesting. So both times, we just get one times. So why is that? So unlike some other web frameworks,
+for example Servlets, which you might be used to,
+you cannot store values in the controller's instance
+variables in between requests. So every new request is gonna
+create a new instance variable. And that's why the times displayed doesn't
+get persisted in between requests. It sort of just goes away, and
+then a new request is gonna, again, start from zero and increment it to one, which is why you see in both times that
+this page has been view one times. So what are our alternatives to be
+able to store that kind of a thing? Well, either session or a database, both
+of which are not covered in this course. They're going to covered
+in the next course. But you could either store
+that value in HTP session, or you could store it in the database. In summary, try as much as possible to
+keep the business logic out of the view. The view should be agnostic
+of any business logic. And this way you could reuse the view. Because maybe you have one
+view with an html view, another view with a json view or
+an xml view. And all those views could just reuse the
+variables that you work hard to get, maybe out of a database, something like that,
+and populate your instance variables. That should be done in the controller,
+not in view. And another point to take from this
+lecture is that instance variables and rails do not stick around
+in between requests, and we discussed alternatives for
+that as well. So what's next? Next, we'll talk about this
+interesting paradigm called helpers.

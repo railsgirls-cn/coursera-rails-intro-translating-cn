@@ -1,0 +1,79 @@
+[MUSIC] Hi. And welcome to Lecture 1 of Module 3. In this lecture,
+we'll talk about some brief Rails history, some benefits of using Rails and
+a Model View Controller pattern. So what is Rails? Rails is a framework for
+making dynamic web applications. So the idea is that you are trying
+to generate some dynamic content that's gonna be
+passed back to a browser. And by dynamic, I mean content that
+maybe is gotten from a database or some other ways. If you have an HTML page that is
+always gonna look the same and it's not gonna be dynamic, then Rails is
+probably an overkill framework to use. It was created in 2004, 2005 by this guy,
+David Heinemeier Hansson. Who is picture below and yes,
+he is also a race car driver. So who is using Rails? A lot of big, as well as medium websites
+like Hulu, Groupon, LivingSocial, Twitter. And startups in general,
+love Rails because of its idea of being able to rapidly prototype and
+develop applications quickly. Now how does it do this? Well, one of the principles Rails uses
+is called Convention Over Configuration. And basically the idea is, that you could approach application
+development in one of two ways. You could either configure everything
+you're doing from scratch. Or you could rely on conventions
+that have been established. Maybe some Best Practices out there and
+follow those conventions. And if you could assume certain
+conventions, then there's less code to write because the framework can assume
+that you're following certain conventions. Which means that it could
+either generate that code for you or sometimes there is
+no code to write at all. Because again, the framework can
+assume the conventions for you. Another benefit of this pattern of
+conventional configuration is that you learn the project development once. And you could apply those same concepts on
+the next Rails project that you work on. So you know what to expect the next time. The other benefit of Rails is that
+you have Database Abstraction Layer. Is that Ruby on Rails lets you interact to
+the database not by writing SQL queries. But by sort of extracting your code in Ruby and interacting with your
+database using your Ruby code. Which is sometimes called ORM,
+which is Object-Relational Mapping. You map your database
+to your Ruby Classes. Rails is also agile-friendly,
+cross-platform, open-source and modular which means that you could
+swap out different components. So if you don't like a certain component,
+you could swap it out for a different one. And Rails makes that pretty easy to do. Another interesting built-in feature
+of Rails is that it uses SQLite. SQLite is a self-contained, serverless, zero-configuration, transactional
+SQL database engine. Which basically means that it's just
+a file sitting on your file system, but it acts as a relational
+database engine. And the benefit of this, is that you don't
+have to configure a complicated database engine to start developing
+the application. Right when you create
+your Rails application, the ability to interact to
+the database is right there. Now because the database development
+is abstracted, you are able to switch to a different database engine
+later on if you wish to do so. But right at the beginning, you don't have to go through those
+details of configuring a database engine. And the claim is that SQLite is
+actually the most widely deployed SQL engine in the world. Because the browsers use it,
+iPhone, Android uses it. And different other big
+applications use it. Again, because it feels
+like a realtional database. When in reality, it's just a file. Another concept that Rails heavily uses
+is this idea of Model View Controller. And the Model View Controller is
+something that was invented by Professor Reenskaug in 1979. And it's a well-established
+software pattern used by many web, as well as desktop frameworks. And the idea is,
+this idea of separation of concerns. You have a model layer which represents
+the data of application is working with. So think of this maybe as
+something to start a new database. And the Ruby code that gets that
+data out of a database for example. Then you have a View, which is
+a visual representation of that data. And this could be, maybe an HTML file or this could be a JSON, or
+this could be an XML file. That's a representation of that data. And the last one is the Controller, that sort of marries
+together the model and view. And you might ask, how is this useful? Well again, the idea is the separation of
+concerns that where view doesn't have to be the one getting the data
+out of a database. So this facilitates your use. You could have a model that gets
+the data out of a database and then the controller is saying, hey,
+display the data maybe as HTML. Or no, display that data as JSON,
+or display that data as XML. And what you do is,
+what you'll use, the part of an application that gets data out of a
+database for many different presentations. And the way this specifically works in
+Rails is, you have a, let's say a website, you have a browser that makes
+a query to a Rails application and it goes to the controller. And the controller says okay,
+so what am I gonna do now? I'm gonna interact to the model and
+maybe get some data from a database. And then the controller,
+once it has that data, is gonna pass that data over to
+the view which might be your HTML page. And that HTML page gets
+displayed back to a browser. So in summary, Rails is very good for
+Rapid Prototyping. Because of all these different concepts. And specifically MVC,
+the Model View Controller and the Convention Over Configuration
+are great concepts to enable you to think less and do more. You just follow a certain conventions,
+so you follow a certain patterns and you're able to write your application
+without thinking, how am I gonna do this? So where does this fit? What's next? Next, we're gonna talk about creating
+your first Rails application.

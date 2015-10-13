@@ -1,0 +1,86 @@
+[MUSIC] Hi and welcome to lecture 11. In this lecture,
+we'll talk about the double pipe operator. We'll also discuss the class methods and
+class variables and finally, the class inheritance. So we have the double pipe operator,
+something like this. And the way it works is that it
+first evaluates the left side. If that expression is true, it returns it. Otherwise, it returns the right side. The short form of this same
+operator is a variable and then two pipes equals 5, for example. So let's look at it in an example and
+see why this operator is useful. So similar class to what we saw before. We have a person, we have an age getter
+and the name, getter in the setter. We have a constructor. And we have an age setter
+method that takes an age. Now, in the previous examples,
+we basically said, well, the age is new age unless
+it's greater than 120. But it would been nice to
+have some sort of a default. So in this case, we're saying
+assign the age variable to itself, which the first time around
+is gonna be nil because we haven't created an instance
+of a person class yet. And then every other time, if a age is already set,
+then just leave it, use that value. Otherwise, if it's not,
+if it's nil or false, then you would use the value to
+the right side of it, which is 5. So, let's see this in action. We have a person1 object that
+gets created from a Person class. And we're trying to
+create the value of 130. Now, 130, obviously is more than 120,
+so this line is not gonna execute. But this line will. Which means that you're gonna have five,
+by the time you get here. Then we try to change it to ten. So what happens is new age,
+which is ten comes in here. We're not gonna touch this value, because
+it already has been assigned to five. So it's gonna say, okay,
+age is age of 5, and age already is not nil, not false, so this 5 gets ignored, but
+then it gets assigned to 10. And then after that,
+we try to change it to 200, and again, it's assigned to 10 right now,
+so it comes in here as 200, and it says okay, age is equal to age,
+which is 10 in this case. Because 10 is nil, not false,
+5 again gets ignored and you end up with 10, but
+not 200, obviously, because this line does not execute,
+because this condition is not met. Let's talk about class methods and
+class variables. These guys I invoked on the class as
+opposed to an instance of a class. So if you're familiar with the concept
+of a static method in Java, these are your equivalent. Self outside of the method definition
+refers to the class object, and that's how you know something is
+a class method is if it has a self on the outside of method definition. As we're gonna see, there are two more
+ways to define class methods in Ruby besides just having self on
+the outside of a method definition. And then class variables begin with @@,
+not just a single @. So single @ symbol gives you
+an instance variable and double @ symbol gives
+you a class variable. So to see an example of this, let's say
+you have a class called MathFunctions. Now, MathFunctions, maybe it has a bunch
+of functions like double or triple or something like that. So maybe it doesn't make sense to
+create an object of the MathFunctions, these are just utility
+functions that are used. Are you gonna double something,
+you wanna triple something. So, the most obvious
+way to define the class variable is to say self.double,
+I guess self dot. And self dot means that
+it's a class variable and var multiplied by 2 means that
+you're gonna get the actual, in this case,
+double of what you passed in. And the way this is used is
+you have MathFunctions.double, and that's when you pass in 5. You get back 10. And notice how in this case, because
+it's a class method, we're not creating an instance of a class, we're just calling
+this double directly on the class itself. Then, maybe,
+there's the method call triple. And the way this triple is defined, notice that this is defined completely
+outside of a class definition. So class definition is MathFunctions. We just say, outside of the class define
+the method called MathFuntions.triple which is a class method
+on a MathFuntions class. And, again, this method just triples
+the value that's passed into it. Notice how you could use parentheses over
+here, it follows exactly the same rules of method definitions, yes parenthesis,
+no parenthesis, it's all fine. And a third way to define class methods
+is to have it in a way that's very similar to instance method, so you have,
+you have def, you have times_called. That's your regular what you
+would call an instance method, but it's defined inside this class,
+end, and self construct here. And it makes the times_called
+is also a class method. So three ways to define them. The way you know that
+something is a class variable is if it has two @ symbols in front of it. That's what times_called is. At the end, you have times_called
+that's been called three times. Let's talk about class inheritance. So every class implicitly
+inherits from the object class. The object itself inherits
+from a basic object class. Ruby does not support
+multiple inheritance and instead use something called mixins which
+we'll be discussing in the next lecture. So let's see a quick
+example of inheritance. We have a class called Dog,
+which implicitly inherits from Object. Right, because it doesn't
+inherit from anything. So implicitly,
+every class inherits from an Object class. Then, maybe you have a SmallDog,
+which inherits, and that's what this symbol means. It inherits from a Dog class. So, like regular inheritance
+in all OO languages. You have a bark method that the class that
+inherits from the Dog method can override. So maybe a regular dog barks loudly and
+the small dog barks quietly. So, you create an instance
+of a dog method and then, you create an instance
+of a small dog method. So, dog, whether it was create using the dog class barks loudly and
+the other one barks quietly. In summary, class inheritance lets
+you override parent's behavior. Class methods do not need an instance
+of an object in order to be called and class variables begin with @@. In the next lecture we talk about modules.

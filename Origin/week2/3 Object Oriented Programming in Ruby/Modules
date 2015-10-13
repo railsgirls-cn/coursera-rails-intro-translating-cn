@@ -1,0 +1,649 @@
+WEBVTT
+
+1
+00:00:00.501 --> 00:00:08.113
+[MUSIC]
+
+2
+00:00:08.113 --> 00:00:10.510
+Hi and welcome to lecture 12.
+
+3
+00:00:10.510 --> 00:00:12.927
+In this lecture, we'll discuss modules.
+
+4
+00:00:12.927 --> 00:00:16.829
+Modules as namespaces, modules as mixins.
+
+5
+00:00:16.829 --> 00:00:20.097
+We'll talk about built-in Ruby modules and
+
+6
+00:00:20.097 --> 00:00:24.401
+we'll also talk about
+the concept of require_relative.
+
+7
+00:00:24.401 --> 00:00:27.627
+So on the basic level,
+module really just a container.
+
+8
+00:00:27.627 --> 00:00:33.005
+It's a container for classes,
+methods or other modules even.
+
+9
+00:00:33.005 --> 00:00:37.201
+It's like a Class, but
+it cannot be instantiated.
+
+10
+00:00:37.201 --> 00:00:41.379
+So you cannot have an object
+of a specific module,
+
+11
+00:00:41.379 --> 00:00:46.059
+like you could have an object,
+obviously, of a class.
+
+12
+00:00:46.059 --> 00:00:49.046
+And modules are really used for
+two main purposes.
+
+13
+00:00:49.046 --> 00:00:54.794
+One, they use as a namespace or
+they use as a mix-in.
+
+14
+00:00:54.794 --> 00:00:59.276
+So to understand the idea of modules and
+namespace, a lot of languages.
+
+15
+00:00:59.276 --> 00:01:03.357
+For example, Java will have this
+idea of a package structure.
+
+16
+00:01:03.357 --> 00:01:05.941
+So you don't have a name
+collision between classes.
+
+17
+00:01:05.941 --> 00:01:08.391
+You will have, for example,
+
+18
+00:01:08.391 --> 00:01:13.487
+org.packageone.packagetwo and
+then the class at the end.
+
+19
+00:01:13.487 --> 00:01:19.339
+Ruby doesn't like having very deep
+structure, but it is obviously,
+
+20
+00:01:19.339 --> 00:01:24.310
+nice to have a way that the class
+names shouldn't collide.
+
+21
+00:01:24.310 --> 00:01:27.528
+So you shouldn't have a collision,
+so that's the idea of a namespace.
+
+22
+00:01:27.528 --> 00:01:32.776
+So for example, you could have a Match
+class, which makes sense to be part of
+
+23
+00:01:32.776 --> 00:01:38.439
+a Sports module and you could have a match
+class that's part of a Patterns module.
+
+24
+00:01:38.439 --> 00:01:40.717
+And these are completely separate, but
+
+25
+00:01:40.717 --> 00:01:44.337
+the way instantiate them is
+instead of just saying Match.new.
+
+26
+00:01:44.337 --> 00:01:48.835
+Because then you wouldn't know what Match
+it is, you put them inside a module.
+
+27
+00:01:48.835 --> 00:01:55.192
+And then you say, for example,
+module name Sports:: Match.new,
+
+28
+00:01:55.192 --> 00:02:01.997
+which refers to this class and
+Patterns::, which refers to this class.
+
+29
+00:02:01.997 --> 00:02:06.546
+Another way to use modules is as
+mixins and this is really cool.
+
+30
+00:02:06.546 --> 00:02:11.049
+So in OO,
+you have a concept called interfaces.
+
+31
+00:02:11.049 --> 00:02:12.253
+A lot of languages don't have that.
+
+32
+00:02:12.253 --> 00:02:15.290
+For example,
+Java will have a concept of interface.
+
+33
+00:02:15.290 --> 00:02:21.643
+Which basically, just means a contract
+requiring a certain group of classes that
+
+34
+00:02:21.643 --> 00:02:26.810
+abide by a certain contract,
+which defines what a class could do.
+
+35
+00:02:26.810 --> 00:02:31.796
+Mixins go a step beyond that,
+they actually provide a way to share code,
+
+36
+00:02:31.796 --> 00:02:33.185
+to share a mix-in,
+
+37
+00:02:33.185 --> 00:02:38.447
+which is why they are called mixins to
+share code between multiple classes.
+
+38
+00:02:38.447 --> 00:02:43.552
+Not only that, you could even
+include built-in modules like
+
+39
+00:02:43.552 --> 00:02:49.650
+Enumerable that do the hard work for
+you, as we're gonna see in a minute.
+
+40
+00:02:49.650 --> 00:02:53.651
+So to see a simple example
+of a module as a mix-in.
+
+41
+00:02:53.651 --> 00:02:59.201
+For example,
+you have modules that's called SayMyName,
+
+42
+00:02:59.201 --> 00:03:04.201
+which defines accessor,
+which is a set and a getter.
+
+43
+00:03:04.201 --> 00:03:10.187
+And just basically, defines a method that
+says print_name, which prints that name.
+
+44
+00:03:10.187 --> 00:03:12.773
+And then you can have a person class or
+
+45
+00:03:12.773 --> 00:03:16.779
+a company class that both
+include the module SayMyName,
+
+46
+00:03:16.779 --> 00:03:21.970
+which basically lets you include
+the functionality inside that module.
+
+47
+00:03:21.970 --> 00:03:25.256
+So now you could have a person,
+you could create a person and
+
+48
+00:03:25.256 --> 00:03:27.247
+then you could set the person name.
+
+49
+00:03:27.247 --> 00:03:30.831
+Wait a second, but
+a person doesn't have a name method.
+
+50
+00:03:30.831 --> 00:03:33.255
+That's okay, because a module does.
+
+51
+00:03:33.255 --> 00:03:38.426
+So you include the functionality of
+a module inside the person class.
+
+52
+00:03:38.426 --> 00:03:39.869
+Same thing with a company.
+
+53
+00:03:39.869 --> 00:03:43.418
+You include this
+functionality in a company.
+
+54
+00:03:45.695 --> 00:03:48.867
+So where it gets really
+interesting is that
+
+55
+00:03:48.867 --> 00:03:53.106
+you could include built-in
+modules from a Ruby itself.
+
+56
+00:03:53.106 --> 00:03:58.674
+So when we just cast arrays, I mentioned
+that arrays have methods like map,
+
+57
+00:03:58.674 --> 00:04:01.376
+select, reject, detect and so on.
+
+58
+00:04:01.376 --> 00:04:06.591
+So actually, the arrays themselves
+[INAUDIBLE] have those methods.
+
+59
+00:04:06.591 --> 00:04:10.790
+The array class includes
+the Enumerable module and
+
+60
+00:04:10.790 --> 00:04:14.605
+that's what gives it
+all the functionality.
+
+61
+00:04:14.605 --> 00:04:20.749
+And you can include this in your own class
+and all you have to do in this case for
+
+62
+00:04:20.749 --> 00:04:25.261
+the Enumerable Module is to
+provide implementation for
+
+63
+00:04:25.261 --> 00:04:28.239
+one method which is the each method.
+
+64
+00:04:28.239 --> 00:04:32.670
+Once you do that all the other
+functionality, like map, select and
+
+65
+00:04:32.670 --> 00:04:35.329
+other methods become available to you.
+
+66
+00:04:35.329 --> 00:04:38.409
+So let's see an example of this,
+where you would use this.
+
+67
+00:04:38.409 --> 00:04:42.139
+For example, let's say, you have a team.
+
+68
+00:04:42.139 --> 00:04:46.961
+And you have players on the team and
+you wanna write a Ruby
+
+69
+00:04:46.961 --> 00:04:51.489
+program that maybe selects a roster for
+some event.
+
+70
+00:04:51.489 --> 00:04:57.951
+So you would have a file called player.rb,
+which maybe would have a class player.
+
+71
+00:04:57.951 --> 00:05:02.280
+Now you could define multiple
+classes in the same file.
+
+72
+00:05:02.280 --> 00:05:05.649
+Ruby doesn't have anything against that,
+but
+
+73
+00:05:05.649 --> 00:05:09.700
+sometimes you might wanna
+define it as a separate files.
+
+74
+00:05:09.700 --> 00:05:11.641
+That's okay as well and
+
+75
+00:05:11.641 --> 00:05:17.576
+we'll see in a minute how to bring all
+those classes back into one place.
+
+76
+00:05:17.576 --> 00:05:19.950
+So you have a class player,
+
+77
+00:05:19.950 --> 00:05:24.709
+that maybe will have a name
+agent skill level getters.
+
+78
+00:05:24.709 --> 00:05:28.935
+And it will have a constructive
+that will initialize
+
+79
+00:05:28.935 --> 00:05:33.070
+the player with the name,
+age and a skill_level.
+
+80
+00:05:33.070 --> 00:05:38.363
+And then you can have a to_s method,
+which is basically your to string method,
+
+81
+00:05:38.363 --> 00:05:40.899
+which just says, what the player is?
+
+82
+00:05:40.899 --> 00:05:46.484
+And in this case, it's the (name):
+{Skill_level} (SL) skill level and
+
+83
+00:05:46.484 --> 00:05:48.053
+{age} for (AGE).
+
+84
+00:05:48.053 --> 00:05:54.227
+And then maybe in a different file
+somewhere, you'll have a Team class.
+
+85
+00:05:54.227 --> 00:05:58.304
+And the Team class will
+include the Enumerable module,
+
+86
+00:05:58.304 --> 00:06:03.260
+which as we gonna see in a minute,
+gives you a lot of functionality.
+
+87
+00:06:03.260 --> 00:06:08.260
+And all you have to do in order to
+be able to use this functionality
+
+88
+00:06:08.260 --> 00:06:11.513
+is defined in one method, which is each.
+
+89
+00:06:11.513 --> 00:06:17.771
+So the way you define this each
+method is you say, players.each,
+
+90
+00:06:17.771 --> 00:06:24.837
+loop through each element in the players
+array and yield player to a block.
+
+91
+00:06:24.837 --> 00:06:28.466
+Going back to the constructor,
+a team would just have a name.
+
+92
+00:06:28.466 --> 00:06:30.583
+Maybe a red team, blue team.
+
+93
+00:06:30.583 --> 00:06:35.723
+It will also have a setter and
+a getter for a name and players.
+
+94
+00:06:35.723 --> 00:06:39.377
+So players starts out as
+just being an empty array.
+
+95
+00:06:39.377 --> 00:06:46.054
+You could also add players using the splat
+functionality, which we discussed before.
+
+96
+00:06:46.054 --> 00:06:51.546
+And basically, all you're doing is
+you're just adding the array of players
+
+97
+00:06:51.546 --> 00:06:57.051
+that are passed then to your existent
+players, which starts out as nothing.
+
+98
+00:06:57.051 --> 00:07:01.968
+And then the to_s just prints
+some information about the team.
+
+99
+00:07:04.442 --> 00:07:11.323
+So maybe in the third place,
+you will have a regular file.
+
+100
+00:07:11.323 --> 00:07:16.711
+A regular .rb file and
+you could require_relative
+
+101
+00:07:16.711 --> 00:07:21.248
+the 'player' file and the 'team' file.
+
+102
+00:07:21.248 --> 00:07:27.450
+And require_relative, just basically means
+relative to this file, where those files?
+
+103
+00:07:27.450 --> 00:07:34.347
+So in different directory,
+you could use a path before player here.
+
+104
+00:07:34.347 --> 00:07:36.918
+So in this case,
+they're all in the same directory.
+
+105
+00:07:36.918 --> 00:07:40.051
+So you just say, require the 'player',
+
+106
+00:07:40.051 --> 00:07:43.977
+which is relative to this
+file in the same directory.
+
+107
+00:07:43.977 --> 00:07:48.979
+Require, 'team', so
+that brings a 'team' class as well and
+
+108
+00:07:48.979 --> 00:07:52.143
+we're gonna create a bunch of players.
+
+109
+00:07:52.143 --> 00:07:56.287
+So we're gonna create Bob,
+Mike, Scott and so on.
+
+110
+00:07:56.287 --> 00:07:59.881
+And then we're gonna create a team,
+let's say a Red team.
+
+111
+00:07:59.881 --> 00:08:04.359
+And we're call the add_players,
+which as you remember has a splat.
+
+112
+00:08:04.359 --> 00:08:07.579
+Which basically,
+let's you pass in all those players.
+
+113
+00:08:07.579 --> 00:08:11.295
+So now you have a red team
+with a whole bunch of players.
+
+114
+00:08:11.295 --> 00:08:18.561
+But now comes the cool part, because red
+team includes the Enumerable module.
+
+115
+00:08:18.561 --> 00:08:23.201
+You can all of a sudden, start doing
+interesting things with your team.
+
+116
+00:08:23.201 --> 00:08:29.447
+You could select all the players
+with a age range between 14 and 20.
+
+117
+00:08:29.447 --> 00:08:32.589
+Inclusive, because there are 2 dots and
+
+118
+00:08:32.589 --> 00:08:37.723
+you could reject any player who's
+skill level is less than 4.5.
+
+119
+00:08:37.723 --> 00:08:43.754
+And boom, you got your final result, which
+had the eligible players on the team.
+
+120
+00:08:43.754 --> 00:08:45.357
+This is real powerful.
+
+121
+00:08:45.357 --> 00:08:50.663
+We had them do a rhythm a code and
+then team class is really small.
+
+122
+00:08:50.663 --> 00:08:57.004
+But because we import the Enumerable
+module, we get lots of functionality.
+
+123
+00:08:57.004 --> 00:09:02.040
+In summary, modules allow you to
+mix-in useful code into other classes.
+
+124
+00:09:02.040 --> 00:09:04.070
+This could be Ruby modules or
+
+125
+00:09:04.070 --> 00:09:08.225
+this could be your own modules
+that maybe you wanna share.
+
+126
+00:09:08.225 --> 00:09:13.091
+And require_relative useful
+way of including other Ruby
+
+127
+00:09:13.091 --> 00:09:16.573
+files relative to the current Ruby file.
+
+128
+00:09:16.573 --> 00:09:19.140
+So this way,
+you don't have to put all 20 classes,
+
+129
+00:09:19.140 --> 00:09:21.897
+let's say that you're dealing with,
+in the same file.
+
+130
+00:09:21.897 --> 00:09:26.680
+You could, but at a certain point,
+you have a freedom to say that's too
+
+131
+00:09:26.680 --> 00:09:30.294
+much code in one file,
+I wanna go to a different file.
+
+132
+00:09:30.294 --> 00:09:33.759
+There's no restriction from
+a language point of view
+
+133
+00:09:33.759 --> 00:09:37.073
+of how many classes you
+could have in the same file.
+
+134
+00:09:37.073 --> 00:09:39.836
+But certainly at a certain point,
+
+135
+00:09:39.836 --> 00:09:44.230
+you might wanna think about
+splitting those files up.
+
+136
+00:09:44.230 --> 00:09:45.787
+Next, we'll talk about scope.

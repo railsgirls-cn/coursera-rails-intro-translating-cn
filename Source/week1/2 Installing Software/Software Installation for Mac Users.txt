@@ -1,0 +1,196 @@
+[MUSIC] Hi, my name is Jackie Hicken. And in this lecture I'll be walking
+you through the installation of your development environment of your MacOS. And as of this recording, the MacOS
+we'll be dealing with is the MacOS version 10.10 or otherwise known
+as Yosemite, MacOS Yosemite. Now, what we're gonna need
+to install in order for you to develop your Ruby on Rails
+applications are the following packages. Gonna install Ruby, Rails, Git,
+PhantomJS, and obviously you'll need some place to actually code and the coding
+editor we will be using is Sublime Text. In addition at the end,
+I'll show you how to set up and configure an environment variable and
+this is really only needed for submission of your assignments
+to the Coursera platform. So let's begin. So here I am inside the Mac OS, and the first thing we're going to need to
+do is install Mac OS command line tools. Now, these are required by other
+command line packages we're going to be dealing with. So one way of doing that is to
+have the operating system trigger the installation of
+the command line tools. And the easiest way to do that is
+just to execute git --version. So let's go ahead and
+do that, git --version, and that will trigger the prompt to
+install the command line tools. Now, we don't wanna get the entire
+Xcode for the Mac OS, but we do want to get just the tools so
+we'll click Install. We'll Agree to the terms and conditions. We will download the software and
+we'll install it. And once it's done,
+we should be able to execute git --version without having anything pop up or complain
+that no developer tools are found. So it says the software was installed. So we'll click Done, and
+let's try this again. Git --version and this time it
+will just give us the version. Great, so
+now we could move on to the next step. In order to install all the packages we
+mentioned before we'll be using a pretty convenient package
+manager called Homebrew. Now, you see on your screen here the home
+page of Homebrew which is at brew.sh. And once we install Homebrew installing
+the rest of the packages is going to be very straightforward. Now, if you're a user that
+you're logged into the Mac that has administrative privileges you
+can install Homebrew without any issues. However, if you are a standard user you'll
+need to take a little bit of a different path in order to install
+a Homebrew package manager. Now first of all, how do you even
+know what type of user you are? Well the way you would know that is
+if you go to System Preferences and click on Users and Groups. And take a look at the user you
+logged in with, does it say the word Admin underneath of it or does it say
+the word Standard underneath of it? And obviously, if it says Standard, you're
+not an admin user, you're a standard user. So if you're a user with administrator
+privileges hang on a second while I address the installation
+of Homebrew for standard users. So here I am logged in and
+as a standard user and like I said before, if you're a standard user, you'll need
+to execute a slightly different command that will let you install Homebrew
+right in your home directory. So if you are at the home page of Homebrew
+package installer, you will see here a little note here that says, there
+are more installation options right here. And we'll click that link. And if we scroll down a little bit here,
+you'll see here there's an application called under Alternative Installs
+called Untar anywhere. And what we need to do is really, you could read this on your
+own time if you'd like. What we really need to do is go to our
+home directory in our terminal and execute this particular command. So we'll go to our terminal and
+go ahead and Paste that. And click Enter, and
+this will install Homebrew. So if we do an ls now, you'll see
+the homebrew package is now installed. So now, that Homebrew is
+installed in your home directory, we'll need to augment your
+execution path in order to include the bin directory under
+your homebrew installation. So let's do that right now. So first of all let's find
+out what that directory is. Homebrew and bin. So that's the directory that we
+need to include if we do pwd, we'll actually get the full path. So let's go ahead and copy that and
+we'll clear the screen. And the way you augment the execution path
+is you need to edit your .bash_profile. If you do ls --al, first of all,
+we're in the wrong directory. Let's go to our home directory and
+do ls --al. You'll see that in our home directory
+there's no file called .bash_profile. So this happens when you have
+never installed anything yet, anything of significance. So we're going to go ahead and
+create that file just by editing and we're gonna use vim, but you are welcome
+to use any editor that you like. So bash_profile, and
+here's our bash_profile. So the way we do that is
+we are going to export. I'm going to click i and export. Let's call it BREW_HOME, and = and
+we'll paste that bin directory. So now what we need to do,
+is after we do that is we need to augment our execution
+path with this BREW_HOME variable. So the way we do that is, we say PATH is
+gonna be now = to the home brew variable, BREW_HOME and separated by colon, we need to give it our old path so
+that we don't override what's in the path. We just augment it. We'll go ahead and save the file. And now, we need to do is we need
+to source it, source.bash_profile. And once we do that, we should be
+able to execute the brew command now, from any directory including
+our home directory right here. This is we're in the home directories,
+so we should be able to say brew -v and sure enough brew is installed. So now, let me switch back and walk you
+through the installation of home brew for that administrator user. If you are a standard user and you follow these instructions to install
+the Homebrew in your home directory. Obviously, you'll need to skip the
+Homebrew installation about the show for the administrator users. So now, we're back logged in as an
+administrator user and let's go ahead and install Homebrew. One more time, if you already
+installed Homebrew as a standard user, you could skip this particular step. So installing Homebrew for administrator
+users is pretty straightforward. All you have to do is copy this
+command here, we'll go ahead and copy the command and we'll execute
+the command on our command line prompt. We'll hit Enter, we'll hit again, OK. And this is the step where the standard
+user would not be able to do cuz it requires as you can see here
+requires sudo privileges. And only administrator user
+will have those privileges. So let's go ahead and type our password,
+and this will install Homebrew. Okay, we're done. So now, we could verify
+that Homebrew is installed. By issuing a command brew -v and
+sure enough home brew is installed. So the next step is to start
+installing our packages and the guide that I'm going
+to be using by and large is this guide at this website gorails.com
+and you can see the URL right there. Now, I'm not going to be
+using this guide verbatim. So I'm not gonna be going step by step,
+but I'm going to be changing things
+a little bit as we go along. So if you want it to more explanation
+about as to what each step is doing. You're more than welcome to go
+to this website and take a look. So the first thing we wanna do
+is we want to install Ruby. However, the best practice for
+installing Ruby is actually to install Ruby Environment
+Manager that basically lets you switch between versions of Ruby back and forth,
+depending on what your target platform is. And that's what we're going to do first. And you can see, using Brew it's
+gonna be super easy to do that. We're going to go to our
+command line prompt. We'll go ahead and clear it at this point. And we'll execute brew install rbenv,
+Ruby environment ruby-build. So let's go ahead an install that. That should be super simple. So once it's done, what we need to do is, and I'm getting this command
+directly from this guide here. What we're gonna do is, we're going to
+insert certain variables inside our bash, .bash_profile and then we'll just copy and
+paste those things right here. It inserted it into our bash_profile and we'll have to source our bash_profile
+again, just to make sure that in this particular session of this
+terminal, it's already active. And once we're done with that, we can go ahead and use rbenv to
+install the Ruby version that we want. So rbenv and we want to install and the Ruby version we want to
+install is the latest one 2.2.3. Let's go ahead and install that. Now, this step takes I'd say,
+depending on your operating system or depending on your machine,
+probably between 15 and 20 minutes. So if it's taking a long time,
+you should know that's perfectly normal. So now,
+that Ruby is installed through rbenv the next step we need to
+do is to basically tell rbenv to use this particular version
+as the global version for everything. So we'll go ahead and
+do rbenv and we'll say global and version is 2.2.3. Once we do that that's pretty quick,
+we'll go ahead and verify that Ruby is actually installed. And the correct version ruby -v, as you can see we have ruby
+2.2.3 which is what we need. So the next step is to install Rails, and the Rails is nothing more
+than a regular gem install. So we'll do gem install rails and
+we could just leave it at that, but if we do that we'll install the very
+latest version of Rails which is 4.2.4. Now, in the Coursera grading engine and
+all of our code is really targeting the version that right
+before that which was 4.2.3. So we'll go ahead and specify that, and
+I encourage you to do the same thing. So you're in the same version as we
+are and the code that we wrote will target that and
+should hopefully work without any issues. So now, that the Rails gem is installed. We need to have the rbenv see it as well. See the version and see the installation. So for
+that we need to execute rbenv rehash. Once that's done,
+let's verify that Rails is installed and is the correct version, and
+here we go rails 4.2.3. So the next step for us is to
+actually set up a Rails application. And let's go ahead and do that now. Let's see, let's clear the screen. We are still in a home directory. We'll go ahead and say,
+rails new let's call it test_app. And rails is gonna create a rails
+application for us in that directory. So once that's done, let's go ahead and
+cd in to the test app directory. And we'll start up the rails server. That seems to work just fine. Let's copy this URL right here and
+verify that it works in the browser. Yeah, sure enough, it's working just fine. Let's go ahead and click on this about
+your application environment to verify that all the versions are correct as well. The Rail version is 4.2.3, that's correct. Ruby version is 2.2.3,
+that's correct as well. So we're good to go. So the next thing we're gonna need to
+install is the latest version of Git. Now, let's go ahead and quit. Do a Ctrl+C. And quit our Ruby server, Rail server. And go to our home directory. Now, if you do git --version, you'll see that git is already
+installed by default by Apple. Now, you could just leave it alone but
+so it's really the optional step. But you could go ahead and
+upgrade it to the latest version. And that's very easy with Homebrew
+by saying brew install git. And we're done. So in order for us to now have
+our system recognize then you git that was installed which is if
+you take a look here, it's 2.5.1. If you do git --version again,
+it'll still show us the earlier version. So we need to go is go
+into our .bash_profile and augment our execution path
+with this git version. Let's go ahead and
+find out what the actual version is. Let's go to
+usr/local/Cellar/git/2.5.1/ and see that there's a bin directory in here. Let's go in here and do pwd. And let's grab this directory, so
+we could go ahead and Copy it and then Paste it when we need to. Let's go back to our home directory, we'll
+clear the screen and we'll go ahead and edit the .bash_profile. And all we need to do here is,
+is we need to define a new variable, and let's call it GIT_HOME. And the variables value will be the path that we talked about
+that we have git inside. And now, we need to augment this
+path to our to the execution path. So we'll say, PATH = and $GIT_HOME is
+one thing we're gonna have on the path, and we also want to augment
+it not override the path. So we'll add the previous
+value of the path back in. Go ahead and save that file. Now, we'll need to source that
+.bash_profile in order for us to have these variables work
+right here in this terminal session. And if we now do git --version,
+we see that we have the new git 2.5.1. One more thing we need to
+install is phantom gs. Phantom gs is the headless browser. Basically, what that means is you would
+be able to execute browser commands and basically have the system behave like
+a browser even though there is no UI. There is no visual UI to it. So again with brew, it's super simple. We'll do brew install phantomjs. And this should install the latest
+version of phantomjs which is 2.0.0. And that's done. Let's make sure that it actually works,
+phantomjs -v. And sure enough it is working just fine. The next thing you have to do is
+we need to install Sublime Text 3. Now, that's super simple
+at least on the Mac. You just go ahead and
+go to Sublime Text 3. Search for Sublime Text 3 and
+here's the link for it. Now, what you need to do is you need
+to download the link for MAC OS, OS X. And there it is downloading. Here we go. So once we're done with that
+we'll go ahead and click it. It will open up and
+it will install itself. And we just need to drag
+it to applications. And once that's done, we're now are able to bring it
+up by going to Spotight Search. We'll do sublime,
+Sublime Text is right there. I'll open it up. It'll ask us for the first time
+since we've downloaded from the web. We'll say, go ahead and open anyway. And here's just a Sublime Text. And we'll go ahead and pin it to the dock. They say Options, Keep in the Dock. So the last thing we need to do is show
+you how to configure an environmental variable within your operating system. So let's go to the terminal again. Let's go ahead and
+do Ctrl+C to quit the Rails server. Let's clear the screen, and
+let's go to our home directory. So the way you create an environment
+variable is you have to stick it inside the file called .bash_profile. So let's do ls -al and
+let's see if we have that file already. On my system, I already have the file
+here cuz I have things configured. However, on your system
+you may not have it. So you might have to actually create it. Either way, let's go ahead and edit it. And I'm gonna use vim but you're welcome
+to use any text editor you'd like. So .bash_profile, and let's go ahead and create a new variable. So let's call this variable say export. Let's call this variable WEB_URL. And WEB_URL and we'll say it's http://www.coursera.org. So that's going to be our variable and the value of the variable is going to be
+this http coursera, www.coursera.org. So once we do that,
+we can save this file, and we need to now source this file, meaning
+we need this session of our terminal to see that an executed .bash_profile. So let's go ahead and
+do source .bash _profile, and we're done. So now, we should be able to echo
+the value of that variable back to the terminal. So the way we do that is say,
+echo $ is for reference to the variable, and we'll say, $WEB_URL and press Enter. And sure enough, what we get back
+is the value of that variable. So at this point we've installed all
+the packages we needed to install and we're ready to develop Ruby
+on Rails applications. Enjoy the courses.

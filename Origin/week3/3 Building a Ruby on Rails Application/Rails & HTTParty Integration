@@ -1,0 +1,429 @@
+WEBVTT
+
+1
+00:00:00.423 --> 00:00:08.465
+[MUSIC]
+
+2
+00:00:08.465 --> 00:00:11.060
+Hi and welcome to lecture nine.
+
+3
+00:00:11.060 --> 00:00:15.240
+In this lecture we'll finally get
+to integrate Rails with HTTParty.
+
+4
+00:00:15.240 --> 00:00:19.710
+So step one, we're gonna open up
+a gem file include HTTParty and
+
+5
+00:00:19.710 --> 00:00:24.810
+actually were gonna specify the exact
+version, 0.13.5 to avoid any confusion
+
+6
+00:00:24.810 --> 00:00:28.378
+of a version change later on.
+
+7
+00:00:28.378 --> 00:00:33.270
+Then we're gonna shut down the server.
+
+8
+00:00:33.270 --> 00:00:38.670
+We're gonna run bundle
+to pull that gem and
+
+9
+00:00:38.670 --> 00:00:41.680
+install it if it needs to
+be installed from the web.
+
+10
+00:00:41.680 --> 00:00:45.120
+And you're gonna see something
+like this where it says
+
+11
+00:00:45.120 --> 00:00:48.600
+installing reparty if you haven't
+installed it yet on your machine.
+
+12
+00:00:49.950 --> 00:00:54.690
+And this is actually one of those few
+occasions that you actually have to
+
+13
+00:00:54.690 --> 00:00:55.750
+restart the server.
+
+14
+00:00:55.750 --> 00:01:00.056
+Shut it down, run bundler or
+run bundler and
+
+15
+00:01:00.056 --> 00:01:05.320
+then shut it down, and then start again,
+for changes to take effect because
+
+16
+00:01:05.320 --> 00:01:09.740
+the gems get loaded in
+when the server starts up.
+
+17
+00:01:09.740 --> 00:01:12.190
+So, if your server is already running,
+
+18
+00:01:12.190 --> 00:01:16.020
+it's not going to recognize this
+change that you made in your gemfile.
+
+19
+00:01:17.280 --> 00:01:20.760
+And the idea is that we
+want to show courses
+
+20
+00:01:20.760 --> 00:01:22.620
+from courser based on a search term.
+
+21
+00:01:23.630 --> 00:01:26.090
+So let's go ahead and
+Generate Courses Controller.
+
+22
+00:01:27.690 --> 00:01:32.320
+So that's just rails g controller
+courses with an action.
+
+23
+00:01:32.320 --> 00:01:33.450
+Let's call it index.
+
+24
+00:01:36.540 --> 00:01:42.730
+And what that's gonna do, it's gonna put
+a line like this into your routes.rb file
+
+25
+00:01:42.730 --> 00:01:49.920
+which basically means, when you hit
+the courses/index in your browser,
+
+26
+00:01:49.920 --> 00:01:53.620
+your browser's gonna request that
+information from your Rails app
+
+27
+00:01:53.620 --> 00:01:58.020
+which is gonna know to go to the courses
+controller and your index action.
+
+28
+00:02:00.370 --> 00:02:03.972
+And now, we're gonna have a model.
+
+29
+00:02:03.972 --> 00:02:09.514
+So, we're gonna actually just
+create a new file called
+
+30
+00:02:09.514 --> 00:02:14.750
+coursera.rb in the model's folder which
+
+31
+00:02:14.750 --> 00:02:20.590
+is located under the F folder of your
+application and we could just paste in
+
+32
+00:02:20.590 --> 00:02:25.946
+the example from a HTTParty integration,
+sorry,
+
+33
+00:02:25.946 --> 00:02:30.870
+HTTParty lecture earlier.
+
+34
+00:02:30.870 --> 00:02:37.090
+The difference being is that in this case
+we're not actually requiring HTTParty
+
+35
+00:02:37.090 --> 00:02:41.840
+because our Bundler
+already loads that gem and
+
+36
+00:02:41.840 --> 00:02:45.120
+for us when the application starts up,
+so that's great.
+
+37
+00:02:47.500 --> 00:02:52.670
+And the convention actually is
+that the controllers are named
+
+38
+00:02:52.670 --> 00:02:57.890
+plural that's why you see
+it's courses_controller,
+
+39
+00:02:57.890 --> 00:03:05.390
+which creates a courses plural controller,
+but the model is singular.
+
+40
+00:03:05.390 --> 00:03:09.390
+And the reason I guess the way
+I always remember is that,
+
+41
+00:03:09.390 --> 00:03:15.310
+a model corresponds to one
+role usually in your database.
+
+42
+00:03:15.310 --> 00:03:19.960
+So each instance of a model corresponds
+to one role in the database
+
+43
+00:03:21.250 --> 00:03:25.990
+and the controller controls
+all the instances really so.
+
+44
+00:03:25.990 --> 00:03:29.800
+The controllers are named plural and
+the model is named singular.
+
+45
+00:03:31.530 --> 00:03:35.960
+Okay?
+So, this you guys have seen before is just
+
+46
+00:03:35.960 --> 00:03:41.620
+pulling the courses out of
+a coursera web services.
+
+47
+00:03:41.620 --> 00:03:44.740
+Now back the controller
+in the index action.
+
+48
+00:03:44.740 --> 00:03:50.796
+We're gonna have a search term, which for
+now we're just gonna assume JHU and
+
+49
+00:03:50.796 --> 00:03:56.970
+then we're gonna pass that search term
+as a parameter into four class methods.
+
+50
+00:03:56.970 --> 00:04:04.360
+So, Coursera.for(@search_term),
+and you get an array of courses.
+
+51
+00:04:04.360 --> 00:04:09.150
+So the instance variables, that are gonna
+be available, are gonna be the search
+
+52
+00:04:09.150 --> 00:04:14.630
+term, which what did you search for,
+and the courses which is
+
+53
+00:04:14.630 --> 00:04:20.450
+where did you find the array
+of courses that you found.
+
+54
+00:04:20.450 --> 00:04:23.800
+Now in the view,
+which is the index.html/erb,
+
+55
+00:04:23.800 --> 00:04:26.930
+we're gonna have some HTML again.
+
+56
+00:04:26.930 --> 00:04:30.000
+If HTML is not familiar to you,
+
+57
+00:04:30.000 --> 00:04:34.820
+you should really check out course four,
+which covers HTML.
+
+58
+00:04:34.820 --> 00:04:38.900
+We're just gonna have a table
+element here in our view, which
+
+59
+00:04:40.410 --> 00:04:45.950
+basically has one row of headings for
+image, name, and description of courses.
+
+60
+00:04:45.950 --> 00:04:48.820
+And then we're gonna have the courses and
+
+61
+00:04:48.820 --> 00:04:53.380
+for each one of them we're gonna
+have a course passed into our block.
+
+62
+00:04:53.380 --> 00:04:56.700
+Then we're going to close that here.
+
+63
+00:04:56.700 --> 00:04:58.480
+And we're going to have an end.
+
+64
+00:04:58.480 --> 00:05:01.320
+As you can see these
+guys are just evaluators.
+
+65
+00:05:01.320 --> 00:05:03.900
+They're not actually,
+they don't have the equals, so
+
+66
+00:05:03.900 --> 00:05:05.760
+they're not actually outputting anything.
+
+67
+00:05:06.820 --> 00:05:09.514
+And then for
+each row in our course's array, for
+
+68
+00:05:09.514 --> 00:05:13.010
+each element in our course's
+array we're going to have a row.
+
+69
+00:05:13.010 --> 00:05:17.840
+Gonna have a tr element which is a row,
+and we're gonna have three columns.
+
+70
+00:05:17.840 --> 00:05:19.770
+We're gonna have an image tag.
+
+71
+00:05:19.770 --> 00:05:24.860
+So image tag is actually another
+rails helper, similar to link to.
+
+72
+00:05:24.860 --> 00:05:29.050
+Link two generates an A tag,
+image tag as you probably could guess,
+
+73
+00:05:29.050 --> 00:05:34.060
+generates an img tag, and this takes
+
+74
+00:05:34.060 --> 00:05:40.110
+resource attribute, which is basically
+where am I pulling this image from?
+
+75
+00:05:40.110 --> 00:05:43.620
+So we're gonna pull it from
+a course("smallIcon"),
+
+76
+00:05:43.620 --> 00:05:48.360
+so course each one of
+the elements here is just a hash.
+
+77
+00:05:48.360 --> 00:05:50.000
+So it's an array of hashes.
+
+78
+00:05:51.030 --> 00:05:56.140
+So course pull out the smallIcon,
+you get the image_tag, pull
+
+79
+00:05:56.140 --> 00:05:59.189
+out the name of the course, and then pull
+out the shortDescription of the course.
+
+80
+00:06:00.260 --> 00:06:05.150
+And you get something like this
+when you go to courses/index.
+
+81
+00:06:05.150 --> 00:06:10.890
+So you searching for jhu,
+we get this table with an image,
+
+82
+00:06:10.890 --> 00:06:12.150
+name, and short description.
+
+83
+00:06:13.385 --> 00:06:18.015
+Now the application is functional,
+it's not necessarily very pretty,
+
+84
+00:06:19.115 --> 00:06:21.685
+but we'll try to fix
+that in the next lecture.
+
+85
+00:06:23.955 --> 00:06:28.735
+So the summary, by convention,
+Controller names are plural while model
+
+86
+00:06:28.735 --> 00:06:34.460
+names are singular and files under app
+directory automatically require it so,
+
+87
+00:06:34.460 --> 00:06:38.570
+a few slides back, as you saw, we didn't
+have to even require the Coursera
+
+88
+00:06:40.410 --> 00:06:44.310
+class, because it automatically
+gets included in our code.
+
+89
+00:06:46.120 --> 00:06:46.870
+What's next?
+
+90
+00:06:48.250 --> 00:06:51.420
+Making minor, but useful,
+improvements to our application.

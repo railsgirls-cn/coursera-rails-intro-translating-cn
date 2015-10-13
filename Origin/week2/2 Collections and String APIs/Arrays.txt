@@ -1,0 +1,120 @@
+[MUSIC] Hi and welcome to lecture seven. In this lecture we'll talk about Arrays. You might be used to arrays from
+other programming languages, and Ruby has great support for
+arrays as well, as we're gonna see. So we'll talk about how arrays are
+created, how arrays can be modified and how to access the elements inside varies. So, basically, in Ruby, what arrays are, they're just
+a collection of object references. And unlike some other languages where
+arrays are fixed size, in Ruby, arrays are expandable. And you can access the elements inside
+the array using this index operator. Now, a lot of these things,
+I'm calling them operators. But really, they're methods. They're methods in Ruby
+that could be overwritten. Arrays can be indexed with
+negative numbers or ranges. This is a cool feature. I'm gonna show you in a minute. Also arrays in Ruby are of
+heterogeneous types, it can be. All right, so
+they don't have to be the same type, they don't have to be all integers,
+or all strings. They could be whatever. It could have a string array,
+string integer or something else in the same array. And lastly you could use
+this interesting construct of %w to have multiple strings and it will
+parse them out for you into an array. So let's see how these things work. So feature number one,
+heterogeneous arrays. So array could have an integer,
+a string, and a symbol all in the same array and
+that is completely fine. And if you want to index one of those
+elements you just use the index operator. And in this case it will index two because
+the array indexes start at zero not at one. Then you have an array of words. What a great day today. And it's gonna split it up for
+you into an array of words. So arr_words now becomes a variable array
+which contains an array of these strings. now here's an example of accessing
+an array element using a negative number. So negative two in this case, what that
+means is don't start from the beginning, start from the end. So in this case it's gonna say not
+today because that's minus one, minus two is day, great. Then you could also have expressive
+methods of arrays like first, last, give me the first element,
+give me the last element. Another feature you could have is you
+could have a range of elements specified. So in this case you're
+saying go back three. So that would be one, two, three and
+then take two elements from that. So you get great day. You also have a similar feature
+where you're actually using that range type which we haven't covered yet
+but that's coming up soon. And you're basically saying,
+grab me all the elements from two to four inclusive,
+that would be great day today. And lastly we have Join, which is
+a method you could call on arrays, which joins them and
+creates a string out of them and uses whatever string you pass in here,
+as a separator. So in this case it's a comma. So we have what,a,great,day,today. All right, let's see how to modify arrays. You can modify arrays either by
+saying push or using this operator. And that basically pushes
+to a back of an array. You could remove from
+an array either pop or shift. And you could modify specific element of
+an array by using the index operator. Another feature of arrays,
+which I find real useful in Ruby, is the idea to use a sample method. You could sample either one element,
+or multiple elements. Let's say you have a hundred elements and
+you say, give me five elements from this array
+as a sample, you could do that. That's great for
+testing as well as this great feature to be able to sort or
+reverse an array. And similarly to strings you have either
+the sort without the bean without exclamation or sort with an exclamation. And, as you probably could guess,
+this sort without the exclamation, Actually sorts the array and
+returns a new copy of an array. And sort with an exclamation and
+reverse actually modifies the array in place as opposed to creating
+a new copy of an array. So, let's see how these work. So in some languages you have
+this special type called stack or special type called queue. In Ruby it's all an array. And you can use, you can have methods that
+can make it look like a stack or a queue. So for
+example let's say you want to use a stack. You start an empty array,
+you push some elements on to the stack and then when you pop off the stack,
+you get the last element of a stack. That's called a last
+in/first out data structure. Let's say you wanna use it as a queue,
+you could do that as well. You push a bunch of elements
+on just to create an array and then you wanna shift, would shift
+the first element out of an array. So in this case it will be one which
+was the first element that went into the array. So that's first in, first out. You also have like I
+mentioned sort in reverse. So in this case you have five,
+three, four, two which is just a bunch
+of random integers. When you sort them. It would sort them as two, three,
+four, five, and then you reverse them. That would give you five,
+four, three, two. And as I mentioned, the exclamation in this case actually
+modifies the contents of an array. And that's what you have, you have
+an array that got modified in place. Sample, as I mentioned, just basically
+pulls out two random elements of an array. Nice feature. Now what happens, I mentioned
+that arrays are auto expandable, what happens if you have this array
+which only has four elements and you specify that you want
+to add 33 as a the sixth or the seventh element of the array? Well when I say seventh it's because
+arrays, again indexed with zero. So what happens is,
+the array gets auto expanded. So you have the first four
+elements that already existed, and then it adds two nils to fill in for
+the two spaces that are missing, and then the seventh element becomes 33. There are also lots of
+other useful array methods. For example, each, select, reject, map. And we'll actually go
+through these in a minute. But there are many, many others, and
+you should really check out the array API. And I'll have the slide for
+what the URL for that is in a minute. So let's go through each
+one of these methods. You have the each, the each is
+basically an iterator over array. And you guessed that because it's
+an iterator it takes a block. Select is something you could
+use to filter an array. And again, it takes a block and in the block you specify the condition
+of how you want to fill the array. We'll see that in a minute, as well. Reject is the opposite of select. It's saying, look at this array and based
+on a condition that I'm gonna provide you reject some elements of an array. And map, like it sounds, basically maps every element
+in the array to a new element. Again, based on the block on
+the condition that you wanna use. And you get back out
+of map using a map and new array that contains
+all those mapped elements. So this is the URL for
+where to find the array API. So let's see some examples of how to use
+the methods I covered in previous slide. So let's say I have an array
+one through four and so on. So loop through each element and perform
+some kind of something on each element. You basically pass the element
+in as a parameter to a block. And then in this case we're just
+printing out that element every time. And when using print it actually
+doesn't print a new line, so we'll get one, three, four, and so on. The next feature is Select. So you have an array. And then you select from that array,
+which creates a new array. And the condition that you're providing
+is a block, which basically says, give me any element of that
+array that is greater than four. And that creates a new array. So the new array is gonna be seven,
+eight and ten. It's a nice feature. Not only that,
+you could chain all these methods. So, for example,
+you could say give me, let's see, a bunch of elements where each
+element is less than ten and reject, filter out,
+any elements that are even. So what you're left with is this
+array of one, three, and seven. And lastly,
+with map method you have an array and then you map each element based on
+the condition that you're gonna provide. So in this case the condition
+is x multiply by three. So you end up with a new array that
+says three, nine, 12 and so on. In summary, Arrays API is very
+flexible and very powerful. I just showed you guys a few methods, but there are many more methods
+there that are very useful. And I fell in love with the array API and
+Array the first time I saw it in Ruby. And there are lots of
+ways to process elements. So you could map them and
+you could do other tricks on the elements. As well as you could sample them. Right?
+To pull out a bunch of elements of array. Next we're gonna cover ranges. I know I may reference
+the ranges in a few places. And we'll finally gonna cover
+them in the next lecture.

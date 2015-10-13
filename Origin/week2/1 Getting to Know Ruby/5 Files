@@ -1,0 +1,393 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:08.137
+[MUSIC]
+
+2
+00:00:08.137 --> 00:00:09.620
+Hi, and welcome to Lecture 5.
+
+3
+00:00:09.620 --> 00:00:14.590
+In this lecture, we'll talk about
+reading and writing to files.
+
+4
+00:00:14.590 --> 00:00:19.211
+We'll talk about exceptions, as well as
+reading values from environment variables.
+
+5
+00:00:21.238 --> 00:00:24.031
+So you have a file called test.txt, and
+
+6
+00:00:24.031 --> 00:00:29.140
+you wanna write a Ruby program
+that reads some of that file.
+
+7
+00:00:29.140 --> 00:00:34.560
+The way you do that is you
+have a file class and you have
+
+8
+00:00:34.560 --> 00:00:40.110
+a foreach method which has a parameter
+of a file that you actually want to use.
+
+9
+00:00:40.110 --> 00:00:43.970
+And then you have a block,
+and in that block,
+
+10
+00:00:43.970 --> 00:00:49.710
+you are given line by line
+all the contents of a file.
+
+11
+00:00:51.260 --> 00:00:55.490
+Now if you just print the line as it is,
+so
+
+12
+00:00:55.490 --> 00:00:59.110
+the first line of the file,
+this is what you would see, and
+
+13
+00:00:59.110 --> 00:01:03.090
+you would think that that's
+exactly what the line looks like.
+
+14
+00:01:03.090 --> 00:01:07.790
+Now, in reality if you examine
+a little closer with p line
+
+15
+00:01:07.790 --> 00:01:12.380
+you'll see that there is a new line
+character that is at the end of this line.
+
+16
+00:01:13.430 --> 00:01:18.720
+To chop off the new line character
+you'd use a method called chomp, and
+
+17
+00:01:18.720 --> 00:01:22.000
+this is actually a method
+that's just used for that.
+
+18
+00:01:22.000 --> 00:01:25.052
+It doesn't chop off any character, and
+
+19
+00:01:25.052 --> 00:01:29.451
+there's actually a chop method as well,
+but chomp method
+
+20
+00:01:29.451 --> 00:01:34.856
+specifically takes off a newline
+character from the end of the string.
+
+21
+00:01:34.856 --> 00:01:39.606
+You could also do split which
+basically splits the line into
+
+22
+00:01:39.606 --> 00:01:44.072
+individual words and
+creates an array out of that line.
+
+23
+00:01:46.866 --> 00:01:52.861
+Now, what happens if a file from which you
+are trying to read from, does not exist?
+
+24
+00:01:52.861 --> 00:01:58.280
+So, you have this file code, do not exist,
+that text, and it doesn't even exist.
+
+25
+00:01:58.280 --> 00:02:02.550
+Well, predictably,
+you will get an exception.
+
+26
+00:02:03.560 --> 00:02:08.329
+Ruby will try to read from a file, it
+won't find the file, you'll get a big fat
+
+27
+00:02:08.329 --> 00:02:12.599
+exception that basically says
+do_not_exist.txt does not exist,
+
+28
+00:02:12.599 --> 00:02:15.227
+no such file, and that's the end of that.
+
+29
+00:02:15.227 --> 00:02:19.599
+And this is actually a somewhat
+unfortunate outcome of your program
+
+30
+00:02:19.599 --> 00:02:24.276
+because it stops execution and
+you have this error message it's planted
+
+31
+00:02:24.276 --> 00:02:30.700
+everywhere, and you really don't wanna
+just abruptly end your programs like that.
+
+32
+00:02:30.700 --> 00:02:36.307
+So the way to get around that, is that
+you could actually handle the exception,
+
+33
+00:02:36.307 --> 00:02:40.240
+so that when you read the file,
+if a file does not exist,
+
+34
+00:02:40.240 --> 00:02:45.199
+you can rescue, you could catch
+the exception that's being thrown.
+
+35
+00:02:45.199 --> 00:02:49.470
+And in this case,
+you have control of what to do about it.
+
+36
+00:02:49.470 --> 00:02:54.733
+So, Exception gets mapped
+to this e variable.
+
+37
+00:02:54.733 --> 00:02:58.700
+And then, you can say,
+what is the message of the exception?
+
+38
+00:02:58.700 --> 00:03:00.340
+Why did it happen?
+
+39
+00:03:00.340 --> 00:03:04.710
+And then this lets you control your flow,
+and
+
+40
+00:03:04.710 --> 00:03:08.330
+you are able to continue after
+the begin rescue end block
+
+41
+00:03:09.400 --> 00:03:13.180
+with other code perhaps accounting for
+
+42
+00:03:13.180 --> 00:03:17.110
+the fact that the file wasn't found and
+maybe trying something else.
+
+43
+00:03:17.110 --> 00:03:22.540
+And you could do that as well
+inside the rescue block itself.
+
+44
+00:03:23.720 --> 00:03:27.626
+As an alternative to that,
+you could just check if
+
+45
+00:03:27.626 --> 00:03:32.090
+the file exists with a exists
+predicate method and file.
+
+46
+00:03:32.090 --> 00:03:36.490
+If the file exists, test.txt,
+yes it does, then go ahead and read it.
+
+47
+00:03:36.490 --> 00:03:40.350
+If it does not exist, then go ahead and
+
+48
+00:03:40.350 --> 00:03:45.260
+just skip the if block and continue
+with execution after the if block.
+
+49
+00:03:45.260 --> 00:03:50.870
+This obviously wouldn't help you in
+cases where a real exception happens,
+
+50
+00:03:50.870 --> 00:03:54.440
+like there's something wrong with
+your network or something like that.
+
+51
+00:03:54.440 --> 00:03:57.360
+For that,
+you would want to use this construct.
+
+52
+00:03:58.820 --> 00:04:02.533
+But, if it's a simple case
+of the file not being found,
+
+53
+00:04:02.533 --> 00:04:07.195
+you could always use this construct
+of just using an if and checking for
+
+54
+00:04:07.195 --> 00:04:10.687
+existence of a file, and
+it doesn't look as messy.
+
+55
+00:04:13.141 --> 00:04:15.914
+What about writing to a file?
+
+56
+00:04:15.914 --> 00:04:20.735
+Well, for this,
+Ruby also uses a block structure.
+
+57
+00:04:20.735 --> 00:04:21.652
+So you have a file.
+
+58
+00:04:21.652 --> 00:04:24.030
+You open the file, so open is a method.
+
+59
+00:04:24.030 --> 00:04:29.030
+And then you have a block, which is
+the last quote unquote parameter to
+
+60
+00:04:29.030 --> 00:04:34.360
+the open method, in which the file to
+which you're writing is being passed.
+
+61
+00:04:35.880 --> 00:04:40.030
+And the w here actually indicates
+that you are opening the file
+
+62
+00:04:40.030 --> 00:04:41.610
+in order to write to that file.
+
+63
+00:04:43.150 --> 00:04:47.962
+And then you could just do file.puts
+one line, another line and so on, and
+
+64
+00:04:47.962 --> 00:04:54.560
+then at the end of the day you have
+test1.txt in which the lines get written.
+
+65
+00:04:55.750 --> 00:05:00.294
+The last thing we'll going to talk
+about is environment variables,
+
+66
+00:05:00.294 --> 00:05:04.369
+and environment variables,
+the set up for those variables,
+
+67
+00:05:04.369 --> 00:05:08.600
+environment variables is specific
+to the operating system, so
+
+68
+00:05:08.600 --> 00:05:13.533
+Windows it's one way, OSX is a different
+way, but once you have them set,
+
+69
+00:05:13.533 --> 00:05:17.963
+the way you read them, Ruby is just
+by saying ENV and then the name.
+
+70
+00:05:17.963 --> 00:05:20.203
+The key of that environment variables.
+
+71
+00:05:20.203 --> 00:05:26.238
+In this case, I have my editor
+environment variables set to Sublime,
+
+72
+00:05:26.238 --> 00:05:29.526
+and that's what's indicated here.
+
+73
+00:05:29.526 --> 00:05:34.075
+In summary, files automatically get
+closed at the end of a block, and
+
+74
+00:05:34.075 --> 00:05:36.320
+that's actually a nice feature.
+
+75
+00:05:36.320 --> 00:05:42.800
+This way you don't have to worry about Did
+I close the block, did I close the file?
+
+76
+00:05:42.800 --> 00:05:47.100
+You do all your operations
+inside the block, and
+
+77
+00:05:47.100 --> 00:05:51.850
+by the end the block finishes, Ruby
+automatically closes the file for you.
+
+78
+00:05:53.510 --> 00:05:57.200
+And in order to handle the unforeseen
+
+79
+00:05:57.200 --> 00:06:01.740
+cases like where file not existing you
+could either use exception handling or
+
+80
+00:06:01.740 --> 00:06:04.840
+you could just check for the existence
+of a file before accessing the file.
+
+81
+00:06:06.710 --> 00:06:07.880
+What's next?
+
+82
+00:06:07.880 --> 00:06:10.239
+We'll talk about strings and symbols.

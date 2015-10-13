@@ -1,0 +1,90 @@
+[MUSIC] Hi and welcome to lecture three. In this lecture we'll
+discuss functions and methods, their definitions, how do you
+call them, what and how do they return. We'll also talk about this interesting
+concept of default args in ruby, we'll talk about how to make methods
+more expressive, and what is a splat. So, usually, when we talk about functions
+and methods in other languages, a function is something that's
+written outside of a class and a method is something
+that belongs to a class. Now, in Ruby, every function or method
+has at least one class it belongs to although you won't always see
+it written inside a class, every function or
+method in Ruby belongs to a class. Because of this,
+I'm not gonna talk about functions. From now on,
+we refer even to functions as methods. So let's talk methods. Methods can have parentheses but
+they are completely optional both when defining the method and
+when calling a method. Now if you feel that using
+of parentheses makes it more clear to you how the method is written,
+sure, go ahead and use parentheses. But there's no need to do so. So let's take, for example,
+a method called simple, for no parens. When you define it for a no parens
+when calling it, no parens at all. Now, you could use parens to call it,
+if you want to, but you don't have to. The method simple1(), we're using
+parentheses over here to define it, but we're not using parentheses to
+call it, and that's perfectly legal. Methods also, there's no need to declare
+the type of parameter so one and two don't have a declaration of type,
+you know, it's not an int one and two, a long or anything else. It's just one and two and
+whatever you pass there, if you decide to pass two strings
+into a method called add, that's fine as well because strings
+also have a way of adding each other. You could also return whatever you want. So the method add doesn't
+tell you what it returns. It could return an integer,
+it could return a string, or it could have two different paths inside
+the method where one returns an integer, and another one returns string and
+that's perfectly legal. The return keyword is optional in Ruby. Now, so if you are not saying
+what you're gonna return, how does it know what to return? Oh, that's simple. The last,
+because in Ruby everything is evaluated, the last executed line returned in
+the method is gonna return the value. So if it's a comment, that's not executed
+line, that's just a comment, but anything else just gets evaluated and that
+value that gets evaluated gets returned. Methods could be very expressive in ruby. You could have methods that
+end with a question mark, and these are called predicate methods and
+usually these return Boolean values. For example, you have a method that says,
+can divide by a certain number. Can you divide this by a certain number? So the method might return
+false if the number is zero. And it's interesting to look at
+the number which an integer, if it's an integer it has a method
+called zero with a question mark. So the integer itself, Ruby has a method
+called zero which is a predicate. And we're using the return statement
+here to be able to bail out of a method earlier than the last executed line. So, return false if number.zero, because
+we don't wanna be dividing by zero, otherwise, true, which means return true,
+even though we're not saying return, that's the implication of
+what's happening here. You could also have methods
+that ends with exclamation, and what this usually signals is some
+kind of a dangerous side effect. Maybe in place, or placement,
+or something like that. We'll get into examples of this particular
+one later when we talk about strings. Default arguments. Methods can have default arguments. So maybe you want to
+provide a certain value, that if no value is passed in,
+that value will be used. So, for example, we have a factorial method which
+does not use default arguments. A regular factorial method,
+which by the way it's interesting, it's written as just a one liner in Ruby. So if n equals zero,
+then return one, otherwise return n times a factorial of n minus one,
+which recursively calls this method. Again, notice no return statements, it
+just knows what to do and it just works. Now there may be some times you want
+to have a default in your method. So for example, in this case we have an n,
+which by default is five. So if you call factorial and
+you pass the five, which is this first method,
+that returns 120. But maybe you want to call the method
+factorial with default and not pass anything, and
+that will automatically plug in the value of 5 and still return 120. Splat, this is an interesting concept. It almost looks like a pointer,
+like a C pointer but it's not. It's similar to how var args,
+variable arguments works in say Java. So you have a bunch of parameters
+that you want to pass but you don't know how many or
+you don't care how many. You want all the parameters to
+be treated as one parameter, and all those parameters become one
+big array inside the method. And the interesting part about Ruby, about
+how this is used in Ruby is that this could even apply to a middle parameter,
+not just the last parameter in the method. So in this case,
+we have one_param, another param, and we have a bunch of
+parameters in the middle. How many?
+I don't know. So in this case, it happens to
+be 3 parameters, 7, 32, and -4, and we take a max, we want to find out the max of those
+parameters and that's what gets returned. Now it happens to be
+that all those parameters become one big array, called numbers in
+this case, because that's what we call in the parameter method, and
+the array already has a method called max. And actually arrays have many
+more interesting methods as we're gonna see later. So in summary, there is no need to
+declare parameter type passed in or returned, because Ruby is dynamic, and because it's dynamic, you don't need
+to tell it what parameter it is. And it makes for some very interesting
+use cases of how you could use methods, unlike in other languages where you know
+exactly what the method is returning and sometimes you have to bend that somehow. In Ruby you could pass in or
+return really anything, as long as it doesn't break
+what's defined inside the method. Return is optional, and
+how does it know what to return? Well, that's simple. The last executable line
+inside the method is returned. You can construct the methods with
+variable number of arguments, and you could also use default arguments.

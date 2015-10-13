@@ -1,0 +1,344 @@
+WEBVTT
+
+1
+00:00:00.156 --> 00:00:08.423
+[MUSIC]
+
+2
+00:00:08.423 --> 00:00:10.534
+Hi, and welcome to Lecture 8.
+
+3
+00:00:10.534 --> 00:00:14.130
+In this lecture, we will talk
+about ranges, what ranges are and
+
+4
+00:00:14.130 --> 00:00:15.739
+how they are useful in Ruby.
+
+5
+00:00:17.200 --> 00:00:21.978
+So ranges are essentially just data type
+
+6
+00:00:21.978 --> 00:00:27.180
+in Ruby that are used to express
+natural consecutive sequences.
+
+7
+00:00:27.180 --> 00:00:31.946
+So for example, you wanna express
+1 through 20 or a through z,
+
+8
+00:00:31.946 --> 00:00:35.010
+you could do that using ranges.
+
+9
+00:00:35.010 --> 00:00:37.204
+And really there are two
+rules to keep in mind.
+
+10
+00:00:37.204 --> 00:00:41.912
+If there are two dots
+in-between the beginning and
+
+11
+00:00:41.912 --> 00:00:47.837
+end that you're trying to express,
+so for example 1 and 10.
+
+12
+00:00:47.837 --> 00:00:52.537
+Two dots means all inclusive,
+1 is included, 10 is included and,
+
+13
+00:00:52.537 --> 00:00:56.220
+obviously, all the numbers
+in between are included.
+
+14
+00:00:56.220 --> 00:01:01.780
+If I have three dots,
+three dots means end-exclusive.
+
+15
+00:01:01.780 --> 00:01:08.180
+So 1 is included, 1 through 9
+are included, but 10 is not included.
+
+16
+00:01:08.180 --> 00:01:11.920
+In my mind I always confuse them,
+so the way I remember them
+
+17
+00:01:11.920 --> 00:01:15.840
+is that the more dots you have,
+the less you have at the end.
+
+18
+00:01:15.840 --> 00:01:20.310
+Which is kind of counterintuitive,
+but that's just how I remember them.
+
+19
+00:01:20.310 --> 00:01:25.800
+So two dots is all-inclusive, and
+three dots is last one not included.
+
+20
+00:01:27.640 --> 00:01:29.860
+What's so special about the ranges?
+
+21
+00:01:29.860 --> 00:01:32.460
+Can't we do this already using arrays?
+
+22
+00:01:33.470 --> 00:01:36.780
+Well, first of all,
+they are very easy to create.
+
+23
+00:01:36.780 --> 00:01:42.700
+You just need the first and the last part
+of a sequence, of a consecutive sequence.
+
+24
+00:01:42.700 --> 00:01:46.310
+But number two which is more important,
+they are very efficient.
+
+25
+00:01:46.310 --> 00:01:49.172
+You're only storing the start and
+the end and
+
+26
+00:01:49.172 --> 00:01:52.260
+Ruby knows what to do with the rest of it.
+
+27
+00:01:52.260 --> 00:01:56.374
+So let's say you have a sequence of
+a million numbers from one to a million,
+
+28
+00:01:56.374 --> 00:02:00.378
+you're not gonna be storing a million
+elements of your array in memory.
+
+29
+00:02:00.378 --> 00:02:04.240
+You're just gonna store the first number
+and the last number, which is great.
+
+30
+00:02:04.240 --> 00:02:09.930
+Now, if you do need more methods out
+of this range that you're creating,
+
+31
+00:02:09.930 --> 00:02:15.610
+you could always convert it to an array
+by calling to_a method on the range.
+
+32
+00:02:15.610 --> 00:02:18.508
+And boom, now you have a full blown array,
+and you could do whatever you could do
+
+33
+00:02:18.508 --> 00:02:21.080
+with arrays,
+which we covered in the previous lecture.
+
+34
+00:02:22.960 --> 00:02:27.520
+And, another thing that ranges
+are used for, and probably what
+
+35
+00:02:27.520 --> 00:02:32.050
+they're most used for, are conditions and
+intervals, as we'll see in a minute.
+
+36
+00:02:33.860 --> 00:02:40.730
+So, let's say you have some range from 1
+to 3, and two dots, so it's all inclusive.
+
+37
+00:02:40.730 --> 00:02:44.480
+1 is included, 3 is included,
+and obviously 2 is included.
+
+38
+00:02:44.480 --> 00:02:47.510
+So let's see what methods
+can you call in the ranges.
+
+39
+00:02:47.510 --> 00:02:50.200
+You could call a max and
+see what the max element.
+
+40
+00:02:50.200 --> 00:02:55.890
+You could call include, and
+say does this range include 2?
+
+41
+00:02:55.890 --> 00:02:56.840
+Sure, it does.
+
+42
+00:02:58.150 --> 00:03:02.230
+Now here's our little friend,
+the triple equals.
+
+43
+00:03:02.230 --> 00:03:03.919
+So there's a range of 1 through 10,
+
+44
+00:03:03.919 --> 00:03:06.906
+it's really 1 through 9 because
+it's 1 through 10 exclusive.
+
+45
+00:03:06.906 --> 00:03:10.870
+Does that include 5.3?
+
+46
+00:03:10.870 --> 00:03:12.008
+Sure it does.
+
+47
+00:03:12.008 --> 00:03:17.925
+Does the range of a through r exclusive,
+
+48
+00:03:17.925 --> 00:03:21.063
+does that include r?
+
+49
+00:03:21.063 --> 00:03:26.479
+It does not because it's end-exclusive
+cuz there are three dots here,
+
+50
+00:03:26.479 --> 00:03:28.180
+it does not include r.
+
+51
+00:03:29.720 --> 00:03:34.830
+Now, here's the converting to
+the array that I was talking about.
+
+52
+00:03:34.830 --> 00:03:37.390
+Grab a sequence from k to z, and
+
+53
+00:03:37.390 --> 00:03:40.860
+then convert it to an array,
+and pull out 2 elements.
+
+54
+00:03:40.860 --> 00:03:46.660
+So you could see how in one line of code,
+we have something that creates
+
+55
+00:03:49.440 --> 00:03:52.260
+an array of 2 random elements from k to z.
+
+56
+00:03:52.260 --> 00:03:54.595
+It's useful.
+
+57
+00:03:54.595 --> 00:03:58.811
+And, this is just an example
+in the context of how you use
+
+58
+00:03:58.811 --> 00:04:01.810
+the ranges in a case statement.
+
+59
+00:04:01.810 --> 00:04:04.360
+So let's say you have age
+variable which is 55, and
+
+60
+00:04:04.360 --> 00:04:09.994
+you have a case flavor that says case age,
+where age is right next to the case.
+
+61
+00:04:11.460 --> 00:04:15.630
+And you have,
+when a range of 0 through 12,
+
+62
+00:04:15.630 --> 00:04:20.120
+and remember that the case statement
+uses a triple equals by default.
+
+63
+00:04:22.000 --> 00:04:25.999
+And then puts whatever
+you wanna put there,
+
+64
+00:04:25.999 --> 00:04:30.008
+so, the condition and
+the result and so on.
+
+65
+00:04:30.008 --> 00:04:34.470
+You could have else in the areas as well,
+and that's how ranges work.
+
+66
+00:04:36.520 --> 00:04:40.520
+Okay, so ranges are useful for
+consecutive sequences.
+
+67
+00:04:40.520 --> 00:04:41.590
+That's what you use them for.
+
+68
+00:04:42.760 --> 00:04:47.430
+You create them by
+specifying the beginning and
+
+69
+00:04:47.430 --> 00:04:50.560
+the end of the consecutive sequence.
+
+70
+00:04:50.560 --> 00:04:55.350
+And you could convert a range to
+an array for more functionality
+
+71
+00:04:55.350 --> 00:05:00.240
+if you need to exercise more
+functionality on what you are creating.
+
+72
+00:05:01.610 --> 00:05:03.543
+Next, we'll talk about hashes,
+
+73
+00:05:03.543 --> 00:05:08.019
+which in some other languages may be known
+as dictionaries or maps or whatever.

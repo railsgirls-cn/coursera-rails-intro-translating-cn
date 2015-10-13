@@ -1,0 +1,505 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:08.128
+[MUSIC]
+
+2
+00:00:08.128 --> 00:00:10.812
+Hi.
+And welcome to Lecture 10.
+
+3
+00:00:10.812 --> 00:00:15.940
+In the previous lecture, we've integrated
+the Rails application of HP party.
+
+4
+00:00:17.200 --> 00:00:19.930
+But it looks kind of horrible.
+
+5
+00:00:19.930 --> 00:00:24.440
+So we're gonna add some basic styling and
+this will actually fix that.
+
+6
+00:00:25.560 --> 00:00:28.864
+We're also gonna make
+the application more dynamic and
+
+7
+00:00:28.864 --> 00:00:32.517
+allow you to specify your request
+parameter, cuz right now,
+
+8
+00:00:32.517 --> 00:00:36.820
+the data is always being pulled for
+GHU, but we wanna make that dynamic.
+
+9
+00:00:36.820 --> 00:00:40.440
+And let you specify what
+you're looking for as a user.
+
+10
+00:00:41.730 --> 00:00:44.010
+And we're gonna talk about
+routing a root path.
+
+11
+00:00:45.360 --> 00:00:48.360
+So before talking about
+the view while making
+
+12
+00:00:48.360 --> 00:00:50.410
+the changes to how pretty
+the application is.
+
+13
+00:00:51.970 --> 00:00:54.830
+It's a good place to talk
+about where is the view?
+
+14
+00:00:54.830 --> 00:01:00.540
+So I mentioned before that we saw the
+elements that actually go inside the body.
+
+15
+00:01:00.540 --> 00:01:04.850
+But we've never seen the doc type and
+the HTML and the body element.
+
+16
+00:01:04.850 --> 00:01:09.258
+So it turns out,
+that's located in the views,
+
+17
+00:01:09.258 --> 00:01:12.940
+layouts, application.html.erb.
+
+18
+00:01:12.940 --> 00:01:17.520
+So this is a layout that's specified and
+
+19
+00:01:17.520 --> 00:01:22.700
+each individual page gets
+displayed inside the body.
+
+20
+00:01:23.880 --> 00:01:28.590
+So this way,
+you only get to write this page once,
+
+21
+00:01:28.590 --> 00:01:31.060
+specifying what is
+the title of application.
+
+22
+00:01:32.530 --> 00:01:39.670
+And which CSS files you wanna include and
+that applies to all of your views.
+
+23
+00:01:39.670 --> 00:01:45.430
+Now you can override that, you can specify
+that this view should get this way out and
+
+24
+00:01:45.430 --> 00:01:49.550
+you could have multiple layouts, but
+I'm not gonna cover that in this course.
+
+25
+00:01:52.340 --> 00:01:54.960
+So what are we trying to improve?
+
+26
+00:01:54.960 --> 00:01:56.860
+This is how our page looks right now, so
+
+27
+00:01:56.860 --> 00:02:02.200
+number one, the border looks
+kind of weird for a table.
+
+28
+00:02:02.200 --> 00:02:06.060
+Also the padding for each field, for
+
+29
+00:02:06.060 --> 00:02:10.130
+each column, really there is no padding,
+so it's very close to the edge.
+
+30
+00:02:11.920 --> 00:02:15.790
+And also,
+all the rows are sort of the same and
+
+31
+00:02:15.790 --> 00:02:18.550
+it would be nice to what's
+called zebrify them.
+
+32
+00:02:19.590 --> 00:02:25.280
+Make them alternate, maybe a colors, so
+maybe make one a white color background.
+
+33
+00:02:25.280 --> 00:02:29.240
+Maybe one different color background.
+
+34
+00:02:29.240 --> 00:02:30.860
+So how would you do that?
+
+35
+00:02:30.860 --> 00:02:33.545
+So that's where CSS comes in.
+
+36
+00:02:33.545 --> 00:02:37.181
+And when you generate the controller,
+
+37
+00:02:37.181 --> 00:02:42.581
+you get a file called with
+a control name.SCSS created for
+
+38
+00:02:42.581 --> 00:02:47.030
+you under the stylesheets directory.
+
+39
+00:02:47.030 --> 00:02:49.756
+Now SCSS is really not CSS,
+
+40
+00:02:49.756 --> 00:02:53.985
+it's Sass which we're not gonna
+talk about in this course.
+
+41
+00:02:55.485 --> 00:03:01.805
+But the good news is that Sass
+is just a superset of CSS.
+
+42
+00:03:01.805 --> 00:03:07.200
+So it supports everything
+that CSS supports and more.
+
+43
+00:03:07.200 --> 00:03:12.633
+So you could use regular CSS
+inside of your sass files.
+
+44
+00:03:12.633 --> 00:03:18.040
+So we're gonna have three different rules,
+CSS rules.
+
+45
+00:03:18.040 --> 00:03:23.779
+Number one for table element,
+we're gonna say collapse the border.
+
+46
+00:03:23.779 --> 00:03:29.703
+For the table column we're
+gonna say add some padding and
+
+47
+00:03:29.703 --> 00:03:34.887
+we are also gonna have a class,
+an even class which
+
+48
+00:03:34.887 --> 00:03:40.838
+the background of that even
+class is gonna be some color.
+
+49
+00:03:40.838 --> 00:03:44.616
+If you're not familiar with CSS,
+
+50
+00:03:44.616 --> 00:03:49.567
+specifically CSS classes and
+how they work,
+
+51
+00:03:49.567 --> 00:03:54.400
+do check out course four
+when we cover that.
+
+52
+00:03:54.400 --> 00:03:59.110
+So, now in our index, that html.erb,
+
+53
+00:03:59.110 --> 00:04:03.280
+what we have,
+is we have an ability to specify.
+
+54
+00:04:05.050 --> 00:04:09.640
+I guess what we wanna specify
+is that every other class,
+
+55
+00:04:09.640 --> 00:04:14.320
+every other row gets an even or
+an odd class.
+
+56
+00:04:14.320 --> 00:04:18.240
+And you could do that to
+the cycle Rails helper
+
+57
+00:04:19.410 --> 00:04:24.680
+basically to specify that this
+table row should have a class.
+
+58
+00:04:24.680 --> 00:04:30.240
+And the class should be either even or
+odd and it's gonna Cycle through.
+
+59
+00:04:31.400 --> 00:04:35.570
+And you can have multiple of these,
+not just two, you could have four or five
+
+60
+00:04:35.570 --> 00:04:41.340
+classes, for whatever reason, you wanna
+cycle through many more values than two.
+
+61
+00:04:41.340 --> 00:04:45.220
+But in this case,
+I'm just cycling through even and odd.
+
+62
+00:04:45.220 --> 00:04:51.700
+And every other row is gonna
+get either even or odd value.
+
+63
+00:04:52.790 --> 00:04:56.865
+So this way every other row
+will have even class in it.
+
+64
+00:04:58.529 --> 00:05:04.800
+And look at that, the borders collapsed,
+the padding is in place, and the table.
+
+65
+00:05:04.800 --> 00:05:08.980
+Every other row in the table is
+a different color, which is great.
+
+66
+00:05:12.083 --> 00:05:16.310
+Now, the next thing we wanna do is we
+wanna be able to specify the search term.
+
+67
+00:05:18.000 --> 00:05:23.260
+The params Hash in Rails is just
+the help that we're looking for.
+
+68
+00:05:23.260 --> 00:05:27.860
+And it's basically just a hash that parses
+
+69
+00:05:27.860 --> 00:05:32.530
+the value of a parameter, and
+becomes either symbol, or key, in hash.
+
+70
+00:05:34.680 --> 00:05:38.040
+If the key does not exist,
+the nil is returned,
+
+71
+00:05:38.040 --> 00:05:40.080
+which is the standard hash behavior.
+
+72
+00:05:42.010 --> 00:05:44.680
+So in this case,
+we're gonna be looking for
+
+73
+00:05:44.680 --> 00:05:47.224
+a request parameter called looking_for.
+
+74
+00:05:48.850 --> 00:05:55.670
+So Params, looking for if this value
+exists, use that as a search term.
+
+75
+00:05:55.670 --> 00:05:58.710
+If not, use a default which
+we're going to keep as jhu.
+
+76
+00:05:58.710 --> 00:06:01.340
+That's what this is saying.
+
+77
+00:06:01.340 --> 00:06:04.980
+Use the one found in the Params hash.
+
+78
+00:06:04.980 --> 00:06:10.108
+Otherwise, use the default, and
+actually if only change we have to make
+
+79
+00:06:10.108 --> 00:06:14.901
+is a change in the controller because
+the model doesn't really care
+
+80
+00:06:14.901 --> 00:06:19.882
+what the search term is passed in to
+it as long as there is a search term.
+
+81
+00:06:19.882 --> 00:06:25.410
+And the view doesn't care which elements
+it gets back as part of courses.
+
+82
+00:06:26.740 --> 00:06:31.540
+So in this case, what we're doing is we're
+passing the request parameter of looking
+
+83
+00:06:31.540 --> 00:06:35.370
+underscore forr equals python which
+
+84
+00:06:35.370 --> 00:06:40.270
+goes to this params hash and
+gets parsed as python.
+
+85
+00:06:40.270 --> 00:06:41.130
+And now it's looking for
+
+86
+00:06:41.130 --> 00:06:44.540
+python and then the courses you
+get back are the python courses.
+
+87
+00:06:46.580 --> 00:06:51.110
+If you don't specify anything then
+it uses the default of jhu and
+
+88
+00:06:51.110 --> 00:06:52.220
+you get the jhu courses.
+
+89
+00:06:54.310 --> 00:06:57.240
+Now, right now, every time,
+
+90
+00:06:57.240 --> 00:07:02.590
+in our application we have
+to type in /course, /index.
+
+91
+00:07:02.590 --> 00:07:05.510
+Our application is really only
+dealing with searching courses, so
+
+92
+00:07:05.510 --> 00:07:08.528
+it would be great if
+we could just save it.
+
+93
+00:07:08.528 --> 00:07:12.670
+The default, the root path.
+
+94
+00:07:12.670 --> 00:07:17.570
+Could just point to the courses
+controller and the index action.
+
+95
+00:07:17.570 --> 00:07:22.203
+And you could do that by specifying in
+
+96
+00:07:22.203 --> 00:07:28.330
+the route that are B, root, courses index.
+
+97
+00:07:28.330 --> 00:07:31.890
+Which means that the root path
+
+98
+00:07:31.890 --> 00:07:36.760
+your application is gonna go to courses
+controller and the index action.
+
+99
+00:07:39.420 --> 00:07:43.940
+So now if we don't specify course's index,
+
+100
+00:07:43.940 --> 00:07:48.910
+we just specify looking for, which is our
+request parameter, equals I don't know,
+
+101
+00:07:48.910 --> 00:07:51.530
+let's say diet, we get these courses.
+
+102
+00:07:53.570 --> 00:07:57.280
+So in summary, minor CSS changes
+can dramatically enhance the app.
+
+103
+00:07:58.770 --> 00:08:02.850
+Params helper is what you need for
+being able to extract
+
+104
+00:08:02.850 --> 00:08:07.540
+the request parameters and
+use them in your Rails application.
+
+105
+00:08:08.740 --> 00:08:13.020
+And it is very easy to change the root
+path by tweaking the routes.rb file.
+
+106
+00:08:15.070 --> 00:08:15.780
+What's next?
+
+107
+00:08:15.780 --> 00:08:20.242
+Alright the application's ready to go,
+now we just need to deploy it to Heroku.

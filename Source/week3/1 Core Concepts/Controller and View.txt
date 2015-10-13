@@ -1,0 +1,70 @@
+[MUSIC] Hi and welcome to lecture three. In this lecture we talk about how to
+generate dynamic content in Rails. Specifically we talk about
+how to generate a controller, how to generate actions, and what is ERB. So controllers contain actions. Controllers are basically classes and then they contain methods which
+are referred to as actions. And controllers orchestrate web requests,
+you can quickly generate a controller, and zero or
+more actions, with their associated views. The you do that, is you just say,
+rails generate, or actually you could just say a rails g,
+which is short for generate. Rails g controller, and
+then the controller name. And you could specify the actions
+that you wanna generate. So let's see how that works. We're gonna generate a greeter controller. So we're gonna do rails
+g controller greeter. And the hello is the action name and
+it's also going to be the name of a view. So, you're gonna see here that
+Rails go off generating a control, which is gonna be called the name of
+the control we gave it, _controller. And then we're gonna see that there's
+a view that is gonna be generated, and the app/views/greeter, which is
+the name of a controller directory for view, as well as some other files. So, you could see here in the actual
+directory structure how things work. So you have a greeter controller
+located in the controller's directory, which is located in the app directory. And there's also a view file,
+which is gonna be located in the views > greeter and
+then this is the name of a file. Now, when you look at the view file, you're gonna see that it
+doesn't have a doctype, head, or body elements,which you might
+expect from a regular HTML file. And we're gonna see later on why that is. Now, if you're not familiar with HTML, I strongly suggest that
+you watch the course for, in this specialization, which specifically
+talks about HTML, CSS, and JavaScript. The view file that was generated,
+it looks like typical HTML file but it also has this .erb extension. So what is that? ERB actually is a templating library,
+similar to for example JSP, if you're familiar with that, that lets
+you embed Ruby into your HTML code. And actually,
+there are only two tag patterns to learn. Number one is the first one here,
+which just has Ruby code inside of it, and
+that just evaluates Ruby code. That could maybe, for example, instantiate a variable that you're gonna
+using later on, or something like that. And then the second one is
+almost identical to that, but it also has an equals sign right
+next to a percent sign, and that actually outputs
+the evaluated the Ruby code. And again, the whole point of this
+ERB thing, is to be able to embed dynamic content into a static HTML
+content, to mix them together. So for example,
+we can rewrite our hello page, because it is part of this erb
+templating library, by specifying that we want to create a variable called
+random_names, and this is the first pattern that I talked about, which
+basically just has an array of names. And then we're gonna
+have the second pattern, which basically says random names. Give me one of those names,
+this is just your Ruby code. And because it has the equals,
+it's actually gonna display that variable and mix it in with a HTML. And this is being done randomly. So, maybe you go to page one,
+so you get Greetings, Joe. And then the second time
+you get Greetings, Alex. And then the time now, is also just creating a value, Time.now, which automatically gets output
+because it has the equal sign. So that was a view portion of it. What is the greeter controller
+actually look like? Well hello is just an action. It's just a regular Ruby method,
+empty in this case. And it seems that this
+is all there is to it. So if we want to add a goodbye action,
+for example, to the GreeterController, we should be able to just
+add the view file called goodbye.html.erb to
+the app/views/greeter directory and add a goodbye action into the controller,
+and we should be good to go. So let's try that. Create a goodbye file in here, for view. And then create a goodbye action,
+goodbye method in the controller. Refresh your browser. That didn't actually work. So, it displays greeter, and
+if you go to /greeter/goodbye, which you would expect to display
+the goodbye page, it doesn't work. And we're gonna see later that we are
+missing a component of what just happened, of how this is supposed to work but
+we're not there yet. So in summary,
+controllers contains actions, methods. So in this case, the controller had a hello action
+that we automatically generated, and the ERB is your view, which allows
+you to either evaluate an expression, with this first tag pattern, and
+as part of evaluating an expression, maybe you're gonna say,
+well variable to be used later on. And the second pattern,
+which is more useful probably, lets you actually display
+the value of that variable or display the value of some expression and
+mix that in with your HTML and page, and the whole page
+becomes one big HTML page and that is what's returned
+back to the browser. So what's next? We're gonna talk about routes and
+we're gonna see why we couldn't just add the goodbye action to a controller and
+goodbye view and have it work.

@@ -1,0 +1,542 @@
+WEBVTT
+
+1
+00:00:02.021 --> 00:00:07.142
+[MUSIC]
+
+2
+00:00:07.142 --> 00:00:10.280
+Hi and welcome to lecture three.
+
+3
+00:00:10.280 --> 00:00:12.620
+In this lecture we'll
+discuss functions and
+
+4
+00:00:12.620 --> 00:00:18.390
+methods, their definitions, how do you
+call them, what and how do they return.
+
+5
+00:00:18.390 --> 00:00:24.377
+We'll also talk about this interesting
+concept of default args in ruby,
+
+6
+00:00:24.377 --> 00:00:30.570
+we'll talk about how to make methods
+more expressive, and what is a splat.
+
+7
+00:00:30.570 --> 00:00:35.005
+So, usually, when we talk about functions
+and methods in other languages,
+
+8
+00:00:35.005 --> 00:00:38.555
+a function is something that's
+written outside of a class and
+
+9
+00:00:38.555 --> 00:00:42.190
+a method is something
+that belongs to a class.
+
+10
+00:00:42.190 --> 00:00:47.340
+Now, in Ruby, every function or method
+has at least one class it belongs to
+
+11
+00:00:47.340 --> 00:00:50.240
+although you won't always see
+it written inside a class,
+
+12
+00:00:51.550 --> 00:00:55.110
+every function or
+method in Ruby belongs to a class.
+
+13
+00:00:56.690 --> 00:01:00.240
+Because of this,
+I'm not gonna talk about functions.
+
+14
+00:01:00.240 --> 00:01:02.905
+From now on,
+we refer even to functions as methods.
+
+15
+00:01:02.905 --> 00:01:07.695
+So let's talk methods.
+
+16
+00:01:07.695 --> 00:01:12.518
+Methods can have parentheses but
+they are completely optional both
+
+17
+00:01:12.518 --> 00:01:17.090
+when defining the method and
+when calling a method.
+
+18
+00:01:17.090 --> 00:01:23.110
+Now if you feel that using
+of parentheses makes it more
+
+19
+00:01:23.110 --> 00:01:28.960
+clear to you how the method is written,
+sure, go ahead and use parentheses.
+
+20
+00:01:28.960 --> 00:01:30.830
+But there's no need to do so.
+
+21
+00:01:30.830 --> 00:01:36.120
+So let's take, for example,
+a method called simple, for no parens.
+
+22
+00:01:36.120 --> 00:01:42.020
+When you define it for a no parens
+when calling it, no parens at all.
+
+23
+00:01:42.020 --> 00:01:45.074
+Now, you could use parens to call it,
+if you want to, but you don't have to.
+
+24
+00:01:45.074 --> 00:01:51.630
+The method simple1(), we're using
+parentheses over here to define it,
+
+25
+00:01:51.630 --> 00:01:55.640
+but we're not using parentheses to
+call it, and that's perfectly legal.
+
+26
+00:01:57.410 --> 00:02:02.790
+Methods also, there's no need to declare
+the type of parameter so one and
+
+27
+00:02:02.790 --> 00:02:07.620
+two don't have a declaration of type,
+you know, it's not an int one and
+
+28
+00:02:07.620 --> 00:02:09.870
+two, a long or anything else.
+
+29
+00:02:09.870 --> 00:02:11.810
+It's just one and two and
+whatever you pass there,
+
+30
+00:02:11.810 --> 00:02:16.250
+if you decide to pass two strings
+into a method called add,
+
+31
+00:02:16.250 --> 00:02:22.440
+that's fine as well because strings
+also have a way of adding each other.
+
+32
+00:02:24.450 --> 00:02:26.220
+You could also return whatever you want.
+
+33
+00:02:27.240 --> 00:02:31.160
+So the method add doesn't
+tell you what it returns.
+
+34
+00:02:32.190 --> 00:02:36.190
+It could return an integer,
+it could return a string, or
+
+35
+00:02:36.190 --> 00:02:41.260
+it could have two different paths inside
+the method where one returns an integer,
+
+36
+00:02:41.260 --> 00:02:45.910
+and another one returns string and
+that's perfectly legal.
+
+37
+00:02:45.910 --> 00:02:48.040
+The return keyword is optional in Ruby.
+
+38
+00:02:50.570 --> 00:02:53.445
+Now, so if you are not saying
+what you're gonna return,
+
+39
+00:02:53.445 --> 00:02:55.240
+how does it know what to return?
+
+40
+00:02:55.240 --> 00:02:55.920
+Oh, that's simple.
+
+41
+00:02:56.930 --> 00:03:01.400
+The last,
+because in Ruby everything is evaluated,
+
+42
+00:03:01.400 --> 00:03:06.930
+the last executed line returned in
+the method is gonna return the value.
+
+43
+00:03:06.930 --> 00:03:11.540
+So if it's a comment, that's not executed
+line, that's just a comment, but
+
+44
+00:03:11.540 --> 00:03:16.770
+anything else just gets evaluated and that
+value that gets evaluated gets returned.
+
+45
+00:03:18.900 --> 00:03:20.790
+Methods could be very expressive in ruby.
+
+46
+00:03:22.050 --> 00:03:25.870
+You could have methods that
+end with a question mark, and
+
+47
+00:03:25.870 --> 00:03:29.070
+these are called predicate methods and
+usually these return Boolean values.
+
+48
+00:03:29.070 --> 00:03:34.370
+For example, you have a method that says,
+can divide by a certain number.
+
+49
+00:03:34.370 --> 00:03:35.920
+Can you divide this by a certain number?
+
+50
+00:03:35.920 --> 00:03:41.475
+So the method might return
+false if the number is zero.
+
+51
+00:03:41.475 --> 00:03:48.080
+And it's interesting to look at
+the number which an integer,
+
+52
+00:03:48.080 --> 00:03:52.490
+if it's an integer it has a method
+called zero with a question mark.
+
+53
+00:03:52.490 --> 00:03:58.270
+So the integer itself, Ruby has a method
+called zero which is a predicate.
+
+54
+00:03:59.700 --> 00:04:04.790
+And we're using the return statement
+here to be able to bail out of a method
+
+55
+00:04:04.790 --> 00:04:08.040
+earlier than the last executed line.
+
+56
+00:04:08.040 --> 00:04:12.570
+So, return false if number.zero, because
+we don't wanna be dividing by zero,
+
+57
+00:04:12.570 --> 00:04:16.470
+otherwise, true, which means return true,
+even though we're not saying return,
+
+58
+00:04:16.470 --> 00:04:19.990
+that's the implication of
+what's happening here.
+
+59
+00:04:19.990 --> 00:04:24.240
+You could also have methods
+that ends with exclamation,
+
+60
+00:04:25.700 --> 00:04:28.920
+and what this usually signals is some
+kind of a dangerous side effect.
+
+61
+00:04:28.920 --> 00:04:33.330
+Maybe in place, or placement,
+or something like that.
+
+62
+00:04:33.330 --> 00:04:36.950
+We'll get into examples of this particular
+one later when we talk about strings.
+
+63
+00:04:39.520 --> 00:04:41.110
+Default arguments.
+
+64
+00:04:41.110 --> 00:04:44.010
+Methods can have default arguments.
+
+65
+00:04:44.010 --> 00:04:48.020
+So maybe you want to
+provide a certain value,
+
+66
+00:04:48.020 --> 00:04:52.810
+that if no value is passed in,
+that value will be used.
+
+67
+00:04:52.810 --> 00:04:53.560
+So, for example,
+
+68
+00:04:53.560 --> 00:04:58.340
+we have a factorial method which
+does not use default arguments.
+
+69
+00:04:58.340 --> 00:05:01.790
+A regular factorial method,
+which by the way it's interesting,
+
+70
+00:05:01.790 --> 00:05:03.230
+it's written as just a one liner in Ruby.
+
+71
+00:05:05.010 --> 00:05:11.090
+So if n equals zero,
+then return one, otherwise return n
+
+72
+00:05:11.090 --> 00:05:16.990
+times a factorial of n minus one,
+which recursively calls this method.
+
+73
+00:05:16.990 --> 00:05:22.360
+Again, notice no return statements, it
+just knows what to do and it just works.
+
+74
+00:05:23.530 --> 00:05:27.990
+Now there may be some times you want
+to have a default in your method.
+
+75
+00:05:27.990 --> 00:05:33.460
+So for example, in this case we have an n,
+which by default is five.
+
+76
+00:05:34.520 --> 00:05:37.530
+So if you call factorial and
+you pass the five,
+
+77
+00:05:37.530 --> 00:05:41.210
+which is this first method,
+that returns 120.
+
+78
+00:05:41.210 --> 00:05:46.136
+But maybe you want to call the method
+factorial with default and
+
+79
+00:05:46.136 --> 00:05:52.000
+not pass anything, and
+that will automatically plug in
+
+80
+00:05:52.000 --> 00:05:56.960
+the value of 5 and still return 120.
+
+81
+00:05:56.960 --> 00:05:59.970
+Splat, this is an interesting concept.
+
+82
+00:06:01.060 --> 00:06:04.433
+It almost looks like a pointer,
+like a C pointer but it's not.
+
+83
+00:06:04.433 --> 00:06:11.420
+It's similar to how var args,
+variable arguments works in say Java.
+
+84
+00:06:12.870 --> 00:06:17.300
+So you have a bunch of parameters
+that you want to pass but
+
+85
+00:06:17.300 --> 00:06:20.440
+you don't know how many or
+you don't care how many.
+
+86
+00:06:20.440 --> 00:06:25.430
+You want all the parameters to
+be treated as one parameter, and
+
+87
+00:06:25.430 --> 00:06:30.060
+all those parameters become one
+big array inside the method.
+
+88
+00:06:31.070 --> 00:06:35.540
+And the interesting part about Ruby, about
+how this is used in Ruby is that this
+
+89
+00:06:35.540 --> 00:06:39.260
+could even apply to a middle parameter,
+not just the last parameter in the method.
+
+90
+00:06:40.800 --> 00:06:43.290
+So in this case,
+we have one_param, another param,
+
+91
+00:06:43.290 --> 00:06:46.070
+and we have a bunch of
+parameters in the middle.
+
+92
+00:06:46.070 --> 00:06:47.990
+How many?
+I don't know.
+
+93
+00:06:47.990 --> 00:06:51.240
+So in this case, it happens to
+be 3 parameters, 7, 32, and -4,
+
+94
+00:06:51.240 --> 00:06:53.122
+and we take a max,
+
+95
+00:06:53.122 --> 00:06:59.370
+we want to find out the max of those
+parameters and that's what gets returned.
+
+96
+00:06:59.370 --> 00:07:03.840
+Now it happens to be
+that all those parameters
+
+97
+00:07:04.870 --> 00:07:09.474
+become one big array, called numbers in
+this case, because that's what we call in
+
+98
+00:07:09.474 --> 00:07:14.840
+the parameter method, and
+the array already has a method called max.
+
+99
+00:07:14.840 --> 00:07:17.410
+And actually arrays have many
+more interesting methods
+
+100
+00:07:17.410 --> 00:07:19.930
+as we're gonna see later.
+
+101
+00:07:19.930 --> 00:07:24.590
+So in summary, there is no need to
+declare parameter type passed in or
+
+102
+00:07:24.590 --> 00:07:27.120
+returned, because Ruby is dynamic, and
+
+103
+00:07:27.120 --> 00:07:32.120
+because it's dynamic, you don't need
+to tell it what parameter it is.
+
+104
+00:07:32.120 --> 00:07:37.430
+And it makes for some very interesting
+use cases of how you could use methods,
+
+105
+00:07:37.430 --> 00:07:41.510
+unlike in other languages where you know
+exactly what the method is returning and
+
+106
+00:07:41.510 --> 00:07:45.030
+sometimes you have to bend that somehow.
+
+107
+00:07:45.030 --> 00:07:49.260
+In Ruby you could pass in or
+return really anything,
+
+108
+00:07:49.260 --> 00:07:52.330
+as long as it doesn't break
+what's defined inside the method.
+
+109
+00:07:54.470 --> 00:07:57.510
+Return is optional, and
+how does it know what to return?
+
+110
+00:07:57.510 --> 00:07:58.090
+Well, that's simple.
+
+111
+00:07:58.090 --> 00:08:02.340
+The last executable line
+inside the method is returned.
+
+112
+00:08:04.360 --> 00:08:07.944
+You can construct the methods with
+variable number of arguments,
+
+113
+00:08:07.944 --> 00:08:10.250
+and you could also use default arguments.

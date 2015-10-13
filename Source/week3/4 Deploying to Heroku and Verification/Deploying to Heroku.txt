@@ -1,0 +1,61 @@
+[MUSIC] Hi and welcome to lecture 11. Let's deploy an application to Heroku. So first of all what is Heroku? Heroku is a PaaS. PaaS which is a platform as a service. It's what some people would call a cloud. It's something that allows you to
+deploy applications on their platform. And like any good business where
+terms are always changing but they have always had a free account. So you could sign up for
+a free account by going to heroku.com. The next thing we're going to need before
+we could deport the heroku is something called Heroku Toolbelt. So you'd go to toolbelt.heroku.com and
+depending on your operating system, you'd grab the correct toolbelt,
+just basically download it and install it. And what heroku toolbelt
+is is it's a CLI tool. It's a command line
+implication tool that allows you to manage your Heroku applications. The next thing we need is,
+we need to manage our gems. Heroku uses Postgres as it's database. And it recommends this rails_12factor gem, which you could check out
+on GitHub what that does. And we've been relying on an sqlite gem,
+for our database, and
+Heroku doesn't like that. So what we're gonna do is we're gonna put
+the sqlite gem into development group and Heroku gems in the production. And this way we're telling Bundler
+that in the development environment, which is where we develop it in our
+local machine, use sqlite gem, but when you deploy it to Heroku,
+which is your production environment, only use the non-development
+environment gems for ones that I specify specifically for
+production environment. So to do that, we're going to specify that sqlie3
+is only in development environments. Heroku doesn't complain about it. We're going to specify it in
+the production environment. Go ahead and load up the pg gem and
+the rails_12factor gem. So after making these changes
+we're gonna go ahead and run bundle which is gonna actually set
+those gems into our application and commit the changes to repository. And at this point we're ready to go,
+so we're gonna do a heroku login and put in the credentials, and hopefully
+that authentication was successful. Then we're gonna create the subdomain,
+the actual name of our application, so in this case,
+I called it search-coursera-jhu. If you just do heroku create
+without specifying the name, heroku will give you a name. It will be very nice and poetic but
+might not be what you want. So at this point we're creating
+this search-coursera-jhu, which then becomes a full blown url
+becomes search-coursera-jhu.herokuapp.com. And the other thing that heroku does
+is it actually creates a remote depository to which you could push and
+that is how you deploy. So as you can see here when
+you do git remote -v for verbose to see what am I git
+repositories which are remote. So it happens to be I have one that's
+a GitHub repository which carrie spawns to this one. But heroku just created one for
+me with the name heroku when I did heroku create,
+and then the sub domain. So that's pretty much it and
+now you do git push heroku master, which pushes your master branch
+to heroku's master branch, and at this point, you should see this,
+where it detects the ruby app. Detected and the comment here is to make
+sure top level directory of your git repository contains app directory and
+other rails files and directories because that's how Heroku recognizes
+that hey, this a ruby app, got it. At this point it's gonna deploy. You might get some warnings about certain
+things which you might wanna fix or might not wanna fix. Doesn't really matter. And then at the end of the day you should
+get something like this where it says but your master branch deployed
+to heroku's master branch and your application is now ready to go. And this is the URL. If you're too lazy to type in the browser
+yourself, you could always just do heroku open, and that's gonna open up
+application in the browser. Okay, so now we'll then just
+have localhost where on port 3,000 we have a full blown,
+we have an application running on the web, on the search-coursera.jhu.herokuapp.com. Don't try to use this name because
+obviously it is taken, by me. You could use any other name to deploy the
+application if you are following along, and I hope you are following along. So at this point, what we could do,
+because we made that change to the root path, we could just say
+the application on the web, question mark for
+request parameter we're looking for, that's our request parameter equals diet,
+and this is now on the web. So in summary, sign up for a Heroku
+account and download the toolbelt. To be able to use Heroku and don't forget
+to make the changes to the Gemfile because Heroku uses post graphs and
+in develop environment we use SQLite. What is next? Blackbox testing of RSpec and Capybara.

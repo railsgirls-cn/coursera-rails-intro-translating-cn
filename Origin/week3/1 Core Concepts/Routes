@@ -1,0 +1,465 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:08.088
+[MUSIC]
+
+2
+00:00:08.088 --> 00:00:09.740
+Hi and welcome to lecture four.
+
+3
+00:00:09.740 --> 00:00:12.570
+In this lecture we'll talk
+about how routing works.
+
+4
+00:00:12.570 --> 00:00:13.605
+What is Rake?
+
+5
+00:00:13.605 --> 00:00:15.315
+And how to analyze your current routes.
+
+6
+00:00:16.715 --> 00:00:20.845
+In the last lecture,
+we tried adding a goodbye action, for
+
+7
+00:00:20.845 --> 00:00:22.415
+some reason it didn't work.
+
+8
+00:00:22.415 --> 00:00:25.975
+Well it turns out we're missing
+an important piece, which is the routing.
+
+9
+00:00:27.575 --> 00:00:33.540
+The idea is before a controller can
+even orchestrate where the request goes,
+
+10
+00:00:33.540 --> 00:00:37.380
+the controller needs to get request, so
+
+11
+00:00:37.380 --> 00:00:39.710
+request needs to get
+routed to the controller.
+
+12
+00:00:40.720 --> 00:00:42.650
+Okay, so
+how did the hello action work then?
+
+13
+00:00:42.650 --> 00:00:47.690
+The reason why the hello action
+worked was because the route to
+
+14
+00:00:47.690 --> 00:00:52.690
+the hello action was automatically
+generating when we did rails g controller.
+
+15
+00:00:54.400 --> 00:00:58.100
+So let's amend our MVC cycle here.
+
+16
+00:00:59.290 --> 00:01:02.870
+What's happening is that
+the browser sends a request.
+
+17
+00:01:02.870 --> 00:01:05.360
+The request comes into
+a Rails application.
+
+18
+00:01:05.360 --> 00:01:11.120
+At this point, if it's a static file,
+it just looks in the public directory and
+
+19
+00:01:11.120 --> 00:01:15.680
+find that file,
+otherwise it goes to a router.
+
+20
+00:01:15.680 --> 00:01:17.500
+Then the router says let me try and
+
+21
+00:01:17.500 --> 00:01:21.310
+make sense out of this request that
+came in from let's say a browser.
+
+22
+00:01:22.330 --> 00:01:25.593
+And when it makes sense out
+of a request it forwards it
+
+23
+00:01:25.593 --> 00:01:29.540
+to an appropriate controller and
+that controller's action.
+
+24
+00:01:29.540 --> 00:01:30.940
+And then the rest is the same.
+
+25
+00:01:30.940 --> 00:01:35.905
+The controller then talks to a model,
+the database, and
+
+26
+00:01:35.905 --> 00:01:40.258
+then the controller
+forwards request onto view.
+
+27
+00:01:40.258 --> 00:01:45.638
+So all the routes need to be
+specified either through generation
+
+28
+00:01:45.638 --> 00:01:51.017
+by using the rails generator like
+we did the rails g controller,
+
+29
+00:01:51.017 --> 00:01:54.920
+or manually in the config/routes.rb file.
+
+30
+00:01:54.920 --> 00:01:56.120
+So what does this file look like?
+
+31
+00:01:57.120 --> 00:02:01.897
+Well, this file is located
+under the app direct,
+
+32
+00:02:01.897 --> 00:02:07.016
+I'm sorry,
+under the actual root directory of app,
+
+33
+00:02:07.016 --> 00:02:09.999
+and it's called routes.rb.
+
+34
+00:02:09.999 --> 00:02:14.275
+And it's located in the config
+directory of the root directory.
+
+35
+00:02:14.275 --> 00:02:19.010
+So, config and then routes.rb,
+and it looks something like this,
+
+36
+00:02:20.290 --> 00:02:24.560
+where you'll mostly just
+see a lot of comments, but
+
+37
+00:02:24.560 --> 00:02:29.030
+every time you generate a controller
+you'll get something like this where
+
+38
+00:02:29.030 --> 00:02:33.580
+what this is saying is that when you
+get a request, in the browser for
+
+39
+00:02:33.580 --> 00:02:38.900
+example that says greeter/hello
+that should be interpreted
+
+40
+00:02:38.900 --> 00:02:41.910
+as greeter controller and hello action.
+
+41
+00:02:43.150 --> 00:02:46.740
+Okay, so let's go ahead and
+add the route to the goodbye action.
+
+42
+00:02:46.740 --> 00:02:48.560
+What would that look like?
+
+43
+00:02:48.560 --> 00:02:53.407
+Well, we could just say
+get greeter/goodbye, and
+
+44
+00:02:53.407 --> 00:02:58.260
+that would give you the greeter
+controller and goodbye action, and
+
+45
+00:02:58.260 --> 00:03:06.830
+indeed we'll see that when you do that,
+our goodbye actually starts working.
+
+46
+00:03:06.830 --> 00:03:11.680
+Another syntax for doing pretty much the
+same thing, is saying that when you get
+
+47
+00:03:11.680 --> 00:03:17.900
+a request to greeter/hello,
+Or greeter/goodbye as well,
+
+48
+00:03:17.900 --> 00:03:25.290
+that should go to which is this syntax
+here, greeter controller and hello action.
+
+49
+00:03:25.290 --> 00:03:31.240
+These identical so if you're using,
+if your greeter#hello action
+
+50
+00:03:31.240 --> 00:03:36.810
+actually maps to greeter/hello you
+might as well just use this syntax or
+
+51
+00:03:36.810 --> 00:03:40.925
+this syntax But let's say you
+wanna map something different.
+
+52
+00:03:40.925 --> 00:03:44.680
+For example, greeter/how are you,
+
+53
+00:03:44.680 --> 00:03:49.060
+which would go to the hello action,
+then you would obviously use this syntax,
+
+54
+00:03:49.060 --> 00:03:53.650
+which would take you to the hello
+action even if this is not hello.
+
+55
+00:03:55.020 --> 00:03:58.520
+Let's talk for a second,
+take a diversion to talk about Rake.
+
+56
+00:03:58.520 --> 00:03:59.685
+What is Rake?
+
+57
+00:03:59.685 --> 00:04:02.912
+Rake is Ruby's build language, so
+
+58
+00:04:02.912 --> 00:04:08.504
+if you're familiar with make from C or
+maybe an ant from Java,
+
+59
+00:04:08.504 --> 00:04:13.685
+Rake is basically Ruby's
+equivalent somewhat of that.
+
+60
+00:04:13.685 --> 00:04:15.560
+So, why is it called Rake?
+
+61
+00:04:15.560 --> 00:04:16.690
+It's like Ruby's make.
+
+62
+00:04:17.750 --> 00:04:24.489
+Now, unlike for example and or
+maybe a Maven from Java also,
+
+63
+00:04:24.489 --> 00:04:30.050
+it's not written in XML,
+it's written in Ruby.
+
+64
+00:04:30.050 --> 00:04:34.440
+Rails uses Rake to automate
+certain app related tasks.
+
+65
+00:04:34.440 --> 00:04:39.455
+For example, certain database
+things populating the database,
+
+66
+00:04:39.455 --> 00:04:45.198
+r maybe you're running tests, unit tests,
+write some rake task for that.
+
+67
+00:04:45.198 --> 00:04:50.588
+Now, to see a list of all the rake
+tasks that you have supports,
+
+68
+00:04:50.588 --> 00:04:53.170
+you could do rake --tasks.
+
+69
+00:04:53.170 --> 00:04:59.260
+When we run that in our application we'll
+get a whole bunch of different Tasks.
+
+70
+00:04:59.260 --> 00:05:01.698
+As you can see, some are just direct.
+
+71
+00:05:01.698 --> 00:05:03.770
+Others are namespaced.
+
+72
+00:05:03.770 --> 00:05:09.157
+So, for example, db:create,
+is obviously a create task that
+
+73
+00:05:09.157 --> 00:05:15.060
+has something to do with the database
+db is the main space in this case.
+
+74
+00:05:17.060 --> 00:05:20.080
+Now if you want to zero in on
+an individual rake task and
+
+75
+00:05:20.080 --> 00:05:24.167
+see what it does you could
+do --describe flag, so
+
+76
+00:05:24.167 --> 00:05:28.350
+rake --describe and task_name, and
+
+77
+00:05:28.350 --> 00:05:35.650
+the task I want to zero in is the routes
+task, so rake --describe routes will tell
+
+78
+00:05:35.650 --> 00:05:40.740
+you that rake routes print out all defined
+routes in the match order remains.
+
+79
+00:05:42.660 --> 00:05:47.151
+So when we run rake routes,
+we're gonna see now that there
+
+80
+00:05:47.151 --> 00:05:52.019
+are exactly two routes which
+are defined for our application.
+
+81
+00:05:52.019 --> 00:05:56.581
+One of them is when you have
+a URI pattern of greeter/hello,
+
+82
+00:05:56.581 --> 00:06:00.875
+that will go to the greeter controller and
+hello action,
+
+83
+00:06:00.875 --> 00:06:07.327
+the other one is if it's a greeter goodbye
+it will go to the greeter/goodbye action.
+
+84
+00:06:09.290 --> 00:06:12.860
+Now this format here is,
+we're gonna talk about it later,
+
+85
+00:06:14.530 --> 00:06:18.190
+that you could have a hello.html,
+
+86
+00:06:18.190 --> 00:06:22.330
+which will be interpreted the request
+to get the HTML format, but
+
+87
+00:06:22.330 --> 00:06:26.060
+maybe you want to have a hello.JSON
+which wants to get the JSON format.
+
+88
+00:06:28.110 --> 00:06:34.568
+Lastly, this idea of a prefix, again,
+it's too early to talk about what that is,
+
+89
+00:06:34.568 --> 00:06:38.368
+but basically It's gonna
+be part of a variable.
+
+90
+00:06:38.368 --> 00:06:39.748
+So just keep that in mind.
+
+91
+00:06:39.748 --> 00:06:43.520
+greeter_hello and greeter_goodbye
+are these things that you could see
+
+92
+00:06:43.520 --> 00:06:46.440
+in your rake route when
+you run rake routes.
+
+93
+00:06:46.440 --> 00:06:48.930
+And these things are gonna
+be part of a variable name.
+
+94
+00:06:50.140 --> 00:06:56.230
+In summary the router is what directs the
+request to the right controller and that's
+
+95
+00:06:56.230 --> 00:07:03.290
+one of the first steps before anything
+gets kicked off in the MVC paradigm and
+
+96
+00:07:03.290 --> 00:07:08.130
+rake routes lets you see which routes are
+currently defined for your application.
+
+97
+00:07:09.210 --> 00:07:09.910
+What's next?
+
+98
+00:07:10.940 --> 00:07:14.000
+Next we'll talk about moving
+business logic out of view.

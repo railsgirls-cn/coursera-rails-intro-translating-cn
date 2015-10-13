@@ -1,0 +1,809 @@
+WEBVTT
+
+1
+00:00:00.273 --> 00:00:08.309
+[MUSIC]
+
+2
+00:00:08.309 --> 00:00:10.930
+Hi and
+welcome to lecture two of module three.
+
+3
+00:00:12.030 --> 00:00:15.945
+In this lecture we'll talk about how
+to create and run the application.
+
+4
+00:00:15.945 --> 00:00:19.985
+We'll talk about the directory structure,
+which again,
+
+5
+00:00:19.985 --> 00:00:23.720
+goes back to the whole idea of
+convention of a configuration,
+
+6
+00:00:23.720 --> 00:00:30.745
+that there's a certain accepted convention
+of how a Rails project is structured.
+
+7
+00:00:30.745 --> 00:00:33.645
+And then we'll talk about adding some
+static pages to your application.
+
+8
+00:00:35.220 --> 00:00:39.870
+So to create your first application,
+you're gonna go into a directory
+
+9
+00:00:39.870 --> 00:00:42.690
+where you want to be creating
+your Rails application.
+
+10
+00:00:42.690 --> 00:00:47.345
+And, you're just gonna type in rails new
+and then the name of the application.
+
+11
+00:00:47.345 --> 00:00:51.015
+So in this case it's my_first_app and
+
+12
+00:00:51.015 --> 00:00:53.195
+rails is gonna go off
+creating the application.
+
+13
+00:00:54.435 --> 00:00:57.955
+And it will create a certain
+directory structure
+
+14
+00:00:57.955 --> 00:01:00.415
+of application which I'll
+talk about momentarily.
+
+15
+00:01:02.075 --> 00:01:07.995
+You could also do a rails new-h, and that
+will give you more options and you could
+
+16
+00:01:07.995 --> 00:01:11.805
+see what options you could specify when
+you are creating a new rails application.
+
+17
+00:01:13.570 --> 00:01:16.390
+At the end of the creation of application,
+
+18
+00:01:16.390 --> 00:01:20.780
+you're gonna see something
+that says run bundle install.
+
+19
+00:01:20.780 --> 00:01:25.520
+And basically the idea here is that,
+as part of application,
+
+20
+00:01:25.520 --> 00:01:30.500
+of a Rails application creation,
+were a lot of different components
+
+21
+00:01:30.500 --> 00:01:34.880
+that are being merged in together and
+those components have different versions,
+
+22
+00:01:34.880 --> 00:01:37.710
+obviously, and
+those versions have to interact.
+
+23
+00:01:39.280 --> 00:01:46.340
+And by interacting I mean if one component
+depends on one version of, there's
+
+24
+00:01:46.340 --> 00:01:52.160
+a dependency on some version, and another
+component depends on a different version,
+
+25
+00:01:52.160 --> 00:01:56.170
+you need something to resolve those
+versions, and that's what Bundler does.
+
+26
+00:01:56.170 --> 00:02:00.240
+And we'll have a whole separate
+lecture on Bundler later on, but
+
+27
+00:02:00.240 --> 00:02:04.600
+I just wanna point out that when
+you create a Rails application,
+
+28
+00:02:04.600 --> 00:02:09.600
+after the end of that creation, Bundler
+sort of cleans up the house a little bit
+
+29
+00:02:09.600 --> 00:02:13.450
+and Fetches the needed dependencies for
+you.
+
+30
+00:02:15.500 --> 00:02:19.670
+Okay, so
+at this point your application is created.
+
+31
+00:02:19.670 --> 00:02:24.730
+The initial skeleton and
+even some code is created for you.
+
+32
+00:02:24.730 --> 00:02:28.770
+Now, it's also interesting to note that
+Rails automatically generates that
+
+33
+00:02:28.770 --> 00:02:33.720
+gitignore file which shows you that
+it's really trying to push you into
+
+34
+00:02:33.720 --> 00:02:39.950
+the direction of versioning
+your application.
+
+35
+00:02:39.950 --> 00:02:41.950
+Using a version control system like GIT.
+
+36
+00:02:44.270 --> 00:02:47.620
+So what you're gonna do at this
+point is you're gonna go into that,
+
+37
+00:02:47.620 --> 00:02:50.040
+inside of that application.
+
+38
+00:02:50.040 --> 00:02:52.950
+So the application was
+called my first app.
+
+39
+00:02:52.950 --> 00:02:57.340
+You're gonna have a directory
+called my first app.
+
+40
+00:02:57.340 --> 00:03:03.372
+You're gonna CD change directory,
+or go into the directory and then
+
+41
+00:03:03.372 --> 00:03:09.925
+you gonna right away do git init which
+is gonna initialize get repo git add.
+
+42
+00:03:09.925 --> 00:03:15.358
+Which is gonna add all the files
+into the repo index directory,
+
+43
+00:03:15.358 --> 00:03:19.254
+and then you're gonna
+do your first commit,
+
+44
+00:03:19.254 --> 00:03:24.090
+gonna do your initial commit
+using git commit command.
+
+45
+00:03:24.090 --> 00:03:27.770
+Now the thing that you
+should be careful is that
+
+46
+00:03:27.770 --> 00:03:31.350
+the Git repo should be
+inside the directory.
+
+47
+00:03:31.350 --> 00:03:36.880
+So don't right away do git init before
+you switch to the directory and
+
+48
+00:03:36.880 --> 00:03:39.260
+this has to do with deployment.
+
+49
+00:03:39.260 --> 00:03:43.890
+When you actually gonna be deploying
+the app to Heroku as we're
+
+50
+00:03:43.890 --> 00:03:49.100
+gonna see Heroku is looking for a certain
+structure over Rails application.
+
+51
+00:03:49.100 --> 00:03:54.670
+And it wants to see that
+Rails application directories
+
+52
+00:03:54.670 --> 00:03:59.910
+as we're going to see the app
+directory and others are what's
+
+53
+00:03:59.910 --> 00:04:04.700
+in the top level of your Git repository.
+
+54
+00:04:04.700 --> 00:04:05.650
+Okay?
+
+55
+00:04:05.650 --> 00:04:11.540
+So now you have your my_first_app
+directory which is your rails application,
+
+56
+00:04:11.540 --> 00:04:14.990
+and that has some auto-generated
+structure as well as some code.
+
+57
+00:04:16.350 --> 00:04:17.860
+So what are gonna do now?
+
+58
+00:04:17.860 --> 00:04:21.230
+Well, Rails also provides
+a built in web service.
+
+59
+00:04:21.230 --> 00:04:25.530
+You don't have to go looking for,
+how am I gonna run this application,
+
+60
+00:04:25.530 --> 00:04:28.040
+maybe I need to download a web server or
+something.
+
+61
+00:04:28.040 --> 00:04:32.250
+No, you don't have to Rails
+already comes with that built in.
+
+62
+00:04:34.120 --> 00:04:37.580
+So now it's time to run the application.
+
+63
+00:04:37.580 --> 00:04:43.130
+Now, what I suggest doing is opening
+up another terminal window, or a tab,
+
+64
+00:04:43.130 --> 00:04:47.660
+if your terminal supports
+a functionality of opening a new tab.
+
+65
+00:04:49.190 --> 00:04:53.700
+And the benefit of this is that
+a lot of times we're gonna see,
+
+66
+00:04:53.700 --> 00:04:57.450
+you don't have to restart the server
+when you make the change.
+
+67
+00:04:57.450 --> 00:05:02.140
+All you have to do is make that change
+to your application, save it and
+
+68
+00:05:02.140 --> 00:05:05.450
+boom you could just refresh
+your browser and be good to go.
+
+69
+00:05:05.450 --> 00:05:07.730
+You don't need to restart the server.
+
+70
+00:05:07.730 --> 00:05:13.870
+So, for this reason I suggest opening
+up another terminal window or tab,
+
+71
+00:05:13.870 --> 00:05:18.790
+and running the application from
+that tab is starting the server,
+
+72
+00:05:18.790 --> 00:05:20.720
+which is gonna run an application.
+
+73
+00:05:20.720 --> 00:05:26.350
+And this, so you could just incrementally
+make the changes to application without
+
+74
+00:05:26.350 --> 00:05:27.610
+always restarting the server.
+
+75
+00:05:29.000 --> 00:05:33.280
+So you're gonna go into
+my_first_app directory,
+
+76
+00:05:33.280 --> 00:05:37.180
+after you open up another application and
+another terminal window.
+
+77
+00:05:37.180 --> 00:05:38.400
+I'm sorry.
+
+78
+00:05:38.400 --> 00:05:42.420
+Then you're gonna run Rails server or
+Rails S for short.
+
+79
+00:05:44.240 --> 00:05:46.660
+And so that's what I'm doing over here.
+
+80
+00:05:47.730 --> 00:05:51.190
+I'm gonna go into my
+first app run Rails S or
+
+81
+00:05:51.190 --> 00:05:56.670
+rails server and
+that's gonna boot the web server.
+
+82
+00:05:56.670 --> 00:06:01.020
+Which is gonna run the application.
+
+83
+00:06:01.020 --> 00:06:03.830
+And as you're gonna see here it
+says the version of the rRils
+
+84
+00:06:03.830 --> 00:06:08.170
+application you're running and that
+it's being runned in development mode.
+
+85
+00:06:09.330 --> 00:06:11.510
+And where is it running?
+
+86
+00:06:11.510 --> 00:06:17.790
+It's running on your local host which is
+your local web server on your computer,
+
+87
+00:06:17.790 --> 00:06:19.790
+and the default port is 3000.
+
+88
+00:06:19.790 --> 00:06:24.760
+Now, this is a default,
+you could change your port, but
+
+89
+00:06:24.760 --> 00:06:27.200
+the default is gonna be 3000.
+
+90
+00:06:27.200 --> 00:06:29.930
+With development environment,
+
+91
+00:06:29.930 --> 00:06:34.550
+the idea is that there are more things you
+could do in your development environment.
+
+92
+00:06:34.550 --> 00:06:38.490
+That maybe it automatically
+refreshes things for
+
+93
+00:06:38.490 --> 00:06:43.750
+you and it's not optimized for production.
+
+94
+00:06:43.750 --> 00:06:47.260
+But when we're actually going
+to deploy application to
+
+95
+00:06:47.260 --> 00:06:49.950
+It's going to switch to using
+the production environment.
+
+96
+00:06:52.240 --> 00:06:53.960
+Let's see this application.
+
+97
+00:06:55.130 --> 00:07:00.360
+We're going to go into a browser and
+do localhost:3000 and boom,
+
+98
+00:07:00.360 --> 00:07:03.060
+here we have our application,
+Welcome aboard.
+
+99
+00:07:03.060 --> 00:07:08.790
+You're riding Ruby on Rails and
+Rails is very good at holding your hand.
+
+100
+00:07:08.790 --> 00:07:13.870
+Again, the idea is, you don't have
+to always be guessing, so now what?
+
+101
+00:07:13.870 --> 00:07:16.800
+Rails gives you some steps
+of what you might be doing.
+
+102
+00:07:16.800 --> 00:07:21.240
+Maybe use some generators as we're
+gonna see in a minute what that is.
+
+103
+00:07:21.240 --> 00:07:24.150
+Maybe other things,
+maybe configure your database.
+
+104
+00:07:24.150 --> 00:07:28.250
+It also tells you where
+the Rails guides are.
+
+105
+00:07:28.250 --> 00:07:32.330
+And the rails API, but you might need for
+
+106
+00:07:32.330 --> 00:07:36.670
+looking things up,
+the links to that API, specifically for
+
+107
+00:07:36.670 --> 00:07:40.820
+this version of rails you're running now,
+can be found at these links.
+
+108
+00:07:42.310 --> 00:07:44.580
+Let's go through
+a directory structure now.
+
+109
+00:07:44.580 --> 00:07:46.020
+The directory structure convention.
+
+110
+00:07:47.080 --> 00:07:50.780
+So this is my_first_app application.
+
+111
+00:07:50.780 --> 00:07:53.030
+It will have an app directory.
+
+112
+00:07:53.030 --> 00:07:55.730
+The app directory is where you're
+gonna be spending most of your time.
+
+113
+00:07:55.730 --> 00:08:01.040
+That's the directory that has
+the controllers, the views, the models,
+
+114
+00:08:01.040 --> 00:08:03.800
+as always, these things called helpers,
+which we're gonna talk about later.
+
+115
+00:08:06.240 --> 00:08:09.990
+Then there's also configuration,
+config, directory.
+
+116
+00:08:09.990 --> 00:08:11.610
+And that has configuration files.
+
+117
+00:08:11.610 --> 00:08:16.400
+For example,
+which database am I gonna be using.
+
+118
+00:08:16.400 --> 00:08:19.462
+I'm gonna be using Oracle, MySQL.
+
+119
+00:08:19.462 --> 00:08:25.150
+Maybe Postgres, and what are the username
+and password to those databases.
+
+120
+00:08:26.620 --> 00:08:29.668
+So that's what's specified
+in the config directory.
+
+121
+00:08:31.277 --> 00:08:37.963
+Now, there's also a DB directory which
+will have maybe some migration scripts
+
+122
+00:08:37.963 --> 00:08:42.970
+of changing from one database
+snapshot to a different one.
+
+123
+00:08:42.970 --> 00:08:46.010
+Maybe add in some columns or
+add in some tables.
+
+124
+00:08:46.010 --> 00:08:49.100
+Those scripts are gonna be
+stored in the db directory,
+
+125
+00:08:49.100 --> 00:08:53.620
+as well as if you're using SQLite
+database, which is the default.
+
+126
+00:08:53.620 --> 00:08:58.690
+So, if you don't touch anything
+you're using the SQLite database.
+
+127
+00:08:58.690 --> 00:09:05.750
+The actual file for the SQI database
+is gonna be stored in the db directory.
+
+128
+00:09:08.080 --> 00:09:12.340
+Then there's a public directory
+which has the static files.
+
+129
+00:09:12.340 --> 00:09:14.010
+As we're gonna see the static files,
+
+130
+00:09:14.010 --> 00:09:19.000
+like your regular HTML files if you have
+some of those, that will never change.
+
+131
+00:09:19.000 --> 00:09:21.170
+Those might as well go
+into a public directory.
+
+132
+00:09:23.440 --> 00:09:26.560
+And then lastly, the Gemfile and
+
+133
+00:09:26.560 --> 00:09:31.050
+the Gemfile.lock are the files
+that are used by Bundler.
+
+134
+00:09:31.050 --> 00:09:35.530
+Which we'll talk about later to
+specify the dependencies and
+
+135
+00:09:35.530 --> 00:09:40.230
+the interaction between those
+dependencies in your Rails application.
+
+136
+00:09:42.390 --> 00:09:48.610
+So we mentioned that that the static
+files go into a public directory.
+
+137
+00:09:48.610 --> 00:09:49.960
+The server, the web server,
+
+138
+00:09:49.960 --> 00:09:54.600
+looks into a public directory Before
+looking anywhere else, before even asking
+
+139
+00:09:54.600 --> 00:09:58.790
+Rails to try to make sense out of
+a request that comes from a browser.
+
+140
+00:09:59.820 --> 00:10:04.580
+And if a file can be found
+in the public directory,
+
+141
+00:10:04.580 --> 00:10:07.610
+it just right away displays that file.
+
+142
+00:10:07.610 --> 00:10:11.120
+So for example, if you want to
+add a completely static webpage,
+
+143
+00:10:11.120 --> 00:10:15.760
+an HTML page to our application, we could
+just add it under public directory.
+
+144
+00:10:17.140 --> 00:10:18.410
+So what would that look like?
+
+145
+00:10:19.900 --> 00:10:26.570
+We could just go under public directory,
+create a file called hello_static.html,
+
+146
+00:10:26.570 --> 00:10:31.650
+that might have this structure here,
+you know DOCTYPE html, maybe a head,
+
+147
+00:10:31.650 --> 00:10:35.910
+a body of some sort, and save a file.
+
+148
+00:10:35.910 --> 00:10:39.550
+And if you have your server
+running at this point,
+
+149
+00:10:39.550 --> 00:10:43.780
+there's no need to restart the server,
+you just refresh your browser.
+
+150
+00:10:43.780 --> 00:10:48.190
+And you would see this page that says,
+
+151
+00:10:48.190 --> 00:10:52.990
+well if you go to hello.html,
+you would see
+
+152
+00:10:52.990 --> 00:10:57.320
+that the html page got generated
+will never generate dynamic content.
+
+153
+00:10:58.680 --> 00:11:03.120
+Now this page is kind of sad, because it
+will never generate any kind of dynamic
+
+154
+00:11:03.120 --> 00:11:06.200
+content because the content
+will always be static.
+
+155
+00:11:07.220 --> 00:11:10.740
+And sometimes, a lot of times,
+most of the time I would say.
+
+156
+00:11:10.740 --> 00:11:13.010
+You actually want to
+generate dynamic content.
+
+157
+00:11:13.010 --> 00:11:16.660
+Content that you get out of a database,
+or out of other places.
+
+158
+00:11:16.660 --> 00:11:21.240
+So, I'm just covering this to
+say that it's possible to have
+
+159
+00:11:21.240 --> 00:11:23.520
+static pages in Rails.
+
+160
+00:11:23.520 --> 00:11:27.830
+But, really not the place,
+that's not the framework
+
+161
+00:11:27.830 --> 00:11:30.820
+that you want to be using if all of
+your pages are going to be static.
+
+162
+00:11:32.440 --> 00:11:38.260
+So, in summary,
+Rails new creates a new application.
+
+163
+00:11:38.260 --> 00:11:42.820
+Rails S, or Rails server,
+runs the application.
+
+164
+00:11:42.820 --> 00:11:48.070
+And you need to be inside the generated
+directory when you run the Rails s, so
+
+165
+00:11:48.070 --> 00:11:50.470
+this way,
+it knows which application to run.
+
+166
+00:11:52.040 --> 00:11:55.700
+And then, static pages live
+inside the public directory.
+
+167
+00:11:57.130 --> 00:11:58.430
+What's next?
+
+168
+00:11:58.430 --> 00:12:02.533
+Next we'll talk about actually
+generating some dynamic pages, and
+
+169
+00:12:02.533 --> 00:12:06.574
+that's done with controller, and
+the view, as we're gonna see.

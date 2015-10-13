@@ -1,0 +1,23 @@
+[MUSIC] Hi, welcome to module two. In module one we talked about
+Setting up the Environment to be able to program in Ruby and
+Ruby in Rails. Module two it's all Ruby, we'll talk
+about things like the Syntax of Ruby. We'll start from the beginning things like
+comments, how do you assign variables, how do you define a function. Next we're gonna move on to Collections. By collections I mean things like Arrays,
+or Lists and Hashes. Well what's maybe known in other
+languages as Dictionaries or Maps. Then we're gonna move onto the Object
+Oriented side of Ruby, the Classes, the Inheritance, Modules, Mixins. A lot of people think of Ruby
+as a scripting language, and that's not true at all. Ruby actually is a very much
+object oriented language. After that,
+we're gonna move onto Unit Testing. And Unit Testing is an important
+part of any language. Ruby is no exception. We'll talk about how unit
+testing is done in Ruby. [MUSIC] Even our point of this module is
+to get up to speed with Ruby so you could get to the Ruby on
+Rails part of the course. Don't think of it in those terms. Ruby by itself is a very
+fascinating language. I myself am coming from a Java background,
+I was amazed how by so many tasks that are so verbose in Java that you could
+do so easily, or much easier, in Ruby. [MUSIC] Also, I want to mention that,
+Module two has a lot of coding examples. I believe that the best way to learn
+how to code is to actually code. So please go ahead and copy
+the examples from the github repository that will be provided and
+follow along the examples. Experiment in the editor by typing, by modifying the examples and executing
+the examples and seeing what happens. That's the only way to learn how to code. With that, I will see you in Module two.

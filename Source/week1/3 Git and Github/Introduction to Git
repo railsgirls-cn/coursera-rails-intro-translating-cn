@@ -1,0 +1,414 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:07.883
+[MUSIC]
+
+2
+00:00:07.883 --> 00:00:11.280
+Hi, and welcome to this lecture
+on introduction to Git.
+
+3
+00:00:11.280 --> 00:00:16.110
+We'll talk about what Git is and
+some good Git resources and references.
+
+4
+00:00:17.450 --> 00:00:20.660
+So, Git is a version control system,
+
+5
+00:00:20.660 --> 00:00:24.570
+which basically means it's a system that
+keeps track of changes made to files.
+
+6
+00:00:24.570 --> 00:00:28.870
+Think of it as a way to snapshot
+your code changes as you make them.
+
+7
+00:00:28.870 --> 00:00:32.100
+So you work on the project,
+things work, great.
+
+8
+00:00:32.100 --> 00:00:35.680
+You commit this stuff to some system,
+and it keeps track of them,
+
+9
+00:00:35.680 --> 00:00:39.520
+so that, as you keep on working, if things
+all of a sudden stop working, you're
+
+10
+00:00:39.520 --> 00:00:43.800
+able to go back to that last version
+where you know things used to work.
+
+11
+00:00:44.820 --> 00:00:48.330
+It's also known as SCM which
+is a Source Code Management.
+
+12
+00:00:48.330 --> 00:00:53.930
+But basically VCS and
+SCM too are the same terms.
+
+13
+00:00:55.970 --> 00:01:01.000
+A lot of you might be used to a concept
+of a centralized version system,
+
+14
+00:01:01.000 --> 00:01:05.290
+something like a CVS which is a real old
+one or subversion, also known as SVN,
+
+15
+00:01:05.290 --> 00:01:10.040
+and, in those systems, the repository or
+
+16
+00:01:10.040 --> 00:01:14.240
+your code storage resides in
+some central server out there.
+
+17
+00:01:14.240 --> 00:01:18.460
+And client only has one
+version of a trunk or branch.
+
+18
+00:01:18.460 --> 00:01:21.260
+So as you're working on your laptop,
+
+19
+00:01:21.260 --> 00:01:26.580
+if you need a different version you would
+either ask the essential server or you
+
+20
+00:01:26.580 --> 00:01:31.650
+could commit a new version yourself to the
+central server and the central server will
+
+21
+00:01:31.650 --> 00:01:36.040
+know that that is the new version, either
+of it on the trunk or on the branch.
+
+22
+00:01:37.740 --> 00:01:41.470
+Well in Git, things are different.
+
+23
+00:01:41.470 --> 00:01:44.250
+Git is a distributed
+version control system.
+
+24
+00:01:44.250 --> 00:01:48.890
+Actually another example of
+a distributed VCS Mercurial.
+
+25
+00:01:48.890 --> 00:01:53.830
+And in those systems the full repository
+resides locally on your system.
+
+26
+00:01:53.830 --> 00:01:55.680
+It's not sitting on some server out there.
+
+27
+00:01:56.810 --> 00:02:02.390
+And the full history of all the commits
+that were ever made also resides locally
+
+28
+00:02:02.390 --> 00:02:07.910
+on your system, which means that
+the server is almost not involved.
+
+29
+00:02:07.910 --> 00:02:13.378
+You could commit often, and those
+commits go to your local storage system,
+
+30
+00:02:13.378 --> 00:02:16.550
+which is stored right
+there on your laptop.
+
+31
+00:02:18.720 --> 00:02:21.596
+Now, you're still gonna be pushing and
+
+32
+00:02:21.596 --> 00:02:26.840
+pulling between repositories to sync up,
+but really, with full history
+
+33
+00:02:26.840 --> 00:02:32.118
+of everything is going to be on your
+local system or the other system.
+
+34
+00:02:32.118 --> 00:02:37.500
+So, each repository is its own unit,
+its own independent unit
+
+35
+00:02:37.500 --> 00:02:42.610
+that contains all the code and
+all the history of all the commits,
+
+36
+00:02:42.610 --> 00:02:47.370
+which means the backups are kind of
+trivial and readily available because
+
+37
+00:02:47.370 --> 00:02:51.730
+it's not a question of backing up
+some central server out there.
+
+38
+00:02:51.730 --> 00:02:54.770
+Every single repository is it's own unit.
+
+39
+00:02:55.960 --> 00:02:59.600
+The repositories are distributed, which
+means that every repository is it's own
+
+40
+00:02:59.600 --> 00:03:03.800
+unit, which is readily
+available to be backed up.
+
+41
+00:03:06.560 --> 00:03:11.660
+Some good basics, you only have one
+.git directory at the top level.
+
+42
+00:03:13.190 --> 00:03:17.150
+If you are working or something if you
+worked with something like SVN you'll know
+
+43
+00:03:17.150 --> 00:03:21.730
+that SVN for
+example sprinkles with .SVN directory
+
+44
+00:03:21.730 --> 00:03:25.070
+all over the place pretty much in
+every directory that you work with.
+
+45
+00:03:25.070 --> 00:03:26.140
+Git doesn't do that,
+
+46
+00:03:26.140 --> 00:03:30.680
+git just has one .git directory, which
+is at the top level of your repository.
+
+47
+00:03:32.530 --> 00:03:36.330
+The general workflow is you got
+to have to have a repositories,
+
+48
+00:03:36.330 --> 00:03:41.040
+you either create one,
+initialize a new one, or you,
+
+49
+00:03:41.040 --> 00:03:46.410
+if it's an existing one, you could clone
+an existing one from remote source.
+
+50
+00:03:46.410 --> 00:03:52.160
+And at that point if you clone one,
+you have two identical repositories,
+
+51
+00:03:52.160 --> 00:03:57.040
+one in the server, and
+one locally on your laptop,
+
+52
+00:03:57.040 --> 00:04:01.000
+which contains a full
+history as we just discussed.
+
+53
+00:04:01.000 --> 00:04:04.300
+At that point you add
+changes to a staging area.
+
+54
+00:04:05.510 --> 00:04:10.130
+And then from that staging area you commit
+the changes to your local repository,
+
+55
+00:04:11.450 --> 00:04:15.300
+which means again that all the interaction
+happens locally in your system.
+
+56
+00:04:15.300 --> 00:04:19.420
+Now at some point you might also
+want to do step number four,
+
+57
+00:04:19.420 --> 00:04:24.340
+which is pushing the changes out from your
+local repository to remove the repository,
+
+58
+00:04:24.340 --> 00:04:29.080
+but really the snapshotting is happening
+on your system as you're committing to
+
+59
+00:04:29.080 --> 00:04:36.330
+your local repository way before you
+push your changes to a mode repository.
+
+60
+00:04:36.330 --> 00:04:41.502
+Also, some terminology when it comes to
+git, when you commit, you commit locally
+
+61
+00:04:41.502 --> 00:04:47.760
+and when you push, you push remotely,
+as opposed to the SVN, you are committing.
+
+62
+00:04:47.760 --> 00:04:51.403
+When you're committing, you're committing
+to a central server out there, and
+
+63
+00:04:51.403 --> 00:04:52.420
+there is no push step.
+
+64
+00:04:56.010 --> 00:05:01.370
+Git's official website is git-scm.com,
+where you could download git.
+
+65
+00:05:01.370 --> 00:05:07.489
+But of course you already installed
+it as part of a installation video,
+
+66
+00:05:07.489 --> 00:05:12.440
+and the interesting part about this
+is that there is a link to learn Git
+
+67
+00:05:12.440 --> 00:05:16.900
+in your browser for free with Try Git,
+which I highly encourage.
+
+68
+00:05:16.900 --> 00:05:19.882
+It's a good way to get your
+hands dirty with Git and
+
+69
+00:05:19.882 --> 00:05:23.800
+do that right in the browser
+without having to install anything.
+
+70
+00:05:26.630 --> 00:05:31.619
+There's a free git book out
+there on the same website,
+
+71
+00:05:31.619 --> 00:05:37.270
+git-scm.com/book, which is available for
+free online.
+
+72
+00:05:37.270 --> 00:05:42.180
+You could also buy it as a hard
+copy from Amazon, if you want.
+
+73
+00:05:43.680 --> 00:05:48.600
+Another good Git reference out
+there is called gitref.org.
+
+74
+00:05:48.600 --> 00:05:53.500
+What I find interesting about
+this particular reference is that
+
+75
+00:05:53.500 --> 00:05:56.690
+Git really has many different commands and
+many different use cases.
+
+76
+00:05:58.120 --> 00:06:02.743
+This particular reference tries to pick
+out the commands that are being used on
+
+77
+00:06:02.743 --> 00:06:05.825
+an everyday basis and
+explain just those commands,
+
+78
+00:06:05.825 --> 00:06:08.220
+which makes it easier to break into Git.
+
+79
+00:06:11.550 --> 00:06:18.520
+In summary, Git lets you snapshot
+changes to your code really nicely.
+
+80
+00:06:18.520 --> 00:06:22.830
+And it promotes committing changes often,
+because all the changes
+
+81
+00:06:22.830 --> 00:06:25.890
+I've been snapshotting right
+there on your system locally.
+
+82
+00:06:27.710 --> 00:06:29.100
+What's next?
+
+83
+00:06:29.100 --> 00:06:33.033
+Next we'll actually go through
+a working example of a git,
+
+84
+00:06:33.033 --> 00:06:36.102
+of how to manage git's local repository,
+and
+
+85
+00:06:36.102 --> 00:06:40.920
+you guys will get used to seeing some
+of git's commands and what they do.

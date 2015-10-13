@@ -1,0 +1,877 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:08.678
+[MUSIC]
+
+2
+00:00:08.678 --> 00:00:10.320
+Hi, and welcome to lecture 10.
+
+3
+00:00:10.320 --> 00:00:15.030
+In lecture 10, we'll talk about classes
+and how classes are used in Ruby.
+
+4
+00:00:15.030 --> 00:00:17.170
+We'll talk about objects and
+how they are created,
+
+5
+00:00:17.170 --> 00:00:22.230
+and we'll talk about how to
+access data within those objects.
+
+6
+00:00:22.230 --> 00:00:26.160
+So, just to do a brief review
+of object-oriented programming.
+
+7
+00:00:26.160 --> 00:00:30.280
+In OO, we identify with things that
+the program is gonna be dealing with.
+
+8
+00:00:30.280 --> 00:00:32.490
+So, maybe a car, a book, and
+
+9
+00:00:32.490 --> 00:00:37.440
+those things become classes,
+sort of the blueprints of the objects.
+
+10
+00:00:38.500 --> 00:00:42.400
+And you create objects
+out of those classes, and
+
+11
+00:00:42.400 --> 00:00:45.130
+those of instances of those classes.
+
+12
+00:00:46.210 --> 00:00:50.590
+And each instance usually
+contains instance variables,
+
+13
+00:00:50.590 --> 00:00:52.840
+which is the state of an object.
+
+14
+00:00:52.840 --> 00:00:57.560
+So, for example, if you're talking
+about a car, a car might be driving.
+
+15
+00:00:57.560 --> 00:01:02.370
+So driving would be a behavior which is
+a method that you call on the object.
+
+16
+00:01:02.370 --> 00:01:04.950
+And the state might be
+that the car is red, so
+
+17
+00:01:04.950 --> 00:01:07.570
+that's like a property of an object.
+
+18
+00:01:09.620 --> 00:01:13.058
+The instance variables in
+Ruby begin with an @ symbol.
+
+19
+00:01:13.058 --> 00:01:18.209
+So for example, @name would be your
+name instance variable for an object.
+
+20
+00:01:19.937 --> 00:01:26.540
+The interesting thing is that, in Ruby,
+the instance variables are not declared.
+
+21
+00:01:26.540 --> 00:01:30.140
+They, sort of, just spring into
+existence as we're gonna see.
+
+22
+00:01:30.140 --> 00:01:32.597
+And once they spring into existence,
+
+23
+00:01:32.597 --> 00:01:36.138
+they're available to all
+instance methods of class.
+
+24
+00:01:36.138 --> 00:01:42.767
+They way objects are created in Ruby
+is by calling a new method on a class,
+
+25
+00:01:42.767 --> 00:01:47.241
+and that actually calls
+the initialize method.
+
+26
+00:01:47.241 --> 00:01:50.928
+The initialize method in Ruby is a special
+method that acts as a constructor,
+
+27
+00:01:50.928 --> 00:01:52.470
+as we're gonna see in a minute.
+
+28
+00:01:54.188 --> 00:01:55.490
+And all your state,
+
+29
+00:01:55.490 --> 00:01:59.419
+the state of an object should be
+initialized inside the initialize method.
+
+30
+00:02:00.750 --> 00:02:05.786
+So let's take a quick example which
+summarizes all these concepts.
+
+31
+00:02:05.786 --> 00:02:07.109
+We have a Person class, yes?
+
+32
+00:02:07.109 --> 00:02:09.360
+So we have a class and an end.
+
+33
+00:02:09.360 --> 00:02:11.310
+That's how you define the class.
+
+34
+00:02:11.310 --> 00:02:14.300
+And then inside the class
+you have methods,
+
+35
+00:02:14.300 --> 00:02:18.930
+which initialize a special method, which
+I'm gonna be calling the constructor.
+
+36
+00:02:18.930 --> 00:02:20.270
+And then you can have other methods,
+
+37
+00:02:20.270 --> 00:02:25.220
+maybe get_info or drive or
+other instance methods.
+
+38
+00:02:26.480 --> 00:02:28.850
+So, in this case, we're passing a name and
+
+39
+00:02:28.850 --> 00:02:33.800
+age variables to the constructor,
+which assigns them to, in this case,
+
+40
+00:02:33.800 --> 00:02:36.140
+a name instance variable and
+an age instance variable.
+
+41
+00:02:37.390 --> 00:02:42.010
+So what's happening is that
+the Person class, by calling new and
+
+42
+00:02:42.010 --> 00:02:45.860
+passing those parameters,
+creates an object of a Person class,
+
+43
+00:02:45.860 --> 00:02:48.700
+which gets assigned to person1 variable,
+and
+
+44
+00:02:48.700 --> 00:02:53.600
+at this point we could see
+that the person1 variable,
+
+45
+00:02:53.600 --> 00:02:57.810
+which represents an object, has two
+instance variables, @name and@ age.
+
+46
+00:02:59.970 --> 00:03:05.080
+Then we call the get_info instance
+method on this person1 variable.
+
+47
+00:03:06.300 --> 00:03:11.014
+And at this point, we have three
+instance variables, @name, @age, and
+
+48
+00:03:11.014 --> 00:03:14.701
+@additional_info, because
+the get_info also happens
+
+49
+00:03:14.701 --> 00:03:18.690
+to define an additional
+info instance variable.
+
+50
+00:03:18.690 --> 00:03:23.520
+Now to access the data,
+we can't just access it by referring to
+
+51
+00:03:23.520 --> 00:03:25.800
+instance variables,
+because they are private.
+
+52
+00:03:25.800 --> 00:03:28.520
+We can't get access to instance variables.
+
+53
+00:03:28.520 --> 00:03:34.510
+What you have to do is, you have to define
+methods, and methods have public access,
+
+54
+00:03:34.510 --> 00:03:40.690
+by default, so any method that's defined,
+an instance method is accessible and
+
+55
+00:03:40.690 --> 00:03:44.410
+we are going to see later on
+how we can limit that access.
+
+56
+00:03:44.410 --> 00:03:48.100
+But, if you don't do anything,
+methods have public access.
+
+57
+00:03:49.160 --> 00:03:52.930
+So to be able to get the data
+out of instance variables,
+
+58
+00:03:52.930 --> 00:03:54.940
+you need to create the "getter" and
+the "setter" methods.
+
+59
+00:03:56.720 --> 00:03:59.160
+So, quick example of that.
+
+60
+00:03:59.160 --> 00:04:01.990
+You have a same Person class
+with a name and an age.
+
+61
+00:04:03.410 --> 00:04:07.000
+You have a name getter and a name setter.
+
+62
+00:04:07.000 --> 00:04:12.140
+It's interesting that in Ruby
+there's no get name method and a set
+
+63
+00:04:12.140 --> 00:04:16.980
+name method, the getters and the setters
+are just defined with the same name.
+
+64
+00:04:18.050 --> 00:04:25.240
+Let's say in this case, happens to be
+name, to get it, and a name= to set it.
+
+65
+00:04:25.240 --> 00:04:28.840
+Passing in the new value for
+what you want the name to be.
+
+66
+00:04:28.840 --> 00:04:34.810
+In this case we have Joe and
+14, name is a getter.
+
+67
+00:04:34.810 --> 00:04:38.820
+It's not directly accessing
+the instance variable.
+
+68
+00:04:38.820 --> 00:04:44.729
+We access it through
+the instance method called name.
+
+69
+00:04:44.729 --> 00:04:51.099
+A setter equals, and notice how you're
+allowed to have space in-between name and
+
+70
+00:04:51.099 --> 00:04:56.570
+equals even though the method name
+is actually name=, which is fine.
+
+71
+00:04:58.590 --> 00:05:05.480
+Now, if you say person1.age, it's gonna
+give you an undefined method age for
+
+72
+00:05:05.480 --> 00:05:11.100
+person because you have not defined
+an age getter in this example.
+
+73
+00:05:12.160 --> 00:05:13.350
+Many times the getter and
+
+74
+00:05:13.350 --> 00:05:19.080
+the setter logic is really simple, you get
+existing value and you set a new value.
+
+75
+00:05:19.080 --> 00:05:23.573
+So it'd be nice to have an easier
+syntax to be able to set and
+
+76
+00:05:23.573 --> 00:05:26.435
+get your instance variable values.
+
+77
+00:05:26.435 --> 00:05:26.958
+And what do you know?
+
+78
+00:05:26.958 --> 00:05:28.245
+There is.
+
+79
+00:05:28.245 --> 00:05:34.637
+So there's a syntax of attr_ and you can
+specify if you wanna atter_accessor,
+
+80
+00:05:34.637 --> 00:05:40.752
+which basically creates a getter and
+a setter method for you automatically.
+
+81
+00:05:40.752 --> 00:05:45.142
+Do you wanna attr_reader,
+which only creates a getter, or
+
+82
+00:05:45.142 --> 00:05:48.507
+attr_writer, which creates only a setter?
+
+83
+00:05:48.507 --> 00:05:52.440
+So a quick example of that they
+have the same person class but
+
+84
+00:05:52.440 --> 00:05:56.452
+instead of having all those
+methods like name, for getter or
+
+85
+00:05:56.452 --> 00:06:01.030
+name equals for setter, or age for
+getter and age equals for setter.
+
+86
+00:06:02.060 --> 00:06:05.030
+What you have is you just
+have an attr_accessor and
+
+87
+00:06:05.030 --> 00:06:10.390
+then you provide comma separated lists
+of which attribute you want access to.
+
+88
+00:06:10.390 --> 00:06:14.427
+So in this case accessor means that
+you want both setter and a getter, so
+
+89
+00:06:14.427 --> 00:06:20.410
+that's :name and :age, and those methods
+are automatically created for you.
+
+90
+00:06:20.410 --> 00:06:24.260
+So in this case we're saying Person.new,
+which is a constructor.
+
+91
+00:06:25.960 --> 00:06:30.850
+The constructor exists because
+it's a blank constructor, so
+
+92
+00:06:30.850 --> 00:06:33.960
+we just say person.new which
+creates a new variable for you.
+
+93
+00:06:34.980 --> 00:06:42.060
+And then we could do person.name,
+
+94
+00:06:42.060 --> 00:06:48.196
+which will give you nil because
+
+95
+00:06:48.196 --> 00:06:56.460
+you haven't assigned the name to it yet.
+
+96
+00:06:56.460 --> 00:07:01.528
+Now we set it to a string, which is
+fine because Ruby's a dynamic language.
+
+97
+00:07:01.528 --> 00:07:06.990
+It starts integer, then it goes to
+a string, and that's totally fine.
+
+98
+00:07:06.990 --> 00:07:10.910
+Now the two issues though with
+previous example is that, number one,
+
+99
+00:07:12.010 --> 00:07:16.200
+right when you create the person,
+he's in an uninitialized state
+
+100
+00:07:17.340 --> 00:07:22.640
+because we haven't really assigned any
+properties, any values to the person.
+
+101
+00:07:22.640 --> 00:07:26.929
+And at that point if you
+use the person1 variable,
+
+102
+00:07:26.929 --> 00:07:33.128
+you're not gonna get anything out of
+it because it's completely blank.
+
+103
+00:07:33.128 --> 00:07:38.647
+The second issue is that,
+we probably wanna control the age,
+
+104
+00:07:38.647 --> 00:07:42.055
+cuz right now we have age as anything.
+
+105
+00:07:42.055 --> 00:07:44.455
+You could assigned 200 and
+that's gonna be fine.
+
+106
+00:07:46.076 --> 00:07:50.053
+And a lot of times you're not gonna
+have an issue of just setting or
+
+107
+00:07:50.053 --> 00:07:54.898
+getting a value, but sometimes you do
+wanna have more control, in which case,
+
+108
+00:07:54.898 --> 00:07:59.440
+the attr_accessor might not
+be what you're looking for.
+
+109
+00:07:59.440 --> 00:08:03.550
+So the way we're gonna solve the issue is,
+we're gonna number one,
+
+110
+00:08:03.550 --> 00:08:09.250
+use a constructor that actually
+passes the values in, and this so
+
+111
+00:08:09.250 --> 00:08:13.030
+you don't just have a blank constructor
+that just creates a completely blank
+
+112
+00:08:14.710 --> 00:08:19.730
+object that doesn't have any attributes,
+instead we wanna have a constructor
+
+113
+00:08:19.730 --> 00:08:25.080
+that passes the values, and we also want
+to use a more intelligent age setter.
+
+114
+00:08:25.080 --> 00:08:26.490
+But first let's talk about self.
+
+115
+00:08:27.650 --> 00:08:31.310
+So self is a special keyword in Ruby,
+
+116
+00:08:32.450 --> 00:08:36.840
+which when used inside an instance
+method refers to the object, itself.
+
+117
+00:08:36.840 --> 00:08:38.390
+And we see, in a minute,
+why that's useful.
+
+118
+00:08:39.750 --> 00:08:44.690
+Usually self for calling other
+methods of the same instance is extra.
+
+119
+00:08:44.690 --> 00:08:48.680
+You're, obviously, if you're calling
+a method, and you're inside an instance,
+
+120
+00:08:48.680 --> 00:08:53.770
+well, you're obviously referring to
+the same methods of the same instance,
+
+121
+00:08:53.770 --> 00:08:57.357
+but sometimes calling self is required,
+and
+
+122
+00:08:57.357 --> 00:09:02.060
+we're gonna see when that is when we
+see an example on the next slide.
+
+123
+00:09:03.530 --> 00:09:08.021
+Outside of instance method,
+self refers to the class itself, so
+
+124
+00:09:08.021 --> 00:09:12.606
+if you see it outside of a definition
+it refers to the class itself.
+
+125
+00:09:12.606 --> 00:09:18.685
+And that's gonna be a topic when we
+discuss the class methods later on.
+
+126
+00:09:18.685 --> 00:09:19.721
+So let's see an example.
+
+127
+00:09:19.721 --> 00:09:24.349
+We're solving the issue of
+having an uninitialized person.
+
+128
+00:09:24.349 --> 00:09:26.620
+We have attr_reader :age.
+
+129
+00:09:26.620 --> 00:09:31.138
+When we get the age out, we don't really
+care, there's really no way to mess it up,
+
+130
+00:09:31.138 --> 00:09:32.600
+I mean you're just getting the value back.
+
+131
+00:09:32.600 --> 00:09:37.690
+So for the getter we're gonna
+define attr_reader to get the :age,
+
+132
+00:09:37.690 --> 00:09:42.694
+but for setter we're gonna have
+a more controlled age definition,
+
+133
+00:09:42.694 --> 00:09:48.662
+which is gonna be age gets assigned a
+new_age, so assign new_age unless the age
+
+134
+00:09:48.662 --> 00:09:54.580
+is a high number, in which case you
+don't wanna assign the age, okay?
+
+135
+00:09:54.580 --> 00:09:57.690
+And now a constructor, what we're gonna
+do is, we're gonna pass the name and
+
+136
+00:09:57.690 --> 00:10:02.230
+the age variable as two
+parameters to the constructor.
+
+137
+00:10:02.230 --> 00:10:05.030
+So the name is just gonna
+be whatever we pass it.
+
+138
+00:10:05.030 --> 00:10:09.090
+For the age,
+we're actually gonna call the age =
+
+139
+00:10:09.090 --> 00:10:13.900
+the age assignment method,
+where the value of it gets passed in.
+
+140
+00:10:13.900 --> 00:10:18.710
+And in this case, what's gonna happen is,
+it's only gonna assign to an age
+
+141
+00:10:18.710 --> 00:10:22.510
+instance variable if it
+is of a certain value.
+
+142
+00:10:24.460 --> 00:10:30.830
+And puts age actually calls the age
+reader, which is the getter method.
+
+143
+00:10:30.830 --> 00:10:32.531
+Now, why do we need, and
+
+144
+00:10:32.531 --> 00:10:36.986
+it's absolutely a requirement to
+have a self in this case, why?
+
+145
+00:10:36.986 --> 00:10:41.694
+Because, let's imagine for a second
+that you wouldn't have self dot here.
+
+146
+00:10:41.694 --> 00:10:44.690
+You would just have age = ageVar.
+
+147
+00:10:44.690 --> 00:10:48.070
+Well, what'd happen is,
+the Ruby interpreter would say oh,
+
+148
+00:10:48.070 --> 00:10:51.640
+you're trying to create
+a new_age local variable?
+
+149
+00:10:51.640 --> 00:10:52.590
+That's great.
+
+150
+00:10:52.590 --> 00:10:57.900
+The ageVar would get assigned
+to a new local variable.
+
+151
+00:10:57.900 --> 00:11:01.630
+And then by the time you got to
+the end of the initialized method
+
+152
+00:11:01.630 --> 00:11:04.350
+that variable will go out of scope and
+
+153
+00:11:04.350 --> 00:11:09.610
+you will never actually assign
+anything to the age instance variable.
+
+154
+00:11:09.610 --> 00:11:14.571
+So to be able to really
+call a method in this case,
+
+155
+00:11:14.571 --> 00:11:19.532
+we're saying self.age,
+which says @age = is
+
+156
+00:11:19.532 --> 00:11:24.860
+not just a local variable, it's a method.
+
+157
+00:11:24.860 --> 00:11:29.660
+So @age = the method,
+which is defined in this class.
+
+158
+00:11:29.660 --> 00:11:35.360
+And hey, Ruby interpreter, don't
+interpret the age as a local variable,
+
+159
+00:11:35.360 --> 00:11:38.990
+instead interpret it
+as a call to a method,
+
+160
+00:11:38.990 --> 00:11:41.550
+to an instance method that's
+defined in this class.
+
+161
+00:11:41.550 --> 00:11:46.430
+That's why when we assign
+the variable you absolutely
+
+162
+00:11:46.430 --> 00:11:51.650
+have to call self.age otherwise the age
+is gonnabe mistaken as a local variable.
+
+163
+00:11:52.750 --> 00:11:55.731
+So to see a full example here,
+we have a Person.new,
+
+164
+00:11:55.731 --> 00:12:00.100
+we pass in the variables, and you could
+print out and see what's happening.
+
+165
+00:12:00.100 --> 00:12:02.950
+Again, age in this case is
+calling the age getter.
+
+166
+00:12:04.100 --> 00:12:08.611
+And then let's say we try to assign
+some kind of ridiculous value to an age,
+
+167
+00:12:08.611 --> 00:12:09.910
+trying to change it.
+
+168
+00:12:09.910 --> 00:12:14.093
+It's not gonna change because
+the setter is gonna say,
+
+169
+00:12:14.093 --> 00:12:18.988
+I'm not executing this line
+because the new_age that's passed
+
+170
+00:12:18.988 --> 00:12:23.810
+in is greater than 120, and
+you will be left with the old age.
+
+171
+00:12:25.620 --> 00:12:29.922
+In summary, Objects are created with new,
+from classes so
+
+172
+00:12:29.922 --> 00:12:33.150
+calling Person.new,
+creates a new person object.
+
+173
+00:12:34.320 --> 00:12:37.230
+We can use the short form for setting and
+
+174
+00:12:37.230 --> 00:12:40.950
+getting data when it's really
+simple kind of data like name.
+
+175
+00:12:40.950 --> 00:12:46.290
+So you would have a attr_accessor for
+name, and
+
+176
+00:12:46.290 --> 00:12:53.180
+assign a name to a person class
+when you actually use it.
+
+177
+00:12:54.480 --> 00:12:58.030
+And don't forget to use
+the self when it's required.
+
+178
+00:12:58.030 --> 00:13:03.380
+So basically any time you assign
+a variable, which basically means,
+
+179
+00:13:03.380 --> 00:13:07.880
+you are calling a setter method,
+you wanna use a self,
+
+180
+00:13:07.880 --> 00:13:11.630
+otherwise, you don't wanna use a self or
+you don't have to use a self,
+
+181
+00:13:11.630 --> 00:13:16.310
+you could just use the actual method,
+itself without saying self..
+
+182
+00:13:18.190 --> 00:13:19.259
+Right, so what's next?
+
+183
+00:13:19.259 --> 00:13:22.553
+Next we'll talk about Class
+inheritance and class methods.

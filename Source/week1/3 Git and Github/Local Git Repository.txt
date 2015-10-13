@@ -1,0 +1,112 @@
+[MUSIC] Hi and welcome. In this lecture we'll talk about how to
+interact with your local Git repository. Before you are able to interact
+with your Git repository, you have to tell Git who you are. So that when you commit your snapshots,
+Git knows how to accurately track that. So, specifically with the two
+properties you have to tell Git about, is user.name, and user.email. For you do that as follows,
+git config --global, if you want this to apply to
+all of your Git repositories, and specify a property name,
+space, the actual value. To check that that actually worked,
+you could do git config and then the action name. For example, user.name, and hopefully you'll get back
+what the value that you put in. Also you can get help on any git command
+by doing git help and the command name. Okay great, so now we have, we interact
+with repository, where is the repository? Well, you could create a new repository
+by going to a directory whose files you wanted to track and then do git init and
+that will create an repository. Then you could do git add .,
+which will add all the current files in the current directory with
+its subdirectories to a staging area. Now, you could have this
+.gitgnore file where you could specify the files
+that you don't want added. For example, some temporary files or some other files that maybe you don't
+want to keep track in the repository. Then once the files are in the staging
+area after this git add ., you could do git commit -m for
+the initial commit to repository. And yay, your files are now
+in the local repository. The other action is to clone a repository,
+for example from GitHub, and you can do it by saying, git clone and
+then the URL of your GitHub repository. And that's gonna pull the GitHub
+repository onto your local system. The next thing you want to do is, you always want to be checking
+the current status of your repository. So in this case you'll do git status, and it's gonna tell you that
+there's nothing to commit. Working directory is clean
+because you have just committed. So there are no differences
+between the working directory, which is the directory in which you are
+working, and your local git repository. Now you are also gonna see
+you're on branch master. And branches is a complicated topic and
+I wanna try to avoid that. Even though once you start getting
+comfortable with git, definitely research, how branches work, and
+git branch as a local, not just remote. And it's a very cool topic, but it's not
+needed for the Ruby on Rails developing we're gonna be doing in this course,
+and I'm gonna skip it for now. [BLANK AUDIO]
+>> So we saw before that you could add files,
+so it's a git add command. And actually git add,
+it does one of two things. It either,
+well actually both of those things. It either adds untracked files,
+which means files that have never been tracked from a repository
+area to a staging area. Or it adds a modified but
+already tracked file to the staging area. So for example, let's say we're
+working on a file called test.rb and we are ready to stage it. We're gonna do git add,
+that's gonna add it to the staging area. So this section up here, it says, changes
+to be committed, is a staging area. It's basically telling you,
+green means that it's ready to go, it's in the staging area. If you do a git commit now, this file
+test.rb will go into the git repository. There are also files which
+are completely untracked. So, for example, we're working on a file called another.txt
+that has never been tracked by repository. The git repository picks up on the fact
+that, well, the file was in this directory, so maybe you wanna be tracking
+it, but right now it's untracked. Now here is a very interesting thing. There's a third section,
+which it changes not staged for commit. Which basically means the test.rb is
+modified, but if you do git commit now, the test.rb file will not
+go into your repository. But that's preposterous because this
+section, which is the staging area, says that it will go into repository. So it doesn't make any sense. So this is something that
+confuses a lot of people, but mods made to a file after give add need
+to be re-added by doing git add again. So if you were working on the file
+test.rb and you did git add, which put it into the staging area,
+which is this section right here. And you continued working on
+that file before you committed, before you did ,git commit on this
+test.rb file, now you have a change set, you have a snapshot of this file
+inside of your staging area. And you also have a snapshot of this
+file in the section that's not staged. So basically, at this point,
+you do git add on this test.rb file. The whole file would go
+into the staging area. There will be nothing in this section. So you'll have a section for
+untracked files and another.txt and you'll have a section that says,
+which is the staging area section, which says test.rb is
+ready to be committed. Then you do git.commit to commit this
+test.rb file to your local repository. Git diff is another command. And again based on where you are,
+based on what differences you want to see, it's gonna show you. So git diff, just doing that, the simple
+git diff will show you the difference between the staging area and
+the working directors. So what's been staged already and
+what's currently in the working directory, which is where you're working. Then you could do a git
+diff with a --staged, which shows the changes in the HEAD, which is
+the latest commit on the current branch. That's already in the repository and
+the staging directory. And then git diff HEAD will show
+you the deltas between the HEAD, which is the latest commit to repository,
+and the working directory. So again, just keep in mind that
+there's a working directory, where you're working right now. There is a repository and then there's also this in-between
+directory called the staging area. So git commit is a command that
+commits your changes to repo. If you just do it git
+commit without any flags, it will prompt you for a commit message
+in an editor which is inconvenient. So it's better just to pass it the -m flag
+and then you could specify the message. So you do, git commit -m,
+and the message after that. Now, if you wanna skip the staging area,
+what you would do is, you would say git commit and
+then -a, which is like all, or -am,
+which is the a and then message. Either -a and -m separate, or
+-am together, it doesn't matter. And in this case, we have if test.rb file, which has not yet been staged, so
+changes not staged, it's modified. So the repository knows it's modified and
+it's keeping track on it. But you haven't staged it yet, which
+is fine because you're doing git commit -am, you're able to skip the staging
+area and go straight to repository. Now, this only works if you're
+already tracking this test.rb file. So you have to at least once do a git add. And now that the file is in
+the repository, or in the staging area and then goes to repository,
+after it's been tracked. The repository,
+you're able to just do git commit -am, which lets you skip the staging area. But, at least the first time, you have to
+add the file to be tracked by repository. Otherwise, doing git commit -am is not
+gonna put that file into repository. You could also go back in time. So for example, before you committed
+something, if you wanna do git checkout, that will recheck out, which basically
+pull all the changes from your local repository and overwrite your local
+changes in the working directory. You could also do git checkout -- <file>,
+which will just overwrite that one specific file </file>, with the
+latest changes in your local repository. Now, if you already committed
+to your local repository, you could always do git revert HEAD and
+that's gonna revert the most recent commit and put you back right before
+you commit the last time. In summary, you have to add a file for tracking at least once before
+it can make it into repo. This is something that
+confuses a lot of people. And you can easily go back in time to
+a snapshot, that it's before time. That's before you committed the last time. What's next? Next we'll talk about GitHub and
+remote repositories in Git and how to interact with those.

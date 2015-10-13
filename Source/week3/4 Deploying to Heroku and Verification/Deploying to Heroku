@@ -1,0 +1,409 @@
+WEBVTT
+
+1
+00:00:00.150 --> 00:00:07.871
+[MUSIC]
+
+2
+00:00:07.871 --> 00:00:09.751
+Hi and welcome to lecture 11.
+
+3
+00:00:09.751 --> 00:00:12.090
+Let's deploy an application to Heroku.
+
+4
+00:00:14.120 --> 00:00:15.670
+So first of all what is Heroku?
+
+5
+00:00:15.670 --> 00:00:17.311
+Heroku is a PaaS.
+
+6
+00:00:17.311 --> 00:00:20.611
+PaaS which is a platform as a service.
+
+7
+00:00:20.611 --> 00:00:23.410
+It's what some people would call a cloud.
+
+8
+00:00:23.410 --> 00:00:28.870
+It's something that allows you to
+deploy applications on their platform.
+
+9
+00:00:30.200 --> 00:00:33.870
+And like any good business where
+terms are always changing but
+
+10
+00:00:33.870 --> 00:00:37.410
+they have always had a free account.
+
+11
+00:00:39.330 --> 00:00:44.600
+So you could sign up for
+a free account by going to heroku.com.
+
+12
+00:00:44.600 --> 00:00:48.902
+The next thing we're going to need before
+we could deport the heroku is something
+
+13
+00:00:48.902 --> 00:00:50.302
+called Heroku Toolbelt.
+
+14
+00:00:50.302 --> 00:00:55.279
+So you'd go to toolbelt.heroku.com and
+depending on your operating system,
+
+15
+00:00:55.279 --> 00:01:00.200
+you'd grab the correct toolbelt,
+just basically download it and install it.
+
+16
+00:01:02.120 --> 00:01:05.490
+And what heroku toolbelt
+is is it's a CLI tool.
+
+17
+00:01:05.490 --> 00:01:10.249
+It's a command line
+implication tool that allows
+
+18
+00:01:10.249 --> 00:01:13.070
+you to manage your Heroku applications.
+
+19
+00:01:14.210 --> 00:01:18.250
+The next thing we need is,
+we need to manage our gems.
+
+20
+00:01:18.250 --> 00:01:22.830
+Heroku uses Postgres as it's database.
+
+21
+00:01:22.830 --> 00:01:26.380
+And it recommends this rails_12factor gem,
+
+22
+00:01:26.380 --> 00:01:29.960
+which you could check out
+on GitHub what that does.
+
+23
+00:01:31.190 --> 00:01:34.650
+And we've been relying on an sqlite gem,
+for
+
+24
+00:01:34.650 --> 00:01:38.380
+our database, and
+Heroku doesn't like that.
+
+25
+00:01:38.380 --> 00:01:43.040
+So what we're gonna do is we're gonna put
+the sqlite gem into development group and
+
+26
+00:01:43.040 --> 00:01:44.760
+Heroku gems in the production.
+
+27
+00:01:46.310 --> 00:01:52.650
+And this way we're telling Bundler
+that in the development environment,
+
+28
+00:01:52.650 --> 00:01:56.680
+which is where we develop it in our
+local machine, use sqlite gem, but
+
+29
+00:01:56.680 --> 00:02:01.490
+when you deploy it to Heroku,
+which is your production environment,
+
+30
+00:02:01.490 --> 00:02:05.050
+only use the non-development
+environment gems for
+
+31
+00:02:05.050 --> 00:02:08.000
+ones that I specify specifically for
+production environment.
+
+32
+00:02:10.282 --> 00:02:12.220
+So to do that,
+
+33
+00:02:12.220 --> 00:02:17.795
+we're going to specify that sqlie3
+is only in development environments.
+
+34
+00:02:17.795 --> 00:02:20.940
+Heroku doesn't complain about it.
+
+35
+00:02:20.940 --> 00:02:23.950
+We're going to specify it in
+the production environment.
+
+36
+00:02:23.950 --> 00:02:30.120
+Go ahead and load up the pg gem and
+the rails_12factor gem.
+
+37
+00:02:30.120 --> 00:02:33.251
+So after making these changes
+we're gonna go ahead and
+
+38
+00:02:33.251 --> 00:02:37.470
+run bundle which is gonna actually set
+those gems into our application and
+
+39
+00:02:37.470 --> 00:02:39.528
+commit the changes to repository.
+
+40
+00:02:42.088 --> 00:02:47.334
+And at this point we're ready to go,
+so we're gonna do a heroku login and
+
+41
+00:02:47.334 --> 00:02:53.020
+put in the credentials, and hopefully
+that authentication was successful.
+
+42
+00:02:53.020 --> 00:02:57.920
+Then we're gonna create the subdomain,
+the actual name of our application, so
+
+43
+00:02:57.920 --> 00:03:00.940
+in this case,
+I called it search-coursera-jhu.
+
+44
+00:03:00.940 --> 00:03:04.260
+If you just do heroku create
+without specifying the name,
+
+45
+00:03:04.260 --> 00:03:05.460
+heroku will give you a name.
+
+46
+00:03:05.460 --> 00:03:09.240
+It will be very nice and poetic but
+might not be what you want.
+
+47
+00:03:10.400 --> 00:03:15.890
+So at this point we're creating
+this search-coursera-jhu,
+
+48
+00:03:15.890 --> 00:03:22.120
+which then becomes a full blown url
+becomes search-coursera-jhu.herokuapp.com.
+
+49
+00:03:22.120 --> 00:03:26.840
+And the other thing that heroku does
+is it actually creates a remote
+
+50
+00:03:26.840 --> 00:03:31.680
+depository to which you could push and
+that is how you deploy.
+
+51
+00:03:31.680 --> 00:03:35.320
+So as you can see here when
+you do git remote -v for
+
+52
+00:03:35.320 --> 00:03:41.520
+verbose to see what am I git
+repositories which are remote.
+
+53
+00:03:41.520 --> 00:03:46.390
+So it happens to be I have one that's
+a GitHub repository which carrie spawns
+
+54
+00:03:46.390 --> 00:03:47.570
+to this one.
+
+55
+00:03:47.570 --> 00:03:52.520
+But heroku just created one for
+me with the name heroku
+
+56
+00:03:52.520 --> 00:03:57.260
+when I did heroku create,
+and then the sub domain.
+
+57
+00:03:59.440 --> 00:04:04.033
+So that's pretty much it and
+now you do git push heroku master,
+
+58
+00:04:04.033 --> 00:04:08.801
+which pushes your master branch
+to heroku's master branch, and
+
+59
+00:04:08.801 --> 00:04:13.764
+at this point, you should see this,
+where it detects the ruby app.
+
+60
+00:04:13.764 --> 00:04:18.683
+Detected and the comment here is to make
+sure top level directory of your git
+
+61
+00:04:18.683 --> 00:04:23.529
+repository contains app directory and
+other rails files and directories
+
+62
+00:04:23.529 --> 00:04:28.470
+because that's how Heroku recognizes
+that hey, this a ruby app, got it.
+
+63
+00:04:31.210 --> 00:04:35.050
+At this point it's gonna deploy.
+
+64
+00:04:35.050 --> 00:04:39.310
+You might get some warnings about certain
+things which you might wanna fix or
+
+65
+00:04:39.310 --> 00:04:40.120
+might not wanna fix.
+
+66
+00:04:40.120 --> 00:04:40.950
+Doesn't really matter.
+
+67
+00:04:42.040 --> 00:04:47.290
+And then at the end of the day you should
+get something like this where it says but
+
+68
+00:04:47.290 --> 00:04:51.330
+your master branch deployed
+to heroku's master branch and
+
+69
+00:04:51.330 --> 00:04:52.860
+your application is now ready to go.
+
+70
+00:04:53.880 --> 00:04:55.130
+And this is the URL.
+
+71
+00:04:55.130 --> 00:05:00.060
+If you're too lazy to type in the browser
+yourself, you could always just do heroku
+
+72
+00:05:00.060 --> 00:05:03.490
+open, and that's gonna open up
+application in the browser.
+
+73
+00:05:05.510 --> 00:05:10.800
+Okay, so now we'll then just
+have localhost where on port
+
+74
+00:05:10.800 --> 00:05:15.728
+3,000 we have a full blown,
+we have an application running on the web,
+
+75
+00:05:15.728 --> 00:05:19.405
+on the search-coursera.jhu.herokuapp.com.
+
+76
+00:05:19.405 --> 00:05:24.740
+Don't try to use this name because
+obviously it is taken, by me.
+
+77
+00:05:24.740 --> 00:05:28.530
+You could use any other name to deploy the
+application if you are following along,
+
+78
+00:05:28.530 --> 00:05:30.140
+and I hope you are following along.
+
+79
+00:05:31.555 --> 00:05:36.186
+So at this point, what we could do,
+because we made that change to the root
+
+80
+00:05:36.186 --> 00:05:39.473
+path, we could just say
+the application on the web,
+
+81
+00:05:39.473 --> 00:05:43.135
+question mark for
+request parameter we're looking for,
+
+82
+00:05:43.135 --> 00:05:47.645
+that's our request parameter equals diet,
+and this is now on the web.
+
+83
+00:05:50.665 --> 00:05:55.160
+So in summary, sign up for a Heroku
+account and download the toolbelt.
+
+84
+00:05:55.160 --> 00:06:00.230
+To be able to use Heroku and don't forget
+to make the changes to the Gemfile
+
+85
+00:06:01.350 --> 00:06:07.414
+because Heroku uses post graphs and
+in develop environment we use SQLite.
+
+86
+00:06:09.835 --> 00:06:10.735
+What is next?
+
+87
+00:06:10.735 --> 00:06:13.631
+Blackbox testing of RSpec and Capybara.

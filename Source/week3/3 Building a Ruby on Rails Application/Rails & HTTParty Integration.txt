@@ -1,0 +1,69 @@
+[MUSIC] Hi and welcome to lecture nine. In this lecture we'll finally get
+to integrate Rails with HTTParty. So step one, we're gonna open up
+a gem file include HTTParty and actually were gonna specify the exact
+version, 0.13.5 to avoid any confusion of a version change later on. Then we're gonna shut down the server. We're gonna run bundle
+to pull that gem and install it if it needs to
+be installed from the web. And you're gonna see something
+like this where it says installing reparty if you haven't
+installed it yet on your machine. And this is actually one of those few
+occasions that you actually have to restart the server. Shut it down, run bundler or
+run bundler and then shut it down, and then start again,
+for changes to take effect because the gems get loaded in
+when the server starts up. So, if your server is already running, it's not going to recognize this
+change that you made in your gemfile. And the idea is that we
+want to show courses from courser based on a search term. So let's go ahead and
+Generate Courses Controller. So that's just rails g controller
+courses with an action. Let's call it index. And what that's gonna do, it's gonna put
+a line like this into your routes.rb file which basically means, when you hit
+the courses/index in your browser, your browser's gonna request that
+information from your Rails app which is gonna know to go to the courses
+controller and your index action. And now, we're gonna have a model. So, we're gonna actually just
+create a new file called coursera.rb in the model's folder which is located under the F folder of your
+application and we could just paste in the example from a HTTParty integration,
+sorry, HTTParty lecture earlier. The difference being is that in this case
+we're not actually requiring HTTParty because our Bundler
+already loads that gem and for us when the application starts up,
+so that's great. And the convention actually is
+that the controllers are named plural that's why you see
+it's courses_controller, which creates a courses plural controller,
+but the model is singular. And the reason I guess the way
+I always remember is that, a model corresponds to one
+role usually in your database. So each instance of a model corresponds
+to one role in the database and the controller controls
+all the instances really so. The controllers are named plural and
+the model is named singular. Okay?
+So, this you guys have seen before is just pulling the courses out of
+a coursera web services. Now back the controller
+in the index action. We're gonna have a search term, which for
+now we're just gonna assume JHU and then we're gonna pass that search term
+as a parameter into four class methods. So, Coursera.for(@search_term),
+and you get an array of courses. So the instance variables, that are gonna
+be available, are gonna be the search term, which what did you search for,
+and the courses which is where did you find the array
+of courses that you found. Now in the view,
+which is the index.html/erb, we're gonna have some HTML again. If HTML is not familiar to you, you should really check out course four,
+which covers HTML. We're just gonna have a table
+element here in our view, which basically has one row of headings for
+image, name, and description of courses. And then we're gonna have the courses and for each one of them we're gonna
+have a course passed into our block. Then we're going to close that here. And we're going to have an end. As you can see these
+guys are just evaluators. They're not actually,
+they don't have the equals, so they're not actually outputting anything. And then for
+each row in our course's array, for each element in our course's
+array we're going to have a row. Gonna have a tr element which is a row,
+and we're gonna have three columns. We're gonna have an image tag. So image tag is actually another
+rails helper, similar to link to. Link two generates an A tag,
+image tag as you probably could guess, generates an img tag, and this takes resource attribute, which is basically
+where am I pulling this image from? So we're gonna pull it from
+a course("smallIcon"), so course each one of
+the elements here is just a hash. So it's an array of hashes. So course pull out the smallIcon,
+you get the image_tag, pull out the name of the course, and then pull
+out the shortDescription of the course. And you get something like this
+when you go to courses/index. So you searching for jhu,
+we get this table with an image, name, and short description. Now the application is functional,
+it's not necessarily very pretty, but we'll try to fix
+that in the next lecture. So the summary, by convention,
+Controller names are plural while model names are singular and files under app
+directory automatically require it so, a few slides back, as you saw, we didn't
+have to even require the Coursera class, because it automatically
+gets included in our code. What's next? Making minor, but useful,
+improvements to our application.

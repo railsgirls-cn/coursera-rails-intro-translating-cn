@@ -1,0 +1,92 @@
+Why I find that building web applications
+is very interesting is its reach and the capabilities that you can
+put into them are infinite. And one of the really cool things about
+web applications is because of that infinite reach, you can basically carve
+off a piece of the world and say, we are going to solve this. Come to us that we have tackled
+this part of the solution for you that you could build upon. >> And I thought how could this be? Ruby on Rails, I did hear some things
+about it maybe it's a little immature and not as good as Java, but
+I decided to look into it. And when I did I found this
+amazing framework that was able to take me to where I'll get
+to Java in much longer and write much more code in much fewer steps. And I thought that was pretty amazing. >> I think what I like about
+AngularJS is it allows developers to develop the web applications on
+the client side very quickly. But at the same time, it doesn't
+sacrifice the correctness of design and correctness of architecture. >> So in the last few years, the MongoDB
+and Ruby on Rails have become extremely popular, and there has been
+a wide industry acceptance and vendor acceptance on these technologies. And Ruby and Mongo have reached
+a so-called sweet spot or melting point so to speak. [MUSIC] >> Students will find this class to be
+very interesting because everything is about the web. Accessing it, using information in
+interesting and valuable ways, and getting your ideas implemented quickly and
+out to people, and Rails is exactly that. Take the Twitters of the world. They're taking a lot of the responsibility
+for getting information out to people, whether they be critical world events,
+or soccer practices like tonight. The same technology is built in there. One of the cool things about this
+specialization, is it's going to take the student through and say, here's
+how you build a lot of these things. There are a lot of decisions
+that you have to make, here's how these things come together,
+and you can put yourself in a situation of being able to
+build applications like those. >> So I think how Ruby on Rails
+is different than a lot of bigger web development frameworks out there, is that Ruby on Rails is all
+about rapid prototyping. Let me give you an analogy. Imagine you have this amazing idea. You wake up in the morning. You jot the idea down on a napkin and
+you run to a big bank because your idea needs about $50,000 to borrow for
+it to succeed. And you're met by a fancy clerk in
+a big bank and the clerk says well, we need a business plan, you can't just
+have a bunch of points on a napkin. And it's gonna take three or four months
+to be able to process the idea and maybe we'll approve you, maybe we won't
+approve you and you're devastated. You're like, this is a great idea,
+you don't understand. And the clerk says, no,
+I'm sorry, rules are rules. And you run out of the bank and
+you go to a small bank and the person in the small bank looks
+over your points on a napkin and he says, you know what,
+I think we'll go for it. And he goes to a back room and comes out
+with your money and gives you your money, and you're able to start
+your idea on that same day. And three months down the line, you
+are able to really develop the idea and you start making money. So to me,
+Ruby on Rails is that small bank, right? It's that idea of rapid prototyping that the time to market is much
+faster over bigger framework. Might take you a year and your idea
+might succeed, it might not succeed, you never know. But with a small framework
+like Ruby on Rails, that also enables you
+to rapidly prototype. You're able to quickly develop your idea,
+ship it, and that's actually exactly
+what happened to Twitter. Twitter used Ruby on Rails and Twitter got big pretty fast and
+it was able to develop its idea quickly. So we built this specialization,
+to consist of five courses. Course one is gonna be teaching you the
+basic flow of how information comes in, and being able to build an application
+that is a functional application. In Course two, we are gonna
+actually use the database, and learn about how to interact to a database,
+that's gonna be course two. >> So MongoDB is a document-oriented
+open source database which basically lets you store JSON documents. And it also has a lot of advantages like
+it's highly scalable, highly available and gives you a lot of these
+things right out of the box. So, in course three,
+we'll talk about MongoDB and open source document-oriented database and
+implementation of no SQL database. And we'll also look into how MongoDB
+fits in well with the Ruby on Rails and lets you build really lightweight but
+at the same time, large scale, scalable applications. So, many of the large companies
+like Facebook, Twitter, LinkedIn, these companies use REST API quite a bit. Integrating REST API with their
+lightweight web framework to get the data, display the data, on the web application. It's a very common practice that you
+see out there in the industry today. >> As full stack web developers, we need
+to understand that no matter how great our server side code is, and
+no matter how fast we developed it. If we developed it Ruby on Rails and kind of gave our product
+out the door very quickly. What the user is gonna end up seeing, is they're going to end
+up seeing the front end. That's what they interact with. And if the user interaction,
+user experience is not good, then all the glory of the server side
+is really gonna be kind of lost. So in Course number 4, we're going to
+concentrate on the technologies that is really the life blood of
+every web application and that is HTML, CSS, and JavaScript. By the end of Course 4, you'll be able
+to take a design, or even an idea for a design, and turn it into a real website. So AngularJS is a open source framework,
+developed and backed by Google, that addresses a lot of the issues
+with front-end web development and simplifies web development. That you're able to actually push out
+your products out the door much faster and easier. So by the end of Course 5, you'll be
+able to build a full web application, where majority of the functionality
+will actually live on the client side. And you'll be able to push
+out that product very quickly using AngularJS framework. >> The student in the class is not
+going to be alone in their workshop, building code and
+turning it in in a vacuum. They're gonna be able to post, early on in
+the courses, their solutions to the web. And as we add technologies and
+add capabilities, they'll be able to add those to those
+applications, available for many to see. So they'll be able to show their family,
+their friends, their coworkers, their employers, their future employers,
+depending on what the case may be. They'll be able to share
+in a very quick and open manner a lot of the work
+they've been working on. And by the end of the overall Capstone,
+you will have completed a full back end, front end, managed in Gits,
+deploy to Heroku, full web application. That you're able to sit back and
+proudly advertise to all your friends, family, co-workers and employers. [MUSIC]

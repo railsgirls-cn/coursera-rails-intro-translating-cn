@@ -1,0 +1,75 @@
+[MUSIC] Hi, and welcome to lecture 16. In this lecture, we will continue our journey into unit
+testing Ruby, and we'll talk about RSpec. So, so far we've seen test unit on
+mini test which seems to do a job but knowing Ruby, it would be nice
+if you could write the test even in a more descriptive English-like manner. And with RSpec you can. The writing of the test
+is more intuitive and the output from running the tests
+is a little more intuitive as well. So, how do you get RSpec? Well, you could just install it
+by doing gem installed RSpec. Which will install rspec gem for you. And then when you actually want
+to start writing the rspec examples as they are called or specs. Specifications. You could do rspec -- init. And that will create a specs directory for
+you in which all the specs go, as well as some additional files,
+namely the .rspec and spec_helper in which you could
+put code that applies to all your specifications, which we're not
+gonna talk about at this time. So, the top level method in
+RSpec is called describe. And that's basically a set of related
+tests, or set of related examples. Describe takes either a string or a class which this test is
+describing as we're going to see. All specs will go into a describe block. Now the slight difference here
+between RSpec we are doing things and the test unit is that there's no test case class to subclass, everything
+happens inside the describe method. There's also a before and after methods which are very similar
+to setup and teardown the MiniTest. The difference is that
+where as in MiniTest every test will run the logic and
+sights setup, every time. In RSpec you could specify an all symbol which will basically say,
+only do this once and the logic in the all method or in the all block will
+apply to all the tests. So it's only done once. Now when is this useful? For example, if you are connecting to a
+database in your test, you wouldn't wanna be creating and recreating a connection
+to a database before every single test. Instead, you just wanna do it once
+before you run a group of tests and then close it down at
+the end of a group of tests. The main logic happens
+inside the it method which is used to define
+the actual RSpec specification. Or as it's called, example. It takes an optional string which
+describes the behavior being tested. So let's take a look at a similar
+example from a previous lecture. In a previous lecture we used minitest, now let's see how to do
+the same thing using RSpec. So let's say we have the same
+calculator.rb which has erroneous behavior of subtracting versus adding,
+has a minus in add, and plus in subtract, so
+we have this spec directory. In which we're gonna
+have all our specs and this was created again a few slides
+ago when we did RSpec--init. And basically, there's no class here, so everything happens inside
+the describe method. So you have describe calculator,
+so calculator is our class which we are testing, so
+require_relative and calculator, which is this class right here,
+which has the errors. Now we could also just do describe and
+put some sting in here, instead of doing the calculator. But since we are describing
+the calculator class it sort of makes sense to
+use a calculator constant. In the name of a calculator class. And our before method is going
+to say create me a calculator just by doing calculator.new and so on. And these are the actual specifications. So instead of how in mini
+tests you did test underscore. You do,
+it "should add two numbers correctly" and then the block has
+the actual testing logics. In this case, we are saying
+expect(@calculator.add(2, 2)).to eq 4. Now, it's interesting, how in our spec the mini test expected and
+actual are actually flipped. So as the mini test you have a expected,
+which would be 4, which we expected on the left and
+the actual on the right. In our spec, which I think is a little
+more English like, a little more flowy. How it specifies it, you say expect
+calculator add (2, 2) to eq 4, or expect calculator subtract (4,
+2) to eq 2. In RSpect in general is much more
+intuitive, and much more English-like. So when you actually run this test and
+where you run this test, the test is by just saying RSpec,
+you're going to see that there are two favorites because both
+subtract and the add examples. Right, so this one and this one failed and it's gonna tell you what the fail
+is expected: 4, got: 0, and it's gonna tell you
+exactly where it happened. And so you could see that it's
+actually telling you which features it is testing by saying,
+calculator should add 2 numbers correctly. This is extracted from what you
+specified in your it description, which is very nice. So in summary,
+RSpec makes case testing more intuitive. And, the bottom line is,
+if you use mini-test and you like mini-test, stick with it. If you like the expressiveness of RSpec,
+try that out. And a lot of times,
+people will tell you to write tests. Before you do the code some people do it. Before they write the code
+if it's easier for you to get into testing you can
+write them after you write the code. But the bottom line is it's important
+to realize the importance of writing the test and having the test in place that
+actually test and exercise your code, and what actual framework you use or
+when you write the test is less important. The next lecture we're going
+to wrap up the testing, and actually wrap up the module by
+talking about RSpec Matchers. To see a few more Matchers that
+are available in our spec.

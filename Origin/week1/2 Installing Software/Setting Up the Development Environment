@@ -1,0 +1,248 @@
+WEBVTT
+
+1
+00:00:00.392 --> 00:00:10.392
+[MUSIC]
+
+2
+00:00:13.453 --> 00:00:15.353
+Hi and welcome to module one.
+
+3
+00:00:15.353 --> 00:00:18.920
+In module one,
+we'll be covering three topics.
+
+4
+00:00:18.920 --> 00:00:21.480
+Number one, Software Installation.
+
+5
+00:00:21.480 --> 00:00:25.360
+Number two Coding Editors, and
+number three will talk about Git.
+
+6
+00:00:26.360 --> 00:00:27.570
+So let's go through these one by one.
+
+7
+00:00:28.640 --> 00:00:33.250
+Software installation number one,
+you obviously can't develop a Ruby
+
+8
+00:00:33.250 --> 00:00:37.630
+on Rails application unless you have
+Ruby and Ruby on Rails installed.
+
+9
+00:00:37.630 --> 00:00:39.700
+So we'll go through that process.
+
+10
+00:00:39.700 --> 00:00:44.790
+And the process is different for
+Mac, Window and Linux.
+
+11
+00:00:44.790 --> 00:00:50.110
+I will be covering all three of
+those operating systems one by one.
+
+12
+00:00:50.110 --> 00:00:52.950
+Next we'll cover coding editors.
+
+13
+00:00:52.950 --> 00:00:57.830
+And I know a lot of developers are very
+passionate about their coding editors.
+
+14
+00:00:57.830 --> 00:01:02.300
+And if you are vim/ or emacs person,
+Who really likes using
+
+15
+00:01:02.300 --> 00:01:06.960
+those editors I probably wouldn't be able
+to talk you out of it, which is fine.
+
+16
+00:01:06.960 --> 00:01:10.300
+Because every person should be
+using the editor of their choice,
+
+17
+00:01:10.300 --> 00:01:11.050
+one that they enjoy.
+
+18
+00:01:12.300 --> 00:01:17.090
+Having said that I'm gonna show you
+some other editors available for
+
+19
+00:01:17.090 --> 00:01:18.969
+your Ruby and Ruby on Rails development.
+
+20
+00:01:19.970 --> 00:01:21.760
+And how you could use those editors, and
+
+21
+00:01:21.760 --> 00:01:26.200
+specifically, the editor that I happen
+to like, which is called Sublime Text.
+
+22
+00:01:27.650 --> 00:01:30.170
+Lastly, we'll cover GIT.
+
+23
+00:01:30.170 --> 00:01:33.260
+GIT is a distributed
+version control system.
+
+24
+00:01:33.260 --> 00:01:35.300
+Basically it's a bunch of words, but
+
+25
+00:01:35.300 --> 00:01:38.930
+what it means is that it lets
+you take snapshots of your code.
+
+26
+00:01:38.930 --> 00:01:44.070
+So, imagine yourself coding,
+you code something up, and, it all works.
+
+27
+00:01:44.070 --> 00:01:50.290
+So you wanna take a snapshot of that
+particular code, at that particular time.
+
+28
+00:01:50.290 --> 00:01:52.560
+So, imagine, you code for a while.
+
+29
+00:01:52.560 --> 00:01:53.660
+You take a snapshot.
+
+30
+00:01:53.660 --> 00:01:54.730
+It all works.
+
+31
+00:01:54.730 --> 00:01:56.210
+Things are good.
+
+32
+00:01:56.210 --> 00:02:00.600
+As you keep coding, maybe you introduce
+some errors into your program.
+
+33
+00:02:00.600 --> 00:02:04.648
+And you want to go back to the last point
+where you know that things worked and
+
+34
+00:02:04.648 --> 00:02:08.824
+your able to do that because that what
+get direct lets you do as version control
+
+35
+00:02:08.824 --> 00:02:09.355
+system.
+
+36
+00:02:09.355 --> 00:02:14.715
+[MUSIC]
+
+37
+00:02:14.715 --> 00:02:20.207
+It used to be that GIT was only used
+by developers, things have changed,
+
+38
+00:02:20.207 --> 00:02:25.249
+and now even web designers or
+even people who are not working in IT,
+
+39
+00:02:25.249 --> 00:02:29.320
+for example publishers or
+editors, use Git as well.
+
+40
+00:02:30.320 --> 00:02:34.150
+Because everybody recognizes
+the value of being able to
+
+41
+00:02:34.150 --> 00:02:39.010
+take a snap shot of your work, and be able
+to come back to it at any given point.
+
+42
+00:02:41.310 --> 00:02:46.950
+And actually Rails encourages you to
+use Git because as we're gonna see,
+
+43
+00:02:46.950 --> 00:02:52.490
+when you generate a Rail's application, it
+generates a bad Git ignore file for you.
+
+44
+00:02:52.490 --> 00:02:57.090
+So we see this drive that Rails sort
+of pushing in the right direction
+
+45
+00:02:57.090 --> 00:03:01.559
+to use a version control system,
+and specifically Git.
+
+46
+00:03:02.760 --> 00:03:07.590
+Another reason to use Git, is that at
+the end of a course when we build our web
+
+47
+00:03:07.590 --> 00:03:12.140
+application, we're actually going to
+use Git to deploy it to the cloud.
+
+48
+00:03:14.390 --> 00:03:21.050
+The same way that you use Git to control
+your version locally, so as you code and
+
+49
+00:03:21.050 --> 00:03:25.150
+make a mistake, you are able to go
+back to a previous good version.
+
+50
+00:03:25.150 --> 00:03:29.540
+When you deploy application using Git,
+you could do the same thing.
+
+51
+00:03:30.700 --> 00:03:35.010
+If application doesn't work anymore,
+you could roll back to a previous
+
+52
+00:03:35.010 --> 00:03:38.850
+good version of the application
+that you know has worked.
+
+53
+00:03:40.100 --> 00:03:43.901
+With that I will see you in module one.

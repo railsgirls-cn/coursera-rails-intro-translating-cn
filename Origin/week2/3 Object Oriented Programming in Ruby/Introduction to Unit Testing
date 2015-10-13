@@ -1,0 +1,628 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:08.103
+[MUSIC]
+
+2
+00:00:08.103 --> 00:00:09.610
+Hi and welcome to lecture 15.
+
+3
+00:00:09.610 --> 00:00:13.900
+In this lecture we'll
+talk about unit testing.
+
+4
+00:00:13.900 --> 00:00:19.830
+The idea of unit testing is writing
+test code that tests your life code.
+
+5
+00:00:21.830 --> 00:00:24.290
+So why do people write unit tests?
+
+6
+00:00:24.290 --> 00:00:27.900
+Well how do you know if
+your code actually works?
+
+7
+00:00:27.900 --> 00:00:33.020
+You really have no idea until you run it,
+until you exercise your code and
+
+8
+00:00:33.020 --> 00:00:35.420
+you get results that you're expecting.
+
+9
+00:00:35.420 --> 00:00:39.550
+This is especially true in Ruby,
+which is a dynamic language,
+
+10
+00:00:39.550 --> 00:00:42.720
+so for
+a static type language like Java for
+
+11
+00:00:42.720 --> 00:00:47.950
+example, if you make a typo,
+your editor will probably tell you that.
+
+12
+00:00:47.950 --> 00:00:52.840
+There's a typo here, Ruby,
+because it's a dynamic language,
+
+13
+00:00:54.220 --> 00:00:59.060
+a lot of times the editor will
+not pick up the typos for you.
+
+14
+00:00:59.060 --> 00:01:02.493
+Another reason to write unit tests is
+if you want to refactor your code.
+
+15
+00:01:02.493 --> 00:01:06.847
+And if you want to refactor your code, if
+you want to modify the structure of a code
+
+16
+00:01:06.847 --> 00:01:10.670
+of confidence and
+make sure we didn't break anything.
+
+17
+00:01:10.670 --> 00:01:15.840
+Well the way to do that is to add unit
+tests because if you have unit tests which
+
+18
+00:01:15.840 --> 00:01:21.610
+are passing before you change anything and
+then you make the change and
+
+19
+00:01:21.610 --> 00:01:25.400
+unit test is still passing,
+that means that you didn't break anything.
+
+20
+00:01:27.650 --> 00:01:30.820
+Another reason to write
+unit tests is because,
+
+21
+00:01:30.820 --> 00:01:34.950
+a lot of times, it will serve
+as documentation for developers.
+
+22
+00:01:34.950 --> 00:01:39.490
+So let's say a developer wants to use your
+code, and he's not sure exactly how to
+
+23
+00:01:40.510 --> 00:01:44.390
+instantiate certain things and
+what needs to be instantiated.
+
+24
+00:01:44.390 --> 00:01:48.890
+He could just take a look at your unit
+test, how you were exercising your code.
+
+25
+00:01:48.890 --> 00:01:52.720
+Even though your purpose is really for
+testing the code.
+
+26
+00:01:52.720 --> 00:01:57.400
+But still it's code that
+actually exercises your code so
+
+27
+00:01:57.400 --> 00:02:01.200
+a developer could look at the code and
+know exactly how to run your code.
+
+28
+00:02:03.880 --> 00:02:08.100
+So Ruby takes this idea of
+testing very seriously, and
+
+29
+00:02:08.100 --> 00:02:11.006
+even ships with test unit framework.
+
+30
+00:02:11.006 --> 00:02:18.240
+In Ruby 1.8, the test unit framework
+was bloated with extra libraries and
+
+31
+00:02:18.240 --> 00:02:24.020
+different graphical tools which
+are not necessary for unit testing.
+
+32
+00:02:24.020 --> 00:02:28.110
+So in Ruby 1.9,
+it was stripped down to minimum.
+
+33
+00:02:29.190 --> 00:02:31.830
+Now the new framework is
+officially called MiniTest,
+
+34
+00:02:31.830 --> 00:02:36.740
+but it's still just a drop-in
+replacement for Test Unit.
+
+35
+00:02:36.740 --> 00:02:42.170
+So, I'm going to refer to it as
+Test Unit and MiniTest interchangeably.
+
+36
+00:02:44.110 --> 00:02:47.100
+Test Unit is a member of the XUnit family,
+
+37
+00:02:47.100 --> 00:02:50.800
+so a lot of languages actually
+have very similar frameworks.
+
+38
+00:02:50.800 --> 00:02:56.750
+For example, Java has JUnit,
+C++ has CppUnit.
+
+39
+00:02:56.750 --> 00:03:00.580
+And the basic idea to all these
+frameworks is that you write a class
+
+40
+00:03:02.090 --> 00:03:04.590
+where you extend it from it,
+now the test class.
+
+41
+00:03:04.590 --> 00:03:11.760
+So in the case of Ruby's test unit
+test case you prefix the method names
+
+42
+00:03:11.760 --> 00:03:17.300
+in that class with test underscore in the
+case of Ruby, and every test underscore
+
+43
+00:03:17.300 --> 00:03:23.280
+method becomes it's own unique test that
+gets run when this class gets executed.
+
+44
+00:03:25.060 --> 00:03:27.630
+If one of the methods fails,
+
+45
+00:03:27.630 --> 00:03:31.570
+if one of the test methods fails,
+others still keep going.
+
+46
+00:03:31.570 --> 00:03:32.730
+This is actually a good thing.
+
+47
+00:03:32.730 --> 00:03:40.280
+So this way if you run tests, let's say
+ten tests and if it would not keep going,
+
+48
+00:03:40.280 --> 00:03:45.790
+so the second you hit your first failing
+test the whole thing would stop.
+
+49
+00:03:45.790 --> 00:03:49.200
+And you would think that you'd
+only have one test to fix,
+
+50
+00:03:49.200 --> 00:03:52.510
+when in reality you really
+have many more tests to fix.
+
+51
+00:03:52.510 --> 00:03:53.500
+So this is actually a good thing.
+
+52
+00:03:55.140 --> 00:03:57.380
+And you can use setup and
+teardown methods.
+
+53
+00:03:59.390 --> 00:04:03.730
+Setup for setting up things and
+teardown for tearing things down.
+
+54
+00:04:03.730 --> 00:04:09.437
+And the code in those
+methods will run before exit,
+
+55
+00:04:09.437 --> 00:04:14.493
+before every test method
+in your test class.
+
+56
+00:04:14.493 --> 00:04:17.398
+So lets bring this down to a real example.
+
+57
+00:04:17.398 --> 00:04:21.500
+Let's say you're writing
+a calculator class
+
+58
+00:04:21.500 --> 00:04:27.040
+that has a constructor and has add,
+subtract and divide methods.
+
+59
+00:04:27.040 --> 00:04:30.090
+And you made a mistake where for
+
+60
+00:04:30.090 --> 00:04:35.460
+add method you accidentally said one
+minus two, as opposed to one plus two.
+
+61
+00:04:35.460 --> 00:04:39.430
+And with the subtract method you said
+one plus two, instead of one minus two.
+
+62
+00:04:40.970 --> 00:04:46.530
+Nobody complains, looks like a good class,
+and it should work.
+
+63
+00:04:46.530 --> 00:04:48.450
+But you don't really know if
+it actually works or not.
+
+64
+00:04:50.010 --> 00:04:52.520
+So what you could do is you
+could write a test class.
+
+65
+00:04:53.910 --> 00:04:56.990
+Basically call it calculator test,
+call it anything you want,
+
+66
+00:04:56.990 --> 00:04:59.520
+which extends from test unit test case.
+
+67
+00:05:00.880 --> 00:05:06.548
+And then the setup method, which is going
+to apply to all of these test cases,
+
+68
+00:05:06.548 --> 00:05:10.561
+you're going to instantiate
+a variable called calc,
+
+69
+00:05:10.561 --> 00:05:15.971
+which is an instance variable by
+doing calculator.new('test') and
+
+70
+00:05:15.971 --> 00:05:18.849
+then in each one of these test methods,
+
+71
+00:05:18.849 --> 00:05:22.720
+you're going to write
+what's called assertions.
+
+72
+00:05:22.720 --> 00:05:30.300
+So you want to have assert_equal 4,
+@calc.add(2, 2).
+
+73
+00:05:30.300 --> 00:05:34.962
+So basically you have
+the expected your first value and
+
+74
+00:05:34.962 --> 00:05:37.810
+the actual as your second value.
+
+75
+00:05:37.810 --> 00:05:44.560
+For, how I always remember this is its
+how the word each is spelled E-A-C-H.
+
+76
+00:05:44.560 --> 00:05:49.090
+So the expected goes first and
+the actual goes second.
+
+77
+00:05:49.090 --> 00:05:51.950
+So in this case you're saying assert
+
+78
+00:05:51.950 --> 00:05:55.500
+that I want to get a value
+four by adding two plus two.
+
+79
+00:05:56.600 --> 00:06:01.510
+Or in this case assert that I'm going
+to get a two when I'm subtracting
+
+80
+00:06:01.510 --> 00:06:02.300
+four minus two.
+
+81
+00:06:03.770 --> 00:06:06.070
+In case of division, it's the same thing.
+
+82
+00:06:06.070 --> 00:06:09.170
+Assert that I'll get two when
+I'm dividing four by two.
+
+83
+00:06:11.820 --> 00:06:18.150
+Now when you actually run this what
+you're gonna get is a bunch of failures.
+
+84
+00:06:18.150 --> 00:06:19.650
+So, in this case, it's gonna say,
+
+85
+00:06:19.650 --> 00:06:24.670
+test addition, try doing an assertion
+that two plus two is four.
+
+86
+00:06:25.820 --> 00:06:29.460
+And four was expected,
+but you actually got zero.
+
+87
+00:06:29.460 --> 00:06:34.468
+Because, you remember, we made a mistake
+in how we wrote the calculator class and
+
+88
+00:06:34.468 --> 00:06:39.259
+therefore the results don't match and
+this will tell you that what you think is
+
+89
+00:06:39.259 --> 00:06:43.178
+gonna work is really not gonna work
+because you made a mistake and
+
+90
+00:06:43.178 --> 00:06:46.470
+then you could go back and
+look at your code and fix it.
+
+91
+00:06:46.470 --> 00:06:50.241
+The same thing in subtract case,
+you are trying to,
+
+92
+00:06:50.241 --> 00:06:55.642
+the expected value would be two because
+you are trying to do four minus two,
+
+93
+00:06:55.642 --> 00:06:58.490
+but in reality the actual value is six.
+
+94
+00:07:00.260 --> 00:07:06.140
+And this is actually great because yeah,
+of course you could test it by hand and
+
+95
+00:07:06.140 --> 00:07:09.100
+do it once and forget about it.
+
+96
+00:07:09.100 --> 00:07:14.390
+But you actually have a test
+that you could run every time
+
+97
+00:07:14.390 --> 00:07:17.780
+you ship your product to make
+sure that nothing broke.
+
+98
+00:07:17.780 --> 00:07:22.860
+And if you make a change and you refactor
+your calculator class you will know that
+
+99
+00:07:22.860 --> 00:07:29.580
+it still works or
+if something broke by running this test.
+
+100
+00:07:29.580 --> 00:07:34.790
+So, you are able to automate this test
+because now you have your regular
+
+101
+00:07:34.790 --> 00:07:39.450
+Ruby code that's out there and
+you could automate it as
+
+102
+00:07:39.450 --> 00:07:45.120
+part of a build process and have the build
+process report the results to you.
+
+103
+00:07:45.120 --> 00:07:46.870
+If the things work,
+if the things do not work.
+
+104
+00:07:49.360 --> 00:07:54.700
+And there are many different assertions,
+several I so far showed assert equal.
+
+105
+00:07:54.700 --> 00:07:58.750
+Results that say true and there are many
+more asserts that you could use.
+
+106
+00:08:00.350 --> 00:08:04.770
+Now, here's the tricky case
+let's say you wanna test that
+
+107
+00:08:04.770 --> 00:08:09.590
+when you divide a number by
+zero an exception gets thrown.
+
+108
+00:08:10.690 --> 00:08:14.220
+Well this is weird because if you just
+
+109
+00:08:14.220 --> 00:08:18.890
+write the code as let's say
+divide something by zero.
+
+110
+00:08:18.890 --> 00:08:22.830
+It's not gonna be an assertion that fails.
+
+111
+00:08:22.830 --> 00:08:26.220
+Your code will report as an error.
+
+112
+00:08:26.220 --> 00:08:28.190
+Because you're not allowed
+to divide by zero.
+
+113
+00:08:29.310 --> 00:08:34.970
+So the way to get around that
+in Ruby is an assert_raise
+
+114
+00:08:34.970 --> 00:08:41.480
+assertion that basically you specify what
+is the assertion that you're expecting and
+
+115
+00:08:41.480 --> 00:08:48.970
+then in the coding block you specify
+when the exception will occur.
+
+116
+00:08:48.970 --> 00:08:52.410
+So in this case your saying when
+you 're dividing one by zero,
+
+117
+00:08:52.410 --> 00:08:53.960
+when you passing one and
+
+118
+00:08:53.960 --> 00:08:58.280
+zero to the divide method of a calculator
+you will get a ZeroDivisionError.
+
+119
+00:08:59.970 --> 00:09:05.520
+And you could actually run this
+directly from the editor and
+
+120
+00:09:05.520 --> 00:09:09.880
+the dot as opposed to the F
+before we'd get an F.
+
+121
+00:09:09.880 --> 00:09:11.870
+F means the test is failing.
+
+122
+00:09:11.870 --> 00:09:13.730
+Dot means that the test is passing.
+
+123
+00:09:14.880 --> 00:09:17.940
+So you can see there's one tests,
+one assertion.
+
+124
+00:09:17.940 --> 00:09:19.580
+No failures no errors its all good.
+
+125
+00:09:20.790 --> 00:09:24.520
+In summary, assertions allow
+you to exercise your code and
+
+126
+00:09:24.520 --> 00:09:28.980
+see that it actually works and
+unit tests in general give you
+
+127
+00:09:28.980 --> 00:09:33.320
+great confidence to restructure or
+refactor your code and
+
+128
+00:09:33.320 --> 00:09:38.780
+you could even automate them and
+make them part of a build process.
+
+129
+00:09:38.780 --> 00:09:43.280
+And this way,
+you’ll have feedback when you
+
+130
+00:09:43.280 --> 00:09:47.820
+are ready to ship your code some
+confidence that your code actually works.
+
+131
+00:09:49.390 --> 00:09:50.880
+Next, we’ll talk about RSpec.

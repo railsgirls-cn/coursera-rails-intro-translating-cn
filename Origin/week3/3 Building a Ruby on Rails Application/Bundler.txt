@@ -1,0 +1,75 @@
+[MUSIC] Hi, and welcome to lecture eight. In this lecture,
+we’ll discuss Bundler, and how Bundler lets you manage gems
+inside your Rails application. So if you go to bundler.io you
+will see that Bundler basically provides a consistent environment for
+Ruby projects by tracking and installing the exact gems and
+versions that are needed. So, it lets you specify gems
+from the Rails application and the way you do that is you
+specify that inside the Gemfile. And this is the preferred way to manage
+gem dependencies in Rails, because Bundler is able to resolve a lot of dependencies
+and it tries to make everybody happy. So for example, you have gem 1
+that depends on certain other gem with one version and
+gem 2 which depends on that same gem. Maybe they're different or
+a little bit of a different version. Bundler is gonna try to
+make both those gems happy. To use it all you do is you just run
+bundle install to install new gems. Or you just do bundle, which is
+the same as running bundle install. And if you want to modify version
+of an already installed gem, you do bundle update
+instead of bundle install. You could also instruct Rails in
+the Gemfile to only load certain gems in specific Rails environments. So for
+example you do group development and test to tell it these gems are only
+gonna be available in development and test environments but
+not in production environment. So which version of a gem gets installed? Well, if you don't specify anything,
+you get the latest. You could also specify an exact version or an approximate version of the gem
+that you wanna be installed. So, for example,
+in this case you get the latest. In this case you get an exact version. In this case you get something greater
+than 1.0, even if it's version four or five, or whatever the latest is,
+passed this version. You can also specify lower and
+upper bounds. For example, in this case, you're saying
+greater than 1.1, and the less than 2.0. Now, the reason you do this is
+that a lot of times when gems or when software in general goes to the next
+version they might break certain features. Whereas if they just updating
+the version let's say 1.2, 1.3 they're usually not
+gonna break the API. And because this is so
+common results of this operator which is called the Pessimistic Version Constraint,
+which means that you are pessimistic about the next
+version not breaking something and therefore you wanna lock in to
+only use a specific range of versions which do not
+include the next big version. And the way this works, Bundler figures
+aside, is that it drops a final digit, and then it increments the digit to
+get the upper limit version number. So in this case, it drops one,
+in this case, and it increments this to be 2.0. So, basically,
+these statements are equivalent. You could even do it this way
+by specifying the exact range or you could say, eh, just use
+the pessimistic version constraint and the way it figures this out
+is it drops the final digit. And then it increments the first digit
+to get the upper limit less than that limit which is 2.0. Bundler also loads the gem. It doesn't just download
+it from the internet. So as the application starts,
+it actually requires that gem and sometimes the name to require is going
+to be different from an actual gem name. So, for example,
+this what used to be the case of sqlite3. The gem name was called one name, but
+when you required, you actually had to require something else,
+you could specify that to the Bundler. And the interesting part is that it's so modular that you could even use
+a different version of Rails. So let's say you're using version 3 and
+then you wanna upgrade to version 4, all you have to do is just specify
+different version in your Gemfile and then the run bundle update, and that's gonna
+update your Rails to a different version. Now you might have other issues
+on upgrading but as far as trick version usage this works
+to change your versions. One more things is that the Gemfile.lock
+is the file that actually has the exact versions, and that's a file that
+gets updated when you run bundle update, or bundle, depending on if it's a new gem
+or if you're updating an existing gem. One last thing, bundle exec, sometimes you'll see people running
+bundle exec rake, or bundle exec rails. And the reason for
+that is that what bundle exec does is that it uses
+the executable of a gem. For example, Rails or
+Rake that is specified in the Gemfile of a current app to use when
+you're running bundle exec. So what I mean by that is that,
+let's say you have three or four different versions for, let's say the rake gem
+specified, so which one is it gonna use. Well, it might not be so deterministic. So, void to specify an exact version is,
+or the version, at least, that you are specifying in
+the Gemfile is to use bundle exec, rake a bundle exec rails and
+then you know for sure that you're getting
+the version that's in the Gemfile. So in summary Bundler
+manages gem dependencies and it loads up the gems on
+an application startup. What's next? Next we're gonna try to integrate the
+HTTParty with Rails since now we know how to do that by using Bundler.

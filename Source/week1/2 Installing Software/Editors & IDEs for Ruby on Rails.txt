@@ -1,0 +1,110 @@
+[MUSIC] Welcome. So now that we've installed Ruby on Rails,
+the question is, which editor or IDE should we be using to edit our
+Ruby and Ruby on Rails applications. So, we've got a bunch of choices. Number one there is RubyMine,
+and RubyMine is made by JetBrains which incidentally is the same
+company that makes Intelli J which an excellent Java idea out there,
+and RubyMine is no different. A lot of Rubys prefer using RubyMine. It's a very good IDE. Now it's not free, so you get a 30-day trial to see if you like it and then after
+that you have to purchase the license. But, it's an excellent IDE and I encourage you guys to try
+it out if you are into IDEs. Another IDE that is out there is Aptana,
+which is also another pretty good IDE. I personally never used it, but some Ruby's definitely like
+using Aptana Studio 3. Then a lot of Ruby's are not
+into IDEs altogether. They use Vim. Vim is an editor which is very light
+weight, and it has a lot of plugins that make Ruby and
+Rails development easier. But it's not a full blown IDE. But again a lot of do prefer using it. And then there's Sublime Text which
+is also not a full blown IDE. It's a text added through
+a lot of plugins. But I personally really like using it. And let me show you guys how it works. So when you open up
+the Sublime Text editor, you're not gonna have any directories or
+folders in there, and the way I got this Rails app in
+there was by doing File and then Open. And then picking the folder
+that I was trying to open which was my_first_app folder. And this is just a Rails application
+that's about courses on Coursera. So the first thing that
+we might want to do is, we might want to change the color scheme. If you guys like the white background
+instead of a dark background. So for example, let's open up a file
+just to see what we're doing here. So, this is the color scheme,
+right now, but it's very easy to change a color scheme. And how you would do that is by going to Sublime Text > Preferences and
+then Color Scheme. Right now it's in Blackboard color scheme,
+but you could easily change it to
+something like Mac Classic that flips it to the white background
+instead of the other background. So let's go ahead and change it back. A lot of things actually in this
+editor are customizable and the way to see which properties
+are available for customization, you would look in Preferences and
+then Settings Default. And I am demoing this on the Mac but on
+the Windows and on Linux which the editor runs on,
+these settings are gonna be very similar. So the interesting part is
+the settings are not on a GUI panel. That you could just checkbox them. They're actually a JSON file. So you have a key and a value. So for example, you have line numbers. It says line numbers should be true but
+we don't see any line numbers and the reason for that is because the line
+numbers were overridden by a user file. So if you go on to preferences,
+settings, user, you'll see that the user file
+has line number as false. But if I go ahead and take them out, and save a file, you could see the line
+number show right back up again. Now wouldn't it be nice to see the user
+file right next to the default file side by side so that you could actually
+know which properties you could edit. And it turns out you could do it
+very easily if you go to View. And lay out two columns instead of one. You can see this line here. So you can see that there is
+actually two columns here right now. And we could drag one of the files
+over to the other column. Now this is our user file and
+this is our default file and we could easily add
+properties in the user file, overriding the properties in our files,
+so for example, numbers, false, save it. Boom, they go away. So let's go back and
+put the layout back to single. Okay. The other customizations that you could do
+in actually a very similar vein to what we just did was Is for key bindings. So Sublime comes with its own key
+bindings which are on by default, and you can override those defaults,
+again, by going to preferences, key bindings user, and you can actually
+override them with your own key bindings. That you're used to. The next feature I want
+to show is Find in Files. So Find in Files,
+it's under the find menu, Find in Files. It's Cmd+Shift+F on the Mac. And basically you can try to look for things in all the files that are open, that's the default,
+open files and folders. So for example, you know that there is
+a variable courses somewhere in there. You're not sure exactly where it is. So you'll type that in,
+it gives you results and actually from this point on, you could
+actually double click on the results. So for example you double click on courses
+here, it opens up a file right away. So. What I like about Sublime is
+that it's very lightweight, but at the same time it has a lot of features
+that your typical IDEs would have. And actually, speaking of Find in Files,
+if you go to Find > Find in Files, the options for how to look for
+things you have an option to use regular expressions,
+and this is for find and for replace. So you could very easily find and
+replace something even using a regular expression in a whole
+bunch of files, which is very powerful. You can do it case sensitive obviously, you could look for
+a whole world and things like that. Another you'll like about Sublime, this actually blew me away the first time
+I saw it, is the Goto anything option. It's Cmd+P on the Mac and
+I think it's Ctrl+P in Windows. And basically the idea is you
+want to look for a certain file. This is similar to how you'd look for
+a file, in Eclipse for example, by doing Ctrl+Shift+R or Cmd+Shift+R. So, you do a Cmd+P which
+brings up this dialogue, and you're looking for a file and
+you know files called Index something. Oh that's what it is. Now if you noticed, the interesting part is it's not
+just telling you what's available. Files are that you might be looking for,
+it actually displays the content of a file in the background,
+which is pretty amazing. So let's see that again. So you have index, and it's actually displaying the file as you
+are typing what you think the file is. And at that point you
+can just hit enter and you go straight to that file,
+it's pretty cool. Another feature which might not be so
+obvious, but it's pretty obvious once you see it once
+is that you can actually collapse things. So looking at this you don't think
+there's anyway to collapse code. But if you go to the left of the panel you could see that there are these
+triangles which actually they only come into existence when
+you sort of hover over them. So for example this table element which goes from a open table
+tag to a closed table tag. You can click on the triangle and
+it's gonna collapse this, so this way you could save some real estate
+if you wanna see whole bunch of stuff on the screen at the same time. The other thing you could do in Sublime,
+so even though it's just a text editor but it has support for certain,
+what are called builders. So for example if you look at another
+typical Ruby file and we're not gonna get into what this Ruby file does,but at the
+end of it you are printing something out. So if you go to Tools and Build which is Cmd+B or
+Ctrl+B, there is automatic support for building or running certain
+languages and Ruby's one of them. So when you open up your Whatever file .RB in sublime, you could do Cmd+B or Ctrl+B and it runs a file and
+the output gets printed out right here. So you don't have to go
+through command line. You could run it directly from the editor. So again, it's a text editor but it has a lot of features built on
+top of it that makes it really nice. And this is actually just
+scratching the surface because Sublime has many plugins and packages. And there's actually a website called
+packagecontrol.io which keeps track of all the and lists a whole bunch
+of Sublime plugins out there. We have ones that are trending,
+popular and there's stuff like support for
+Git, you know. Which basically means you could
+download a plugin that would tell you what has changed and things
+like that, where support from Markdown syntax of it being able to view
+Markdown output in the browser. A whole bunch of plugins that you can add
+on to your Sublime basic installations. To make it even better. So those are basically your choices, I personally like Sublime which
+is why I showed you how I use it. But we did list a whole
+bunch of choices out there. Number one, RubyMine which is really good. Aptana which i've never used but
+I hear good things about it. And Vim which a lot of Rubies
+will tell you that IDE. Why would you ever want to use an IDE? Just use Vim. And it works for them which is great. And then the one I just showed
+you with just the Sublime Text.

@@ -1,0 +1,425 @@
+WEBVTT
+
+1
+00:00:00.463 --> 00:00:08.135
+[MUSIC]
+
+2
+00:00:08.135 --> 00:00:10.345
+Hi and welcome to lecture five.
+
+3
+00:00:10.345 --> 00:00:14.896
+In this lecture, we'll talk about how to
+move a business logic out of View and
+
+4
+00:00:14.896 --> 00:00:18.270
+into Controller in order to
+comply with the MVC pattern.
+
+5
+00:00:19.470 --> 00:00:22.900
+We'll also talk about how long
+the controller's instance variables
+
+6
+00:00:22.900 --> 00:00:23.510
+stay in place.
+
+7
+00:00:26.580 --> 00:00:31.980
+If the action method is not really
+doing anything in the controller,
+
+8
+00:00:31.980 --> 00:00:34.300
+meaning it's empty,
+we could just remove it.
+
+9
+00:00:36.110 --> 00:00:40.290
+As long as there is a proper route
+defined and there is a properly named
+
+10
+00:00:40.290 --> 00:00:45.100
+view file/template, the action
+method does not have to be there and
+
+11
+00:00:45.100 --> 00:00:47.690
+Rails will find the correct
+template by convention.
+
+12
+00:00:49.020 --> 00:00:54.210
+So we have these hello action and
+goodbye action.
+
+13
+00:00:54.210 --> 00:00:57.310
+We could just completely comment
+them out or even remove them.
+
+14
+00:00:58.640 --> 00:01:05.794
+And as long as there's a route, defined
+the routes that rb file, that says,
+
+15
+00:01:05.794 --> 00:01:10.860
+when you have a greeter slash hello
+
+16
+00:01:10.860 --> 00:01:15.360
+that should go to the greeter_controller,
+and it should display the hello view.
+
+17
+00:01:16.370 --> 00:01:18.350
+That's all we need, right?
+
+18
+00:01:18.350 --> 00:01:25.075
+So even after removing these methods,
+this will still work.
+
+19
+00:01:25.075 --> 00:01:32.830
+But obviously there's a reason to have the
+actions, the methods, and the controller.
+
+20
+00:01:32.830 --> 00:01:34.270
+They're not just there for direction.
+
+21
+00:01:36.190 --> 00:01:40.950
+And that's where the idea of moving
+business logic out comes in, right?
+
+22
+00:01:40.950 --> 00:01:42.970
+So our app "works", but
+
+23
+00:01:42.970 --> 00:01:47.420
+business logic right now resides
+completely in the view, right?
+
+24
+00:01:47.420 --> 00:01:53.820
+So we create the random names variable,
+and how we choose
+
+25
+00:01:53.820 --> 00:01:59.360
+that random name using the random name
+that sample, and how we create the time.
+
+26
+00:01:59.360 --> 00:02:01.890
+All of that, right now,
+is in the View and that's bad.
+
+27
+00:02:01.890 --> 00:02:03.770
+We want to move a business logic out,
+
+28
+00:02:03.770 --> 00:02:08.270
+we want the View to have as
+little logic as possible.
+
+29
+00:02:09.560 --> 00:02:13.410
+So let's go ahead and move the logic
+from the View into the controller.
+
+30
+00:02:16.580 --> 00:02:21.746
+So our hello method, our hello action,
+is going to become something like this,
+
+31
+00:02:21.746 --> 00:02:27.390
+where we have random_names,
+variable defined here, as our three names.
+
+32
+00:02:28.860 --> 00:02:35.710
+Then, the instance variable name
+is actually how we get the name.
+
+33
+00:02:35.710 --> 00:02:40.640
+And the instance variables from
+the controllers action are actually
+
+34
+00:02:40.640 --> 00:02:42.356
+available in the view.
+
+35
+00:02:42.356 --> 00:02:47.850
+Right, so we define them in
+the action of the controller,
+
+36
+00:02:47.850 --> 00:02:52.750
+but they're available to
+be used in the ERB view.
+
+37
+00:02:54.530 --> 00:02:57.510
+So in this case,
+we're getting a random name.
+
+38
+00:02:57.510 --> 00:03:01.670
+We also have a time, which is the same
+that we used to have in the view.
+
+39
+00:03:01.670 --> 00:03:03.600
+Here's another interesting link.
+
+40
+00:03:03.600 --> 00:03:05.543
+We are gonna try to display the times,
+
+41
+00:03:05.543 --> 00:03:09.020
+we're gonna try to capture the times
+that this page was displayed.
+
+42
+00:03:09.020 --> 00:03:13.830
+So we're gonna have an instance
+variable called times_displayed,
+
+43
+00:03:13.830 --> 00:03:16.830
+which is gonna start over as being 0.
+
+44
+00:03:16.830 --> 00:03:20.935
+And then the idea is, every time this
+action is hit with a new request,
+
+45
+00:03:20.935 --> 00:03:24.641
+we're gonna try to increment
+that request by one and
+
+46
+00:03:24.641 --> 00:03:28.980
+see how many times has
+this page been displayed.
+
+47
+00:03:30.870 --> 00:03:32.288
+So let's see if that actually works.
+
+48
+00:03:32.288 --> 00:03:36.100
+So Greetings, name.
+
+49
+00:03:36.100 --> 00:03:39.240
+Right, so you see what happened here
+is that all the business logic,
+
+50
+00:03:39.240 --> 00:03:41.235
+like how we actually get the name and
+
+51
+00:03:41.235 --> 00:03:45.780
+the definition of that random names
+has been pulled out in the controller.
+
+52
+00:03:45.780 --> 00:03:47.980
+The time now is time.
+
+53
+00:03:47.980 --> 00:03:52.920
+Again, we're just using the instance
+variable from a controller.
+
+54
+00:03:52.920 --> 00:03:57.802
+It was defined and
+instantiated in the controller.
+
+55
+00:03:57.802 --> 00:04:00.460
+But we're actually just using
+it in the ERB template.
+
+56
+00:04:01.590 --> 00:04:04.195
+And then finally,
+this page has been viewed.
+
+57
+00:04:04.195 --> 00:04:08.180
+Times_displayed, we are hoping
+that this will give us
+
+58
+00:04:08.180 --> 00:04:11.243
+the number of times it's been displayed.
+
+59
+00:04:11.243 --> 00:04:13.830
+So we hit it one time, Greetings, Michael.
+
+60
+00:04:13.830 --> 00:04:16.500
+We hit it another time, Greetings, Alex.
+
+61
+00:04:16.500 --> 00:04:22.860
+The time starts to work, but
+this page has been viewed 1 time(s).
+
+62
+00:04:22.860 --> 00:04:23.510
+That's interesting.
+
+63
+00:04:23.510 --> 00:04:26.570
+So both times, we just get one times.
+
+64
+00:04:26.570 --> 00:04:27.280
+So why is that?
+
+65
+00:04:28.490 --> 00:04:32.090
+So unlike some other web frameworks,
+for example Servlets,
+
+66
+00:04:32.090 --> 00:04:36.130
+which you might be used to,
+you cannot store values
+
+67
+00:04:36.130 --> 00:04:40.050
+in the controller's instance
+variables in between requests.
+
+68
+00:04:40.050 --> 00:04:43.970
+So every new request is gonna
+create a new instance variable.
+
+69
+00:04:46.050 --> 00:04:51.790
+And that's why the times displayed doesn't
+get persisted in between requests.
+
+70
+00:04:51.790 --> 00:04:54.620
+It sort of just goes away, and
+then a new request is gonna, again,
+
+71
+00:04:54.620 --> 00:04:57.930
+start from zero and increment it to one,
+
+72
+00:04:57.930 --> 00:05:02.020
+which is why you see in both times that
+this page has been view one times.
+
+73
+00:05:03.450 --> 00:05:08.270
+So what are our alternatives to be
+able to store that kind of a thing?
+
+74
+00:05:08.270 --> 00:05:13.310
+Well, either session or a database, both
+of which are not covered in this course.
+
+75
+00:05:13.310 --> 00:05:15.470
+They're going to covered
+in the next course.
+
+76
+00:05:15.470 --> 00:05:19.310
+But you could either store
+that value in HTP session, or
+
+77
+00:05:19.310 --> 00:05:21.030
+you could store it in the database.
+
+78
+00:05:22.840 --> 00:05:27.930
+In summary, try as much as possible to
+keep the business logic out of the view.
+
+79
+00:05:27.930 --> 00:05:33.860
+The view should be agnostic
+of any business logic.
+
+80
+00:05:33.860 --> 00:05:37.120
+And this way you could reuse the view.
+
+81
+00:05:37.120 --> 00:05:41.230
+Because maybe you have one
+view with an html view,
+
+82
+00:05:41.230 --> 00:05:44.370
+another view with a json view or
+an xml view.
+
+83
+00:05:44.370 --> 00:05:50.650
+And all those views could just reuse the
+variables that you work hard to get, maybe
+
+84
+00:05:50.650 --> 00:05:55.280
+out of a database, something like that,
+and populate your instance variables.
+
+85
+00:05:55.280 --> 00:05:57.967
+That should be done in the controller,
+not in view.
+
+86
+00:05:59.812 --> 00:06:03.630
+And another point to take from this
+lecture is that instance variables and
+
+87
+00:06:03.630 --> 00:06:07.330
+rails do not stick around
+in between requests, and
+
+88
+00:06:07.330 --> 00:06:09.370
+we discussed alternatives for
+that as well.
+
+89
+00:06:10.655 --> 00:06:12.435
+So what's next?
+
+90
+00:06:12.435 --> 00:06:15.845
+Next, we'll talk about this
+interesting paradigm called helpers.

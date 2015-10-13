@@ -1,0 +1,610 @@
+WEBVTT
+
+1
+00:00:00.036 --> 00:00:07.557
+[MUSIC]
+
+2
+00:00:07.557 --> 00:00:08.716
+Welcome.
+
+3
+00:00:08.716 --> 00:00:13.221
+We have now developed application
+using the Coursera API, and
+
+4
+00:00:13.221 --> 00:00:18.920
+we have also deployed at the Heroku, and
+it would be nice to have a way to test it.
+
+5
+00:00:20.050 --> 00:00:20.800
+So, I showed you guys,
+
+6
+00:00:20.800 --> 00:00:24.720
+at the end of module two how to
+perform unitesting with RSpec.
+
+7
+00:00:24.720 --> 00:00:30.080
+It turns out there's another type of
+testing called black box testing.
+
+8
+00:00:30.080 --> 00:00:35.030
+And the idea of black box
+testing is that you don't care
+
+9
+00:00:35.030 --> 00:00:39.880
+if application of your test is
+written in Ruby, in Java or C#.
+
+10
+00:00:39.880 --> 00:00:41.240
+You're treating it as a black box.
+
+11
+00:00:42.410 --> 00:00:47.240
+And actually we created a whole get
+to have a repository right here.
+
+12
+00:00:47.240 --> 00:00:51.670
+Which is publicly available for
+you guys to follow along and
+
+13
+00:00:51.670 --> 00:00:53.530
+to see how black box testing is done.
+
+14
+00:00:55.750 --> 00:00:59.410
+So why should we even use Ruby for
+black box testing?
+
+15
+00:00:59.410 --> 00:01:04.520
+Well it turns out that when we
+combine Rspec and Capybara Ruby gems.
+
+16
+00:01:05.740 --> 00:01:09.290
+These two frameworks come together,
+and you can write very intuitive, and
+
+17
+00:01:09.290 --> 00:01:10.730
+expressive tests.
+
+18
+00:01:10.730 --> 00:01:14.080
+For example,
+can you tell what the following test does?
+
+19
+00:01:15.180 --> 00:01:17.470
+Well, we're trying to
+describe a recipes app,
+
+20
+00:01:17.470 --> 00:01:21.850
+and we're saying that when
+you visit a certain page.
+
+21
+00:01:21.850 --> 00:01:26.480
+Expect the page content to have
+the content of Chocolate Tea.
+
+22
+00:01:27.540 --> 00:01:31.450
+Very intuitive, very expressive,
+you could tell right away what it does.
+
+23
+00:01:32.620 --> 00:01:37.980
+Just to show you guys the Capybara
+webpage, what capybara is.
+
+24
+00:01:37.980 --> 00:01:41.110
+It's an acceptance test framework for
+web applications.
+
+25
+00:01:42.250 --> 00:01:46.930
+It helps you test web applications
+by simulating how a real
+
+26
+00:01:46.930 --> 00:01:50.210
+user will interact with your app and
+
+27
+00:01:50.210 --> 00:01:53.820
+its agnostic about the driver running
+your test, as we'll see in a minute.
+
+28
+00:01:55.880 --> 00:02:00.781
+So just to show what the Capybara
+black box tests look like,
+
+29
+00:02:00.781 --> 00:02:05.696
+just jump into my Sublime for
+this particular depository.
+
+30
+00:02:07.676 --> 00:02:09.170
+And it looks something like this.
+
+31
+00:02:09.170 --> 00:02:14.250
+So first of all,
+you're gonna have the .rspec file,
+
+32
+00:02:14.250 --> 00:02:18.341
+which is going to say that we're
+going to be requiring spec_helper and
+
+33
+00:02:18.341 --> 00:02:23.020
+the .rspec, if you remember from lecture,
+from module 2 is generated when you do
+
+34
+00:02:23.020 --> 00:02:27.907
+rspec dash dash.
+
+35
+00:02:27.907 --> 00:02:31.071
+So .rspec says requires spec_helper.
+
+36
+00:02:31.071 --> 00:02:34.050
+Spec_helper is this file where you could.
+
+37
+00:02:34.050 --> 00:02:38.340
+Include certain things that all
+your tests are going to need.
+
+38
+00:02:40.040 --> 00:02:44.310
+This has the rspec,
+capybara, a few other gems
+
+39
+00:02:45.380 --> 00:02:49.350
+and it's going to say that the rspec
+
+40
+00:02:51.180 --> 00:02:55.760
+should include the capybara dsl,
+certain langauge that capybara provides.
+
+41
+00:02:58.070 --> 00:02:59.530
+Let's take a look at the test.
+
+42
+00:03:01.450 --> 00:03:06.460
+We are specifying that we're going
+to be using the selenium driver for
+
+43
+00:03:06.460 --> 00:03:10.610
+this particular test and
+the application host,
+
+44
+00:03:10.610 --> 00:03:14.060
+the actual application we test in,
+is not a local host.
+
+45
+00:03:14.060 --> 00:03:15.290
+It's the actual website.
+
+46
+00:03:17.520 --> 00:03:22.980
+We could actually copy and paste this and
+
+47
+00:03:22.980 --> 00:03:30.520
+go into Firefox and
+actually see what this does.
+
+48
+00:03:30.520 --> 00:03:33.530
+This is just a URL to our
+application obviously.
+
+49
+00:03:35.360 --> 00:03:41.190
+So we're telling Capybara that
+we want to use this application,
+
+50
+00:03:41.190 --> 00:03:46.618
+this URL, to test the application and
+the the words of the test be,
+
+51
+00:03:46.618 --> 00:03:51.004
+well test #1 is going
+to be visit the root.
+
+52
+00:03:51.004 --> 00:03:57.830
+And you the is a described
+block inside a describe.
+
+53
+00:03:57.830 --> 00:04:02.260
+So the outer describe has
+the whole thing in it and
+
+54
+00:04:02.260 --> 00:04:05.030
+then you could also have nested context.
+
+55
+00:04:05.030 --> 00:04:08.400
+So we have a nested describe that says,
+for
+
+56
+00:04:08.400 --> 00:04:11.460
+all of these between this describe and
+the end.
+
+57
+00:04:14.040 --> 00:04:18.910
+The before is gonna be visit
+the root of application.
+
+58
+00:04:18.910 --> 00:04:26.220
+So when you visit the root it displays
+Johns Hopkins somewhere on the page.
+
+59
+00:04:26.220 --> 00:04:31.110
+So you basically get this
+variable called page after you
+
+60
+00:04:31.110 --> 00:04:36.442
+interact with a website and
+it says, expect this page.
+
+61
+00:04:36.442 --> 00:04:39.210
+To have_content Johns Hopkins.
+
+62
+00:04:39.210 --> 00:04:43.620
+We know that the default is gonna be
+Johns Hopkins and as you could see.
+
+63
+00:04:46.090 --> 00:04:51.670
+That Johns Hopkins indeed does
+appear on the default of a page.
+
+64
+00:04:52.760 --> 00:04:54.550
+So that is exactly what we're testing for.
+
+65
+00:04:54.550 --> 00:04:58.830
+We're testing for Johns Hopkins
+appearing somewhere on the page.
+
+66
+00:04:58.830 --> 00:05:00.560
+So this is a pretty simple matcher.
+
+67
+00:05:02.450 --> 00:05:04.810
+Now, but you can get much more complex.
+
+68
+00:05:04.810 --> 00:05:08.540
+Because Capybara also has support for
+Expat.
+
+69
+00:05:08.540 --> 00:05:10.300
+And this is not a course in Expat.
+
+70
+00:05:10.300 --> 00:05:11.400
+I'm not going to cover it here.
+
+71
+00:05:11.400 --> 00:05:16.115
+But just to show you guys it's possible,
+for example, you could say,
+
+72
+00:05:16.115 --> 00:05:21.110
+it displays a table element that
+has a row with three columns in it.
+
+73
+00:05:21.110 --> 00:05:26.470
+And where you express that in expat
+is by saying table, TR, and so on.
+
+74
+00:05:26.470 --> 00:05:29.730
+Count with TG elements and
+the count should be three.
+
+75
+00:05:31.510 --> 00:05:36.500
+Or you could say column one should
+have a thumbnail inside image tag.
+
+76
+00:05:36.500 --> 00:05:41.690
+So table, tr, image,
+is just gonna be inside the first column.
+
+77
+00:05:43.940 --> 00:05:51.480
+Or you can say, visit and
+just visit the root, visit the.
+
+78
+00:05:52.558 --> 00:05:59.538
+Well, yes, visit the root, and then
+provide a request parameter looking for
+
+79
+00:05:59.538 --> 00:06:04.823
+diet, which is gonna bring back
+The Meat We Eat, which is,
+
+80
+00:06:04.823 --> 00:06:09.297
+as you could see here,
+when you actually do that.
+
+81
+00:06:14.807 --> 00:06:17.868
+The Meat We Eat is one of
+the things on the page, so
+
+82
+00:06:17.868 --> 00:06:20.880
+we're basically testing for that.
+
+83
+00:06:20.880 --> 00:06:24.420
+We're writing a test
+that's gonna show us that,
+
+84
+00:06:24.420 --> 00:06:27.990
+that's gonna confirm that The Meat We Eat
+actually does appear on the page.
+
+85
+00:06:29.340 --> 00:06:32.090
+So let's actually run this and
+see if this actually works.
+
+86
+00:06:32.090 --> 00:06:36.540
+I mean it almost sounds funny you
+write in some English statements.
+
+87
+00:06:36.540 --> 00:06:38.010
+And you're expecting it to work.
+
+88
+00:06:40.010 --> 00:06:46.840
+So we're gonna do rspec and
+--format documentation.
+
+89
+00:06:46.840 --> 00:06:52.970
+Where to actually illustrate very
+nicely what the output of test is.
+
+90
+00:06:52.970 --> 00:07:00.900
+When we ran this, you're going to see
+that it's actually bringing up Firefox.
+
+91
+00:07:01.900 --> 00:07:05.450
+And it's actually
+interacting as a user would.
+
+92
+00:07:05.450 --> 00:07:06.367
+Let's see that again.
+
+93
+00:07:10.446 --> 00:07:13.850
+So it's actually going to that page,
+whatever that page is.
+
+94
+00:07:13.850 --> 00:07:17.910
+And it's actually
+querying the web page and
+
+95
+00:07:17.910 --> 00:07:23.430
+we are using XPath to confirm the output
+of content, which is pretty cool.
+
+96
+00:07:25.110 --> 00:07:30.310
+Now this is nice but
+especially when you run a lot of tests.
+
+97
+00:07:30.310 --> 00:07:34.110
+You probably don't want Firefox to
+be flashing in front of the eyes
+
+98
+00:07:34.110 --> 00:07:35.970
+the whole time.
+
+99
+00:07:35.970 --> 00:07:39.250
+So, it's kinda cool to show this,
+that it's actually doing it,
+
+100
+00:07:39.250 --> 00:07:42.340
+and it actually is invoking Firefox.
+
+101
+00:07:42.340 --> 00:07:44.980
+But in reality, especially when
+you have a lot of tests, and
+
+102
+00:07:44.980 --> 00:07:48.920
+you want to run those tests often,
+which is a good practice.
+
+103
+00:07:48.920 --> 00:07:50.860
+You probably don't want to be flashing.
+
+104
+00:07:50.860 --> 00:07:54.850
+So that is where the PhantomJS
+part of it comes in.
+
+105
+00:07:56.740 --> 00:08:01.000
+So PhantomJS,
+which we installed in module 1 is
+
+106
+00:08:01.000 --> 00:08:07.620
+a headless browser,
+which basically means it's a browser.
+
+107
+00:08:07.620 --> 00:08:12.850
+But it's not a real browser like Firefox
+which actually displays something,
+
+108
+00:08:12.850 --> 00:08:13.510
+it's headless.
+
+109
+00:08:14.700 --> 00:08:19.550
+And Capybara actually has a gem called
+
+110
+00:08:19.550 --> 00:08:23.690
+poltergeist which is a PhantomJS
+driver for Capybara.
+
+111
+00:08:25.140 --> 00:08:30.505
+So basically all you really have to do
+to switch from one driver to another
+
+112
+00:08:30.505 --> 00:08:36.000
+is to comment out selenium,
+
+113
+00:08:36.000 --> 00:08:41.700
+and instead use poltergeist which
+is a cut where phantom driver.
+
+114
+00:08:42.790 --> 00:08:50.940
+And now when you run the tests, Firefox
+no longer flashing in front of your eyes.
+
+115
+00:08:50.940 --> 00:08:56.350
+And instead your tests run in
+the terminal and the output is the same.
+
+116
+00:08:57.590 --> 00:09:01.900
+So that's sort of just to show
+you how to do black box testing.
+
+117
+00:09:01.900 --> 00:09:07.641
+Feel free to actually check out the GitHub
+
+118
+00:09:07.641 --> 00:09:11.940
+repository right here.
+
+119
+00:09:11.940 --> 00:09:15.590
+Actually, right over here.
+
+120
+00:09:15.590 --> 00:09:21.230
+The read me file does have
+pretty good instructions
+
+121
+00:09:21.230 --> 00:09:25.150
+on which gems you need to install
+before you're able to run it.
+
+122
+00:09:25.150 --> 00:09:29.850
+Where as we rspec, selenium web driver,
+capybara, poltergeist.
+
+123
+00:09:29.850 --> 00:09:34.810
+If you're using rbenv,
+you're also gonna need to do rbenv rehash,
+
+124
+00:09:34.810 --> 00:09:39.910
+because any time you install
+something that has for example rspec,
+
+125
+00:09:39.910 --> 00:09:45.790
+that has an executable after you install
+that gem, you have to do rbenv rehash.
+
+126
+00:09:47.550 --> 00:09:49.020
+So that's with the regular mode.
+
+127
+00:09:49.020 --> 00:09:53.350
+And there's also the headless mode
+which we just saw using PhantomJS.
+
+128
+00:09:53.350 --> 00:09:58.333
+And all you have to do run it is just
+to switch from the selenium driver to
+
+129
+00:09:58.333 --> 00:09:59.946
+poltergeist driver.

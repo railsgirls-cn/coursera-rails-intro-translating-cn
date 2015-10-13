@@ -1,0 +1,542 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:08.407
+[MUSIC]
+
+2
+00:00:08.407 --> 00:00:10.530
+Hi and welcome to lecture 11.
+
+3
+00:00:10.530 --> 00:00:14.700
+In this lecture,
+we'll talk about the double pipe operator.
+
+4
+00:00:14.700 --> 00:00:17.990
+We'll also discuss the class methods and
+class variables and
+
+5
+00:00:17.990 --> 00:00:20.970
+finally, the class inheritance.
+
+6
+00:00:20.970 --> 00:00:26.080
+So we have the double pipe operator,
+something like this.
+
+7
+00:00:26.080 --> 00:00:29.890
+And the way it works is that it
+first evaluates the left side.
+
+8
+00:00:31.140 --> 00:00:34.980
+If that expression is true, it returns it.
+
+9
+00:00:34.980 --> 00:00:38.010
+Otherwise, it returns the right side.
+
+10
+00:00:38.010 --> 00:00:44.200
+The short form of this same
+operator is a variable
+
+11
+00:00:44.200 --> 00:00:48.970
+and then two pipes equals 5, for example.
+
+12
+00:00:48.970 --> 00:00:54.580
+So let's look at it in an example and
+see why this operator is useful.
+
+13
+00:00:55.750 --> 00:00:59.550
+So similar class to what we saw before.
+
+14
+00:00:59.550 --> 00:01:04.246
+We have a person, we have an age getter
+and the name, getter in the setter.
+
+15
+00:01:04.246 --> 00:01:05.846
+We have a constructor.
+
+16
+00:01:05.846 --> 00:01:10.774
+And we have an age setter
+method that takes an age.
+
+17
+00:01:10.774 --> 00:01:14.661
+Now, in the previous examples,
+we basically said, well,
+
+18
+00:01:14.661 --> 00:01:18.026
+the age is new age unless
+it's greater than 120.
+
+19
+00:01:18.026 --> 00:01:21.270
+But it would been nice to
+have some sort of a default.
+
+20
+00:01:21.270 --> 00:01:27.075
+So in this case, we're saying
+assign the age variable to itself,
+
+21
+00:01:27.075 --> 00:01:31.638
+which the first time around
+is gonna be nil because we
+
+22
+00:01:31.638 --> 00:01:36.220
+haven't created an instance
+of a person class yet.
+
+23
+00:01:39.080 --> 00:01:41.240
+And then every other time,
+
+24
+00:01:41.240 --> 00:01:45.900
+if a age is already set,
+then just leave it, use that value.
+
+25
+00:01:45.900 --> 00:01:50.340
+Otherwise, if it's not,
+if it's nil or false,
+
+26
+00:01:50.340 --> 00:01:54.870
+then you would use the value to
+the right side of it, which is 5.
+
+27
+00:01:54.870 --> 00:01:56.960
+So, let's see this in action.
+
+28
+00:01:56.960 --> 00:02:03.506
+We have a person1 object that
+gets created from a Person class.
+
+29
+00:02:03.506 --> 00:02:06.875
+And we're trying to
+create the value of 130.
+
+30
+00:02:06.875 --> 00:02:12.310
+Now, 130, obviously is more than 120,
+so this line is not gonna execute.
+
+31
+00:02:12.310 --> 00:02:14.200
+But this line will.
+
+32
+00:02:14.200 --> 00:02:19.230
+Which means that you're gonna have five,
+by the time you get here.
+
+33
+00:02:21.180 --> 00:02:23.220
+Then we try to change it to ten.
+
+34
+00:02:23.220 --> 00:02:28.050
+So what happens is new age,
+which is ten comes in here.
+
+35
+00:02:28.050 --> 00:02:34.490
+We're not gonna touch this value, because
+it already has been assigned to five.
+
+36
+00:02:34.490 --> 00:02:39.156
+So it's gonna say, okay,
+age is age of 5, and
+
+37
+00:02:39.156 --> 00:02:42.890
+age already is not nil, not false, so
+
+38
+00:02:42.890 --> 00:02:48.524
+this 5 gets ignored, but
+then it gets assigned to 10.
+
+39
+00:02:48.524 --> 00:02:53.784
+And then after that,
+we try to change it to 200, and again,
+
+40
+00:02:53.784 --> 00:02:59.144
+it's assigned to 10 right now,
+so it comes in here as 200,
+
+41
+00:02:59.144 --> 00:03:04.630
+and it says okay, age is equal to age,
+which is 10 in this case.
+
+42
+00:03:06.130 --> 00:03:10.184
+Because 10 is nil, not false,
+5 again gets ignored and
+
+43
+00:03:10.184 --> 00:03:13.740
+you end up with 10, but
+not 200, obviously,
+
+44
+00:03:13.740 --> 00:03:18.810
+because this line does not execute,
+because this condition is not met.
+
+45
+00:03:20.270 --> 00:03:22.570
+Let's talk about class methods and
+class variables.
+
+46
+00:03:23.810 --> 00:03:28.440
+These guys I invoked on the class as
+opposed to an instance of a class.
+
+47
+00:03:28.440 --> 00:03:31.560
+So if you're familiar with the concept
+of a static method in Java,
+
+48
+00:03:32.660 --> 00:03:34.005
+these are your equivalent.
+
+49
+00:03:35.470 --> 00:03:40.240
+Self outside of the method definition
+refers to the class object, and
+
+50
+00:03:40.240 --> 00:03:45.070
+that's how you know something is
+a class method is if it has a self
+
+51
+00:03:46.090 --> 00:03:48.020
+on the outside of method definition.
+
+52
+00:03:49.650 --> 00:03:53.530
+As we're gonna see, there are two more
+ways to define class methods in Ruby
+
+53
+00:03:53.530 --> 00:03:57.293
+besides just having self on
+the outside of a method definition.
+
+54
+00:03:58.950 --> 00:04:05.580
+And then class variables begin with @@,
+not just a single @.
+
+55
+00:04:05.580 --> 00:04:09.426
+So single @ symbol gives you
+an instance variable and
+
+56
+00:04:09.426 --> 00:04:12.684
+double @ symbol gives
+you a class variable.
+
+57
+00:04:14.604 --> 00:04:20.390
+So to see an example of this, let's say
+you have a class called MathFunctions.
+
+58
+00:04:20.390 --> 00:04:24.590
+Now, MathFunctions, maybe it has a bunch
+of functions like double or triple or
+
+59
+00:04:24.590 --> 00:04:25.450
+something like that.
+
+60
+00:04:27.330 --> 00:04:31.570
+So maybe it doesn't make sense to
+create an object of the MathFunctions,
+
+61
+00:04:31.570 --> 00:04:34.410
+these are just utility
+functions that are used.
+
+62
+00:04:34.410 --> 00:04:38.513
+Are you gonna double something,
+you wanna triple something.
+
+63
+00:04:38.513 --> 00:04:43.434
+So, the most obvious
+way to define the class
+
+64
+00:04:43.434 --> 00:04:49.286
+variable is to say self.double,
+I guess self dot.
+
+65
+00:04:49.286 --> 00:04:53.526
+And self dot means that
+it's a class variable and
+
+66
+00:04:53.526 --> 00:04:58.905
+var multiplied by 2 means that
+you're gonna get the actual,
+
+67
+00:04:58.905 --> 00:05:02.750
+in this case,
+double of what you passed in.
+
+68
+00:05:02.750 --> 00:05:07.501
+And the way this is used is
+you have MathFunctions.double,
+
+69
+00:05:07.501 --> 00:05:10.026
+and that's when you pass in 5.
+
+70
+00:05:10.026 --> 00:05:12.138
+You get back 10.
+
+71
+00:05:12.138 --> 00:05:16.694
+And notice how in this case, because
+it's a class method, we're not creating
+
+72
+00:05:16.694 --> 00:05:21.660
+an instance of a class, we're just calling
+this double directly on the class itself.
+
+73
+00:05:23.540 --> 00:05:26.998
+Then, maybe,
+there's the method call triple.
+
+74
+00:05:26.998 --> 00:05:29.300
+And the way this triple is defined,
+
+75
+00:05:29.300 --> 00:05:34.670
+notice that this is defined completely
+outside of a class definition.
+
+76
+00:05:34.670 --> 00:05:36.478
+So class definition is MathFunctions.
+
+77
+00:05:36.478 --> 00:05:42.100
+We just say, outside of the class define
+the method called MathFuntions.triple
+
+78
+00:05:42.100 --> 00:05:46.080
+which is a class method
+on a MathFuntions class.
+
+79
+00:05:47.550 --> 00:05:52.460
+And, again, this method just triples
+the value that's passed into it.
+
+80
+00:05:52.460 --> 00:05:58.030
+Notice how you could use parentheses over
+here, it follows exactly the same rules
+
+81
+00:05:58.030 --> 00:06:03.371
+of method definitions, yes parenthesis,
+no parenthesis, it's all fine.
+
+82
+00:06:03.371 --> 00:06:08.487
+And a third way to define class methods
+is to have it in a way that's very
+
+83
+00:06:08.487 --> 00:06:14.589
+similar to instance method, so you have,
+you have def, you have times_called.
+
+84
+00:06:14.589 --> 00:06:20.607
+That's your regular what you
+would call an instance method,
+
+85
+00:06:20.607 --> 00:06:27.455
+but it's defined inside this class,
+end, and self construct here.
+
+86
+00:06:27.455 --> 00:06:32.130
+And it makes the times_called
+is also a class method.
+
+87
+00:06:33.380 --> 00:06:35.410
+So three ways to define them.
+
+88
+00:06:35.410 --> 00:06:38.930
+The way you know that
+something is a class variable
+
+89
+00:06:38.930 --> 00:06:42.596
+is if it has two @ symbols in front of it.
+
+90
+00:06:42.596 --> 00:06:45.690
+That's what times_called is.
+
+91
+00:06:45.690 --> 00:06:50.150
+At the end, you have times_called
+that's been called three times.
+
+92
+00:06:52.240 --> 00:06:54.480
+Let's talk about class inheritance.
+
+93
+00:06:54.480 --> 00:07:00.410
+So every class implicitly
+inherits from the object class.
+
+94
+00:07:00.410 --> 00:07:03.810
+The object itself inherits
+from a basic object class.
+
+95
+00:07:04.840 --> 00:07:08.170
+Ruby does not support
+multiple inheritance and
+
+96
+00:07:08.170 --> 00:07:12.400
+instead use something called mixins which
+we'll be discussing in the next lecture.
+
+97
+00:07:14.270 --> 00:07:16.900
+So let's see a quick
+example of inheritance.
+
+98
+00:07:16.900 --> 00:07:23.240
+We have a class called Dog,
+which implicitly inherits from Object.
+
+99
+00:07:23.240 --> 00:07:26.030
+Right, because it doesn't
+inherit from anything.
+
+100
+00:07:26.030 --> 00:07:30.090
+So implicitly,
+every class inherits from an Object class.
+
+101
+00:07:31.760 --> 00:07:35.010
+Then, maybe you have a SmallDog,
+which inherits, and
+
+102
+00:07:35.010 --> 00:07:36.680
+that's what this symbol means.
+
+103
+00:07:36.680 --> 00:07:38.149
+It inherits from a Dog class.
+
+104
+00:07:39.270 --> 00:07:44.820
+So, like regular inheritance
+in all OO languages.
+
+105
+00:07:44.820 --> 00:07:51.600
+You have a bark method that the class that
+inherits from the Dog method can override.
+
+106
+00:07:52.650 --> 00:07:59.990
+So maybe a regular dog barks loudly and
+the small dog barks quietly.
+
+107
+00:07:59.990 --> 00:08:04.770
+So, you create an instance
+of a dog method and then,
+
+108
+00:08:04.770 --> 00:08:09.620
+you create an instance
+of a small dog method.
+
+109
+00:08:09.620 --> 00:08:13.430
+So, dog, whether it was create
+
+110
+00:08:13.430 --> 00:08:17.890
+using the dog class barks loudly and
+the other one barks quietly.
+
+111
+00:08:19.930 --> 00:08:24.320
+In summary, class inheritance lets
+you override parent's behavior.
+
+112
+00:08:25.510 --> 00:08:30.210
+Class methods do not need an instance
+of an object in order to be called and
+
+113
+00:08:30.210 --> 00:08:33.001
+class variables begin with @@.
+
+114
+00:08:35.190 --> 00:08:37.155
+In the next lecture we talk about modules.

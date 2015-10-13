@@ -1,4 +1,0 @@
-Welcome to lecture one of module two. In this lecture,
-we'll discuss the brief history of Ruby.
-
-欢迎来到 module2，在这节课，我们会讨论 Ruby 的历史。

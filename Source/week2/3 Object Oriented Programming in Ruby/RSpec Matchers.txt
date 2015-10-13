@@ -1,0 +1,42 @@
+[MUSIC] Hi and welcome to lecture 17. In this lecture,
+we'll continue our discussion of RSpec and talk about RSpec Matchers. So RSpec hangs the to and the not_to
+methods on all outcome of expectations. As we've seen in the previous lecture and
+the to and the not_to methods are just basically methods that take
+one parameter, which is a matcher. So the examples of a matcher could be,
+for example, be_true, be_false, the ones we've seen in the previous
+lecture, eq 3, for example. Raise_error, where you pass in
+what error you're trying to raise. So, it'll go something like this. It would be expect some condition, let's say calculator at 2 plus 2 to
+be_true, or to equal some number. If the object on which the test
+is operating has a predicate, which is just a boolean method,
+you automatically get the be underscore whatever that
+predicate condition is, matcher. So for example, be_nil is a valid
+matcher since every Ruby object has a nil method and this object nil, you could test it by saying be that
+you expected something to be nil. So, here's an example, that for example,
+in our calculator example, maybe we have an expectation example that says it should
+sum two odd numbers and become even. I know you could test it as by saying
+expect, the condition which is calculator.add(3, 3).to be_even or
+another way of saying that is you could say expect, the calculator,
+3 plus 3, not_to be_odd. And these are perfectly legal and they read very much like
+an English language sentence. When you actually run
+these guys using RSpec, you'll get three dots because by this time
+we have fixed our calculator example and now it's outputting green, which
+means that the tests actually passed. Now, let's say you actually wanna
+see which tests are passing, not just a bunch of dots. Which, this may be good if you're just
+trying to get all the tests to pass, but let's say later on for the computation purposes, you actually
+wanna know what is your software doing? What does your software support? So then you could say rspec --format
+documentation or even just -f d, and it will tell you that Calculator
+should add 2 numbers correctly. And if it's green,
+you see that these things actually work. So if you wrote your examples,
+your expectations correctly, you'll actually see what behavior is
+being supported by your application and many more matchers that RSpec offers. If you go to this page over
+here in relishapp.com/rspec and so on, you see what things like, for
+example be_within, right because, you don't want to be testing the floating
+point number for exactly being equal. You wanna be testing within its own range,
+or contain exactly maybe a list
+containing certain elements that, for example, you could expect that the list
+not_to be_empty and things like that. And it's very intuitive. And I think it's a great
+testing framework. And again, if you prefer mini tests, go with that
+as long as the tests get written. So RSpec has a lot of built-in matchers
+readily available for simplifying writing tests and it's a great framework to
+use for testing your applications. What's next? We'll jump into Module 3, which is
+Introduction to Ruby on Rails, and I will see you in that module.

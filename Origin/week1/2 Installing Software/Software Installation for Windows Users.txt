@@ -1,0 +1,114 @@
+[MUSIC] Hello, and welcome to this
+software installation video for Windows operating system. These are the tools that you will need for
+course one, which is Ruby, Rails, Git, Phantomjs and Sublime Text. So the first three, Ruby, Rails and Git
+can be installed as one single package by going to railsinstaller.org and
+the other two tools that we need can be installed by going to
+Phantomjs and the Sublime Text URL. And I'll walk you through these websites
+to complete the installation process. So in order to install Ruby, Rails, and Git as a package,
+you can go to railsinstaller.org. And if you scroll down, you will see
+that you have the options to install for both Windows and Mac. And we will go with Windows, Ruby 2.1. And these are all the software that
+are packaged with this download. Which is Ruby, Rails,
+Bundler, Git and so on. And, this is the latest
+at the time of the video. And then if things change or if you're
+downloading this at a later time this might be updated so you will go and
+get the latest one. So let's download the Windows
+package by clicking on Ruby 2.1. And you will have the option for
+saving just like any other install. So click on Save and
+then complete the installation process. So once the download is complete,
+you will see the executable, and you can install this by just
+double clicking on this, and accepting all the defaults and
+completing the installation. So I'll just select all the default and this is the default directory
+that it will get installed to. And as you can see, you will also
+have the option of installing Ruby, Git and so on and Default is selected and
+it just select this. If you already have Git or
+if you already have other tools, you have the option of unselecting or
+unchecking this, but this is the default. So, to complete the installation,
+click on Install, and this should install In a directory
+called RailsInstaller. So on successful installation,
+you should see a directory called C:RailsInstaller,
+assuming you selected this as the default. But again you have the option
+of installing at any place. And you will see the following
+subdirectories or folders underneath Rails Installer. Now, before we test to make sure
+our installation went through, we need to make one small update. As you can see, with this installation,
+we got Rails 4.1. But what we need for this course is 4.2.3. So you can do a quick update
+to get the latest 4.2.3 by doing a gem install rails -v 4.2.3. This should install the latest
+that we need for this course. Once the installation is done, you can
+always go back and make sure our Git, Ruby, and Rails, is all good to go. So let's check the Git,
+to make sure Git is all good. So, we got git 1.9.4,
+which is good enough for this course. Next, let's do Ruby and Rails. So as you can see, Ruby is,
+2.0 and Rails is 4.2.3. So, we are good to go with Ruby,
+Rails and Git. Let's go and install the PhantomJS,
+and Sublime Text next. PhantomJS is an extremely simple install. So all you need to do is
+go to PhantomJS.org and you will see the option to download. And just click on Download, and just
+save it to a directory of your choice. So when you click on the download link,
+you have the option for installing for Windows, Mac and Linux. And we'll go with Windows. So it's a zip file, so you can either open
+it and drag and drop it to your directory. Or you can simply save and
+then unzip the file. So here is the install, so here is
+the .zip file so you should be able to just drag and drop this directory
+into a directory of your choice. So in my case, I have the zip file that was downloaded
+to the drive and dropped in here. So this is where it is
+currently installed. You can navigate to the bin directory and that's where you have
+PhantomJS.executable now. One important thing is since this
+something that you need from any other directory or from command
+prompt, in general, you'll have to go and add this to your path. Basically, add the executable or
+the bin directory to be part of your environment variable
+path so that you will be able to install. You will be able to invoke
+this executable anywhere. So let's go and do that next. So let's go and
+add the environment variable. So, we need to go and find the pack,
+so you can do a search and find your environment variables for your
+account, and there it is, that's the path. And you need to edit this. And I already have this, so basically
+all you need to do is go to the end of the path variable, and
+add a semi colon as you can see here, and copy and
+paste the directory of the installation. Right, so we install it here. So, we basically need this directory, C
+colon, the installation of the phantomjs. So, you can copy this, and
+then paste it all the way at the end. So, that's pretty much all you need. And then do an okay, and
+then close the window. And you should be able to open a brand new
+command window, and then try the command. Okay, so let's open up a new window. And let's give it a try. And if you type phantomjs-v you
+don't have to be in that directory you should be able to see
+the installation that you just did. Right, so this is a very important step. And any other environment variable
+that you need to add in this course the steps are exactly what I showed
+in Windows operating system. You just have to search for edit environment variable,
+go to that screen, pick up the path. Go to the end, add a semicolon, and then do the
+appropriate changes that you need to do. Finally the last thing we need to do is
+install Sublime Text which is a really nice editor, a very simple editor
+to use that will be on Rails. And this is something that'll be
+used throughout this specialization. Pretty much in most of the course,
+or all of the course. So let's go to the website,
+sublimetext.com. So this is the URL, sublimetext.com and there is a link on
+the top called Download. And again, it's a fairly simple install. So as you can see it supports all of
+the different operating systems and depending on your Windows, 32 or 64, you can pick the appropriate and
+it's an executable. So just select the EXE of your choice and then you can do a save and run the EXE. So take the directory of your choice, and you should be able to
+complete the installation. Once you have successfully installed,
+you should be able to launch your editor. So you should be able to find it right
+there, Sublime Text, and just bring it up. So that completes all the necessary
+tools that we need for this course. Now one final thing we need to do is to
+make sure that that Rails installation was all good. And let's try to bring up the Rails and
+then go to the URL localhost:3000 just to make sure Rails is all good to go and
+we can access the main page. Right?
+So let's go and do that. So to test the Rails,
+open a command window and type the command as you can see on screen,
+rails new test_install. Now all of these commands will be
+explained a lot more in depth once you start the course. But for now, just type this command so that you will know whether
+the installation was all good to go. It will go and
+create a bunch of directories. And as I said, ignore it for now. You will be given a lot more information
+on this as you start the course. Right. So once the installation is done,
+you will get back the prompt. And let's go into that
+directory that we just created. So that directory was called test_install,
+so let's go inside that. Now let's type the Rails server. The command is very simple,
+it's rails server. So you should see the server
+starting up and as you can see, the URL, the default URL is localhost3000. So let's go to the URL and check to
+make sure that everything is good. So as you can see,
+we can get to the main page. This is the Rails main page. You can also click on the About
+your applications environment. This will give you a lot more
+BTL on what was installed. So as you can see, it's 423. That's the Ruby and
+there will be gems and so on. So this is all good, and this is pretty much all you need
+to continue with the course. Work on the examples and
+the assignments and all that. So just to wrap up
+the installation process, so what you did in this quick lesson
+was to install Ruby, Rails, and Git as part of the railsistaller.org. And then we also installed two
+additional things that we need, one was the PhantomJS and then the IDE. Although you have the option of using
+any other editor of your choice, Sublime Text is highly preferred for
+Ruby and Rails. So, that completes this video for
+installation on Windows. If you need additional information
+on installing on any other operating system like Mac or Linux and so
+on, please check out the other videos. Thank you.

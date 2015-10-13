@@ -1,0 +1,818 @@
+WEBVTT
+
+1
+00:00:00.758 --> 00:00:08.512
+[MUSIC]
+
+2
+00:00:08.512 --> 00:00:11.680
+Hi, welcome to Lecture 9.
+
+3
+00:00:11.680 --> 00:00:13.950
+In this lecture, we'll talk about hashes.
+
+4
+00:00:13.950 --> 00:00:14.690
+How they're used,
+
+5
+00:00:14.690 --> 00:00:19.180
+why they're used, and is there any
+similarity between hashes and blocks.
+
+6
+00:00:21.090 --> 00:00:23.240
+So hashes are your index collections.
+
+7
+00:00:24.600 --> 00:00:28.520
+They're created with curly braces or
+Hash.new, as we're gonna see.
+
+8
+00:00:29.960 --> 00:00:34.110
+And they're also sometimes
+known as associative arrays.
+
+9
+00:00:35.350 --> 00:00:38.340
+Now what does that even mean,
+associative arrays?
+
+10
+00:00:38.340 --> 00:00:40.930
+So if you think about regular arrays, so
+
+11
+00:00:40.930 --> 00:00:45.800
+you have a bunch of elements, and each
+element has an index which is an integer.
+
+12
+00:00:45.800 --> 00:00:50.254
+So the first element is zero,
+one, two, and so on.
+
+13
+00:00:50.254 --> 00:00:57.290
+With hashes, that index doesn't have
+to be an integer, it could be anything.
+
+14
+00:00:57.290 --> 00:01:03.180
+It could be a key, a string,
+it could be a symbol, as we're gonna see.
+
+15
+00:01:03.180 --> 00:01:08.590
+So, each element in the hash
+is associated with a key.
+
+16
+00:01:08.590 --> 00:01:10.056
+That's what associative arrays mean.
+
+17
+00:01:10.056 --> 00:01:13.949
+They're accessed very
+similar to how arrays,
+
+18
+00:01:13.949 --> 00:01:20.390
+the elements in their arrays
+are accessed using the index operator.
+
+19
+00:01:20.390 --> 00:01:25.870
+The values are set using this interesting
+operator called the hash racket
+
+20
+00:01:25.870 --> 00:01:27.980
+when you are creating hashes.
+
+21
+00:01:27.980 --> 00:01:31.960
+And after that, you use the regular
+
+22
+00:01:31.960 --> 00:01:36.720
+array index operator to modify
+the elements in the hash.
+
+23
+00:01:37.840 --> 00:01:39.690
+So let's see an example.
+
+24
+00:01:39.690 --> 00:01:44.350
+We have an editor_props
+variable which is a hash.
+
+25
+00:01:44.350 --> 00:01:50.240
+So again, you see the curly braces, and
+you have key value, key value elements.
+
+26
+00:01:50.240 --> 00:01:55.460
+And you have this hash racket
+that's used to represent that
+
+27
+00:01:55.460 --> 00:01:59.480
+this value is being assigned to this key,
+okay?
+
+28
+00:02:01.080 --> 00:02:07.000
+Now, even though there is a curly brace
+notation here, this is not a block.
+
+29
+00:02:07.000 --> 00:02:07.660
+This is a hash.
+
+30
+00:02:09.250 --> 00:02:11.105
+You could see what
+the length of a hash is.
+
+31
+00:02:11.105 --> 00:02:13.880
+There are three entries that
+have key value, and so on.
+
+32
+00:02:15.030 --> 00:02:21.923
+And, to actually get the value, you would
+pass in the key into the index operator.
+
+33
+00:02:21.923 --> 00:02:24.460
+You'd pass in the key, and
+you get back the value.
+
+34
+00:02:24.460 --> 00:02:26.805
+So, again very similar to arrays.
+
+35
+00:02:27.880 --> 00:02:31.547
+If you want to set a value in the hash,
+you would do the same thing.
+
+36
+00:02:31.547 --> 00:02:35.970
+And you would say, okay,
+now the value of the background is Blue.
+
+37
+00:02:37.220 --> 00:02:42.700
+And then, when you wanna loop through
+hashes, you don't just use each, which
+
+38
+00:02:42.700 --> 00:02:48.114
+would loop through each element in the
+hash, right, like you would do of arrays.
+
+39
+00:02:48.114 --> 00:02:55.000
+You do each_pair, and you get the key and
+the value for each iteration that you do.
+
+40
+00:02:56.660 --> 00:02:59.950
+Now, what if you wanna try to
+access a value in the hash for
+
+41
+00:02:59.950 --> 00:03:01.980
+which an entry does not exist?
+
+42
+00:03:01.980 --> 00:03:03.840
+Well, naturally,
+
+43
+00:03:03.840 --> 00:03:08.880
+nil is returned because there is nothing
+associated with that key in the hash.
+
+44
+00:03:10.100 --> 00:03:16.340
+But what you could do is, you could create
+the hash with this Hash.new syntax,
+
+45
+00:03:16.340 --> 00:03:20.916
+and pass in some kind of an entry
+here which becomes the default value
+
+46
+00:03:20.916 --> 00:03:25.850
+that's returned when you access
+something that doesn't exist.
+
+47
+00:03:28.230 --> 00:03:30.410
+And we're gonna see in a minute
+how that's very useful.
+
+48
+00:03:31.970 --> 00:03:33.070
+I'm just making a point here.
+
+49
+00:03:33.070 --> 00:03:38.140
+The hash's API is very important, and
+this is the URL of where to find it.
+
+50
+00:03:40.260 --> 00:03:44.613
+So, for example, using this
+interesting syntax of Hash.new new and
+
+51
+00:03:44.613 --> 00:03:49.130
+passing in 0,
+we wanna calculate the word_frequency.
+
+52
+00:03:49.130 --> 00:03:53.510
+So let's say you have a sentence with
+some words, each one repeating twice.
+
+53
+00:03:55.070 --> 00:03:57.860
+So what you wanna do is you
+wanna split the sentence,
+
+54
+00:03:58.880 --> 00:04:01.690
+which basically makes it
+an array with four elements.
+
+55
+00:04:01.690 --> 00:04:05.610
+And then you wanna loop through
+each one of those words and
+
+56
+00:04:05.610 --> 00:04:10.310
+pass it into black, and
+to calculate the frequency of words.
+
+57
+00:04:10.310 --> 00:04:12.160
+So the word_frequency is your hash.
+
+58
+00:04:13.200 --> 00:04:19.275
+And you wanna look up the key, so
+each word that you're iterating over.
+
+59
+00:04:19.275 --> 00:04:23.610
+Downcase it to make it the same so
+that if one word appears uppercase,
+
+60
+00:04:23.610 --> 00:04:27.520
+one word appears lowercase,
+they're all treated the same.
+
+61
+00:04:28.600 --> 00:04:35.330
+And so, if you wouldn't have this trick
+of assigning a 0 to default values,
+
+62
+00:04:35.330 --> 00:04:38.890
+what you would have to do is,
+you'd first have to check if it exists.
+
+63
+00:04:38.890 --> 00:04:43.300
+Or if it doesn't exist you will
+have to create it of 0, and
+
+64
+00:04:43.300 --> 00:04:45.140
+then you would have to increment it.
+
+65
+00:04:45.140 --> 00:04:48.650
+In this case, you just access it,
+
+66
+00:04:48.650 --> 00:04:52.840
+you get a 0 because it doesn't exist yet,
+and then you just increment them by 1.
+
+67
+00:04:52.840 --> 00:04:57.470
+So you could have this one line of code
+that takes care of that weird case where,
+
+68
+00:04:57.470 --> 00:05:00.450
+initially, it doesn't exist,
+and you have to put it in.
+
+69
+00:05:00.450 --> 00:05:04.449
+So, instead of having like four or five
+lines of an if statement if it exists,
+
+70
+00:05:04.449 --> 00:05:08.093
+if it doesn't exist you just access it,
+and then you increment by 1.
+
+71
+00:05:08.093 --> 00:05:12.808
+And you get back the word
+frequency of 2 and 2.
+
+72
+00:05:12.808 --> 00:05:19.230
+As of Ruby 1.9, the order of putting
+things into the hash is maintained.
+
+73
+00:05:19.230 --> 00:05:23.080
+This is kind of weird because
+computer science 101 you're used
+
+74
+00:05:23.080 --> 00:05:26.750
+to the fact that hashes, or
+in other languages, called maps, or
+
+75
+00:05:26.750 --> 00:05:31.370
+dictionaries, the order of putting
+stuff in there is not maintained.
+
+76
+00:05:31.370 --> 00:05:35.574
+They have these things called buckets,
+and things to put in different buckets.
+
+77
+00:05:35.574 --> 00:05:40.343
+And, really, the order of things is
+usually maintained only over arrays,
+
+78
+00:05:40.343 --> 00:05:42.020
+not of hashes.
+
+79
+00:05:42.020 --> 00:05:45.863
+Although, even in other
+languages where certain
+
+80
+00:05:45.863 --> 00:05:50.528
+implementations that let you
+keep that order, but in Ruby,
+
+81
+00:05:50.528 --> 00:05:55.392
+all hashes maintain the order of
+things that are put into them.
+
+82
+00:05:55.392 --> 00:05:58.580
+Another thing they did as of Ruby 1.9,
+
+83
+00:05:58.580 --> 00:06:03.955
+if you're using symbols as your keys,
+you could use this interesting
+
+84
+00:06:03.955 --> 00:06:09.210
+notation of symbol: as opposed
+to using the hash racket.
+
+85
+00:06:09.210 --> 00:06:12.170
+So usually symbols are :symbol.
+
+86
+00:06:12.170 --> 00:06:15.990
+But, if you are using symbols as your keys
+
+87
+00:06:17.610 --> 00:06:20.730
+into a map, you could use symbol:
+as we're gonna see in a minute.
+
+88
+00:06:22.830 --> 00:06:27.878
+Another interesting thing about hashes, if
+a hash is the last argument to a method,
+
+89
+00:06:27.878 --> 00:06:31.590
+not including the block, obviously,
+because block is not really an argument,
+
+90
+00:06:31.590 --> 00:06:33.760
+as we discussed when we did blocks.
+
+91
+00:06:33.760 --> 00:06:36.420
+But if a hash is the last
+argument to a method,
+
+92
+00:06:36.420 --> 00:06:38.280
+you could drop the curlies altogether.
+
+93
+00:06:40.500 --> 00:06:43.570
+So, let's see all these examples
+sort of in one big example.
+
+94
+00:06:45.120 --> 00:06:48.203
+Let's say you have a family
+tree that's a hash.
+
+95
+00:06:48.203 --> 00:06:53.450
+So you have a oldest person,
+older, younger, and then youngest.
+
+96
+00:06:53.450 --> 00:06:57.722
+So, when you think of a hash,
+you wouldn't necessarily think of all
+
+97
+00:06:57.722 --> 00:07:02.240
+these entries into the hash being,
+the order of them being maintained.
+
+98
+00:07:02.240 --> 00:07:05.207
+But if you print out the internal
+representation of the hash,
+
+99
+00:07:05.207 --> 00:07:08.183
+you will indeed see that, no,
+that the order is maintained.
+
+100
+00:07:08.183 --> 00:07:11.341
+So the oldest entry will be first,
+and so on, and
+
+101
+00:07:11.341 --> 00:07:15.390
+the youngest entry is gonna be
+the last entry into the map.
+
+102
+00:07:15.390 --> 00:07:21.265
+And when you do the hash dot each
+peer to loop through those entries,
+
+103
+00:07:21.265 --> 00:07:25.550
+you are guaranteed to have that
+same order come back to you.
+
+104
+00:07:25.550 --> 00:07:31.560
+Let's see this method adjust_colors, which
+takes a hash as a default as a parameter.
+
+105
+00:07:31.560 --> 00:07:34.560
+So we could have a default
+parameter of props,
+
+106
+00:07:34.560 --> 00:07:40.080
+that maybe has one hash that you're using.
+
+107
+00:07:40.080 --> 00:07:46.100
+And, notice again, how in this case,
+the hash is using symbols as the keys.
+
+108
+00:07:46.100 --> 00:07:50.670
+So you're not using the hash racket,
+that =>.
+
+109
+00:07:50.670 --> 00:07:55.684
+You're just using, almost like your
+JSON notation of your key value,
+
+110
+00:07:55.684 --> 00:07:58.220
+key value, and so on.
+
+111
+00:07:58.220 --> 00:08:04.411
+What this means is that,
+your almost using the parameters
+
+112
+00:08:04.411 --> 00:08:09.330
+into the method as your main parameters,
+right?
+
+113
+00:08:09.330 --> 00:08:14.601
+You could just say adjust_colors,
+and then say background: yella,
+
+114
+00:08:14.601 --> 00:08:20.800
+to pass in a parameter and the value that
+you want to be passed in for this method.
+
+115
+00:08:21.820 --> 00:08:29.280
+And so, all three ways that I'm showing
+here are valid of how to pass parameters.
+
+116
+00:08:29.280 --> 00:08:35.980
+You could either have a parentheses,
+which parentheses is optional for methods.
+
+117
+00:08:35.980 --> 00:08:39.900
+And then inside the parentheses,
+you could pass in a hash with
+
+118
+00:08:40.910 --> 00:08:44.110
+a symbol and a hash racket and a value.
+
+119
+00:08:44.110 --> 00:08:45.600
+That's totally valid.
+
+120
+00:08:45.600 --> 00:08:51.140
+You could drop the parens, and
+you could just say key value, like this.
+
+121
+00:08:51.140 --> 00:08:54.860
+And you could drop the parens,
+and still use the hash racket and
+
+122
+00:08:54.860 --> 00:09:01.140
+the other notation which is your
+typical symbol, not your flip symbol.
+
+123
+00:09:01.140 --> 00:09:02.250
+And that's the same thing.
+
+124
+00:09:02.250 --> 00:09:04.820
+So you could do either one.
+
+125
+00:09:04.820 --> 00:09:09.055
+But as of Ruby 1.9,
+they felt that this syntax of
+
+126
+00:09:09.055 --> 00:09:13.030
+symbol: is just a nicer looking syntax.
+
+127
+00:09:13.030 --> 00:09:14.480
+And I actually agree.
+
+128
+00:09:14.480 --> 00:09:15.820
+The hash racket looks kinda weird.
+
+129
+00:09:18.390 --> 00:09:23.560
+So this doesn't happen too often,
+but I wanted to bring it up because
+
+130
+00:09:23.560 --> 00:09:26.960
+when it does happen, it hits you,
+and you're like what's going on?
+
+131
+00:09:26.960 --> 00:09:30.244
+So let's say you have a hash,
+
+132
+00:09:30.244 --> 00:09:35.430
+a hash with the key one,
+which is a symbol and a value one.
+
+133
+00:09:35.430 --> 00:09:37.817
+So far, so good.
+
+134
+00:09:37.817 --> 00:09:40.640
+And then,
+the next line you wanna output the hash.
+
+135
+00:09:40.640 --> 00:09:42.991
+You say puts, you print out the hash.
+
+136
+00:09:42.991 --> 00:09:44.700
+So far, so good.
+
+137
+00:09:44.700 --> 00:09:50.500
+Now, if you wouldn't assign the hash to
+a variable, and instead you'd say puts and
+
+138
+00:09:50.500 --> 00:09:55.830
+pass in a block, what you would get
+is you would get a syntax error.
+
+139
+00:09:57.320 --> 00:09:59.030
+So it's kinda weird.
+
+140
+00:09:59.030 --> 00:10:01.080
+Because all you're doing is,
+you're doing the same thing.
+
+141
+00:10:01.080 --> 00:10:03.610
+You're just not assigning
+the hash to a variable.
+
+142
+00:10:03.610 --> 00:10:05.140
+You're just printing
+out the hash straight.
+
+143
+00:10:06.330 --> 00:10:11.950
+Now the problem is,
+because of how similar hashes
+
+144
+00:10:11.950 --> 00:10:17.290
+look to blocks,
+the Ruby interpreter gets confused and
+
+145
+00:10:17.290 --> 00:10:20.870
+says wait a second,
+the puts method doesn't take a block.
+
+146
+00:10:20.870 --> 00:10:22.520
+What am I supposed to do with this?
+
+147
+00:10:23.680 --> 00:10:28.030
+So, to resolve this issue,
+you have two ways to go about it.
+
+148
+00:10:29.210 --> 00:10:34.600
+You could either surround
+the hash in parentheses, and
+
+149
+00:10:34.600 --> 00:10:39.310
+in that case the Ruby interpreter says,
+oh, okay, puts is a method.
+
+150
+00:10:39.310 --> 00:10:43.870
+And you pass in a parameter into
+a method which happens to be a hash.
+
+151
+00:10:43.870 --> 00:10:44.650
+I could deal with that.
+
+152
+00:10:46.290 --> 00:10:50.160
+Or, because there is only
+one parameter in this case,
+
+153
+00:10:50.160 --> 00:10:53.980
+which also happens to be the last
+parameter into a method, you could just
+
+154
+00:10:53.980 --> 00:10:59.370
+drop the curlies altogether, and
+then it doesn't look like a block.
+
+155
+00:10:59.370 --> 00:11:03.720
+And then you could just say puts,
+and then have a hash of one, one.
+
+156
+00:11:03.720 --> 00:11:07.880
+And in this case,
+you could either have the symbol notation,
+
+157
+00:11:07.880 --> 00:11:10.760
+the new symbol notation, which is one: or
+
+158
+00:11:10.760 --> 00:11:16.040
+your could have :one and
+then the hash racket, either one is fine.
+
+159
+00:11:16.040 --> 00:11:16.820
+And that's what happens.
+
+160
+00:11:18.750 --> 00:11:22.250
+So, in summary,
+hashes are your indexed collections,
+
+161
+00:11:22.250 --> 00:11:24.401
+which basically means you have a key and
+a value.
+
+162
+00:11:26.090 --> 00:11:28.800
+And then,
+the usage is very similar to arrays.
+
+163
+00:11:28.800 --> 00:11:31.530
+We saw we could use the index operator.
+
+164
+00:11:31.530 --> 00:11:33.623
+The order is maintained.
+
+165
+00:11:33.623 --> 00:11:36.030
+I mean, they're very similar to arrays.
+
+166
+00:11:36.030 --> 00:11:42.600
+And in a way that's good, because you
+learn one API of how to use arrays.
+
+167
+00:11:42.600 --> 00:11:45.710
+And then, hashes,
+it's not completely different.
+
+168
+00:11:45.710 --> 00:11:48.170
+It's a little bit different, obviously.
+
+169
+00:11:48.170 --> 00:11:48.920
+But it's very similar.
+
+170
+00:11:50.880 --> 00:11:55.930
+And, just watch out, that last case we
+discussed of confusing a block over,
+
+171
+00:11:55.930 --> 00:11:59.740
+really the interpreter,
+the Ruby interpreter confusing the block
+
+172
+00:11:59.740 --> 00:12:04.700
+with a hash, and the two ways
+we discussed to get around that.
+
+173
+00:12:04.700 --> 00:12:06.352
+Next, we'll be discussing classes.

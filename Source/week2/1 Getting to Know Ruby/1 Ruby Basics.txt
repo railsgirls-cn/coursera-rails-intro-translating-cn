@@ -1,0 +1,88 @@
+Welcome to lecture one of module two. In this lecture,
+we'll discuss the brief history of Ruby. We'll also go over why Ruby is such
+an interesting language to learn, among the other myriad of
+programming languages out there. We'll also cover some basic Ruby
+principles and conventions. Ruby was invented by Yukihiro Matsumoto, who people affectionately call Matz,
+around 1996. It sort of stayed quiet
+after that until about 2005, when it became popularized by
+the Ruby on Rails framework. Ruby is dynamic, so if you're used to language like Java that
+is statically tight, this is different. Ruby is also object oriented and pretty
+much everything in Ruby is an object. Again, making reference to Java, there's
+no such thing as a primitive type in Ruby, even an integer is a full fledged object. But, most importantly, Ruby is elegant,
+expressive, and declarative. These are the three words I would
+use to describe it as a language. And like Max himself once said, Ruby
+was designed to make programmers happy. So that's nice to use as slogan but
+what does it really mean? Let's take a look at a real example. Let's say we have a task in front of us. To print Hello World three times. How would you accomplish
+this task in Java? Well in Java you would have a class,
+you would have a main, you would have a for loop and
+you would have an i variable for example that goes from zero to three and
+it keeps getting incremented. Then we actually have
+the business logic inside the for loop that prints out Hello World. What is wrong with this program? There is nothing wrong with it,
+but if you notice, your brain is doing two different
+things at the same time. Your brain is keeping track of the for
+loop, and your brain is also keeping track of
+a business logic inside the for loop. Whereas what you really want to do,
+is you want to do something that Ruby lets you do is just say
+three times puts "Hello World". And you could do this
+because 3 is a full fledged object and times is just a method,
+and we'll discuss what this is later. Back to some Ruby basics. So in Ruby you have a two space
+indentation for each nested level. That's encouraged, it's not required
+like in Python, but it is encouraged. And you use pound for comments. Now, again comments should be used in
+moderation because the language itself is designed to be very expressive. So here are some examples
+on how you do that. Now, look at this over here. Three, what is three? Well three is probably the shortest
+Ruby program you'll ever write, it basically is an integer
+that gets evaluated. As a matter of fact, pretty much
+everything in Ruby gets evaluated. Maybe in some other languages three would
+be flagged by a compiler as an error because this three is not doing anything,
+it's not being assigned to a variable, it's not used as part of a different
+statement, so what is three? But that's okay. In Ruby it is perfectly
+legal to have that. The three gets evaluated, and
+well see later on how that's useful. In my slides, a lot of times I'll use puts to show you that something is
+being printed out to the console. Puts stands for put string, that's just
+the concatenation of those two words. Puts, and it also prints a new
+line after that, after itself. So, it's similar to how
+system.out.println works in Java. There is also another form that I
+will use sometimes, which is P, and this just prints out internal
+representation of an object, and sometimes it is useful instead of puts,
+and I'll show you when. If you have a Ruby file, let's say test.rb, for example, where
+it just has puts 3 to execute the file. If you're doing it from Sublime,
+you would do command+B, or control+B if you're on Windows. And if you wanna execute the file from
+a command line, you would just do Ruby, space, and the name of the file. And hopefully you're following along with
+your own laptop and banging out some code. Okay, some more conventions,
+we have variables. Variables should all be named lower case,
+or if you have multiple words
+in the same variable name, you should use what's called a snake case,
+which is basically an underscore in between the two words that you
+are trying to name a variable with. If you have a constant,
+something that's never gonna change, for example the value of pi,
+you would use either all caps or you would use what's called a CamelCase
+where the first letter is capitalized. So basically as long as the first letter
+is capitalized, you're fine for constants. In classes and modules, for their names, you would also use a CamelCase where
+the first letter is capitalized. Semicolons, there's no
+reason to have semicolons. A lot of times they just post the code so you could happily leave semicolons
+off at the end of a line. Now if you do wanna have multiple
+statements on the same line, then you can use a semicolon in between
+those two statements to separate them, but this is usually highly discouraged. Putting multiple statements in the same
+line makes the code less readable. I will do it sometimes in my slides
+just if I want to show a complete example in my slides, but
+there is really no reason to do that. Another way to execute Ruby code
+is to use something called IRB. IRB is basically interactive Ruby,
+it's a REPL if you're familiar with that. That's basically
+Read Evaluate Print Loop so you're able to type IRB in the command
+line, this comes with a Ruby installation, and just start plugging away putting in
+Ruby code, so for example, hello world. Well, you might ask what is hello world? It's not been printed out. But the IRB will tell
+you that that's okay. It's just a string variable
+that's been evaluated and it will get evaluated to hello world. Now, you also could print out hello world,
+which is what this is doing, and this is saying puts hello world. So, you'll see that as a side effect of
+the puts method, hello world gets printed, now, what puts actually returns is a nil,
+doesn't return anything. So, if you think about it, puts is
+just the method that returns nothing, but as part of its execution,
+it prints out hello world. So, again, important concept, but anything
+evaluates to something, pretty much. And you don't have to assign something
+to a variable for it to get evaluated, and another thing to note here
+is that puts returns nil. So in summary,
+Ruby is extremely expressive and hopefully you've seen this from
+the few slides that we just did. And the other concept you should
+take away is that everything, and I mean everything, is evaluated in Ruby,
+and we'll see how that's useful later on. So, what are we doing next? Next, we're going to talk about
+the flow of control in Ruby.

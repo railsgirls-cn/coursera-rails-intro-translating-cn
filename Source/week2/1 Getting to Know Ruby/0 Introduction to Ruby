@@ -1,0 +1,163 @@
+WEBVTT
+
+1
+00:00:00.516 --> 00:00:10.516
+[MUSIC]
+
+2
+00:00:12.338 --> 00:00:14.710
+Hi, welcome to module two.
+
+3
+00:00:14.710 --> 00:00:18.040
+In module one we talked about
+Setting up the Environment
+
+4
+00:00:18.040 --> 00:00:21.270
+to be able to program in Ruby and
+Ruby in Rails.
+
+5
+00:00:21.270 --> 00:00:27.100
+Module two it's all Ruby, we'll talk
+about things like the Syntax of Ruby.
+
+6
+00:00:27.100 --> 00:00:31.576
+We'll start from the beginning things like
+comments, how do you assign variables,
+
+7
+00:00:31.576 --> 00:00:33.146
+how do you define a function.
+
+8
+00:00:33.146 --> 00:00:34.865
+Next we're gonna move on to Collections.
+
+9
+00:00:34.865 --> 00:00:41.560
+By collections I mean things like Arrays,
+or Lists and Hashes.
+
+10
+00:00:41.560 --> 00:00:44.990
+Well what's maybe known in other
+languages as Dictionaries or Maps.
+
+11
+00:00:46.150 --> 00:00:50.960
+Then we're gonna move onto the Object
+Oriented side of Ruby, the Classes,
+
+12
+00:00:50.960 --> 00:00:54.260
+the Inheritance, Modules, Mixins.
+
+13
+00:00:54.260 --> 00:00:56.800
+A lot of people think of Ruby
+as a scripting language, and
+
+14
+00:00:56.800 --> 00:00:57.780
+that's not true at all.
+
+15
+00:00:57.780 --> 00:01:01.250
+Ruby actually is a very much
+object oriented language.
+
+16
+00:01:02.360 --> 00:01:06.140
+After that,
+we're gonna move onto Unit Testing.
+
+17
+00:01:06.140 --> 00:01:09.730
+And Unit Testing is an important
+part of any language.
+
+18
+00:01:09.730 --> 00:01:10.660
+Ruby is no exception.
+
+19
+00:01:11.820 --> 00:01:13.716
+We'll talk about how unit
+testing is done in Ruby.
+
+20
+00:01:13.716 --> 00:01:18.695
+[MUSIC]
+
+21
+00:01:18.695 --> 00:01:22.829
+Even our point of this module is
+to get up to speed with Ruby so
+
+22
+00:01:22.829 --> 00:01:27.000
+you could get to the Ruby on
+Rails part of the course.
+
+23
+00:01:27.000 --> 00:01:29.030
+Don't think of it in those terms.
+
+24
+00:01:29.030 --> 00:01:31.250
+Ruby by itself is a very
+fascinating language.
+
+25
+00:01:31.250 --> 00:01:36.927
+I myself am coming from a Java background,
+I was amazed how by so many tasks that
+
+26
+00:01:36.927 --> 00:01:42.447
+are so verbose in Java that you could
+do so easily, or much easier, in Ruby.
+
+27
+00:01:42.447 --> 00:01:48.669
+[MUSIC]
+
+28
+00:01:48.669 --> 00:01:53.460
+Also, I want to mention that,
+Module two has a lot of coding examples.
+
+29
+00:01:53.460 --> 00:01:57.590
+I believe that the best way to learn
+how to code is to actually code.
+
+30
+00:01:57.590 --> 00:02:02.610
+So please go ahead and copy
+the examples from the github repository
+
+31
+00:02:02.610 --> 00:02:06.480
+that will be provided and
+follow along the examples.
+
+32
+00:02:06.480 --> 00:02:11.980
+Experiment in the editor by typing,
+
+33
+00:02:11.980 --> 00:02:17.590
+by modifying the examples and executing
+the examples and seeing what happens.
+
+34
+00:02:17.590 --> 00:02:19.900
+That's the only way to learn how to code.
+
+35
+00:02:21.950 --> 00:02:24.313
+With that, I will see you in Module two.

@@ -1,0 +1,1242 @@
+WEBVTT
+
+1
+00:00:00.565 --> 00:00:08.703
+[MUSIC]
+
+2
+00:00:08.703 --> 00:00:09.980
+Hello, this is Jim.
+
+3
+00:00:09.980 --> 00:00:12.681
+I'm gonna be going through
+the software installation for
+
+4
+00:00:12.681 --> 00:00:16.830
+module one on Linux Platforms,
+more specifically, Ubuntu and Fedora.
+
+5
+00:00:16.830 --> 00:00:20.350
+In order to install Ruby,
+the language interpreter, Rails,
+
+6
+00:00:20.350 --> 00:00:23.840
+our web application platform,
+PhantomJS used for
+
+7
+00:00:23.840 --> 00:00:28.770
+headless Web testing support, and
+Sublime Text an optional text editor.
+
+8
+00:00:30.442 --> 00:00:33.580
+I'm gonna be starting with some
+Docker Images and the source for
+
+9
+00:00:33.580 --> 00:00:36.490
+those images are available in
+the module one repository.
+
+10
+00:00:37.540 --> 00:00:42.450
+We'll be installing Mat'z original,
+Ruby MRI Interpreter it's based on C.
+
+11
+00:00:42.450 --> 00:00:46.780
+Which means we are gonna be doing a lot
+of compiling on our Linux platform.
+
+12
+00:00:47.850 --> 00:00:50.930
+Prerequisites you must have and Ubuntu or
+
+13
+00:00:50.930 --> 00:00:55.690
+Fedora System,
+a non-root account with sudo privileges.
+
+14
+00:00:55.690 --> 00:00:59.660
+When we install Ruby we have
+a decision to make right upfront.
+
+15
+00:00:59.660 --> 00:01:03.000
+And luckily, if we're just going
+to keep with one version and
+
+16
+00:01:03.000 --> 00:01:06.350
+not do a lot of bouncing around
+between different interpreters,
+
+17
+00:01:06.350 --> 00:01:09.940
+we probably won't have to touch this
+layer all that much in the future.
+
+18
+00:01:09.940 --> 00:01:12.728
+However we do have to
+install it in order to work.
+
+19
+00:01:12.728 --> 00:01:17.577
+The installation manager,
+what it's responsible for
+
+20
+00:01:17.577 --> 00:01:22.640
+is determining what gems work
+with what versions of Ruby.
+
+21
+00:01:22.640 --> 00:01:26.930
+Installing different versions
+at different points in time.
+
+22
+00:01:26.930 --> 00:01:30.940
+Now there are various managers
+you can install, and there's two,
+
+23
+00:01:30.940 --> 00:01:32.470
+let's say, leading managers.
+
+24
+00:01:32.470 --> 00:01:33.493
+There are others.
+
+25
+00:01:33.493 --> 00:01:37.230
+You have the rvm, which is the older,
+more established but
+
+26
+00:01:37.230 --> 00:01:42.015
+it's a heavyweight manager, it does
+some things to the shell that people,
+
+27
+00:01:42.015 --> 00:01:44.431
+purists aren't really thinking of.
+
+28
+00:01:44.431 --> 00:01:49.850
+So in a development environment it
+may not be an ideal choice by some.
+
+29
+00:01:51.370 --> 00:01:54.880
+RBENV, thought to be a lighter
+weight solution, and
+
+30
+00:01:54.880 --> 00:01:58.620
+it works much through more
+traditional UNIX pathing.
+
+31
+00:01:58.620 --> 00:02:02.340
+Now when we go to the main Ruby site and
+click on Download,
+
+32
+00:02:03.590 --> 00:02:08.590
+we get a page that says that we should
+be using a package management system.
+
+33
+00:02:08.590 --> 00:02:11.882
+And they suggest RBENV or RVM.
+
+34
+00:02:11.882 --> 00:02:15.950
+Okay, we'll go to the RAILS site,
+click on download.
+
+35
+00:02:16.990 --> 00:02:19.780
+They're recommending RBENV.
+
+36
+00:02:19.780 --> 00:02:21.950
+Okay, choices are a little simpler.
+
+37
+00:02:21.950 --> 00:02:27.248
+And they link over to
+the Stevenson GitHub,
+
+38
+00:02:27.248 --> 00:02:33.440
+which has the implementation or
+the installation for how we manage it.
+
+39
+00:02:33.440 --> 00:02:35.080
+Doesn't have all the instructions.
+
+40
+00:02:35.080 --> 00:02:36.048
+Has a good bit.
+
+41
+00:02:36.048 --> 00:02:42.600
+So Google it around on the web, I found
+a decent article from Mitchell Atticus,
+
+42
+00:02:42.600 --> 00:02:46.940
+on how to install Ruby on
+Rails with RBENV on Ubuntu.
+
+43
+00:02:46.940 --> 00:02:51.040
+Well great, all we have to do is
+fill in some of the Fedora details.
+
+44
+00:02:51.040 --> 00:02:55.720
+And we'll be coming back to this one, or
+breaking it down in other instructions.
+
+45
+00:02:57.180 --> 00:03:03.670
+But before we get too far down the RBENV,
+if you really did want to use the RVM,
+
+46
+00:03:03.670 --> 00:03:10.780
+I found that the Rails girl's website
+has some decent multi-platform and
+
+47
+00:03:10.780 --> 00:03:15.270
+all kinds of other different ways for
+Ubuntu and Fedora.
+
+48
+00:03:15.270 --> 00:03:21.340
+But their solution is based on RVM,
+so what I would suggest
+
+49
+00:03:21.340 --> 00:03:26.440
+is that you don't just run the script,
+you don't actually open the script up,
+
+50
+00:03:26.440 --> 00:03:31.710
+which is basically what we'll be doing
+today in procedures that I'm doing and
+
+51
+00:03:31.710 --> 00:03:34.620
+actually look at the overall commands.
+
+52
+00:03:34.620 --> 00:03:39.260
+So let's get started going through some
+of the information that's on Mitchell's
+
+53
+00:03:39.260 --> 00:03:42.350
+page on how to install Rails with RBENV.
+
+54
+00:03:44.210 --> 00:03:47.280
+So I go back to my two VMs.
+
+55
+00:03:47.280 --> 00:03:51.150
+I have an Ubuntu on the top
+in green lettering.
+
+56
+00:03:51.150 --> 00:03:55.630
+I have Fedora on the bottom in
+the white-on-black lettering.
+
+57
+00:03:55.630 --> 00:03:57.820
+And one of the first
+things we're gonna do, is,
+
+58
+00:03:57.820 --> 00:04:01.800
+we're going to update the existing
+packages that are on the system.
+
+59
+00:04:01.800 --> 00:04:05.890
+It's something that we should do
+before we add new packages to it.
+
+60
+00:04:05.890 --> 00:04:10.779
+And as you may know
+that Ubuntu uses AptGet
+
+61
+00:04:10.779 --> 00:04:15.676
+as a package manager and Fedora uses Yum.
+
+62
+00:04:15.676 --> 00:04:20.224
+And what's gonna, what we need
+to do when we run this package
+
+63
+00:04:20.224 --> 00:04:25.396
+manager is to use the sudo command
+which is going to want a password and
+
+64
+00:04:25.396 --> 00:04:29.560
+that password is going to be good for
+a period of time.
+
+65
+00:04:29.560 --> 00:04:31.960
+So on follow on sudo commands.
+
+66
+00:04:32.960 --> 00:04:35.585
+Until that timeout is elapsed,
+
+67
+00:04:35.585 --> 00:04:40.844
+we will be able to just issue
+the future commands without issue.
+
+68
+00:04:44.408 --> 00:04:49.525
+Next, we will install Git, and
+what we're gonna use Git initially for
+
+69
+00:04:49.525 --> 00:04:53.119
+is to clone the RBNV and
+Ruby build repositories.
+
+70
+00:04:54.400 --> 00:04:57.270
+That'll be a part of this installation.
+
+71
+00:04:57.270 --> 00:05:00.397
+And we'll also use Git as a part of class.
+
+72
+00:05:06.224 --> 00:05:11.380
+Both installations took roughly about
+between one and two minutes to complete.
+
+73
+00:05:11.380 --> 00:05:16.423
+Next, we'll install the compiler and
+some of the libraries that it
+
+74
+00:05:16.423 --> 00:05:21.654
+will use in order to build Ruby and
+the various gems that are out there.
+
+75
+00:05:25.996 --> 00:05:30.523
+That installation probably took us
+about between three and five minutes.
+
+76
+00:05:30.523 --> 00:05:34.633
+Fedora was a little bit faster
+in what I asked it to do.
+
+77
+00:05:34.633 --> 00:05:37.396
+And Ubuntu,
+took about the five minute time.
+
+78
+00:05:40.461 --> 00:05:44.814
+Next we have two very similar
+operations on both platforms.
+
+79
+00:05:44.814 --> 00:05:49.660
+And we're going to clone/install
+the rbenv repository.
+
+80
+00:05:50.970 --> 00:05:57.105
+And so we're going to, in our home
+directory check out clone from Git.
+
+81
+00:05:58.180 --> 00:06:00.578
+The Stevenson repository and
+
+82
+00:06:00.578 --> 00:06:05.000
+we're going to put that in
+a directory right below our own.
+
+83
+00:06:06.350 --> 00:06:10.330
+The clone was placed in a directory
+below the home directory and
+
+84
+00:06:10.330 --> 00:06:13.740
+what we are gonna do is use environment
+variables, a path variable,
+
+85
+00:06:13.740 --> 00:06:16.270
+in order to point to that location.
+
+86
+00:06:17.640 --> 00:06:20.230
+While we're on the topic
+of environment variables,
+
+87
+00:06:20.230 --> 00:06:23.000
+let me make a slight side bar
+to describe what they're about.
+
+88
+00:06:24.500 --> 00:06:29.430
+Let's say there's some text,
+recipepuppy.com running at port 80.
+
+89
+00:06:29.430 --> 00:06:33.650
+And we don't want to hard code
+that in our application and
+
+90
+00:06:33.650 --> 00:06:38.000
+we want to necessarily
+make a variable reference.
+
+91
+00:06:38.000 --> 00:06:45.320
+But what we can do, is we can export that
+into our shell and assign it a value.
+
+92
+00:06:45.320 --> 00:06:51.000
+And, we can make it a little more
+permanent if we put it into our bashrc.
+
+93
+00:06:51.000 --> 00:06:57.100
+So, I am gonna to echo that, so
+that it goes into the bashrc.
+
+94
+00:06:57.100 --> 00:07:05.590
+And if we do a tail on the bashrc,
+we'll see that it's at the very end.
+
+95
+00:07:08.920 --> 00:07:13.827
+So what we'll do then is
+we will source bashrc
+
+96
+00:07:13.827 --> 00:07:18.010
+in order to get that
+environment variable declared.
+
+97
+00:07:18.010 --> 00:07:21.730
+And then what we can do is we can
+use that environment variable,
+
+98
+00:07:21.730 --> 00:07:27.080
+let's say to bring up Chrome
+to launch that display.
+
+99
+00:07:28.390 --> 00:07:32.260
+And as we see in our browsers
+sitting in the background,
+
+100
+00:07:34.380 --> 00:07:38.930
+they are busily bringing up the actual
+website that the variable points to.
+
+101
+00:07:39.930 --> 00:07:43.560
+So to get RV into our path,
+
+102
+00:07:43.560 --> 00:07:49.800
+we're going to have to declare a variable
+that references the bin directory.
+
+103
+00:07:49.800 --> 00:07:52.190
+And we do that through the same mechanism.
+
+104
+00:07:52.190 --> 00:07:57.935
+We'll just extend our path in bashrc.
+
+105
+00:07:57.935 --> 00:08:01.489
+We will source.
+
+106
+00:08:01.489 --> 00:08:05.976
+Our bashrc.
+
+107
+00:08:15.893 --> 00:08:17.576
+We will source our bashrc.
+
+108
+00:08:25.334 --> 00:08:30.392
+And, at this point in time,
+rbenv should be in our path.
+
+109
+00:08:37.732 --> 00:08:42.884
+There's another piece of environment
+information that gets added,
+
+110
+00:08:42.884 --> 00:08:45.540
+which is this rb init.
+
+111
+00:08:45.540 --> 00:08:51.730
+And what it does is it adds some
+command completion scripts.
+
+112
+00:08:51.730 --> 00:08:56.630
+It gets those into your path as well,
+so that you can complete
+
+113
+00:08:57.910 --> 00:09:02.950
+partial commands that you issued to Ruby.
+
+114
+00:09:02.950 --> 00:09:07.831
+Once that's been in place,
+probably ought to just source it to
+
+115
+00:09:07.831 --> 00:09:11.711
+be able to get what we just put in,
+into our shell.
+
+116
+00:09:14.869 --> 00:09:19.911
+The next thing that we bring in
+is ruby-build, and ruby-build,
+
+117
+00:09:19.911 --> 00:09:24.870
+it gives us the ability to actually
+install ruby inside of rbenv.
+
+118
+00:09:26.120 --> 00:09:31.950
+It's going to be installed below home,
+below rbenv in a plugins directory.
+
+119
+00:09:35.444 --> 00:09:41.097
+And like before it, that plugins
+directory needs to also be in your path,
+
+120
+00:09:41.097 --> 00:09:44.600
+so let's go ahead and
+add that to the bashrc.
+
+121
+00:09:44.600 --> 00:09:51.619
+Let's source our bashrc in both areas.
+
+122
+00:09:54.140 --> 00:09:57.060
+Now, here's the step
+we've been looking for.
+
+123
+00:09:57.060 --> 00:10:00.490
+This is where we're actually
+going to install Ruby.
+
+124
+00:10:00.490 --> 00:10:02.520
+It's a lengthy step, and you'll notice,
+
+125
+00:10:02.520 --> 00:10:05.900
+there's a lot of
+compilations that'll go on.
+
+126
+00:10:05.900 --> 00:10:11.770
+You can pretty much bet that this is
+gonna be about a 20 to 30 minute install.
+
+127
+00:10:11.770 --> 00:10:16.330
+So, make sure you get this command in,
+and then go ahead and
+
+128
+00:10:16.330 --> 00:10:20.380
+go find a cup of coffee and
+a sandwich while it finishes up.
+
+129
+00:10:21.720 --> 00:10:25.780
+If there are any errors or
+stoppages in it,
+
+130
+00:10:25.780 --> 00:10:31.030
+it's more than likely that you're
+missing a package or two, and
+
+131
+00:10:31.030 --> 00:10:35.340
+so maybe you didn't have
+the same starting point I did.
+
+132
+00:10:35.340 --> 00:10:40.066
+Pretty much if you grab the error, Google
+it, you'll have an easy time at finding
+
+133
+00:10:40.066 --> 00:10:44.655
+out what package maybe your system didn't
+have that mine already did have, and
+
+134
+00:10:44.655 --> 00:10:48.990
+I didn't have to install it as a part
+of these installation instructions.
+
+135
+00:10:51.250 --> 00:10:54.170
+Okay, that was just under 30 minutes.
+
+136
+00:10:54.170 --> 00:10:55.340
+Hopefully you had a good lunch.
+
+137
+00:10:57.310 --> 00:10:59.160
+The next thing we'll do,
+
+138
+00:10:59.160 --> 00:11:05.020
+is we will set the default version of
+Ruby to be used from this point forward.
+
+139
+00:11:05.020 --> 00:11:07.529
+We've got it installed so
+we might as well use it.
+
+140
+00:11:08.850 --> 00:11:11.972
+So we're gonna be using 2.2.2
+with this installation.
+
+141
+00:11:16.055 --> 00:11:20.535
+One of the options I suggest
+we set is to tell the gems to
+
+142
+00:11:20.535 --> 00:11:24.300
+not generate local documentation.
+
+143
+00:11:24.300 --> 00:11:27.713
+It'll just eat up disk space and
+time when they're downloading.
+
+144
+00:11:31.545 --> 00:11:33.588
+And we'll just put that into a gemrc file.
+
+145
+00:11:36.225 --> 00:11:42.460
+Next, we want to bring in
+the Rails Gem Manager.
+
+146
+00:11:42.460 --> 00:11:45.240
+This will do a lot of
+the heavy lifting for
+
+147
+00:11:45.240 --> 00:11:47.730
+us as we start putting gems
+into our applications.
+
+148
+00:11:48.850 --> 00:11:50.610
+You'll hear a lot more
+about that later but
+
+149
+00:11:50.610 --> 00:11:52.620
+just right now all we
+have to do is install it.
+
+150
+00:11:53.630 --> 00:11:55.610
+Now here's another interesting step.
+
+151
+00:11:55.610 --> 00:11:59.700
+Now we're going to be installing the rails
+now and we're going to be selecting
+
+152
+00:11:59.700 --> 00:12:06.180
+specifically the 4.2.3 version which will
+be what we'll be base lining in class.
+
+153
+00:12:06.180 --> 00:12:12.850
+This is another lengthy step,
+not as long as the Ruby install.
+
+154
+00:12:12.850 --> 00:12:14.430
+It's about about a five-minute one, so
+
+155
+00:12:14.430 --> 00:12:18.310
+all you have time to do is get
+a new cup of coffee for this one.
+
+156
+00:12:18.310 --> 00:12:19.835
+So, come back when it's done.
+
+157
+00:12:21.669 --> 00:12:24.969
+Okay, that wasn't so bad,
+that was about three to four minutes.
+
+158
+00:12:26.290 --> 00:12:27.523
+And now we have our rails installed.
+
+159
+00:12:30.600 --> 00:12:35.575
+After installing rails,
+what they suggest is
+
+160
+00:12:35.575 --> 00:12:40.549
+after installing any
+gem that adds commands,
+
+161
+00:12:40.549 --> 00:12:44.350
+that we do a rehash on rbenv.
+
+162
+00:12:44.350 --> 00:12:49.309
+And where that it can reread all the
+different shims so that we can get command
+
+163
+00:12:49.309 --> 00:12:53.667
+completion in whatever we're
+trying to type, related to Rails.
+
+164
+00:12:55.687 --> 00:13:01.930
+Next, we're gonna install one of the
+JavaScript libraries that can be used in
+
+165
+00:13:01.930 --> 00:13:09.180
+class, and here's where we need to catch
+Ubuntu up on some unique instructions.
+
+166
+00:13:09.180 --> 00:13:13.070
+So I'm going to install
+a couple of packages
+
+167
+00:13:13.070 --> 00:13:16.580
+that it needs in order
+to get everything ready.
+
+168
+00:13:16.580 --> 00:13:21.603
+I'm also going to install
+a custom location for
+
+169
+00:13:21.603 --> 00:13:24.625
+it to bring in the packages.
+
+170
+00:13:27.295 --> 00:13:30.394
+Custom location is at chris-lea/node.js.
+
+171
+00:13:38.904 --> 00:13:43.550
+Hit Enter.
+
+172
+00:13:43.550 --> 00:13:49.925
+And on the Fedora side,
+it too has a little bit of setup to do.
+
+173
+00:13:56.393 --> 00:14:02.330
+And now the finishing commands,
+let's do Ubuntu first.
+
+174
+00:14:04.860 --> 00:14:11.875
+Bringing those in, and
+then pull out my yum commands for Fedora.
+
+175
+00:14:11.875 --> 00:14:17.731
+And OJS is installed
+
+176
+00:14:17.731 --> 00:14:23.590
+in both instances.
+
+177
+00:14:25.160 --> 00:14:27.331
+Next we're going to install PhantomJS.
+
+178
+00:14:27.331 --> 00:14:35.310
+PhantomJS is a library which allows us to
+do headless testing of web applications.
+
+179
+00:14:35.310 --> 00:14:39.270
+We're gonna be able to do unit testing
+without users having to poke anything
+
+180
+00:14:39.270 --> 00:14:40.180
+around, really neat.
+
+181
+00:14:41.430 --> 00:14:46.014
+And what we're gonna do is we're gonna
+start off by making sure that we
+
+182
+00:14:46.014 --> 00:14:50.767
+have bzip, because that's going to
+be part of our installation steps.
+
+183
+00:14:56.747 --> 00:15:01.611
+We will then set an environment variable
+so we don't have to repeat ourselves so
+
+184
+00:15:01.611 --> 00:15:05.980
+many times, for how we're going to
+reference the name of the library.
+
+185
+00:15:05.980 --> 00:15:11.092
+And then let's go over
+to the temp directory
+
+186
+00:15:11.092 --> 00:15:16.904
+to download it and
+get it ready for installation.
+
+187
+00:15:20.146 --> 00:15:26.150
+Okay, once we're in the temp directory
+we can run a curl command to unzip it.
+
+188
+00:15:26.150 --> 00:15:31.880
+And one of the things you'll notice is
+that we're downloading the 1.9.8 version.
+
+189
+00:15:33.120 --> 00:15:36.678
+As of building these install instructions,
+
+190
+00:15:36.678 --> 00:15:41.641
+the 2.0 version which is available
+in a compiled version for
+
+191
+00:15:41.641 --> 00:15:47.463
+Windows and Mac, is not available in
+a pre-compiled version for Linux.
+
+192
+00:15:47.463 --> 00:15:51.909
+Now you can download the source,
+done it, and
+
+193
+00:15:51.909 --> 00:15:56.469
+compile it specifically for
+Ubuntu or Fedora,
+
+194
+00:15:56.469 --> 00:16:01.832
+add in a few more libraries,
+and you too can use 2.0.
+
+195
+00:16:01.832 --> 00:16:07.774
+but I'll have to warn you,
+that is about a four to five hour process,
+
+196
+00:16:07.774 --> 00:16:11.470
+building phantom JS totally from source.
+
+197
+00:16:12.780 --> 00:16:15.520
+So, what we're going to do is we're
+going to stick with the 198 version.
+
+198
+00:16:15.520 --> 00:16:20.165
+And what we're going to do is we're
+going to get it into our path by
+
+199
+00:16:20.165 --> 00:16:23.466
+moving things over,
+things into user share.
+
+200
+00:16:29.387 --> 00:16:34.849
+And of course, creating a pace,
+creating a soft-link so
+
+201
+00:16:34.849 --> 00:16:40.984
+that it automatically gets placed
+into our path with user local.
+
+202
+00:16:40.984 --> 00:16:47.727
+[INAUDIBLE]
+
+203
+00:16:47.727 --> 00:16:52.971
+There,
+
+204
+00:16:52.971 --> 00:17:01.963
+both 198.
+
+205
+00:17:05.260 --> 00:17:11.080
+The next install we'll do is
+a text editor, Sublime Text.
+
+206
+00:17:11.080 --> 00:17:13.190
+So if you go to their website and
+
+207
+00:17:13.190 --> 00:17:18.420
+do the download,
+you'll find it very much worth it.
+
+208
+00:17:20.440 --> 00:17:24.620
+And once we've downloaded it
+it's pretty much ready to go.
+
+209
+00:17:24.620 --> 00:17:28.190
+Now all we need to do is get
+the directory that it came from
+
+210
+00:17:29.700 --> 00:17:31.950
+over in an area we can maintain it.
+
+211
+00:17:31.950 --> 00:17:34.055
+I just happen to be putting it in /opt.
+
+212
+00:17:37.600 --> 00:17:41.191
+And then we just need to expand our path.
+
+213
+00:17:51.884 --> 00:17:55.424
+And [INAUDIBLE]
+
+214
+00:18:04.903 --> 00:18:07.109
+And there's our sublime text.
+
+215
+00:18:15.099 --> 00:18:17.133
+Okay we'll be bringing
+the editor up later.
+
+216
+00:18:20.289 --> 00:18:24.415
+And if we were to sit back and
+look at our installation,
+
+217
+00:18:24.415 --> 00:18:27.916
+we'll notice that there's really no files,
+
+218
+00:18:27.916 --> 00:18:32.630
+no non-hidden files showing
+in our home directory.
+
+219
+00:18:32.630 --> 00:18:35.460
+The files that I have there are part
+of the install that you can
+
+220
+00:18:35.460 --> 00:18:38.280
+look at in the class repository.
+
+221
+00:18:38.280 --> 00:18:43.650
+But, if you notice that the all
+the installs, Ruby wise,
+
+222
+00:18:43.650 --> 00:18:48.925
+not the editor and things like that,
+are at below RBENV.
+
+223
+00:18:53.047 --> 00:18:58.020
+Then what we can do, just to verify
+everything's the right version,
+
+224
+00:18:58.020 --> 00:18:59.802
+that we're expecting.
+
+225
+00:18:59.802 --> 00:19:05.970
+We can do a couple of repeated commands.
+
+226
+00:19:05.970 --> 00:19:11.291
+And say that we have Git 1.9.1,
+PhantomJS 1.9.8,
+
+227
+00:19:11.291 --> 00:19:14.986
+Ruby 2.2.2, and Rails 4.2.3.
+
+228
+00:19:18.829 --> 00:19:22.750
+Now what I'd like to do is
+create a rails application.
+
+229
+00:19:23.820 --> 00:19:26.523
+This isn't going to output a lot
+cuz I asked for it to be quiet.
+
+230
+00:19:29.924 --> 00:19:35.363
+But we're having some Basically
+the overall application
+
+231
+00:19:35.363 --> 00:19:42.138
+is being built in a test-installed
+directory, below this directory.
+
+232
+00:19:42.138 --> 00:19:47.547
+And in a few seconds here
+it'll be ready to test out.
+
+233
+00:19:47.547 --> 00:19:54.223
+Okay, now that the application is done,
+we can go in and start up the server.
+
+234
+00:19:54.223 --> 00:19:59.330
+Make sure you see the into
+the directory that was just created.
+
+235
+00:20:00.810 --> 00:20:03.820
+Before running the server command,
+we get the web brick server.
+
+236
+00:20:06.860 --> 00:20:09.910
+And now,
+we need to leave the server running.
+
+237
+00:20:09.910 --> 00:20:13.480
+Okay, now that our server's up,
+I want to run a different command.
+
+238
+00:20:13.480 --> 00:20:16.520
+I want to bring up sublime text.
+
+239
+00:20:16.520 --> 00:20:20.910
+And, I noticed I accidentally created
+my server in the temp directory.
+
+240
+00:20:20.910 --> 00:20:23.810
+So, I need to cd over to
+the temp directory, and
+
+241
+00:20:23.810 --> 00:20:28.500
+make sure that I've sourced my
+bash rc with that information.
+
+242
+00:20:28.500 --> 00:20:35.520
+And then, what I can do is just
+open a folder, in the file system.
+
+243
+00:20:35.520 --> 00:20:41.340
+Go over to temp, and my test install
+
+244
+00:20:41.340 --> 00:20:46.140
+I can see, I can open up that.
+
+245
+00:20:46.140 --> 00:20:49.030
+And now I can see my overall application.
+
+246
+00:20:50.230 --> 00:20:54.856
+Same thing on Fedora,
+although I do notice that
+
+247
+00:20:54.856 --> 00:20:59.953
+the fonts by default are not
+the greatest on Fedora.
+
+248
+00:21:03.273 --> 00:21:04.458
+Out of the box.
+
+249
+00:21:07.569 --> 00:21:11.817
+So I can open that folder.
+
+250
+00:21:17.575 --> 00:21:19.724
+And it's looking at
+the application as well.
+
+251
+00:21:25.888 --> 00:21:30.550
+Now the other thing I can do, let me
+just go ahead and open up another tab.
+
+252
+00:21:32.540 --> 00:21:37.350
+Is I can bring up, and
+
+253
+00:21:37.350 --> 00:21:41.560
+look a the web interface of
+the application that's running.
+
+254
+00:21:46.220 --> 00:21:48.040
+And you see it notifying me that.
+
+255
+00:21:52.530 --> 00:21:57.030
+Here comes my welcome page for
+the application we built, and
+
+256
+00:21:57.030 --> 00:22:04.930
+I do that on Fedora I
+hopefully get the same thing.
+
+257
+00:22:04.930 --> 00:22:07.996
+And here is my alert
+saying page is coming up.
+
+258
+00:22:07.996 --> 00:22:10.940
+And here you go.
+
+259
+00:22:10.940 --> 00:22:16.110
+We are done installing Ruby Rails,
+Phantom JS,
+
+260
+00:22:16.110 --> 00:22:24.570
+Sublime Text, and then verifying that
+the overall installation is complete.
+
+261
+00:22:25.640 --> 00:22:26.970
+It should be good to go.
+
+262
+00:22:26.970 --> 00:22:30.090
+And not have to touch an install for
+quite a while.
+
+263
+00:22:30.090 --> 00:22:30.689
+All right.
+Good luck.

@@ -1,0 +1,99 @@
+[MUSIC] Hi and welcome to lecture 13. In this lecture, we'll talk about scope. Scope of variable,
+scope of constants, scope of blocks. So the way scope works is as follows. Methods and classes begin new scope for
+variables, which means that the outer scope variables do not get
+carried over to the inner scope. And you could always use local_variables
+method to see which variables are in and which variables are not
+in the current scope. So for example,
+we have a v1 variable defined outside of the class and
+let's define it to a value "outside". If you try to use this variable
+inside the my_method method and you try to print it out,
+you'll get an exception thrown. Because my_method has no idea
+about this variable called v1, you could of course, define a new
+variable called v1 inside the method. And then when you print it out, you get
+the value of inside and you could also print what local_variables are available
+inside this method, which is your scope. And you will see that v1 is
+available inside the scope, which is this v1 over here. Now you, could of course,
+print v1 outside of the class and you will get the "outside",
+because that's the same scope. And if you print local variables
+at this point, you'll get v1. And you'll also get object,
+which is this variable, which was defined a few lines ago. So that's how variable is work. Now constants are basically any
+reference that begins with uppercase, including classes, modules or
+any other constants. And the constant scope rules
+are different than variable scope rules. The inner scope constants can see
+constants defined in the outer scope and they can also override
+our outer constants. Although outside of that inner scope,
+the value remains unchanged for constants. So let's see an example. Let's say, we have a value of PI, which starts with an uppercase,
+wherever is all that matters. And you define that it is 3.14 and
+then you wanna use that all the way inside the class Test2,
+inside the method what_is_pi. That's fine, because it's a constant. You wouldn't be able to
+do it with a variable. So in this case,
+you got an exception thrown, but you could do it with
+a constant without a problem. Now if you had a constant
+called MyConstant and then you override the value
+Outer Constant here. And MyConstant = Inner Constant
+prints Inner Constant, but outside that constant is still
+known as Outer Constant. So point is you could use it, but
+once you define it as a new value, that value becomes the new
+value of a constant. But when you go back out to the outer
+scope, you're back to the original value. Now the change in the value
+of a constant is kinda weird, because the whole point of it
+is that it should be a constant. So for example, the value of PI
+will probably be the same value and you probably don't wanna be changing it,
+but I'm just pointing out
+the way it actually works. So if for whatever reason you see some
+behavior and you're not sure why it's happening, the first thing you should
+check is, are you name your variables correctly of the lower case while
+your naming them with upper case. In which case, it's a constant,
+which means it has this behavior. Now we move on to scope of blocks. Blocks are not like methods. So the variables in the blocks
+actually inherit the outer scope and this is beyond this lecture, but
+a block actually is a closure. If you remember, it was the context
+in which it was defined and uses that context whenever it is called, but just to show you an example
+specifically for a scope portion. Let's say,
+you have a class called BankAccount, which maybe has an id and an amount
+that you are putting into the bank. That you're instantiating
+your bank account with and then you have an array of
+three different BankAccounts. Maybe in the amount of 200,
+100 and -100 and then you wanna add up the amount
+in all those three accounts. So you have a block here and
+you have a total_sum variable, which starts out as zero, then total_sum
+get values added or subtracted from it. And at the end,
+you print out the total_sum variable. So if this would be a method, total_sum
+would be a totally different variable and you wouldn't be able to do this. But because it's a block, the scope for
+the total_sum is the same. It gets inherited here from
+the outside and you're able to keep adding to the total_sum variable and
+print it out at the end. So the variable actually is affected. Now having said that,
+that is a default behavior. But even though blocks
+share the outer scope, a variable that's created inside
+the block is only available to a block. The parameters to the block
+are always local to a block even if they have the same name as
+the variables in the outer scope. And finally, you can explicitly
+declare block-local variables after a semicolon in the block parameter
+list and let's see an example for all three of these on the next slide. So you have an array or a bunch of values. You have a current number, which is 10, but current number is also a name
+of a parameter to the block. Because of that, when you loop
+them through the array of 5, 4, 1. The current number is 5, 4, 1,
+which gets printed out here and the current number is
+still 10 on the outside. So because the parameter to
+a block is current number, it is actually not
+accessible inside a block. Because you named it the same, so the scope does not go inside the block. Also the some_var variable,
+which you happen to create inside the block is not accessible
+outside of the block. So even though it is usual for variables
+outside of the block, go into the block. The scope is inherited inside the block,
+it doesn't work the other way around. The variables declare inside the block,
+actually do not propagate outside and the final example is we have
+this variable called adjustment. Adjustment = 5 and we're doing
+something on adjustment inside, we setting the adjustment to 10. Based on what we just said, the value
+of adjustment should be affected. And when it's outside, it should be 10. Because it got changed inside the block,
+but we can declare after semicolon
+that we want certain variables to be local even though they have
+the same name as the outside variables. So happens to be this one,
+this variable is called adjustment and we're using a variable called
+adjustment inside the block. So this basically is saying, treat this
+adjustment variable as a local variable not as a variable that gets
+inherited from outside of block. In summary, methods and
+classes start a new scope for variables. Constants maintain scope. So, a constant coming from
+outside of a method or a class will retain the scope and
+you're able to access a constant even though it was defined outside
+of a class and outside of a method. Blocks usually inherit the outer scope,
+but we talked about ways how you
+could override that if you want. Next, we'll talk about Access Control for
+methods.

@@ -1,0 +1,1368 @@
+WEBVTT
+
+1
+00:00:00.025 --> 00:00:07.956
+[MUSIC]
+
+2
+00:00:07.956 --> 00:00:09.676
+Hi, my name is Jackie Hicken.
+
+3
+00:00:09.676 --> 00:00:13.159
+And in this lecture I'll be walking
+you through the installation of your
+
+4
+00:00:13.159 --> 00:00:15.610
+development environment of your MacOS.
+
+5
+00:00:15.610 --> 00:00:20.130
+And as of this recording, the MacOS
+we'll be dealing with is the MacOS
+
+6
+00:00:20.130 --> 00:00:25.040
+version 10.10 or otherwise known
+as Yosemite, MacOS Yosemite.
+
+7
+00:00:25.040 --> 00:00:27.865
+Now, what we're gonna need
+to install in order for
+
+8
+00:00:27.865 --> 00:00:32.082
+you to develop your Ruby on Rails
+applications are the following packages.
+
+9
+00:00:32.082 --> 00:00:37.492
+Gonna install Ruby, Rails, Git,
+PhantomJS, and obviously you'll need
+
+10
+00:00:37.492 --> 00:00:44.010
+some place to actually code and the coding
+editor we will be using is Sublime Text.
+
+11
+00:00:44.010 --> 00:00:47.240
+In addition at the end,
+I'll show you how to set up and
+
+12
+00:00:47.240 --> 00:00:51.090
+configure an environment variable and
+this is really only needed for
+
+13
+00:00:51.090 --> 00:00:54.680
+submission of your assignments
+to the Coursera platform.
+
+14
+00:00:54.680 --> 00:00:55.750
+So let's begin.
+
+15
+00:00:55.750 --> 00:00:58.040
+So here I am inside the Mac OS, and
+
+16
+00:00:58.040 --> 00:01:02.500
+the first thing we're going to need to
+do is install Mac OS command line tools.
+
+17
+00:01:02.500 --> 00:01:05.480
+Now, these are required by other
+command line packages we're going to
+
+18
+00:01:05.480 --> 00:01:06.560
+be dealing with.
+
+19
+00:01:06.560 --> 00:01:10.620
+So one way of doing that is to
+have the operating system trigger
+
+20
+00:01:11.710 --> 00:01:13.620
+the installation of
+the command line tools.
+
+21
+00:01:13.620 --> 00:01:18.593
+And the easiest way to do that is
+just to execute git --version.
+
+22
+00:01:18.593 --> 00:01:23.059
+So let's go ahead and
+do that, git --version, and
+
+23
+00:01:23.059 --> 00:01:28.430
+that will trigger the prompt to
+install the command line tools.
+
+24
+00:01:28.430 --> 00:01:33.020
+Now, we don't wanna get the entire
+Xcode for the Mac OS, but
+
+25
+00:01:33.020 --> 00:01:35.029
+we do want to get just the tools so
+we'll click Install.
+
+26
+00:01:36.700 --> 00:01:39.152
+We'll Agree to the terms and conditions.
+
+27
+00:01:39.152 --> 00:01:42.580
+We will download the software and
+we'll install it.
+
+28
+00:01:42.580 --> 00:01:46.660
+And once it's done,
+we should be able to execute git --version
+
+29
+00:01:46.660 --> 00:01:51.350
+without having anything pop up or complain
+that no developer tools are found.
+
+30
+00:01:53.160 --> 00:01:55.211
+So it says the software was installed.
+
+31
+00:01:55.211 --> 00:01:57.262
+So we'll click Done, and
+let's try this again.
+
+32
+00:01:57.262 --> 00:02:01.550
+Git --version and this time it
+will just give us the version.
+
+33
+00:02:01.550 --> 00:02:04.124
+Great, so
+now we could move on to the next step.
+
+34
+00:02:04.124 --> 00:02:08.462
+In order to install all the packages we
+mentioned before we'll be using a pretty
+
+35
+00:02:08.462 --> 00:02:11.090
+convenient package
+manager called Homebrew.
+
+36
+00:02:11.090 --> 00:02:16.780
+Now, you see on your screen here the home
+page of Homebrew which is at brew.sh.
+
+37
+00:02:16.780 --> 00:02:20.340
+And once we install Homebrew installing
+the rest of the packages is going to be
+
+38
+00:02:20.340 --> 00:02:21.990
+very straightforward.
+
+39
+00:02:21.990 --> 00:02:25.150
+Now, if you're a user that
+you're logged into the Mac
+
+40
+00:02:25.150 --> 00:02:30.250
+that has administrative privileges you
+can install Homebrew without any issues.
+
+41
+00:02:30.250 --> 00:02:33.750
+However, if you are a standard user you'll
+need to take a little bit of a different
+
+42
+00:02:33.750 --> 00:02:37.640
+path in order to install
+a Homebrew package manager.
+
+43
+00:02:37.640 --> 00:02:41.220
+Now first of all, how do you even
+know what type of user you are?
+
+44
+00:02:41.220 --> 00:02:46.840
+Well the way you would know that is
+if you go to System Preferences and
+
+45
+00:02:46.840 --> 00:02:49.585
+click on Users and Groups.
+
+46
+00:02:49.585 --> 00:02:53.045
+And take a look at the user you
+logged in with, does it say the word
+
+47
+00:02:53.045 --> 00:02:57.345
+Admin underneath of it or does it say
+the word Standard underneath of it?
+
+48
+00:02:57.345 --> 00:03:02.740
+And obviously, if it says Standard, you're
+not an admin user, you're a standard user.
+
+49
+00:03:02.740 --> 00:03:06.250
+So if you're a user with administrator
+privileges hang on a second
+
+50
+00:03:06.250 --> 00:03:09.800
+while I address the installation
+of Homebrew for standard users.
+
+51
+00:03:09.800 --> 00:03:14.280
+So here I am logged in and
+as a standard user and like I said before,
+
+52
+00:03:14.280 --> 00:03:18.060
+if you're a standard user, you'll need
+to execute a slightly different command
+
+53
+00:03:18.060 --> 00:03:21.690
+that will let you install Homebrew
+right in your home directory.
+
+54
+00:03:21.690 --> 00:03:26.516
+So if you are at the home page of Homebrew
+package installer, you will see here
+
+55
+00:03:26.516 --> 00:03:31.505
+a little note here that says, there
+are more installation options right here.
+
+56
+00:03:31.505 --> 00:03:33.470
+And we'll click that link.
+
+57
+00:03:33.470 --> 00:03:36.640
+And if we scroll down a little bit here,
+you'll see here there's an application
+
+58
+00:03:36.640 --> 00:03:40.810
+called under Alternative Installs
+called Untar anywhere.
+
+59
+00:03:40.810 --> 00:03:42.210
+And what we need to do is really,
+
+60
+00:03:42.210 --> 00:03:44.420
+you could read this on your
+own time if you'd like.
+
+61
+00:03:44.420 --> 00:03:49.210
+What we really need to do is go to our
+home directory in our terminal and
+
+62
+00:03:49.210 --> 00:03:52.202
+execute this particular command.
+
+63
+00:03:52.202 --> 00:03:55.410
+So we'll go to our terminal and
+go ahead and Paste that.
+
+64
+00:03:56.420 --> 00:03:59.088
+And click Enter, and
+this will install Homebrew.
+
+65
+00:03:59.088 --> 00:04:04.630
+So if we do an ls now, you'll see
+the homebrew package is now installed.
+
+66
+00:04:04.630 --> 00:04:07.250
+So now, that Homebrew is
+installed in your home directory,
+
+67
+00:04:07.250 --> 00:04:12.140
+we'll need to augment your
+execution path in order to include
+
+68
+00:04:12.140 --> 00:04:16.220
+the bin directory under
+your homebrew installation.
+
+69
+00:04:16.220 --> 00:04:17.760
+So let's do that right now.
+
+70
+00:04:17.760 --> 00:04:20.740
+So first of all let's find
+out what that directory is.
+
+71
+00:04:20.740 --> 00:04:22.650
+Homebrew and bin.
+
+72
+00:04:22.650 --> 00:04:25.890
+So that's the directory that we
+need to include if we do pwd,
+
+73
+00:04:25.890 --> 00:04:28.500
+we'll actually get the full path.
+
+74
+00:04:28.500 --> 00:04:32.350
+So let's go ahead and copy that and
+we'll clear the screen.
+
+75
+00:04:32.350 --> 00:04:39.123
+And the way you augment the execution path
+is you need to edit your .bash_profile.
+
+76
+00:04:39.123 --> 00:04:44.800
+If you do ls --al, first of all,
+we're in the wrong directory.
+
+77
+00:04:44.800 --> 00:04:48.650
+Let's go to our home directory and
+do ls --al.
+
+78
+00:04:48.650 --> 00:04:55.150
+You'll see that in our home directory
+there's no file called .bash_profile.
+
+79
+00:04:55.150 --> 00:04:57.650
+So this happens when you have
+never installed anything yet,
+
+80
+00:04:57.650 --> 00:04:59.040
+anything of significance.
+
+81
+00:04:59.040 --> 00:05:02.590
+So we're going to go ahead and
+create that file just by editing and
+
+82
+00:05:02.590 --> 00:05:10.610
+we're gonna use vim, but you are welcome
+to use any editor that you like.
+
+83
+00:05:10.610 --> 00:05:13.820
+So bash_profile, and
+here's our bash_profile.
+
+84
+00:05:13.820 --> 00:05:17.480
+So the way we do that is
+we are going to export.
+
+85
+00:05:18.760 --> 00:05:20.680
+I'm going to click i and export.
+
+86
+00:05:22.240 --> 00:05:29.690
+Let's call it BREW_HOME, and = and
+we'll paste that bin directory.
+
+87
+00:05:29.690 --> 00:05:32.110
+So now what we need to do,
+is after we do that
+
+88
+00:05:32.110 --> 00:05:36.270
+is we need to augment our execution
+path with this BREW_HOME variable.
+
+89
+00:05:36.270 --> 00:05:41.945
+So the way we do that is, we say PATH is
+gonna be now = to the home brew variable,
+
+90
+00:05:41.945 --> 00:05:45.450
+BREW_HOME and separated by colon,
+
+91
+00:05:45.450 --> 00:05:49.280
+we need to give it our old path so
+that we don't override what's in the path.
+
+92
+00:05:49.280 --> 00:05:51.010
+We just augment it.
+
+93
+00:05:51.010 --> 00:05:53.551
+We'll go ahead and save the file.
+
+94
+00:05:53.551 --> 00:05:59.210
+And now, we need to do is we need
+to source it, source.bash_profile.
+
+95
+00:05:59.210 --> 00:06:03.028
+And once we do that, we should be
+able to execute the brew command now,
+
+96
+00:06:03.028 --> 00:06:06.421
+from any directory including
+our home directory right here.
+
+97
+00:06:06.421 --> 00:06:10.711
+This is we're in the home directories,
+so we should be able to say brew -v and
+
+98
+00:06:10.711 --> 00:06:12.494
+sure enough brew is installed.
+
+99
+00:06:12.494 --> 00:06:16.546
+So now, let me switch back and walk you
+through the installation of home brew for
+
+100
+00:06:16.546 --> 00:06:18.570
+that administrator user.
+
+101
+00:06:18.570 --> 00:06:19.750
+If you are a standard user and
+
+102
+00:06:19.750 --> 00:06:23.810
+you follow these instructions to install
+the Homebrew in your home directory.
+
+103
+00:06:23.810 --> 00:06:27.841
+Obviously, you'll need to skip the
+Homebrew installation about the show for
+
+104
+00:06:27.841 --> 00:06:29.256
+the administrator users.
+
+105
+00:06:29.256 --> 00:06:33.131
+So now, we're back logged in as an
+administrator user and let's go ahead and
+
+106
+00:06:33.131 --> 00:06:34.180
+install Homebrew.
+
+107
+00:06:34.180 --> 00:06:37.190
+One more time, if you already
+installed Homebrew as a standard user,
+
+108
+00:06:37.190 --> 00:06:39.040
+you could skip this particular step.
+
+109
+00:06:39.040 --> 00:06:42.260
+So installing Homebrew for administrator
+users is pretty straightforward.
+
+110
+00:06:42.260 --> 00:06:45.940
+All you have to do is copy this
+command here, we'll go ahead and
+
+111
+00:06:45.940 --> 00:06:51.110
+copy the command and we'll execute
+the command on our command line prompt.
+
+112
+00:06:53.000 --> 00:06:55.512
+We'll hit Enter, we'll hit again, OK.
+
+113
+00:06:55.512 --> 00:06:58.948
+And this is the step where the standard
+user would not be able to do cuz it
+
+114
+00:06:58.948 --> 00:07:01.970
+requires as you can see here
+requires sudo privileges.
+
+115
+00:07:01.970 --> 00:07:05.110
+And only administrator user
+will have those privileges.
+
+116
+00:07:05.110 --> 00:07:08.840
+So let's go ahead and type our password,
+and this will install Homebrew.
+
+117
+00:07:09.970 --> 00:07:10.650
+Okay, we're done.
+
+118
+00:07:10.650 --> 00:07:13.865
+So now, we could verify
+that Homebrew is installed.
+
+119
+00:07:13.865 --> 00:07:19.755
+By issuing a command brew -v and
+sure enough home brew is installed.
+
+120
+00:07:20.985 --> 00:07:24.425
+So the next step is to start
+installing our packages and
+
+121
+00:07:24.425 --> 00:07:28.430
+the guide that I'm going
+to be using by and large
+
+122
+00:07:28.430 --> 00:07:33.360
+is this guide at this website gorails.com
+and you can see the URL right there.
+
+123
+00:07:33.360 --> 00:07:36.110
+Now, I'm not going to be
+using this guide verbatim.
+
+124
+00:07:36.110 --> 00:07:38.570
+So I'm not gonna be going step by step,
+but
+
+125
+00:07:38.570 --> 00:07:41.500
+I'm going to be changing things
+a little bit as we go along.
+
+126
+00:07:41.500 --> 00:07:47.120
+So if you want it to more explanation
+about as to what each step is doing.
+
+127
+00:07:47.120 --> 00:07:51.200
+You're more than welcome to go
+to this website and take a look.
+
+128
+00:07:52.500 --> 00:07:55.570
+So the first thing we wanna do
+is we want to install Ruby.
+
+129
+00:07:55.570 --> 00:07:59.040
+However, the best practice for
+installing Ruby
+
+130
+00:07:59.040 --> 00:08:03.750
+is actually to install Ruby Environment
+Manager that basically lets you switch
+
+131
+00:08:03.750 --> 00:08:08.810
+between versions of Ruby back and forth,
+depending on what your target platform is.
+
+132
+00:08:08.810 --> 00:08:10.150
+And that's what we're going to do first.
+
+133
+00:08:10.150 --> 00:08:14.539
+And you can see, using Brew it's
+gonna be super easy to do that.
+
+134
+00:08:14.539 --> 00:08:16.500
+We're going to go to our
+command line prompt.
+
+135
+00:08:16.500 --> 00:08:18.360
+We'll go ahead and clear it at this point.
+
+136
+00:08:18.360 --> 00:08:23.620
+And we'll execute brew install rbenv,
+Ruby environment ruby-build.
+
+137
+00:08:23.620 --> 00:08:25.199
+So let's go ahead an install that.
+
+138
+00:08:25.199 --> 00:08:27.000
+That should be super simple.
+
+139
+00:08:27.000 --> 00:08:29.893
+So once it's done, what we need to do is,
+
+140
+00:08:29.893 --> 00:08:34.212
+and I'm getting this command
+directly from this guide here.
+
+141
+00:08:34.212 --> 00:08:39.654
+What we're gonna do is, we're going to
+insert certain variables inside our bash,
+
+142
+00:08:39.654 --> 00:08:44.730
+.bash_profile and then we'll just copy and
+paste those things right here.
+
+143
+00:08:44.730 --> 00:08:47.770
+It inserted it into our bash_profile and
+
+144
+00:08:47.770 --> 00:08:52.510
+we'll have to source our bash_profile
+again, just to make sure that
+
+145
+00:08:52.510 --> 00:08:56.120
+in this particular session of this
+terminal, it's already active.
+
+146
+00:08:56.120 --> 00:08:57.500
+And once we're done with that,
+
+147
+00:08:57.500 --> 00:09:02.210
+we can go ahead and use rbenv to
+install the Ruby version that we want.
+
+148
+00:09:02.210 --> 00:09:05.170
+So rbenv and we want to install and
+
+149
+00:09:05.170 --> 00:09:11.007
+the Ruby version we want to
+install is the latest one 2.2.3.
+
+150
+00:09:11.007 --> 00:09:13.120
+Let's go ahead and install that.
+
+151
+00:09:13.120 --> 00:09:16.950
+Now, this step takes I'd say,
+depending on your operating system or
+
+152
+00:09:16.950 --> 00:09:21.425
+depending on your machine,
+probably between 15 and 20 minutes.
+
+153
+00:09:21.425 --> 00:09:26.150
+So if it's taking a long time,
+you should know that's perfectly normal.
+
+154
+00:09:27.350 --> 00:09:30.470
+So now,
+that Ruby is installed through rbenv
+
+155
+00:09:30.470 --> 00:09:33.940
+the next step we need to
+do is to basically tell
+
+156
+00:09:33.940 --> 00:09:38.680
+rbenv to use this particular version
+as the global version for everything.
+
+157
+00:09:38.680 --> 00:09:43.070
+So we'll go ahead and
+do rbenv and we'll say global
+
+158
+00:09:44.610 --> 00:09:48.300
+and version is 2.2.3.
+
+159
+00:09:48.300 --> 00:09:50.510
+Once we do that that's pretty quick,
+we'll go ahead and
+
+160
+00:09:50.510 --> 00:09:52.400
+verify that Ruby is actually installed.
+
+161
+00:09:52.400 --> 00:09:54.370
+And the correct version ruby -v,
+
+162
+00:09:54.370 --> 00:10:00.060
+as you can see we have ruby
+2.2.3 which is what we need.
+
+163
+00:10:00.060 --> 00:10:02.250
+So the next step is to install Rails, and
+
+164
+00:10:02.250 --> 00:10:04.610
+the Rails is nothing more
+than a regular gem install.
+
+165
+00:10:04.610 --> 00:10:09.343
+So we'll do gem install rails and
+we could just leave it at that, but
+
+166
+00:10:09.343 --> 00:10:15.092
+if we do that we'll install the very
+latest version of Rails which is 4.2.4.
+
+167
+00:10:15.092 --> 00:10:20.067
+Now, in the Coursera grading engine and
+all of our code is really
+
+168
+00:10:20.067 --> 00:10:25.433
+targeting the version that right
+before that which was 4.2.3.
+
+169
+00:10:25.433 --> 00:10:29.650
+So we'll go ahead and specify that, and
+I encourage you to do the same thing.
+
+170
+00:10:29.650 --> 00:10:34.358
+So you're in the same version as we
+are and the code that we wrote will target
+
+171
+00:10:34.358 --> 00:10:37.673
+that and
+should hopefully work without any issues.
+
+172
+00:10:37.673 --> 00:10:40.300
+So now, that the Rails gem is installed.
+
+173
+00:10:40.300 --> 00:10:44.020
+We need to have the rbenv see it as well.
+
+174
+00:10:44.020 --> 00:10:46.340
+See the version and see the installation.
+
+175
+00:10:46.340 --> 00:10:50.710
+So for
+that we need to execute rbenv rehash.
+
+176
+00:10:50.710 --> 00:10:54.277
+Once that's done,
+let's verify that Rails is installed and
+
+177
+00:10:54.277 --> 00:10:57.648
+is the correct version, and
+here we go rails 4.2.3.
+
+178
+00:10:57.648 --> 00:11:01.530
+So the next step for us is to
+actually set up a Rails application.
+
+179
+00:11:01.530 --> 00:11:03.720
+And let's go ahead and do that now.
+
+180
+00:11:03.720 --> 00:11:05.950
+Let's see, let's clear the screen.
+
+181
+00:11:05.950 --> 00:11:07.640
+We are still in a home directory.
+
+182
+00:11:07.640 --> 00:11:12.947
+We'll go ahead and say,
+rails new let's call it test_app.
+
+183
+00:11:12.947 --> 00:11:17.360
+And rails is gonna create a rails
+application for us in that directory.
+
+184
+00:11:17.360 --> 00:11:22.290
+So once that's done, let's go ahead and
+cd in to the test app directory.
+
+185
+00:11:22.290 --> 00:11:24.270
+And we'll start up the rails server.
+
+186
+00:11:25.600 --> 00:11:27.020
+That seems to work just fine.
+
+187
+00:11:27.020 --> 00:11:31.610
+Let's copy this URL right here and
+verify that it works in the browser.
+
+188
+00:11:32.680 --> 00:11:34.050
+Yeah, sure enough, it's working just fine.
+
+189
+00:11:34.050 --> 00:11:37.700
+Let's go ahead and click on this about
+your application environment to verify
+
+190
+00:11:37.700 --> 00:11:39.690
+that all the versions are correct as well.
+
+191
+00:11:39.690 --> 00:11:42.790
+The Rail version is 4.2.3, that's correct.
+
+192
+00:11:42.790 --> 00:11:46.200
+Ruby version is 2.2.3,
+that's correct as well.
+
+193
+00:11:46.200 --> 00:11:47.853
+So we're good to go.
+
+194
+00:11:47.853 --> 00:11:52.730
+So the next thing we're gonna need to
+install is the latest version of Git.
+
+195
+00:11:52.730 --> 00:11:54.070
+Now, let's go ahead and quit.
+
+196
+00:11:54.070 --> 00:11:55.560
+Do a Ctrl+C.
+
+197
+00:11:55.560 --> 00:11:59.020
+And quit our Ruby server, Rail server.
+
+198
+00:11:59.020 --> 00:12:01.420
+And go to our home directory.
+
+199
+00:12:01.420 --> 00:12:04.810
+Now, if you do git --version,
+
+200
+00:12:04.810 --> 00:12:08.120
+you'll see that git is already
+installed by default by Apple.
+
+201
+00:12:08.120 --> 00:12:12.350
+Now, you could just leave it alone but
+so it's really the optional step.
+
+202
+00:12:12.350 --> 00:12:15.310
+But you could go ahead and
+upgrade it to the latest version.
+
+203
+00:12:15.310 --> 00:12:19.225
+And that's very easy with Homebrew
+by saying brew install git.
+
+204
+00:12:21.230 --> 00:12:22.100
+And we're done.
+
+205
+00:12:22.100 --> 00:12:25.656
+So in order for us to now have
+our system recognize then you git
+
+206
+00:12:25.656 --> 00:12:29.864
+that was installed which is if
+you take a look here, it's 2.5.1.
+
+207
+00:12:29.864 --> 00:12:34.190
+If you do git --version again,
+it'll still show us the earlier version.
+
+208
+00:12:34.190 --> 00:12:38.500
+So we need to go is go
+into our .bash_profile and
+
+209
+00:12:39.500 --> 00:12:44.120
+augment our execution path
+with this git version.
+
+210
+00:12:44.120 --> 00:12:46.663
+Let's go ahead and
+find out what the actual version is.
+
+211
+00:12:46.663 --> 00:12:52.463
+Let's go to
+usr/local/Cellar/git/2.5.1/ and
+
+212
+00:12:52.463 --> 00:12:56.640
+see that there's a bin directory in here.
+
+213
+00:12:56.640 --> 00:12:58.732
+Let's go in here and do pwd.
+
+214
+00:12:58.732 --> 00:13:03.473
+And let's grab this directory, so
+we could go ahead and Copy it and
+
+215
+00:13:03.473 --> 00:13:06.060
+then Paste it when we need to.
+
+216
+00:13:06.060 --> 00:13:10.510
+Let's go back to our home directory, we'll
+clear the screen and we'll go ahead and
+
+217
+00:13:10.510 --> 00:13:13.790
+edit the .bash_profile.
+
+218
+00:13:13.790 --> 00:13:17.300
+And all we need to do here is,
+is we need to define a new variable,
+
+219
+00:13:17.300 --> 00:13:20.130
+and let's call it GIT_HOME.
+
+220
+00:13:20.130 --> 00:13:23.000
+And the variables value will be the path
+
+221
+00:13:23.000 --> 00:13:26.220
+that we talked about
+that we have git inside.
+
+222
+00:13:26.220 --> 00:13:29.813
+And now, we need to augment this
+path to our to the execution path.
+
+223
+00:13:29.813 --> 00:13:35.779
+So we'll say, PATH = and $GIT_HOME is
+one thing we're gonna have on the path,
+
+224
+00:13:35.779 --> 00:13:39.597
+and we also want to augment
+it not override the path.
+
+225
+00:13:39.597 --> 00:13:43.390
+So we'll add the previous
+value of the path back in.
+
+226
+00:13:43.390 --> 00:13:45.712
+Go ahead and save that file.
+
+227
+00:13:45.712 --> 00:13:50.666
+Now, we'll need to source that
+.bash_profile in order for
+
+228
+00:13:50.666 --> 00:13:56.230
+us to have these variables work
+right here in this terminal session.
+
+229
+00:13:56.230 --> 00:14:03.814
+And if we now do git --version,
+we see that we have the new git 2.5.1.
+
+230
+00:14:03.814 --> 00:14:07.250
+One more thing we need to
+install is phantom gs.
+
+231
+00:14:07.250 --> 00:14:10.400
+Phantom gs is the headless browser.
+
+232
+00:14:10.400 --> 00:14:14.580
+Basically, what that means is you would
+be able to execute browser commands and
+
+233
+00:14:14.580 --> 00:14:19.030
+basically have the system behave like
+a browser even though there is no UI.
+
+234
+00:14:19.030 --> 00:14:21.020
+There is no visual UI to it.
+
+235
+00:14:21.020 --> 00:14:23.330
+So again with brew, it's super simple.
+
+236
+00:14:23.330 --> 00:14:29.220
+We'll do brew install phantomjs.
+
+237
+00:14:29.220 --> 00:14:33.370
+And this should install the latest
+version of phantomjs which is 2.0.0.
+
+238
+00:14:33.370 --> 00:14:34.260
+And that's done.
+
+239
+00:14:34.260 --> 00:14:40.430
+Let's make sure that it actually works,
+phantomjs -v.
+
+240
+00:14:40.430 --> 00:14:42.580
+And sure enough it is working just fine.
+
+241
+00:14:42.580 --> 00:14:45.963
+The next thing you have to do is
+we need to install Sublime Text 3.
+
+242
+00:14:45.963 --> 00:14:49.090
+Now, that's super simple
+at least on the Mac.
+
+243
+00:14:49.090 --> 00:14:56.008
+You just go ahead and
+go to Sublime Text 3.
+
+244
+00:14:56.008 --> 00:14:59.110
+Search for Sublime Text 3 and
+here's the link for it.
+
+245
+00:14:59.110 --> 00:15:02.906
+Now, what you need to do is you need
+to download the link for MAC OS, OS X.
+
+246
+00:15:04.510 --> 00:15:05.939
+And there it is downloading.
+
+247
+00:15:05.939 --> 00:15:06.560
+Here we go.
+
+248
+00:15:06.560 --> 00:15:11.077
+So once we're done with that
+we'll go ahead and click it.
+
+249
+00:15:11.077 --> 00:15:12.810
+It will open up and
+it will install itself.
+
+250
+00:15:13.990 --> 00:15:16.089
+And we just need to drag
+it to applications.
+
+251
+00:15:16.089 --> 00:15:17.798
+And once that's done,
+
+252
+00:15:17.798 --> 00:15:22.250
+we're now are able to bring it
+up by going to Spotight Search.
+
+253
+00:15:22.250 --> 00:15:25.156
+We'll do sublime,
+Sublime Text is right there.
+
+254
+00:15:25.156 --> 00:15:26.090
+I'll open it up.
+
+255
+00:15:26.090 --> 00:15:29.280
+It'll ask us for the first time
+since we've downloaded from the web.
+
+256
+00:15:29.280 --> 00:15:30.690
+We'll say, go ahead and open anyway.
+
+257
+00:15:31.710 --> 00:15:33.650
+And here's just a Sublime Text.
+
+258
+00:15:33.650 --> 00:15:36.341
+And we'll go ahead and pin it to the dock.
+
+259
+00:15:36.341 --> 00:15:38.580
+They say Options, Keep in the Dock.
+
+260
+00:15:38.580 --> 00:15:42.570
+So the last thing we need to do is show
+you how to configure an environmental
+
+261
+00:15:42.570 --> 00:15:46.950
+variable within your operating system.
+
+262
+00:15:46.950 --> 00:15:48.994
+So let's go to the terminal again.
+
+263
+00:15:48.994 --> 00:15:54.500
+Let's go ahead and
+do Ctrl+C to quit the Rails server.
+
+264
+00:15:54.500 --> 00:15:57.860
+Let's clear the screen, and
+let's go to our home directory.
+
+265
+00:15:57.860 --> 00:16:03.140
+So the way you create an environment
+variable is you have to stick it inside
+
+266
+00:16:03.140 --> 00:16:06.140
+the file called .bash_profile.
+
+267
+00:16:06.140 --> 00:16:10.470
+So let's do ls -al and
+let's see if we have that file already.
+
+268
+00:16:10.470 --> 00:16:14.710
+On my system, I already have the file
+here cuz I have things configured.
+
+269
+00:16:14.710 --> 00:16:16.370
+However, on your system
+you may not have it.
+
+270
+00:16:16.370 --> 00:16:18.470
+So you might have to actually create it.
+
+271
+00:16:18.470 --> 00:16:20.440
+Either way, let's go ahead and edit it.
+
+272
+00:16:20.440 --> 00:16:25.489
+And I'm gonna use vim but you're welcome
+to use any text editor you'd like.
+
+273
+00:16:25.489 --> 00:16:30.165
+So .bash_profile, and
+
+274
+00:16:30.165 --> 00:16:33.565
+let's go ahead and
+
+275
+00:16:33.565 --> 00:16:37.820
+create a new variable.
+
+276
+00:16:37.820 --> 00:16:40.701
+So let's call this variable say export.
+
+277
+00:16:40.701 --> 00:16:43.554
+Let's call this variable WEB_URL.
+
+278
+00:16:44.710 --> 00:16:49.362
+And WEB_URL and we'll say it's
+
+279
+00:16:49.362 --> 00:16:54.357
+http://www.coursera.org.
+
+280
+00:16:54.357 --> 00:16:56.653
+So that's going to be our variable and
+
+281
+00:16:56.653 --> 00:17:02.055
+the value of the variable is going to be
+this http coursera, www.coursera.org.
+
+282
+00:17:02.055 --> 00:17:05.965
+So once we do that,
+we can save this file, and
+
+283
+00:17:05.965 --> 00:17:10.395
+we need to now source this file, meaning
+we need this session of our terminal
+
+284
+00:17:10.395 --> 00:17:14.525
+to see that an executed .bash_profile.
+
+285
+00:17:14.525 --> 00:17:20.840
+So let's go ahead and
+do source .bash _profile, and we're done.
+
+286
+00:17:20.840 --> 00:17:24.810
+So now, we should be able to echo
+the value of that variable back
+
+287
+00:17:24.810 --> 00:17:26.340
+to the terminal.
+
+288
+00:17:26.340 --> 00:17:31.310
+So the way we do that is say,
+echo $ is for reference to the variable,
+
+289
+00:17:31.310 --> 00:17:35.120
+and we'll say, $WEB_URL and press Enter.
+
+290
+00:17:35.120 --> 00:17:40.796
+And sure enough, what we get back
+is the value of that variable.
+
+291
+00:17:40.796 --> 00:17:44.657
+So at this point we've installed all
+the packages we needed to install and
+
+292
+00:17:44.657 --> 00:17:47.480
+we're ready to develop Ruby
+on Rails applications.
+
+293
+00:17:47.480 --> 00:17:48.368
+Enjoy the courses.

@@ -1,0 +1,43 @@
+[MUSIC] Hi, and welcome to Module 3. In Module 2, our previous module,
+we talked about Ruby and by now, you guys should have enough knowledge
+to jump into Ruby on Rails and that is exactly what we are going
+to be doing in this module. We'll start off the module by talking
+about the core principles of Ruby on Rails. We'll talk about model view controller and actually model view controller is not just
+a principle that apples to Ruby on Rails. It's a principle that applies to
+a lot of web frameworks as well. Then will talk about
+convention over configuration. And basically the idea there is that there
+are some good conventions that Rails pushes you to follow, and you could step
+outside those conventions if you want. But it's a very good idea
+to follow conventions, and this way the applications
+that are built faster, and that's what Rails is very famous for,
+for rapid prototyping. Allowing it to build
+applications very fast. One of those conventions is using the same
+directory structure for your application. And this is actually great because you
+work in the one Rails application, you know the directory structure, and
+then when you move onto the next project, you know exactly where things go,
+which is great. Then we're gonna move on and
+find out how to generate a controller and a view in Rails, and
+build some pages that are dynamic. And by the time we get
+to the end of a module, we'll be able to build a functional
+recipe finder application. Now, there's a little problem. To build a recipe finder application,
+you need to have data. You need to have recipes. And usually that data would
+be stored in a database. Now we haven't talked about databases and
+we're not going to in this course. The next course,
+we'll talk about databases. But we have to build
+the application in this course. So how are we going to do that? Well, as you're going to see, there's a way that Ruby lets you pull data
+from the Internet, from a web service, and easily integrate that data into
+your Ruby on Rails application. And that is how we're gonna
+build our web application. In the last module,
+we talked about unit testing with RSpec. In this module, we'll talk about a different concept,
+which is similar, called blackbox testing. And the idea there is that
+you don't have to have a code that you're testing against,
+you're just testing against the blackbox. So this way you could test against
+the code that's up there in the cloud if you want. And that's exactly what we're
+gonna do using RSpec and using the Capybara, which is a Ruby gem. [MUSIC] So as I mentioned,
+we're gonna build a functional recipe finder application by
+the end of this module, which is gonna be sort of a project
+that's gonna finish off the course. Now there's a philosophical
+dilemma that I have for you guys. If you build an application but
+your friends, your coworkers, or your potential employers don't see it,
+did you really build that web application? Probably not. So to be able to broadcast it, we are gonna deploy the application to
+a cloud service for everybody else to see. And with that I will see you in Module 3.

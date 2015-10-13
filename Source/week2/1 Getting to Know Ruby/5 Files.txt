@@ -1,0 +1,65 @@
+[MUSIC] Hi, and welcome to Lecture 5. In this lecture, we'll talk about
+reading and writing to files. We'll talk about exceptions, as well as
+reading values from environment variables. So you have a file called test.txt, and you wanna write a Ruby program
+that reads some of that file. The way you do that is you
+have a file class and you have a foreach method which has a parameter
+of a file that you actually want to use. And then you have a block,
+and in that block, you are given line by line
+all the contents of a file. Now if you just print the line as it is,
+so the first line of the file,
+this is what you would see, and you would think that that's
+exactly what the line looks like. Now, in reality if you examine
+a little closer with p line you'll see that there is a new line
+character that is at the end of this line. To chop off the new line character
+you'd use a method called chomp, and this is actually a method
+that's just used for that. It doesn't chop off any character, and there's actually a chop method as well,
+but chomp method specifically takes off a newline
+character from the end of the string. You could also do split which
+basically splits the line into individual words and
+creates an array out of that line. Now, what happens if a file from which you
+are trying to read from, does not exist? So, you have this file code, do not exist,
+that text, and it doesn't even exist. Well, predictably,
+you will get an exception. Ruby will try to read from a file, it
+won't find the file, you'll get a big fat exception that basically says
+do_not_exist.txt does not exist, no such file, and that's the end of that. And this is actually a somewhat
+unfortunate outcome of your program because it stops execution and
+you have this error message it's planted everywhere, and you really don't wanna
+just abruptly end your programs like that. So the way to get around that, is that
+you could actually handle the exception, so that when you read the file,
+if a file does not exist, you can rescue, you could catch
+the exception that's being thrown. And in this case,
+you have control of what to do about it. So, Exception gets mapped
+to this e variable. And then, you can say,
+what is the message of the exception? Why did it happen? And then this lets you control your flow,
+and you are able to continue after
+the begin rescue end block with other code perhaps accounting for the fact that the file wasn't found and
+maybe trying something else. And you could do that as well
+inside the rescue block itself. As an alternative to that,
+you could just check if the file exists with a exists
+predicate method and file. If the file exists, test.txt,
+yes it does, then go ahead and read it. If it does not exist, then go ahead and just skip the if block and continue
+with execution after the if block. This obviously wouldn't help you in
+cases where a real exception happens, like there's something wrong with
+your network or something like that. For that,
+you would want to use this construct. But, if it's a simple case
+of the file not being found, you could always use this construct
+of just using an if and checking for existence of a file, and
+it doesn't look as messy. What about writing to a file? Well, for this,
+Ruby also uses a block structure. So you have a file. You open the file, so open is a method. And then you have a block, which is
+the last quote unquote parameter to the open method, in which the file to
+which you're writing is being passed. And the w here actually indicates
+that you are opening the file in order to write to that file. And then you could just do file.puts
+one line, another line and so on, and then at the end of the day you have
+test1.txt in which the lines get written. The last thing we'll going to talk
+about is environment variables, and environment variables,
+the set up for those variables, environment variables is specific
+to the operating system, so Windows it's one way, OSX is a different
+way, but once you have them set, the way you read them, Ruby is just
+by saying ENV and then the name. The key of that environment variables. In this case, I have my editor
+environment variables set to Sublime, and that's what's indicated here. In summary, files automatically get
+closed at the end of a block, and that's actually a nice feature. This way you don't have to worry about Did
+I close the block, did I close the file? You do all your operations
+inside the block, and by the end the block finishes, Ruby
+automatically closes the file for you. And in order to handle the unforeseen cases like where file not existing you
+could either use exception handling or you could just check for the existence
+of a file before accessing the file. What's next? We'll talk about strings and symbols.

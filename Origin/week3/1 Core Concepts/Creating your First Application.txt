@@ -1,0 +1,133 @@
+[MUSIC] Hi and
+welcome to lecture two of module three. In this lecture we'll talk about how
+to create and run the application. We'll talk about the directory structure,
+which again, goes back to the whole idea of
+convention of a configuration, that there's a certain accepted convention
+of how a Rails project is structured. And then we'll talk about adding some
+static pages to your application. So to create your first application,
+you're gonna go into a directory where you want to be creating
+your Rails application. And, you're just gonna type in rails new
+and then the name of the application. So in this case it's my_first_app and rails is gonna go off
+creating the application. And it will create a certain
+directory structure of application which I'll
+talk about momentarily. You could also do a rails new-h, and that
+will give you more options and you could see what options you could specify when
+you are creating a new rails application. At the end of the creation of application, you're gonna see something
+that says run bundle install. And basically the idea here is that,
+as part of application, of a Rails application creation,
+were a lot of different components that are being merged in together and
+those components have different versions, obviously, and
+those versions have to interact. And by interacting I mean if one component
+depends on one version of, there's a dependency on some version, and another
+component depends on a different version, you need something to resolve those
+versions, and that's what Bundler does. And we'll have a whole separate
+lecture on Bundler later on, but I just wanna point out that when
+you create a Rails application, after the end of that creation, Bundler
+sort of cleans up the house a little bit and Fetches the needed dependencies for
+you. Okay, so
+at this point your application is created. The initial skeleton and
+even some code is created for you. Now, it's also interesting to note that
+Rails automatically generates that gitignore file which shows you that
+it's really trying to push you into the direction of versioning
+your application. Using a version control system like GIT. So what you're gonna do at this
+point is you're gonna go into that, inside of that application. So the application was
+called my first app. You're gonna have a directory
+called my first app. You're gonna CD change directory,
+or go into the directory and then you gonna right away do git init which
+is gonna initialize get repo git add. Which is gonna add all the files
+into the repo index directory, and then you're gonna
+do your first commit, gonna do your initial commit
+using git commit command. Now the thing that you
+should be careful is that the Git repo should be
+inside the directory. So don't right away do git init before
+you switch to the directory and this has to do with deployment. When you actually gonna be deploying
+the app to Heroku as we're gonna see Heroku is looking for a certain
+structure over Rails application. And it wants to see that
+Rails application directories as we're going to see the app
+directory and others are what's in the top level of your Git repository. Okay? So now you have your my_first_app
+directory which is your rails application, and that has some auto-generated
+structure as well as some code. So what are gonna do now? Well, Rails also provides
+a built in web service. You don't have to go looking for,
+how am I gonna run this application, maybe I need to download a web server or
+something. No, you don't have to Rails
+already comes with that built in. So now it's time to run the application. Now, what I suggest doing is opening
+up another terminal window, or a tab, if your terminal supports
+a functionality of opening a new tab. And the benefit of this is that
+a lot of times we're gonna see, you don't have to restart the server
+when you make the change. All you have to do is make that change
+to your application, save it and boom you could just refresh
+your browser and be good to go. You don't need to restart the server. So, for this reason I suggest opening
+up another terminal window or tab, and running the application from
+that tab is starting the server, which is gonna run an application. And this, so you could just incrementally
+make the changes to application without always restarting the server. So you're gonna go into
+my_first_app directory, after you open up another application and
+another terminal window. I'm sorry. Then you're gonna run Rails server or
+Rails S for short. And so that's what I'm doing over here. I'm gonna go into my
+first app run Rails S or rails server and
+that's gonna boot the web server. Which is gonna run the application. And as you're gonna see here it
+says the version of the rRils application you're running and that
+it's being runned in development mode. And where is it running? It's running on your local host which is
+your local web server on your computer, and the default port is 3000. Now, this is a default,
+you could change your port, but the default is gonna be 3000. With development environment, the idea is that there are more things you
+could do in your development environment. That maybe it automatically
+refreshes things for you and it's not optimized for production. But when we're actually going
+to deploy application to It's going to switch to using
+the production environment. Let's see this application. We're going to go into a browser and
+do localhost:3000 and boom, here we have our application,
+Welcome aboard. You're riding Ruby on Rails and
+Rails is very good at holding your hand. Again, the idea is, you don't have
+to always be guessing, so now what? Rails gives you some steps
+of what you might be doing. Maybe use some generators as we're
+gonna see in a minute what that is. Maybe other things,
+maybe configure your database. It also tells you where
+the Rails guides are. And the rails API, but you might need for looking things up,
+the links to that API, specifically for this version of rails you're running now,
+can be found at these links. Let's go through
+a directory structure now. The directory structure convention. So this is my_first_app application. It will have an app directory. The app directory is where you're
+gonna be spending most of your time. That's the directory that has
+the controllers, the views, the models, as always, these things called helpers,
+which we're gonna talk about later. Then there's also configuration,
+config, directory. And that has configuration files. For example,
+which database am I gonna be using. I'm gonna be using Oracle, MySQL. Maybe Postgres, and what are the username
+and password to those databases. So that's what's specified
+in the config directory. Now, there's also a DB directory which
+will have maybe some migration scripts of changing from one database
+snapshot to a different one. Maybe add in some columns or
+add in some tables. Those scripts are gonna be
+stored in the db directory, as well as if you're using SQLite
+database, which is the default. So, if you don't touch anything
+you're using the SQLite database. The actual file for the SQI database
+is gonna be stored in the db directory. Then there's a public directory
+which has the static files. As we're gonna see the static files, like your regular HTML files if you have
+some of those, that will never change. Those might as well go
+into a public directory. And then lastly, the Gemfile and the Gemfile.lock are the files
+that are used by Bundler. Which we'll talk about later to
+specify the dependencies and the interaction between those
+dependencies in your Rails application. So we mentioned that that the static
+files go into a public directory. The server, the web server, looks into a public directory Before
+looking anywhere else, before even asking Rails to try to make sense out of
+a request that comes from a browser. And if a file can be found
+in the public directory, it just right away displays that file. So for example, if you want to
+add a completely static webpage, an HTML page to our application, we could
+just add it under public directory. So what would that look like? We could just go under public directory,
+create a file called hello_static.html, that might have this structure here,
+you know DOCTYPE html, maybe a head, a body of some sort, and save a file. And if you have your server
+running at this point, there's no need to restart the server,
+you just refresh your browser. And you would see this page that says, well if you go to hello.html,
+you would see that the html page got generated
+will never generate dynamic content. Now this page is kind of sad, because it
+will never generate any kind of dynamic content because the content
+will always be static. And sometimes, a lot of times,
+most of the time I would say. You actually want to
+generate dynamic content. Content that you get out of a database,
+or out of other places. So, I'm just covering this to
+say that it's possible to have static pages in Rails. But, really not the place,
+that's not the framework that you want to be using if all of
+your pages are going to be static. So, in summary,
+Rails new creates a new application. Rails S, or Rails server,
+runs the application. And you need to be inside the generated
+directory when you run the Rails s, so this way,
+it knows which application to run. And then, static pages live
+inside the public directory. What's next? Next we'll talk about actually
+generating some dynamic pages, and that's done with controller, and
+the view, as we're gonna see.

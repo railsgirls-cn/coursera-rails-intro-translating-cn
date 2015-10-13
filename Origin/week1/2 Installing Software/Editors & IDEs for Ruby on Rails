@@ -1,0 +1,778 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:07.274
+[MUSIC]
+
+2
+00:00:07.274 --> 00:00:09.180
+Welcome.
+
+3
+00:00:09.180 --> 00:00:14.780
+So now that we've installed Ruby on Rails,
+the question is, which editor or
+
+4
+00:00:14.780 --> 00:00:21.160
+IDE should we be using to edit our
+Ruby and Ruby on Rails applications.
+
+5
+00:00:21.160 --> 00:00:23.530
+So, we've got a bunch of choices.
+
+6
+00:00:23.530 --> 00:00:28.640
+Number one there is RubyMine,
+and RubyMine is made by
+
+7
+00:00:28.640 --> 00:00:34.650
+JetBrains which incidentally is the same
+company that makes Intelli J which
+
+8
+00:00:34.650 --> 00:00:39.760
+an excellent Java idea out there,
+and RubyMine is no different.
+
+9
+00:00:39.760 --> 00:00:43.960
+A lot of Rubys prefer using RubyMine.
+
+10
+00:00:43.960 --> 00:00:44.840
+It's a very good IDE.
+
+11
+00:00:46.290 --> 00:00:51.468
+Now it's not free, so you get a 30-day
+
+12
+00:00:51.468 --> 00:00:56.410
+trial to see if you like it and then after
+that you have to purchase the license.
+
+13
+00:00:56.410 --> 00:00:58.580
+But, it's an excellent IDE and
+
+14
+00:00:58.580 --> 00:01:02.050
+I encourage you guys to try
+it out if you are into IDEs.
+
+15
+00:01:04.300 --> 00:01:09.530
+Another IDE that is out there is Aptana,
+which is also another pretty good IDE.
+
+16
+00:01:09.530 --> 00:01:11.437
+I personally never used it, but
+
+17
+00:01:11.437 --> 00:01:14.697
+some Ruby's definitely like
+using Aptana Studio 3.
+
+18
+00:01:17.006 --> 00:01:21.540
+Then a lot of Ruby's are not
+into IDEs altogether.
+
+19
+00:01:21.540 --> 00:01:23.090
+They use Vim.
+
+20
+00:01:23.090 --> 00:01:29.010
+Vim is an editor which is very light
+weight, and it has a lot of plugins
+
+21
+00:01:29.010 --> 00:01:33.880
+that make Ruby and
+Rails development easier.
+
+22
+00:01:35.650 --> 00:01:37.436
+But it's not a full blown IDE.
+
+23
+00:01:37.436 --> 00:01:40.810
+But again a lot of do prefer using it.
+
+24
+00:01:40.810 --> 00:01:46.070
+And then there's Sublime Text which
+is also not a full blown IDE.
+
+25
+00:01:46.070 --> 00:01:50.110
+It's a text added through
+a lot of plugins.
+
+26
+00:01:50.110 --> 00:01:52.350
+But I personally really like using it.
+
+27
+00:01:52.350 --> 00:01:54.553
+And let me show you guys how it works.
+
+28
+00:01:56.054 --> 00:02:00.408
+So when you open up
+the Sublime Text editor,
+
+29
+00:02:00.408 --> 00:02:06.409
+you're not gonna have any directories or
+folders in there,
+
+30
+00:02:06.409 --> 00:02:14.120
+and the way I got this Rails app in
+there was by doing File and then Open.
+
+31
+00:02:14.120 --> 00:02:16.860
+And then picking the folder
+that I was trying to
+
+32
+00:02:16.860 --> 00:02:19.810
+open which was my_first_app folder.
+
+33
+00:02:19.810 --> 00:02:25.320
+And this is just a Rails application
+that's about courses on Coursera.
+
+34
+00:02:26.410 --> 00:02:28.710
+So the first thing that
+we might want to do is,
+
+35
+00:02:28.710 --> 00:02:30.950
+we might want to change the color scheme.
+
+36
+00:02:32.110 --> 00:02:35.480
+If you guys like the white background
+instead of a dark background.
+
+37
+00:02:35.480 --> 00:02:39.280
+So for example, let's open up a file
+just to see what we're doing here.
+
+38
+00:02:39.280 --> 00:02:43.050
+So, this is the color scheme,
+right now, but
+
+39
+00:02:43.050 --> 00:02:45.530
+it's very easy to change a color scheme.
+
+40
+00:02:45.530 --> 00:02:48.670
+And how you would do that is by going to
+
+41
+00:02:48.670 --> 00:02:53.310
+Sublime Text > Preferences and
+then Color Scheme.
+
+42
+00:02:53.310 --> 00:02:56.640
+Right now it's in Blackboard color scheme,
+but
+
+43
+00:02:56.640 --> 00:03:00.050
+you could easily change it to
+something like Mac Classic
+
+44
+00:03:00.050 --> 00:03:04.740
+that flips it to the white background
+instead of the other background.
+
+45
+00:03:05.870 --> 00:03:06.865
+So let's go ahead and change it back.
+
+46
+00:03:10.361 --> 00:03:15.526
+A lot of things actually in this
+editor are customizable and
+
+47
+00:03:15.526 --> 00:03:21.313
+the way to see which properties
+are available for customization,
+
+48
+00:03:21.313 --> 00:03:27.300
+you would look in Preferences and
+then Settings Default.
+
+49
+00:03:27.300 --> 00:03:33.710
+And I am demoing this on the Mac but on
+the Windows and on Linux which the editor
+
+50
+00:03:36.220 --> 00:03:39.230
+runs on,
+these settings are gonna be very similar.
+
+51
+00:03:41.560 --> 00:03:48.430
+So the interesting part is
+the settings are not on a GUI panel.
+
+52
+00:03:48.430 --> 00:03:51.320
+That you could just checkbox them.
+
+53
+00:03:52.330 --> 00:03:54.290
+They're actually a JSON file.
+
+54
+00:03:54.290 --> 00:03:57.310
+So you have a key and a value.
+
+55
+00:03:57.310 --> 00:04:02.550
+So for example, you have line numbers.
+
+56
+00:04:02.550 --> 00:04:06.210
+It says line numbers should be true but
+we don't see any line numbers and
+
+57
+00:04:06.210 --> 00:04:13.370
+the reason for that is because the line
+numbers were overridden by a user file.
+
+58
+00:04:13.370 --> 00:04:16.845
+So if you go on to preferences,
+settings, user,
+
+59
+00:04:16.845 --> 00:04:22.510
+you'll see that the user file
+has line number as false.
+
+60
+00:04:22.510 --> 00:04:26.820
+But if I go ahead and take them out, and
+
+61
+00:04:26.820 --> 00:04:31.280
+save a file, you could see the line
+number show right back up again.
+
+62
+00:04:33.050 --> 00:04:39.850
+Now wouldn't it be nice to see the user
+file right next to the default file side
+
+63
+00:04:39.850 --> 00:04:45.290
+by side so that you could actually
+know which properties you could edit.
+
+64
+00:04:46.970 --> 00:04:50.188
+And it turns out you could do it
+very easily if you go to View.
+
+65
+00:04:50.188 --> 00:04:54.710
+And lay out two columns instead of one.
+
+66
+00:04:54.710 --> 00:04:56.140
+You can see this line here.
+
+67
+00:04:56.140 --> 00:05:00.630
+So you can see that there is
+actually two columns here right now.
+
+68
+00:05:00.630 --> 00:05:07.750
+And we could drag one of the files
+over to the other column.
+
+69
+00:05:09.310 --> 00:05:14.530
+Now this is our user file and
+this is our default file
+
+70
+00:05:15.620 --> 00:05:20.740
+and we could easily add
+properties in the user file,
+
+71
+00:05:20.740 --> 00:05:25.758
+overriding the properties in our files,
+so for example, numbers,
+
+72
+00:05:25.758 --> 00:05:30.880
+false, save it.
+
+73
+00:05:30.880 --> 00:05:32.560
+Boom, they go away.
+
+74
+00:05:32.560 --> 00:05:38.300
+So let's go back and
+put the layout back to single.
+
+75
+00:05:40.820 --> 00:05:41.320
+Okay.
+
+76
+00:05:44.930 --> 00:05:49.130
+The other customizations that you could do
+in actually a very similar vein to what we
+
+77
+00:05:49.130 --> 00:05:52.030
+just did was Is for key bindings.
+
+78
+00:05:52.030 --> 00:05:59.030
+So Sublime comes with its own key
+bindings which are on by default,
+
+79
+00:05:59.030 --> 00:06:03.980
+and you can override those defaults,
+again, by going to preferences,
+
+80
+00:06:03.980 --> 00:06:10.590
+key bindings user, and you can actually
+override them with your own key bindings.
+
+81
+00:06:10.590 --> 00:06:13.720
+That you're used to.
+
+82
+00:06:13.720 --> 00:06:17.230
+The next feature I want
+to show is Find in Files.
+
+83
+00:06:17.230 --> 00:06:22.440
+So Find in Files,
+it's under the find menu, Find in Files.
+
+84
+00:06:22.440 --> 00:06:26.310
+It's Cmd+Shift+F on the Mac.
+
+85
+00:06:28.420 --> 00:06:32.183
+And basically you can try to look for
+
+86
+00:06:32.183 --> 00:06:38.030
+things in all the files that are open,
+
+87
+00:06:38.030 --> 00:06:41.390
+that's the default,
+open files and folders.
+
+88
+00:06:41.390 --> 00:06:46.700
+So for example, you know that there is
+a variable courses somewhere in there.
+
+89
+00:06:46.700 --> 00:06:47.944
+You're not sure exactly where it is.
+
+90
+00:06:47.944 --> 00:06:54.790
+So you'll type that in,
+it gives you results
+
+91
+00:06:55.830 --> 00:07:00.820
+and actually from this point on, you could
+actually double click on the results.
+
+92
+00:07:00.820 --> 00:07:07.850
+So for example you double click on courses
+here, it opens up a file right away.
+
+93
+00:07:07.850 --> 00:07:08.870
+So.
+
+94
+00:07:08.870 --> 00:07:12.200
+What I like about Sublime is
+that it's very lightweight, but
+
+95
+00:07:12.200 --> 00:07:16.750
+at the same time it has a lot of features
+that your typical IDEs would have.
+
+96
+00:07:19.040 --> 00:07:26.110
+And actually, speaking of Find in Files,
+if you go to Find > Find in Files,
+
+97
+00:07:26.110 --> 00:07:31.730
+the options for how to look for
+things you have
+
+98
+00:07:31.730 --> 00:07:36.830
+an option to use regular expressions,
+and this is for find and for replace.
+
+99
+00:07:36.830 --> 00:07:42.360
+So you could very easily find and
+replace something
+
+100
+00:07:42.360 --> 00:07:47.560
+even using a regular expression in a whole
+bunch of files, which is very powerful.
+
+101
+00:07:47.560 --> 00:07:49.570
+You can do it case sensitive obviously,
+
+102
+00:07:49.570 --> 00:07:54.482
+you could look for
+a whole world and things like that.
+
+103
+00:07:54.482 --> 00:08:00.790
+Another you'll like about Sublime,
+
+104
+00:08:02.540 --> 00:08:09.340
+this actually blew me away the first time
+I saw it, is the Goto anything option.
+
+105
+00:08:09.340 --> 00:08:13.089
+It's Cmd+P on the Mac and
+I think it's Ctrl+P in Windows.
+
+106
+00:08:14.920 --> 00:08:21.150
+And basically the idea is you
+want to look for a certain file.
+
+107
+00:08:21.150 --> 00:08:25.820
+This is similar to how you'd look for
+a file, in Eclipse for example,
+
+108
+00:08:25.820 --> 00:08:29.930
+by doing Ctrl+Shift+R or Cmd+Shift+R.
+
+109
+00:08:29.930 --> 00:08:35.380
+So, you do a Cmd+P which
+brings up this dialogue,
+
+110
+00:08:35.380 --> 00:08:40.080
+and you're looking for a file and
+you know files called Index something.
+
+111
+00:08:40.080 --> 00:08:42.140
+Oh that's what it is.
+
+112
+00:08:42.140 --> 00:08:43.270
+Now if you noticed,
+
+113
+00:08:44.540 --> 00:08:49.130
+the interesting part is it's not
+just telling you what's available.
+
+114
+00:08:49.130 --> 00:08:53.390
+Files are that you might be looking for,
+it actually displays
+
+115
+00:08:53.390 --> 00:08:56.520
+the content of a file in the background,
+which is pretty amazing.
+
+116
+00:08:56.520 --> 00:08:58.620
+So let's see that again.
+
+117
+00:08:58.620 --> 00:09:01.630
+So you have index, and
+
+118
+00:09:01.630 --> 00:09:07.360
+it's actually displaying the file as you
+are typing what you think the file is.
+
+119
+00:09:07.360 --> 00:09:10.440
+And at that point you
+can just hit enter and
+
+120
+00:09:11.650 --> 00:09:13.850
+you go straight to that file,
+it's pretty cool.
+
+121
+00:09:16.740 --> 00:09:20.770
+Another feature which might not be so
+obvious, but
+
+122
+00:09:20.770 --> 00:09:25.890
+it's pretty obvious once you see it once
+is that you can actually collapse things.
+
+123
+00:09:25.890 --> 00:09:30.850
+So looking at this you don't think
+there's anyway to collapse code.
+
+124
+00:09:30.850 --> 00:09:35.160
+But if you go to the left of the panel
+
+125
+00:09:35.160 --> 00:09:38.410
+you could see that there are these
+triangles which actually they
+
+126
+00:09:38.410 --> 00:09:42.070
+only come into existence when
+you sort of hover over them.
+
+127
+00:09:42.070 --> 00:09:44.460
+So for example this table element
+
+128
+00:09:44.460 --> 00:09:47.579
+which goes from a open table
+tag to a closed table tag.
+
+129
+00:09:49.180 --> 00:09:52.006
+You can click on the triangle and
+it's gonna collapse this, so
+
+130
+00:09:52.006 --> 00:09:55.471
+this way you could save some real estate
+if you wanna see whole bunch of stuff on
+
+131
+00:09:55.471 --> 00:09:56.774
+the screen at the same time.
+
+132
+00:10:01.243 --> 00:10:05.419
+The other thing you could do in Sublime,
+so
+
+133
+00:10:05.419 --> 00:10:09.247
+even though it's just a text editor but
+
+134
+00:10:09.247 --> 00:10:15.440
+it has support for certain,
+what are called builders.
+
+135
+00:10:15.440 --> 00:10:20.950
+So for example if you look at another
+typical Ruby file and we're not gonna get
+
+136
+00:10:20.950 --> 00:10:26.940
+into what this Ruby file does,but at the
+end of it you are printing something out.
+
+137
+00:10:29.060 --> 00:10:33.540
+So if you go to Tools and
+
+138
+00:10:33.540 --> 00:10:39.000
+Build which is Cmd+B or
+Ctrl+B, there is automatic
+
+139
+00:10:39.000 --> 00:10:45.230
+support for building or running certain
+languages and Ruby's one of them.
+
+140
+00:10:45.230 --> 00:10:50.555
+So when you open up your Whatever file
+
+141
+00:10:50.555 --> 00:10:55.384
+.RB in sublime, you could do Cmd+B or
+
+142
+00:10:55.384 --> 00:11:01.750
+Ctrl+B and it runs a file and
+the output gets printed out right here.
+
+143
+00:11:01.750 --> 00:11:04.010
+So you don't have to go
+through command line.
+
+144
+00:11:04.010 --> 00:11:06.480
+You could run it directly from the editor.
+
+145
+00:11:06.480 --> 00:11:11.730
+So again, it's a text editor but
+
+146
+00:11:11.730 --> 00:11:16.270
+it has a lot of features built on
+top of it that makes it really nice.
+
+147
+00:11:16.270 --> 00:11:21.110
+And this is actually just
+scratching the surface because
+
+148
+00:11:21.110 --> 00:11:26.670
+Sublime has many plugins and packages.
+
+149
+00:11:26.670 --> 00:11:32.710
+And there's actually a website called
+packagecontrol.io which keeps track
+
+150
+00:11:32.710 --> 00:11:39.040
+of all the and lists a whole bunch
+of Sublime plugins out there.
+
+151
+00:11:39.040 --> 00:11:42.250
+We have ones that are trending,
+popular and
+
+152
+00:11:42.250 --> 00:11:46.020
+there's stuff like support for
+Git, you know.
+
+153
+00:11:46.020 --> 00:11:50.600
+Which basically means you could
+download a plugin that would
+
+154
+00:11:50.600 --> 00:11:55.260
+tell you what has changed and things
+like that, where support from Markdown
+
+155
+00:11:57.880 --> 00:12:02.710
+syntax of it being able to view
+Markdown output in the browser.
+
+156
+00:12:02.710 --> 00:12:09.380
+A whole bunch of plugins that you can add
+on to your Sublime basic installations.
+
+157
+00:12:09.380 --> 00:12:10.250
+To make it even better.
+
+158
+00:12:12.060 --> 00:12:13.720
+So those are basically your choices,
+
+159
+00:12:15.040 --> 00:12:19.430
+I personally like Sublime which
+is why I showed you how I use it.
+
+160
+00:12:19.430 --> 00:12:23.440
+But we did list a whole
+bunch of choices out there.
+
+161
+00:12:23.440 --> 00:12:25.930
+Number one, RubyMine which is really good.
+
+162
+00:12:25.930 --> 00:12:29.390
+Aptana which i've never used but
+I hear good things about it.
+
+163
+00:12:29.390 --> 00:12:34.380
+And Vim which a lot of Rubies
+will tell you that IDE.
+
+164
+00:12:34.380 --> 00:12:37.090
+Why would you ever want to use an IDE?
+
+165
+00:12:37.090 --> 00:12:38.440
+Just use Vim.
+
+166
+00:12:38.440 --> 00:12:41.940
+And it works for them which is great.
+
+167
+00:12:41.940 --> 00:12:44.394
+And then the one I just showed
+you with just the Sublime Text.

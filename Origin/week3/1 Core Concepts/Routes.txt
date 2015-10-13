@@ -1,0 +1,73 @@
+[MUSIC] Hi and welcome to lecture four. In this lecture we'll talk
+about how routing works. What is Rake? And how to analyze your current routes. In the last lecture,
+we tried adding a goodbye action, for some reason it didn't work. Well it turns out we're missing
+an important piece, which is the routing. The idea is before a controller can
+even orchestrate where the request goes, the controller needs to get request, so request needs to get
+routed to the controller. Okay, so
+how did the hello action work then? The reason why the hello action
+worked was because the route to the hello action was automatically
+generating when we did rails g controller. So let's amend our MVC cycle here. What's happening is that
+the browser sends a request. The request comes into
+a Rails application. At this point, if it's a static file,
+it just looks in the public directory and find that file,
+otherwise it goes to a router. Then the router says let me try and make sense out of this request that
+came in from let's say a browser. And when it makes sense out
+of a request it forwards it to an appropriate controller and
+that controller's action. And then the rest is the same. The controller then talks to a model,
+the database, and then the controller
+forwards request onto view. So all the routes need to be
+specified either through generation by using the rails generator like
+we did the rails g controller, or manually in the config/routes.rb file. So what does this file look like? Well, this file is located
+under the app direct, I'm sorry,
+under the actual root directory of app, and it's called routes.rb. And it's located in the config
+directory of the root directory. So, config and then routes.rb,
+and it looks something like this, where you'll mostly just
+see a lot of comments, but every time you generate a controller
+you'll get something like this where what this is saying is that when you
+get a request, in the browser for example that says greeter/hello
+that should be interpreted as greeter controller and hello action. Okay, so let's go ahead and
+add the route to the goodbye action. What would that look like? Well, we could just say
+get greeter/goodbye, and that would give you the greeter
+controller and goodbye action, and indeed we'll see that when you do that,
+our goodbye actually starts working. Another syntax for doing pretty much the
+same thing, is saying that when you get a request to greeter/hello,
+Or greeter/goodbye as well, that should go to which is this syntax
+here, greeter controller and hello action. These identical so if you're using,
+if your greeter#hello action actually maps to greeter/hello you
+might as well just use this syntax or this syntax But let's say you
+wanna map something different. For example, greeter/how are you, which would go to the hello action,
+then you would obviously use this syntax, which would take you to the hello
+action even if this is not hello. Let's talk for a second,
+take a diversion to talk about Rake. What is Rake? Rake is Ruby's build language, so if you're familiar with make from C or
+maybe an ant from Java, Rake is basically Ruby's
+equivalent somewhat of that. So, why is it called Rake? It's like Ruby's make. Now, unlike for example and or
+maybe a Maven from Java also, it's not written in XML,
+it's written in Ruby. Rails uses Rake to automate
+certain app related tasks. For example, certain database
+things populating the database, r maybe you're running tests, unit tests,
+write some rake task for that. Now, to see a list of all the rake
+tasks that you have supports, you could do rake --tasks. When we run that in our application we'll
+get a whole bunch of different Tasks. As you can see, some are just direct. Others are namespaced. So, for example, db:create,
+is obviously a create task that has something to do with the database
+db is the main space in this case. Now if you want to zero in on
+an individual rake task and see what it does you could
+do --describe flag, so rake --describe and task_name, and the task I want to zero in is the routes
+task, so rake --describe routes will tell you that rake routes print out all defined
+routes in the match order remains. So when we run rake routes,
+we're gonna see now that there are exactly two routes which
+are defined for our application. One of them is when you have
+a URI pattern of greeter/hello, that will go to the greeter controller and
+hello action, the other one is if it's a greeter goodbye
+it will go to the greeter/goodbye action. Now this format here is,
+we're gonna talk about it later, that you could have a hello.html, which will be interpreted the request
+to get the HTML format, but maybe you want to have a hello.JSON
+which wants to get the JSON format. Lastly, this idea of a prefix, again,
+it's too early to talk about what that is, but basically It's gonna
+be part of a variable. So just keep that in mind. greeter_hello and greeter_goodbye
+are these things that you could see in your rake route when
+you run rake routes. And these things are gonna
+be part of a variable name. In summary the router is what directs the
+request to the right controller and that's one of the first steps before anything
+gets kicked off in the MVC paradigm and rake routes lets you see which routes are
+currently defined for your application. What's next? Next we'll talk about moving
+business logic out of view.

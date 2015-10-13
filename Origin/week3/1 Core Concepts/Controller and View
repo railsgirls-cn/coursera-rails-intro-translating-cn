@@ -1,0 +1,458 @@
+WEBVTT
+
+1
+00:00:00.316 --> 00:00:07.875
+[MUSIC]
+
+2
+00:00:07.875 --> 00:00:09.650
+Hi and welcome to lecture three.
+
+3
+00:00:10.660 --> 00:00:15.940
+In this lecture we talk about how to
+generate dynamic content in Rails.
+
+4
+00:00:15.940 --> 00:00:18.770
+Specifically we talk about
+how to generate a controller,
+
+5
+00:00:20.470 --> 00:00:23.390
+how to generate actions, and what is ERB.
+
+6
+00:00:25.210 --> 00:00:27.940
+So controllers contain actions.
+
+7
+00:00:27.940 --> 00:00:30.550
+Controllers are basically classes and
+
+8
+00:00:30.550 --> 00:00:36.050
+then they contain methods which
+are referred to as actions.
+
+9
+00:00:36.050 --> 00:00:41.480
+And controllers orchestrate web requests,
+you can
+
+10
+00:00:41.480 --> 00:00:47.645
+quickly generate a controller, and zero or
+more actions, with their associated views.
+
+11
+00:00:47.645 --> 00:00:51.336
+The you do that, is you just say,
+rails generate, or
+
+12
+00:00:51.336 --> 00:00:56.029
+actually you could just say a rails g,
+which is short for generate.
+
+13
+00:00:56.029 --> 00:00:59.232
+Rails g controller, and
+then the controller name.
+
+14
+00:00:59.232 --> 00:01:02.040
+And you could specify the actions
+that you wanna generate.
+
+15
+00:01:03.070 --> 00:01:05.140
+So let's see how that works.
+
+16
+00:01:05.140 --> 00:01:07.220
+We're gonna generate a greeter controller.
+
+17
+00:01:07.220 --> 00:01:10.072
+So we're gonna do rails
+g controller greeter.
+
+18
+00:01:10.072 --> 00:01:17.629
+And the hello is the action name and
+it's also going to be the name of a view.
+
+19
+00:01:17.629 --> 00:01:22.100
+So, you're gonna see here that
+Rails go off generating a control,
+
+20
+00:01:22.100 --> 00:01:27.057
+which is gonna be called the name of
+the control we gave it, _controller.
+
+21
+00:01:27.057 --> 00:01:32.231
+And then we're gonna see that there's
+a view that is gonna be generated,
+
+22
+00:01:32.231 --> 00:01:37.739
+and the app/views/greeter, which is
+the name of a controller directory for
+
+23
+00:01:37.739 --> 00:01:40.256
+view, as well as some other files.
+
+24
+00:01:40.256 --> 00:01:45.482
+So, you could see here in the actual
+directory structure how things work.
+
+25
+00:01:45.482 --> 00:01:50.654
+So you have a greeter controller
+located in the controller's directory,
+
+26
+00:01:50.654 --> 00:01:53.371
+which is located in the app directory.
+
+27
+00:01:53.371 --> 00:01:58.307
+And there's also a view file,
+which is gonna be located in
+
+28
+00:01:58.307 --> 00:02:02.959
+the views > greeter and
+then this is the name of a file.
+
+29
+00:02:05.530 --> 00:02:08.203
+Now, when you look at the view file,
+
+30
+00:02:08.203 --> 00:02:12.428
+you're gonna see that it
+doesn't have a doctype, head,
+
+31
+00:02:12.428 --> 00:02:18.060
+or body elements,which you might
+expect from a regular HTML file.
+
+32
+00:02:18.060 --> 00:02:20.600
+And we're gonna see later on why that is.
+
+33
+00:02:20.600 --> 00:02:23.500
+Now, if you're not familiar with HTML,
+
+34
+00:02:23.500 --> 00:02:28.680
+I strongly suggest that
+you watch the course for,
+
+35
+00:02:28.680 --> 00:02:33.920
+in this specialization, which specifically
+talks about HTML, CSS, and JavaScript.
+
+36
+00:02:36.122 --> 00:02:41.290
+The view file that was generated,
+it looks like typical HTML file but
+
+37
+00:02:41.290 --> 00:02:44.320
+it also has this .erb extension.
+
+38
+00:02:44.320 --> 00:02:45.670
+So what is that?
+
+39
+00:02:45.670 --> 00:02:51.720
+ERB actually is a templating library,
+similar to for example JSP,
+
+40
+00:02:51.720 --> 00:02:57.570
+if you're familiar with that, that lets
+you embed Ruby into your HTML code.
+
+41
+00:02:59.790 --> 00:03:04.020
+And actually,
+there are only two tag patterns to learn.
+
+42
+00:03:04.020 --> 00:03:09.540
+Number one is the first one here,
+which just has Ruby code
+
+43
+00:03:09.540 --> 00:03:13.980
+inside of it, and
+that just evaluates Ruby code.
+
+44
+00:03:13.980 --> 00:03:16.410
+That could maybe, for example,
+
+45
+00:03:16.410 --> 00:03:21.420
+instantiate a variable that you're gonna
+using later on, or something like that.
+
+46
+00:03:21.420 --> 00:03:24.840
+And then the second one is
+almost identical to that, but
+
+47
+00:03:24.840 --> 00:03:30.320
+it also has an equals sign right
+next to a percent sign, and
+
+48
+00:03:30.320 --> 00:03:34.050
+that actually outputs
+the evaluated the Ruby code.
+
+49
+00:03:35.170 --> 00:03:40.010
+And again, the whole point of this
+ERB thing, is to be able to embed
+
+50
+00:03:40.010 --> 00:03:44.400
+dynamic content into a static HTML
+content, to mix them together.
+
+51
+00:03:45.650 --> 00:03:50.700
+So for example,
+we can rewrite our hello page,
+
+52
+00:03:51.880 --> 00:03:57.050
+because it is part of this erb
+templating library, by specifying that
+
+53
+00:03:57.050 --> 00:04:02.425
+we want to create a variable called
+random_names, and this is the first
+
+54
+00:04:02.425 --> 00:04:08.180
+pattern that I talked about, which
+basically just has an array of names.
+
+55
+00:04:08.180 --> 00:04:11.250
+And then we're gonna
+have the second pattern,
+
+56
+00:04:11.250 --> 00:04:13.950
+which basically says random names.
+
+57
+00:04:13.950 --> 00:04:17.290
+Give me one of those names,
+this is just your Ruby code.
+
+58
+00:04:17.290 --> 00:04:22.000
+And because it has the equals,
+it's actually gonna display that
+
+59
+00:04:23.070 --> 00:04:27.350
+variable and mix it in with a HTML.
+
+60
+00:04:27.350 --> 00:04:29.927
+And this is being done randomly.
+
+61
+00:04:29.927 --> 00:04:33.684
+So, maybe you go to page one,
+so you get Greetings, Joe.
+
+62
+00:04:33.684 --> 00:04:36.930
+And then the second time
+you get Greetings, Alex.
+
+63
+00:04:36.930 --> 00:04:41.790
+And then the time now, is also just
+
+64
+00:04:41.790 --> 00:04:46.060
+creating a value, Time.now,
+
+65
+00:04:46.060 --> 00:04:50.830
+which automatically gets output
+because it has the equal sign.
+
+66
+00:04:51.910 --> 00:04:54.310
+So that was a view portion of it.
+
+67
+00:04:54.310 --> 00:04:57.850
+What is the greeter controller
+actually look like?
+
+68
+00:04:57.850 --> 00:05:01.080
+Well hello is just an action.
+
+69
+00:05:01.080 --> 00:05:04.809
+It's just a regular Ruby method,
+empty in this case.
+
+70
+00:05:06.000 --> 00:05:10.210
+And it seems that this
+is all there is to it.
+
+71
+00:05:10.210 --> 00:05:15.330
+So if we want to add a goodbye action,
+for example, to the GreeterController,
+
+72
+00:05:15.330 --> 00:05:18.785
+we should be able to just
+add the view file called
+
+73
+00:05:18.785 --> 00:05:23.900
+goodbye.html.erb to
+the app/views/greeter directory and
+
+74
+00:05:23.900 --> 00:05:28.600
+add a goodbye action into the controller,
+and we should be good to go.
+
+75
+00:05:28.600 --> 00:05:30.460
+So let's try that.
+
+76
+00:05:30.460 --> 00:05:35.820
+Create a goodbye file in here, for view.
+
+77
+00:05:35.820 --> 00:05:44.360
+And then create a goodbye action,
+goodbye method in the controller.
+
+78
+00:05:44.360 --> 00:05:46.250
+Refresh your browser.
+
+79
+00:05:46.250 --> 00:05:48.718
+That didn't actually work.
+
+80
+00:05:48.718 --> 00:05:53.800
+So, it displays greeter, and
+if you go to /greeter/goodbye,
+
+81
+00:05:53.800 --> 00:05:57.790
+which you would expect to display
+the goodbye page, it doesn't work.
+
+82
+00:05:59.602 --> 00:06:05.258
+And we're gonna see later that we are
+missing a component of what just happened,
+
+83
+00:06:05.258 --> 00:06:09.182
+of how this is supposed to work but
+we're not there yet.
+
+84
+00:06:09.182 --> 00:06:12.749
+So in summary,
+controllers contains actions, methods.
+
+85
+00:06:12.749 --> 00:06:13.946
+So in this case,
+
+86
+00:06:13.946 --> 00:06:19.158
+the controller had a hello action
+that we automatically generated, and
+
+87
+00:06:19.158 --> 00:06:24.457
+the ERB is your view, which allows
+you to either evaluate an expression,
+
+88
+00:06:24.457 --> 00:06:29.585
+with this first tag pattern, and
+as part of evaluating an expression,
+
+89
+00:06:29.585 --> 00:06:33.960
+maybe you're gonna say,
+well variable to be used later on.
+
+90
+00:06:33.960 --> 00:06:38.712
+And the second pattern,
+which is more useful probably,
+
+91
+00:06:38.712 --> 00:06:43.266
+lets you actually display
+the value of that variable or
+
+92
+00:06:43.266 --> 00:06:49.008
+display the value of some expression and
+mix that in with your HTML and
+
+93
+00:06:49.008 --> 00:06:53.463
+page, and the whole page
+becomes one big HTML page and
+
+94
+00:06:53.463 --> 00:06:57.330
+that is what's returned
+back to the browser.
+
+95
+00:06:58.840 --> 00:06:59.568
+So what's next?
+
+96
+00:06:59.568 --> 00:07:04.535
+We're gonna talk about routes and
+we're gonna see why we couldn't just add
+
+97
+00:07:04.535 --> 00:07:09.720
+the goodbye action to a controller and
+goodbye view and have it work.

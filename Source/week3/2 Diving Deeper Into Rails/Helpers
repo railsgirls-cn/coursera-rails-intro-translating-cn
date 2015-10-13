@@ -1,0 +1,451 @@
+WEBVTT
+
+1
+00:00:00.399 --> 00:00:08.202
+[MUSIC]
+
+2
+00:00:08.202 --> 00:00:10.590
+Hi and welcome to lecture six.
+
+3
+00:00:10.590 --> 00:00:13.500
+In this lecture we'll take about helpers,
+what they are,
+
+4
+00:00:13.500 --> 00:00:18.090
+why they're useful and why you would
+wanna use the link to rails helper.
+
+5
+00:00:19.250 --> 00:00:24.740
+So, to explain the concept of helpers,
+let's take a look at the current
+
+6
+00:00:24.740 --> 00:00:28.570
+time instance variable, which is defined
+in the controller, which is a good thing.
+
+7
+00:00:29.820 --> 00:00:32.610
+So that actually defines the current time,
+but
+
+8
+00:00:32.610 --> 00:00:36.080
+what if we wanna format
+how the time looks?
+
+9
+00:00:36.080 --> 00:00:38.820
+Maybe you wanna have AM,
+PM, or something like that.
+
+10
+00:00:40.380 --> 00:00:42.660
+Where should that code go?
+
+11
+00:00:42.660 --> 00:00:43.810
+Should it go into a View?
+
+12
+00:00:44.860 --> 00:00:49.020
+Well problem with that,
+is that then it becomes non-reuseable.
+
+13
+00:00:49.020 --> 00:00:54.132
+You wouldn't be able to use,
+let's say the time formatting
+
+14
+00:00:54.132 --> 00:00:58.360
+from the hello view
+inside the goodbye view.
+
+15
+00:00:58.360 --> 00:01:00.650
+You'd have to duplicate the code,
+not good.
+
+16
+00:01:02.210 --> 00:01:03.610
+Should it go into the controller?
+
+17
+00:01:05.050 --> 00:01:10.270
+Well, the controller really
+should be view format agnostic.
+
+18
+00:01:10.270 --> 00:01:12.200
+It obviously makes sense for
+
+19
+00:01:12.200 --> 00:01:17.880
+the controller to get the actual time
+object, the actual time instance.
+
+20
+00:01:17.880 --> 00:01:23.670
+But what time instance looks like, that's
+nothing to do with controller's business.
+
+21
+00:01:23.670 --> 00:01:27.600
+Because maybe one of you would
+want to have it look one way, and
+
+22
+00:01:27.600 --> 00:01:30.260
+a different view, you would want
+to have it look a different way.
+
+23
+00:01:32.120 --> 00:01:33.240
+So that's where helpers come in.
+
+24
+00:01:34.870 --> 00:01:38.410
+Helpers are really view helpers.
+
+25
+00:01:38.410 --> 00:01:41.960
+It's a code that should
+not be going to control.
+
+26
+00:01:41.960 --> 00:01:47.500
+It should be going into view,
+but it should be reusable,
+
+27
+00:01:47.500 --> 00:01:51.010
+which is why we put it in
+the separate ruby class.
+
+28
+00:01:52.710 --> 00:01:55.830
+So every time you create,
+you generate a controller.
+
+29
+00:01:55.830 --> 00:01:58.010
+You also get a helper generated.
+
+30
+00:01:58.010 --> 00:02:01.080
+In this case, it's greeter_helper.rb.
+
+31
+00:02:01.080 --> 00:02:07.060
+And in this case,
+we're gonna specify that formatted_time is
+
+32
+00:02:07.060 --> 00:02:12.000
+a method that takes time as a parameter,
+and outputs some kind of a formatted time.
+
+33
+00:02:13.150 --> 00:02:18.270
+Now, the interesting part is that,
+even though helpers are,
+
+34
+00:02:18.270 --> 00:02:23.390
+sort of, generated based on the
+controllers, if this is a GreeterHelper,
+
+35
+00:02:23.390 --> 00:02:28.880
+the methods inside those helpers
+are really available to any view
+
+36
+00:02:28.880 --> 00:02:34.840
+in your application,
+not just your greeter views.
+
+37
+00:02:34.840 --> 00:02:37.440
+So let's say you wanna have,
+you have a different controller,
+
+38
+00:02:37.440 --> 00:02:41.810
+but it has a whole different
+set of views for formatted_time
+
+39
+00:02:41.810 --> 00:02:45.630
+from a greeter controller would still
+be available to that view as well.
+
+40
+00:02:48.720 --> 00:02:51.770
+Okay, so let's see how this is used.
+
+41
+00:02:52.910 --> 00:02:59.390
+Now in your hello view, we just say
+formatted time(@time), and this
+
+42
+00:02:59.390 --> 00:03:06.060
+formatted time is calling a method that
+was defined in our greeter helper module.
+
+43
+00:03:08.530 --> 00:03:11.070
+And you get the time that is formatted.
+
+44
+00:03:11.070 --> 00:03:11.570
+Hooray.
+
+45
+00:03:12.750 --> 00:03:15.270
+Rails actually provides
+many built-in helpers.
+
+46
+00:03:16.270 --> 00:03:19.039
+One of them is a link_to helper.
+
+47
+00:03:19.039 --> 00:03:23.860
+So a link_to helper, all it really
+does is it generates a hyperlink.
+
+48
+00:03:24.940 --> 00:03:31.430
+So in your HTML you have an A tag,
+
+49
+00:03:31.430 --> 00:03:36.440
+so instead of that you get
+the A tag generated for you, for
+
+50
+00:03:36.440 --> 00:03:41.310
+this link to help her, where the first
+parameter is actual name of the link,
+
+51
+00:03:41.310 --> 00:03:43.940
+and the second parameter
+is the path to that link.
+
+52
+00:03:46.250 --> 00:03:51.800
+Now, the path could be either a regular
+string, for example, cnn.com,
+
+53
+00:03:51.800 --> 00:03:56.680
+or it could be a route defined
+in the routes.rb file.
+
+54
+00:03:56.680 --> 00:04:02.930
+So, if you remember, we had that prefix
+column in the Rake routes output.
+
+55
+00:04:04.230 --> 00:04:09.344
+That prefix column combined with a _url or
+
+56
+00:04:09.344 --> 00:04:14.080
+_path gives you a variable
+which you could use as a path.
+
+57
+00:04:14.080 --> 00:04:17.650
+And this is actually the beauty
+of why link_to is useful,
+
+58
+00:04:17.650 --> 00:04:21.910
+is that now instead of
+specifying the exact path,
+
+59
+00:04:21.910 --> 00:04:25.490
+you specify a variable, and
+if that variable ever changes.
+
+60
+00:04:25.490 --> 00:04:27.010
+That's fine.
+
+61
+00:04:27.010 --> 00:04:30.430
+You'll automatically get it
+changed in your page as well,
+
+62
+00:04:30.430 --> 00:04:32.230
+you won't have to modify it explicitly.
+
+63
+00:04:32.230 --> 00:04:36.865
+Now, the _URL and
+
+64
+00:04:36.865 --> 00:04:41.010
+_path, one means a full path and
+
+65
+00:04:41.010 --> 00:04:45.540
+one means a relative path, relative to
+the other files in the application.
+
+66
+00:04:47.460 --> 00:04:51.900
+And really they're almost
+used interchangeably.
+
+67
+00:04:51.900 --> 00:04:56.120
+People tend to prefer
+_path more than _url.
+
+68
+00:04:56.120 --> 00:05:01.610
+But according to the spec, the full
+path is required in case of redirection.
+
+69
+00:05:01.610 --> 00:05:06.958
+We haven't talked about redirection yet,
+but just to let you guys know,
+
+70
+00:05:06.958 --> 00:05:12.996
+that's why there are two of them is that
+_url and _path, _path is mostly used but
+
+71
+00:05:12.996 --> 00:05:18.279
+_url is used in cases of redirection
+when the server instead of actually
+
+72
+00:05:21.120 --> 00:05:26.576
+Returning HTML back, this returns
+a request to a browser that says,
+
+73
+00:05:26.576 --> 00:05:31.091
+hey browser, why don't you go
+somewhere else to get that
+
+74
+00:05:31.091 --> 00:05:35.325
+content that you're requesting,
+and in that case,
+
+75
+00:05:35.325 --> 00:05:39.800
+the browser expects a full path,
+which would be _url.
+
+76
+00:05:39.800 --> 00:05:45.140
+So just to show you how this is used,
+a link too could either be used to a first
+
+77
+00:05:45.140 --> 00:05:50.310
+parameter being the actual name, and
+the second one being the actual path.
+
+78
+00:05:50.310 --> 00:05:52.080
+So in this case, a link to Google.
+
+79
+00:05:53.180 --> 00:05:58.430
+And the second version is,
+the first parameter is a name, and
+
+80
+00:05:58.430 --> 00:06:04.380
+the second parameter is a path
+specified by greeter_goodbye,
+
+81
+00:06:04.380 --> 00:06:08.120
+which is a prefix you see
+when you do reroutes.
+
+82
+00:06:08.120 --> 00:06:14.390
+And the _path,
+which is the ending of that prefix.
+
+83
+00:06:16.710 --> 00:06:21.575
+If you hover over goodbye, you'll see,
+that is actually pointing to this,
+
+84
+00:06:21.575 --> 00:06:23.255
+/greeter/goodbye.
+
+85
+00:06:26.930 --> 00:06:32.680
+So in summary, helper is a basically
+a macros, or formatters for your view.
+
+86
+00:06:32.680 --> 00:06:39.220
+And when using link to, there's no need
+to change things if they path changes.
+
+87
+00:06:39.220 --> 00:06:46.050
+That's why it's more advantageous then
+just using a direct A tag, your HTML tag.
+
+88
+00:06:46.050 --> 00:06:51.680
+You might as well just use the link_to,
+which generates your hyperlink.
+
+89
+00:06:53.420 --> 00:06:54.380
+So what's next?
+
+90
+00:06:55.410 --> 00:06:58.080
+Next we'll talk about HTTParty.
+
+91
+00:06:58.080 --> 00:07:01.350
+And HTTParty is a rails gem.
+
+92
+00:07:01.350 --> 00:07:07.347
+It's actually a ruby gem that enables
+you to interact with web services and
+
+93
+00:07:07.347 --> 00:07:13.058
+at this point, we sort of understand
+how the rails application works,
+
+94
+00:07:13.058 --> 00:07:16.387
+but now I wanna take it
+to the next level and
+
+95
+00:07:16.387 --> 00:07:21.369
+be able to interact with web services,
+and get data that way.

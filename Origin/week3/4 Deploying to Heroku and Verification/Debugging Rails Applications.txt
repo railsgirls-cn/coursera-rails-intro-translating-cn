@@ -1,0 +1,75 @@
+[MUSIC] Welcome. So we developed our app and
+the app seems to working pretty well. You could look for courses about diet. You could look for courses about,
+let's say ruby on Coursera. One day you wonder are there any
+course on Coursera about sushi? So you try that and you get a big message that says we're
+sorry but something went wrong. And this is actually a good thing
+that the message is pretty cryptic. Because if somebody is trying to break
+into the application you wouldn't want to know to many details about
+exactly what happened, but as an application owner,
+you can check the logs. So let's go ahead and do that,
+you could do with application that you deployed from into Heroku,
+you could do Heroku logs. And it will tell you exactly what
+happened, why the application broke. So you could see it says that this file, index.html.erb had an issue that was an undefined
+method each for nil class. Hm, okay. And it happened on line nine of a file. So line nine. That looks like this thing over here,
+add courses variable that each. So you sort of have an idea of
+what might have happened here. So the next step would be to actually
+try to run the program locally in your local environment and
+see if you get this same error. So let's try and do that. Rails server. And diet works, but sushi, which is actually pulling from the same
+source as a remote application, does not. Not only that, though, look at this. It gives you the error, which is fine
+because this is a development environment and you're the developer. It's okay for you to see the error and it's actually a good thing
+that you seen the error. The error is colorized. You see exactly which line
+the error happened on. Not only that, check this out. You get a console. So your still in the browser on
+the webpage and you have a console, an IRB console, a Rails console
+that your able to interact with. So you could be like, I know there's
+a variable called search term, okay so that's sushi,
+that's the one I was looking for. And courses. So what's wrong with courses,
+that's the problem, courses is nil. So that's what the message was saying,
+that's what the message is saying here that undefined method each for
+nil class because courses is nil. Now if you look at your controller, so
+this would be the course's controller. Right here. You could see that the way to get the
+information is by searching Coursera for the term. So let's go back to the console. Once we have the attention over here
+on the console, and try to do that. So Coursera.for, looking for sushi. And you get nil, and
+that is exactly our problem. The problem is that our
+model when queried for sushi returns nil, and
+because of that the application blows up. But look how fast we figured all this out,
+because Rails zeroes in exactly on what the error is,
+gives you a console and you're good to go. So, how are we gonna fix this? Well, one of the easiest ways to fix
+it is to actually fix it in the view. So we could fix it in the model that, make
+sure that the model never returns a nil, maybe returns an empty list, or we could
+fix it in the controller and say that if a model ever gives you information
+that's nil, return an empty list. That's another way to fix it. And another way to fix it is
+just to fix it in the view, so that's what we're going to do. That's probably the easiest way to do it. And so what do we want to happen? What we want to happen is
+that if the information for courses is nil, then we display
+that where no course is found. So, let's go ahead and do that. So, it looks something like this. You have your ERB tags
+give courses that nil. Some HTML. No courses found with
+relevant information. Sorry. Else you do rest of it, which is the table
+and then you have to end it with an ERB tag of end because we have our f,
+else, and end. Go ahead and save it. Go back to a browser. Just reload it. And look at that. It's working. Searching for sushi. No courses found with information. Sorry. But if we're looking for,
+let's say, diet, we are good to go. So at this point, our application on
+Heroku obviously still does not work. So we're gonna fix that right now. We're gonna stop the application, luckily, and then we are gonna
+see what the status is. The status is this one file that
+we fixed which is the view file. We are gonna commit it with a -am which
+is gonna skip this stage in directory. Fix for sushi. And then we're gonna push it to heroku. Git push heroku master. This might take a few seconds. Ruby app detected, that means that
+Heroku obviously knows who we are, because we've already deployed
+the application to Heroku. Now it's building our
+application in Heroku and doing some other optimizations. And in a few seconds we should be
+able to see that our change worked. So we're gonna do refresh. And what do you know. The search [INAUDIBLE] it's working. So now we're gonna do and do diet. That still works as well. So the way this works and the way this is
+enabled to work is because of two gems. If you look at the gem file, our development environment has
+a byebug gem and web-console gem. So web-console is really the one
+that we've been seeing until now. It's this ability to have your IRB
+console right there in your browser. Which is pretty neat. There's also the byebug gem,
+which enables full-fledged debugging of your Rails application
+like setting a break point and actually stepping through
+the lines of code. And just gonna show you the two gems. One is called web console. And there's a pretty good documentation
+about it and actually if there's an error, you pretty much just end up in
+the console and there's nothing to do. Byebug gem is a little more,
+you have to do a little more. You have to actually
+put in the byebug word. So I'm gonna get the usage. You simply drop the byebug word whenever
+you want to start the bug in and the executional will stop there, and then at that point you could step
+through code and do things like that. I'm not gonna cover that in this lecture,
+but that's something that you could do to
+step through your code and analyze it. But If there's an error,
+as we saw, you are easily able to use the console and perform whatever
+code you perform in your Ruby console. You could query,
+you could look at the variable, value, you could change
+a variable value and so on.

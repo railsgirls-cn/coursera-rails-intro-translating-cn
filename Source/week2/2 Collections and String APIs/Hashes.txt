@@ -1,0 +1,126 @@
+[MUSIC] Hi, welcome to Lecture 9. In this lecture, we'll talk about hashes. How they're used, why they're used, and is there any
+similarity between hashes and blocks. So hashes are your index collections. They're created with curly braces or
+Hash.new, as we're gonna see. And they're also sometimes
+known as associative arrays. Now what does that even mean,
+associative arrays? So if you think about regular arrays, so you have a bunch of elements, and each
+element has an index which is an integer. So the first element is zero,
+one, two, and so on. With hashes, that index doesn't have
+to be an integer, it could be anything. It could be a key, a string,
+it could be a symbol, as we're gonna see. So, each element in the hash
+is associated with a key. That's what associative arrays mean. They're accessed very
+similar to how arrays, the elements in their arrays
+are accessed using the index operator. The values are set using this interesting
+operator called the hash racket when you are creating hashes. And after that, you use the regular array index operator to modify
+the elements in the hash. So let's see an example. We have an editor_props
+variable which is a hash. So again, you see the curly braces, and
+you have key value, key value elements. And you have this hash racket
+that's used to represent that this value is being assigned to this key,
+okay? Now, even though there is a curly brace
+notation here, this is not a block. This is a hash. You could see what
+the length of a hash is. There are three entries that
+have key value, and so on. And, to actually get the value, you would
+pass in the key into the index operator. You'd pass in the key, and
+you get back the value. So, again very similar to arrays. If you want to set a value in the hash,
+you would do the same thing. And you would say, okay,
+now the value of the background is Blue. And then, when you wanna loop through
+hashes, you don't just use each, which would loop through each element in the
+hash, right, like you would do of arrays. You do each_pair, and you get the key and
+the value for each iteration that you do. Now, what if you wanna try to
+access a value in the hash for which an entry does not exist? Well, naturally, nil is returned because there is nothing
+associated with that key in the hash. But what you could do is, you could create
+the hash with this Hash.new syntax, and pass in some kind of an entry
+here which becomes the default value that's returned when you access
+something that doesn't exist. And we're gonna see in a minute
+how that's very useful. I'm just making a point here. The hash's API is very important, and
+this is the URL of where to find it. So, for example, using this
+interesting syntax of Hash.new new and passing in 0,
+we wanna calculate the word_frequency. So let's say you have a sentence with
+some words, each one repeating twice. So what you wanna do is you
+wanna split the sentence, which basically makes it
+an array with four elements. And then you wanna loop through
+each one of those words and pass it into black, and
+to calculate the frequency of words. So the word_frequency is your hash. And you wanna look up the key, so
+each word that you're iterating over. Downcase it to make it the same so
+that if one word appears uppercase, one word appears lowercase,
+they're all treated the same. And so, if you wouldn't have this trick
+of assigning a 0 to default values, what you would have to do is,
+you'd first have to check if it exists. Or if it doesn't exist you will
+have to create it of 0, and then you would have to increment it. In this case, you just access it, you get a 0 because it doesn't exist yet,
+and then you just increment them by 1. So you could have this one line of code
+that takes care of that weird case where, initially, it doesn't exist,
+and you have to put it in. So, instead of having like four or five
+lines of an if statement if it exists, if it doesn't exist you just access it,
+and then you increment by 1. And you get back the word
+frequency of 2 and 2. As of Ruby 1.9, the order of putting
+things into the hash is maintained. This is kind of weird because
+computer science 101 you're used to the fact that hashes, or
+in other languages, called maps, or dictionaries, the order of putting
+stuff in there is not maintained. They have these things called buckets,
+and things to put in different buckets. And, really, the order of things is
+usually maintained only over arrays, not of hashes. Although, even in other
+languages where certain implementations that let you
+keep that order, but in Ruby, all hashes maintain the order of
+things that are put into them. Another thing they did as of Ruby 1.9, if you're using symbols as your keys,
+you could use this interesting notation of symbol: as opposed
+to using the hash racket. So usually symbols are :symbol. But, if you are using symbols as your keys into a map, you could use symbol:
+as we're gonna see in a minute. Another interesting thing about hashes, if
+a hash is the last argument to a method, not including the block, obviously,
+because block is not really an argument, as we discussed when we did blocks. But if a hash is the last
+argument to a method, you could drop the curlies altogether. So, let's see all these examples
+sort of in one big example. Let's say you have a family
+tree that's a hash. So you have a oldest person,
+older, younger, and then youngest. So, when you think of a hash,
+you wouldn't necessarily think of all these entries into the hash being,
+the order of them being maintained. But if you print out the internal
+representation of the hash, you will indeed see that, no,
+that the order is maintained. So the oldest entry will be first,
+and so on, and the youngest entry is gonna be
+the last entry into the map. And when you do the hash dot each
+peer to loop through those entries, you are guaranteed to have that
+same order come back to you. Let's see this method adjust_colors, which
+takes a hash as a default as a parameter. So we could have a default
+parameter of props, that maybe has one hash that you're using. And, notice again, how in this case,
+the hash is using symbols as the keys. So you're not using the hash racket,
+that =>. You're just using, almost like your
+JSON notation of your key value, key value, and so on. What this means is that,
+your almost using the parameters into the method as your main parameters,
+right? You could just say adjust_colors,
+and then say background: yella, to pass in a parameter and the value that
+you want to be passed in for this method. And so, all three ways that I'm showing
+here are valid of how to pass parameters. You could either have a parentheses,
+which parentheses is optional for methods. And then inside the parentheses,
+you could pass in a hash with a symbol and a hash racket and a value. That's totally valid. You could drop the parens, and
+you could just say key value, like this. And you could drop the parens,
+and still use the hash racket and the other notation which is your
+typical symbol, not your flip symbol. And that's the same thing. So you could do either one. But as of Ruby 1.9,
+they felt that this syntax of symbol: is just a nicer looking syntax. And I actually agree. The hash racket looks kinda weird. So this doesn't happen too often,
+but I wanted to bring it up because when it does happen, it hits you,
+and you're like what's going on? So let's say you have a hash, a hash with the key one,
+which is a symbol and a value one. So far, so good. And then,
+the next line you wanna output the hash. You say puts, you print out the hash. So far, so good. Now, if you wouldn't assign the hash to
+a variable, and instead you'd say puts and pass in a block, what you would get
+is you would get a syntax error. So it's kinda weird. Because all you're doing is,
+you're doing the same thing. You're just not assigning
+the hash to a variable. You're just printing
+out the hash straight. Now the problem is,
+because of how similar hashes look to blocks,
+the Ruby interpreter gets confused and says wait a second,
+the puts method doesn't take a block. What am I supposed to do with this? So, to resolve this issue,
+you have two ways to go about it. You could either surround
+the hash in parentheses, and in that case the Ruby interpreter says,
+oh, okay, puts is a method. And you pass in a parameter into
+a method which happens to be a hash. I could deal with that. Or, because there is only
+one parameter in this case, which also happens to be the last
+parameter into a method, you could just drop the curlies altogether, and
+then it doesn't look like a block. And then you could just say puts,
+and then have a hash of one, one. And in this case,
+you could either have the symbol notation, the new symbol notation, which is one: or your could have :one and
+then the hash racket, either one is fine. And that's what happens. So, in summary,
+hashes are your indexed collections, which basically means you have a key and
+a value. And then,
+the usage is very similar to arrays. We saw we could use the index operator. The order is maintained. I mean, they're very similar to arrays. And in a way that's good, because you
+learn one API of how to use arrays. And then, hashes,
+it's not completely different. It's a little bit different, obviously. But it's very similar. And, just watch out, that last case we
+discussed of confusing a block over, really the interpreter,
+the Ruby interpreter confusing the block with a hash, and the two ways
+we discussed to get around that. Next, we'll be discussing classes.

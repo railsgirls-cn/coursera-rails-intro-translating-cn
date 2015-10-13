@@ -1,0 +1,151 @@
+[MUSIC] Hi, and welcome to lecture seven. In this lecture we'll talk about RubyGems,
+in general, and a specific RubyGem called HTTParty. So RubyGems is basically
+a package manager. You could look it up on
+the website called RubyGems.org. There are really hundreds and thousands of
+different third party RubyGems out there. And Gem is just a package manager that
+comes installed with a Ruby installation. And you could things like
+do gem install certain gem. Now if you want to see if a gem is already
+installed, you could do gem list, and in this case httparty, and you're gonna
+see that that gem is not yet installed. So at that point,
+you could do gem install httparty. You could also specify dash v for
+a particular version if you want, or you could just get the latest
+one if you don't specify a version. And it's going to go out to
+that rubygems.org web site and grab a gem for you. Now you could also see more details
+about the gem by providing a -d action. And in this case it tells you who
+the authors are, what the license is, and most importantly, what the gem does. And it says that it makes http fun! Okay, whatever that means. Also, makes consuming restful
+web services dead easy. So let's concentrate on this sentence over
+here, restful web services dead easy. So what are restful web
+services altogether? So restful web services are basically your
+web services that are implemented using HTTP and the principles of REST,
+which means that they have a base URI. They support a data exchange format
+like XML or JSON and possibly others. And they support a set of HTTP
+operations like GET and POST. And basically the idea behind this,
+without going too much into what REST is and how it works, is that we're flipping
+the whole idea of the web on its head. Instead of thinking of a web in
+general as a bunch of HTML pages, think of it as more of in line to
+an MVC pattern we've been discussing. A website is really something
+that just stores some resources. When you go to the website, you could get
+those resources in any one of formats. Maybe you'll get it back as HTML. Maybe you'll get it back as JSON. Maybe you'll get it back as XML. And they're basically different
+formats representing the same thing. Now some formats are easier
+to parse than others. For example HTML is not so
+friendly to parse. But XML and JSON are. So, okay, so that means I have to now learn a whole new format like JSON XML and
+actually write a parser for the Ruby. Oh no, so that's where HTTParty comes in. HTTParty is a restful web services client. So, think your browser. Your browser's essentially a client
+of a website, of a different server, and most of the time you see
+HTML pages inside your browser. So your browser requests something
+from the server, the server gives it back to him, and the browser displays
+the information inside the browser and usually that's HTML. But again that is hard to parse. So if you actually want to use that data,
+if you are doing a machine to machine communication for example,
+then you want to request some information via a rails application
+from a different server. You would rather have that as
+a format that's easily to parse, and not just easily to display. So that's where HTTParty comes in. HTTParty provides automatic
+parsing of JSON and XML into your Ruby hashes or arrays. So as long as the format that's coming
+back from somewhere is a valid JSON, a valid XML,
+HTTParty has a very easy time parsing that into your Ruby structures,
+and then you could just use it. It also provides support for things like authentication as well
+as default request query parameters. And web services are really out
+there pretty much everywhere. Every self-respecting website
+usually has a web service that it provides in addition
+to the HTML pages it provides. But again, we're flipping the whole
+idea of web services on its head, of web on its head, and saying that really HTML that you see in
+a browser is just one of the formats. By the form it could be adJSONjacent, it
+could be XML, it could be anything else. So how do you actually use the HTTParty? Well, it's actually pretty simple. You include the HTTParty module and
+at that point you are ready to go. And then you can specify the base_uri for
+your requests. Because the base_uri is gonna
+be pretty much the same across many different requests. You could specify default_params. So for example, let's say in your class you're gonna
+have many different types of requests. But all of them are going to have
+a API developer key, for example. If that's what the web service
+provider requires you to put in. So you could just specify
+that at the default parameter that applies to all your requests. And then you could also specify, you should specify the format to tell
+us which format the data is coming in. And, what do you know? Coursera itself has a restful
+API that it exposes. So you could go on
+the Coursera website and search for courses, and
+you see the information in HTML, which is how Coursera would
+prefer to display its courses. But Coursera will also give you
+raw information via a JSON format, which you yourself could figure out
+how do display or what to do with. This over here is the URL that describes in detail how the Coursera's
+restful API works. So before I even jump into
+how this works in HTTParty, a lot of times, it's useful to
+see how it works in a browser. So this would be your base URI, and then, these are your request parameters
+which return back JSON. And as you could see here,
+JSON actually is very nicely formatted. And you can even collapse it and
+expand it, which is really nice. So this particular behavior
+you could get by installing an JSONView browser plugin, and this is
+actually available for both Chrome and Firefox, possibly other
+browsers out there and. So again, basically, it's a base URI,
+which has some request parameters. In this particular case,
+if you don't specify any extra fields, you'll get a certain subset of fields. But in this case, I also want to get
+the small icon as a field coming back from Coursera and a short description
+of a course which are not available as the actual subset of fields, but I
+want those extra fields in there as well. You also specify a q request parameter. Oh yeah, and by the way, I should also
+mention that whenever you specify multiple request parameters, so the first one,
+you just specify after question mark. And any additional ones,
+if you do anything in the browser, you specify with this @,
+I'm sorry, this ampersand symbol. So the second parameter that Coursera
+expects if you're searching for something on its website
+is gonna be this q=search. And then a third parameter,
+if you're searching, it also wants the query parameter with the
+actual value of what are you looking for. What kind of courses are you looking for? Once you put this in
+you'll get back this JSON. And I'm not gonna go into the exact
+format of what a JSON format looks like, because, again, HTTParty's gonna take care
+of it for us, actually parsing it into its native Ruby format of hashes and arrays. But in this case, as you can see, it's basically something that comes
+back that has an elements key, right. So it's gonna be a hash, a Ruby hash
+that's gonna have an elements key. And under that elements key, there's
+gonna be an array of different elements. So this is course one that came back,
+course two. And each one of those courses
+in turn is gonna have its own. It's gonna be represented as its own hash. So in this case the hash is gonna
+be a key ID and a value, and a key and a value, and so on. So all of these guys become your keys and
+these are the values. So, let's actually see a full example
+of how you do this in HTTParty. Again, it's very simple. You have to require HTTParty
+because this is not a gem that's part of Ruby, you installed it. And anything that's not part of Ruby, you actually have to require
+with a require statement. Not only that, even things which
+are part of Ruby, for example with pp, which is pretty print, is part of Ruby,
+but it's not used so often. So you also have to require
+it by saying require pp. Okay so this is our Coursera class,
+we include the HTTParty module. And that will specify, again, based on
+what we got, based on what we figured out, based on this URL which we put into a
+browser, our base_uri is going to be this. That our default_params
+assuming that we actually want to always get back all of these fields for
+all the requests. We specify a fields request
+parameter which is comma separated. In this case,
+it's just smallIcon,shortDescription, and we also wanna tell it that we're gonna
+be searching the Coursera web service, so we specify a q request
+parameter of search. Okay so that's our default_params. And lastly, we want to tell it,
+we want to tell HTTParty that the stuff we're getting back from Coursera is
+actually a JSON format as opposed to XML. So this class happens to have
+just one method, and that's fine. But you could have multiple methods. And if you have multiple methods,
+these three lines would apply to all of those methods, base_uri,
+default_params, and a format. So, in this case we have
+a class method called for. Which takes a term for
+what we're looking for. So in this case it would be
+Ruby that we're using here. And then we make a get request. Get is something that
+HTTParty provides you with. It's a method. And we're not really passing anything
+else, that's pretty much it. The base_uri and
+the default_params is all we need. And then as a second parameter,
+we pass some more request parameters. So more request parameters, this case, are gonna be the query request
+parameters and it's a little confusing. So the query key here is HTTParty key, but the query here is this key
+over here that we provided as a last request parameter, query=ruby. So we're telling HTTParty that there's
+a bunch of more request parameters. In this case just one. Which we pass in as a hash, and the only one we actually pass then is
+this query parameter which is gonna be the value of term, which is
+a parameter we pass into the method. Now once we get this back,
+we're gonna get back a big hash, which is gonna have elements as its key,
+as you could see from a previous page. And to pull stuff out of a hash,
+we're gonna use the index elements, and that's just the typical
+Ruby way to pull stuff out of a hash. And as you could see, the actual values of the hash is an array of Ruby elements. That's what we would get back for
+the for method. So to test this out,
+maybe we could do Coursera, which is a class name,
+.for because it is a class method. So we're not actually
+instantiating a Coursera class, we just call it for class method and
+passing the parameter, let's say python. So what this would bring back,
+is it would bring back an array, where each element in
+the array would be a hash, and each pair in that hash
+would be the key value, of, let's say id, shortName,
+with its value and so on. So this is how you use HTTParty To parse,
+to request stuff from a web service, and parse it into a hash and arrays,
+your native Ruby structures. And then that's how it answer coming back. So in summary, HTTParty makes it extremely
+easy to ingest Restful web services. Converting them Ruby Hashes or arrays,
+or whatever appropriate structure is, and the JSON and
+XML formats are supported. So what's next? Next we'll talk about Bundler
+because right now we know how to develop a Rails web application,
+we also know how to use HTTParty, but how do you actually put a gem, a third
+party gem into your Rails application? And, actually, how do all those other gems
+inside the Rails application already, how did their dependencies get synched up?

@@ -1,0 +1,61 @@
+[MUSIC] Hi and welcome to lecture four. In lecture four we'll talk about blocks, how they're used as well as how to
+incorporate them into your own methods. Some people get thrown off by blocks in
+Ruby, because other languages don't have blocks, but just think of them as
+chunks of code that are being executed. You pass them in between either curly
+braces, or the keywords do and end, and they're passed into methods as
+a last parameter in to a method. The convention is that
+you use the curly braces when the block content is a single line,
+and if a block content spans multiple lines you pass it in
+between the do and end key words. And blocks are often used as iterators,
+so we saw this example all the way back. You have a number and a times method,
+then you pass the block and the block basically just executes. So in this case, the times method
+knows that it needs to yield the control to a block and
+then the block will execute. The block can also accept parameters or
+arguments. So in this case its
+the same method times and you could pass in a parameter
+in between the pipes like so. So in this case, it just happens to
+be that the parameter to the block, which is passed as the last parameter
+to a times method, is index. Where, index of which iteration
+inside the loop are you in? So, in this case, we say, if index is
+greater than zero, print it, otherwise, do not print it. So, in this case,
+the iterations are zero in the one, and only one is printed because that's
+the one that's greater than zero. Now, we could have written exactly
+the same block in this way, as well, two times, and because it's a single line, we'll use
+curly braces instead of using do and end. So the same thing is happening,
+you have an index parameter, put index if index greater than zero,
+and the output is still one. If you want to use blocks in the method
+that you are going to be writing, there are two ways to actually do that, there
+is an implicit way and the explicit way. The implicit way is everything
+is happening the same as it would be happening otherwise,
+and you check for the existence of a block with a built
+in method called block given, and if a block is given you
+yield the control to the block. The explicit method is
+you declare block as a last parameter of a method with
+this ampersand in front of it, and then you use a call method to call
+the block, so let's see both of these. The implicit method is as follows. You have this method called
+two_times_implicit, so basically this method is
+gonna do something two times. You right away check, is the block given? If a block is not given, you either
+going to return, if you don't check for the existence of a block and try to yield
+to a block when the block wasn't passed in, an exception will be thrown. So in this case,
+if you just say two times implicit, and you don't pass a block,
+that's what happens, you just come back from it with a null
+block string, which you return. But if a block is given, so in this case,
+you're telling it to print, hello. Hello will be printed two times. That's the implicit way. And the explicit way is very similar,
+but in the explicit way, you're actually declaring that this
+method might be accepting a block. And then you check for
+the existence of a block similarly over .nil call to see if
+a block was given or not. If a block is not given,
+you return right away, otherwise, you call the block very similar
+to yielding to a block. So, the explicit way is
+a little more direct. You are saying, I want to call the block,
+which basically does the same thing. It yields to the block, and
+it prints out Hello two times. So these two ways are very similar,
+and it depends on the taste, how you wanna use them. In summary, blocks are just code
+that you pass into methods. And again, this might take a little
+while to get used to just because they are not very common
+in other languages. And if you want to incorporate
+the blocks into your own methods, you could even do it implicitly by sort of
+pretending like a block doesn't exist and yielding to it if it does, or you can
+explicitly declare it in your method and then call it and make sure to check for
+nil in that case as well. That's it for this lecture. In the next lecture, we'll talk about
+files and environment variables.

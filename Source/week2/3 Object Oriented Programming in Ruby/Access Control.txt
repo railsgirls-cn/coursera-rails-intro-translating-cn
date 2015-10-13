@@ -1,0 +1,73 @@
+[MUSIC] Hi and welcome to lecture 14. In this lecture we'll discuss the three
+levels of access control in Ruby. We'll talk about the whole idea of
+control and access in the first place. As well as how private is
+private access in Ruby? So, the idea of access control is as
+follows, when designing your class, it's important to think about how
+much you want to expose to the world. You want to write your class in
+a way that, when something changes, some internal details
+change in your class, not everybody outside of your class has
+to all of a sudden change everything. You want to keep your presentation,
+the internal representation private. That's the idea of encapsulation and it applies to not just Ruby but other
+languages, other OO languages as well. On top of that, Ruby also provides
+three levels of access control. Public, protected, and private. And we'll see what this means in a minute. So the idea of encapsulation is files. Let's say you have a car class
+that maybe has a speed and comfort, which are used to
+calculate the rating of a car. And you have a rating method that right
+now happens to return the rating, which is an instance variable. But maybe we're wrong, you're gonna incorporate some other
+factors how you calculate the rating. So, that's fine because people who
+depend on the car class, they're still gonna have this rating method and
+to them it doesn't mean anything. It's just a rating method,
+which is just a method that they call. And even if internal representation changes on how you calculate
+the rating that's okay. It's not going to affect the outside API. So there are two ways you could
+specify access control in Ruby. Number one,
+you could specify public, protected, or private keywords, and everything
+until the next access control keyword will be at that access control level. Now this is in addition to
+what I mentioned before, that by default all Ruby
+methods are public. So if you don't specify any of these,
+your methods are gonna be public. The second way is you could define
+the methods regularly without specifying whether they are public,
+private, or protected. And then you could have
+a comma-separated list of methods using the method symbols to specify whether
+they are private, protected or public. So let's see both of these. We have the class on the left
+that starts out as private. So, this method, test1, and any other method defined here
+will be private until protected. And this method over here, and
+all the other methods will be protected. And then you have public, which basically says that any methods
+defined here are gonna be public. And you obviously need public here because
+otherwise they would be protected. Whereas usually, if you wouldn’t have any
+of these private, protected, or public. Or if you would have this method
+all the way up before private you wouldn't need any keyword because it
+methods by default in Ruby are public. Because the idea is if
+you are creating a method you probably want somebody from
+outside the class to call the method. The other way to do it is you
+define the method regular. And then you say, oh by the way
+test1 method that I defined earlier, I want it to be private. And you could do this using a comma
+separated list of method names. Now let's talk about what the public,
+protected, and private actually means. So, public methods means there's
+no access control enforced. Anybody from outside the class, or from
+inside the class, can call this method. Protected means, it can be invoked, but only by the objects of a defining class or
+its subclasses. Nobody from outside, unless you're
+a subclass, can call a protected method. And the third level is really interesting. Private methods cannot be invoked
+with an explicit receiver. So you cannot say, for example, so let's
+say you create an instance of a class. Let's say call it person1. You cannot say person1.private method. But not only that,
+even to say something like self.private method inside
+the class itself you cannot do. And there is a minor exception
+which we'll see in a minute. So let's see an example of this. Let's say we have a person that
+has my age getter and age setter. So to say something like self.my_age, even inside the construct of
+a person class, is illegal. You cannot use self or any other
+receiver to call a private method. The only exception is
+to call an age setter. And the reason is because calling
+an age setter, without the receiver, without itself, as we discussed earlier,
+when we talked about classes is kind of useless because
+the Ruby interpreter would interpret the age
+as a local variable. And every time you finish the constructor, the age local variable
+would go out of scope. So only meaningful way of calling age
+setter, is to call it using self. So therefore, this is an exception, when
+you're trying to set a variable value, you are allowed to code self, even if
+the age setter is a private method. In summary, public and
+private access controls are used the most. Sometimes you'll see protected but most of the time you'll see people just
+using public, if a methods a public. Or not using anything because
+by default methods a public. Or using private if you don't
+want anybody calling the methods. And private methods are very interesting
+in that they are not callable from outside or inside the class
+with an explicit receiver, and the exception to that is a setter method. A method that's trying to set a value. Those methods I allow to be called
+will be receiver as we saw. What's next? Next, we talk about
+introduction to unit testing.

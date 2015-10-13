@@ -1,0 +1,583 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:08.207
+[MUSIC]
+
+2
+00:00:08.207 --> 00:00:11.705
+Hi and welcome to lecture 13.
+
+3
+00:00:11.705 --> 00:00:14.150
+In this lecture, we'll talk about scope.
+
+4
+00:00:14.150 --> 00:00:18.179
+Scope of variable,
+scope of constants, scope of blocks.
+
+5
+00:00:19.710 --> 00:00:23.199
+So the way scope works is as follows.
+
+6
+00:00:23.199 --> 00:00:27.780
+Methods and classes begin new scope for
+variables, which means that the outer
+
+7
+00:00:27.780 --> 00:00:31.262
+scope variables do not get
+carried over to the inner scope.
+
+8
+00:00:31.262 --> 00:00:36.438
+And you could always use local_variables
+method to see which variables are in and
+
+9
+00:00:36.438 --> 00:00:39.369
+which variables are not
+in the current scope.
+
+10
+00:00:39.369 --> 00:00:44.373
+So for example,
+we have a v1 variable defined outside of
+
+11
+00:00:44.373 --> 00:00:49.183
+the class and
+let's define it to a value "outside".
+
+12
+00:00:49.183 --> 00:00:52.893
+If you try to use this variable
+inside the my_method method and
+
+13
+00:00:52.893 --> 00:00:56.328
+you try to print it out,
+you'll get an exception thrown.
+
+14
+00:00:56.328 --> 00:01:01.119
+Because my_method has no idea
+about this variable called v1,
+
+15
+00:01:01.119 --> 00:01:06.632
+you could of course, define a new
+variable called v1 inside the method.
+
+16
+00:01:06.632 --> 00:01:10.894
+And then when you print it out, you get
+the value of inside and you could also
+
+17
+00:01:10.894 --> 00:01:16.660
+print what local_variables are available
+inside this method, which is your scope.
+
+18
+00:01:16.660 --> 00:01:19.220
+And you will see that v1 is
+available inside the scope,
+
+19
+00:01:19.220 --> 00:01:22.270
+which is this v1 over here.
+
+20
+00:01:23.420 --> 00:01:27.108
+Now you, could of course,
+print v1 outside of the class and
+
+21
+00:01:27.108 --> 00:01:31.025
+you will get the "outside",
+because that's the same scope.
+
+22
+00:01:31.025 --> 00:01:35.634
+And if you print local variables
+at this point, you'll get v1.
+
+23
+00:01:35.634 --> 00:01:39.027
+And you'll also get object,
+which is this variable,
+
+24
+00:01:39.027 --> 00:01:42.160
+which was defined a few lines ago.
+
+25
+00:01:42.160 --> 00:01:44.390
+So that's how variable is work.
+
+26
+00:01:44.390 --> 00:01:49.470
+Now constants are basically any
+reference that begins with uppercase,
+
+27
+00:01:49.470 --> 00:01:53.400
+including classes, modules or
+any other constants.
+
+28
+00:01:53.400 --> 00:01:58.811
+And the constant scope rules
+are different than variable scope rules.
+
+29
+00:01:58.811 --> 00:02:03.427
+The inner scope constants can see
+constants defined in the outer scope and
+
+30
+00:02:03.427 --> 00:02:06.990
+they can also override
+our outer constants.
+
+31
+00:02:06.990 --> 00:02:13.968
+Although outside of that inner scope,
+the value remains unchanged for constants.
+
+32
+00:02:13.968 --> 00:02:15.546
+So let's see an example.
+
+33
+00:02:15.546 --> 00:02:18.127
+Let's say, we have a value of PI,
+
+34
+00:02:18.127 --> 00:02:23.700
+which starts with an uppercase,
+wherever is all that matters.
+
+35
+00:02:23.700 --> 00:02:28.652
+And you define that it is 3.14 and
+then you wanna use that all
+
+36
+00:02:28.652 --> 00:02:34.020
+the way inside the class Test2,
+inside the method what_is_pi.
+
+37
+00:02:34.020 --> 00:02:36.530
+That's fine, because it's a constant.
+
+38
+00:02:36.530 --> 00:02:42.370
+You wouldn't be able to
+do it with a variable.
+
+39
+00:02:42.370 --> 00:02:45.550
+So in this case,
+you got an exception thrown, but
+
+40
+00:02:45.550 --> 00:02:48.748
+you could do it with
+a constant without a problem.
+
+41
+00:02:48.748 --> 00:02:53.141
+Now if you had a constant
+called MyConstant and
+
+42
+00:02:53.141 --> 00:02:57.878
+then you override the value
+Outer Constant here.
+
+43
+00:02:57.878 --> 00:03:02.870
+And MyConstant = Inner Constant
+prints Inner Constant, but
+
+44
+00:03:02.870 --> 00:03:08.160
+outside that constant is still
+known as Outer Constant.
+
+45
+00:03:08.160 --> 00:03:14.572
+So point is you could use it, but
+once you define it as a new value,
+
+46
+00:03:14.572 --> 00:03:19.251
+that value becomes the new
+value of a constant.
+
+47
+00:03:19.251 --> 00:03:26.227
+But when you go back out to the outer
+scope, you're back to the original value.
+
+48
+00:03:26.227 --> 00:03:29.940
+Now the change in the value
+of a constant is kinda weird,
+
+49
+00:03:29.940 --> 00:03:34.600
+because the whole point of it
+is that it should be a constant.
+
+50
+00:03:34.600 --> 00:03:38.782
+So for example, the value of PI
+will probably be the same value and
+
+51
+00:03:38.782 --> 00:03:41.749
+you probably don't wanna be changing it,
+but
+
+52
+00:03:41.749 --> 00:03:44.961
+I'm just pointing out
+the way it actually works.
+
+53
+00:03:44.961 --> 00:03:49.789
+So if for whatever reason you see some
+behavior and you're not sure why it's
+
+54
+00:03:49.789 --> 00:03:54.692
+happening, the first thing you should
+check is, are you name your variables
+
+55
+00:03:54.692 --> 00:03:59.010
+correctly of the lower case while
+your naming them with upper case.
+
+56
+00:03:59.010 --> 00:04:03.741
+In which case, it's a constant,
+which means it has this behavior.
+
+57
+00:04:03.741 --> 00:04:06.836
+Now we move on to scope of blocks.
+
+58
+00:04:06.836 --> 00:04:10.226
+Blocks are not like methods.
+
+59
+00:04:10.226 --> 00:04:14.652
+So the variables in the blocks
+actually inherit the outer scope and
+
+60
+00:04:14.652 --> 00:04:18.930
+this is beyond this lecture, but
+a block actually is a closure.
+
+61
+00:04:18.930 --> 00:04:23.314
+If you remember, it was the context
+in which it was defined and
+
+62
+00:04:23.314 --> 00:04:26.264
+uses that context whenever it is called,
+
+63
+00:04:26.264 --> 00:04:30.925
+but just to show you an example
+specifically for a scope portion.
+
+64
+00:04:30.925 --> 00:04:34.709
+Let's say,
+you have a class called BankAccount,
+
+65
+00:04:34.709 --> 00:04:39.820
+which maybe has an id and an amount
+that you are putting into the bank.
+
+66
+00:04:39.820 --> 00:04:43.822
+That you're instantiating
+your bank account with and
+
+67
+00:04:43.822 --> 00:04:48.000
+then you have an array of
+three different BankAccounts.
+
+68
+00:04:48.000 --> 00:04:51.807
+Maybe in the amount of 200,
+100 and -100 and
+
+69
+00:04:51.807 --> 00:04:56.050
+then you wanna add up the amount
+in all those three accounts.
+
+70
+00:04:57.430 --> 00:05:02.532
+So you have a block here and
+you have a total_sum variable,
+
+71
+00:05:02.532 --> 00:05:09.685
+which starts out as zero, then total_sum
+get values added or subtracted from it.
+
+72
+00:05:09.685 --> 00:05:14.400
+And at the end,
+you print out the total_sum variable.
+
+73
+00:05:14.400 --> 00:05:19.619
+So if this would be a method, total_sum
+would be a totally different variable and
+
+74
+00:05:19.619 --> 00:05:21.750
+you wouldn't be able to do this.
+
+75
+00:05:21.750 --> 00:05:27.155
+But because it's a block, the scope for
+the total_sum is the same.
+
+76
+00:05:27.155 --> 00:05:31.925
+It gets inherited here from
+the outside and you're able to keep
+
+77
+00:05:31.925 --> 00:05:36.610
+adding to the total_sum variable and
+print it out at the end.
+
+78
+00:05:36.610 --> 00:05:39.551
+So the variable actually is affected.
+
+79
+00:05:42.622 --> 00:05:45.730
+Now having said that,
+that is a default behavior.
+
+80
+00:05:47.600 --> 00:05:50.040
+But even though blocks
+share the outer scope,
+
+81
+00:05:50.040 --> 00:05:54.150
+a variable that's created inside
+the block is only available to a block.
+
+82
+00:05:56.630 --> 00:06:00.360
+The parameters to the block
+are always local to a block
+
+83
+00:06:00.360 --> 00:06:03.650
+even if they have the same name as
+the variables in the outer scope.
+
+84
+00:06:04.680 --> 00:06:10.250
+And finally, you can explicitly
+declare block-local variables
+
+85
+00:06:10.250 --> 00:06:14.830
+after a semicolon in the block parameter
+list and let's see an example for
+
+86
+00:06:14.830 --> 00:06:16.570
+all three of these on the next slide.
+
+87
+00:06:17.980 --> 00:06:21.670
+So you have an array or a bunch of values.
+
+88
+00:06:21.670 --> 00:06:24.496
+You have a current number, which is 10,
+
+89
+00:06:24.496 --> 00:06:30.130
+but current number is also a name
+of a parameter to the block.
+
+90
+00:06:30.130 --> 00:06:36.110
+Because of that, when you loop
+them through the array of 5, 4, 1.
+
+91
+00:06:36.110 --> 00:06:41.878
+The current number is 5, 4, 1,
+which gets printed out here and
+
+92
+00:06:41.878 --> 00:06:46.106
+the current number is
+still 10 on the outside.
+
+93
+00:06:46.106 --> 00:06:50.902
+So because the parameter to
+a block is current number,
+
+94
+00:06:50.902 --> 00:06:54.982
+it is actually not
+accessible inside a block.
+
+95
+00:06:54.982 --> 00:06:59.930
+Because you named it the same, so
+
+96
+00:06:59.930 --> 00:07:05.778
+the scope does not go inside the block.
+
+97
+00:07:05.778 --> 00:07:10.404
+Also the some_var variable,
+which you happen to create inside
+
+98
+00:07:10.404 --> 00:07:14.011
+the block is not accessible
+outside of the block.
+
+99
+00:07:14.011 --> 00:07:19.241
+So even though it is usual for variables
+outside of the block, go into the block.
+
+100
+00:07:19.241 --> 00:07:24.959
+The scope is inherited inside the block,
+it doesn't work the other way around.
+
+101
+00:07:24.959 --> 00:07:30.836
+The variables declare inside the block,
+actually do not propagate outside and
+
+102
+00:07:30.836 --> 00:07:35.497
+the final example is we have
+this variable called adjustment.
+
+103
+00:07:35.497 --> 00:07:39.433
+Adjustment = 5 and we're doing
+something on adjustment inside,
+
+104
+00:07:39.433 --> 00:07:42.200
+we setting the adjustment to 10.
+
+105
+00:07:42.200 --> 00:07:48.026
+Based on what we just said, the value
+of adjustment should be affected.
+
+106
+00:07:48.026 --> 00:07:52.313
+And when it's outside, it should be 10.
+
+107
+00:07:52.313 --> 00:07:56.062
+Because it got changed inside the block,
+but
+
+108
+00:07:56.062 --> 00:08:01.191
+we can declare after semicolon
+that we want certain variables
+
+109
+00:08:01.191 --> 00:08:07.221
+to be local even though they have
+the same name as the outside variables.
+
+110
+00:08:07.221 --> 00:08:11.207
+So happens to be this one,
+this variable is called adjustment and
+
+111
+00:08:11.207 --> 00:08:14.980
+we're using a variable called
+adjustment inside the block.
+
+112
+00:08:16.450 --> 00:08:21.820
+So this basically is saying, treat this
+adjustment variable as a local variable
+
+113
+00:08:21.820 --> 00:08:24.680
+not as a variable that gets
+inherited from outside of block.
+
+114
+00:08:26.220 --> 00:08:31.190
+In summary, methods and
+classes start a new scope for variables.
+
+115
+00:08:31.190 --> 00:08:34.130
+Constants maintain scope.
+
+116
+00:08:34.130 --> 00:08:38.770
+So, a constant coming from
+outside of a method or a class
+
+117
+00:08:40.910 --> 00:08:44.980
+will retain the scope and
+you're able to access a constant
+
+118
+00:08:44.980 --> 00:08:49.350
+even though it was defined outside
+of a class and outside of a method.
+
+119
+00:08:49.350 --> 00:08:52.697
+Blocks usually inherit the outer scope,
+but
+
+120
+00:08:52.697 --> 00:08:57.199
+we talked about ways how you
+could override that if you want.
+
+121
+00:08:57.199 --> 00:09:00.826
+Next, we'll talk about Access Control for
+methods.

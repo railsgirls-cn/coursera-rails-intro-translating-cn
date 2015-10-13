@@ -1,0 +1,603 @@
+WEBVTT
+
+1
+00:00:00.223 --> 00:00:07.963
+[MUSIC]
+
+2
+00:00:07.963 --> 00:00:09.430
+Welcome.
+
+3
+00:00:09.430 --> 00:00:14.190
+So we developed our app and
+the app seems to working pretty well.
+
+4
+00:00:14.190 --> 00:00:16.350
+You could look for courses about diet.
+
+5
+00:00:16.350 --> 00:00:22.710
+You could look for courses about,
+let's say ruby on Coursera.
+
+6
+00:00:22.710 --> 00:00:27.820
+One day you wonder are there any
+course on Coursera about sushi?
+
+7
+00:00:27.820 --> 00:00:30.720
+So you try that and
+
+8
+00:00:30.720 --> 00:00:34.330
+you get a big message that says we're
+sorry but something went wrong.
+
+9
+00:00:35.700 --> 00:00:38.890
+And this is actually a good thing
+that the message is pretty cryptic.
+
+10
+00:00:38.890 --> 00:00:44.040
+Because if somebody is trying to break
+into the application you wouldn't want
+
+11
+00:00:44.040 --> 00:00:49.210
+to know to many details about
+exactly what happened, but
+
+12
+00:00:49.210 --> 00:00:52.740
+as an application owner,
+you can check the logs.
+
+13
+00:00:52.740 --> 00:00:58.380
+So let's go ahead and do that,
+you could do with application
+
+14
+00:00:58.380 --> 00:01:03.550
+that you deployed from into Heroku,
+you could do Heroku logs.
+
+15
+00:01:05.510 --> 00:01:11.380
+And it will tell you exactly what
+happened, why the application broke.
+
+16
+00:01:11.380 --> 00:01:15.220
+So you could see it says that this file,
+
+17
+00:01:15.220 --> 00:01:19.990
+index.html.erb had
+
+18
+00:01:19.990 --> 00:01:25.140
+an issue that was an undefined
+method each for nil class.
+
+19
+00:01:26.280 --> 00:01:27.950
+Hm, okay.
+
+20
+00:01:27.950 --> 00:01:31.490
+And it happened on line nine of a file.
+
+21
+00:01:31.490 --> 00:01:33.110
+So line nine.
+
+22
+00:01:33.110 --> 00:01:40.720
+That looks like this thing over here,
+add courses variable that each.
+
+23
+00:01:40.720 --> 00:01:43.890
+So you sort of have an idea of
+what might have happened here.
+
+24
+00:01:45.970 --> 00:01:50.920
+So the next step would be to actually
+try to run the program locally in
+
+25
+00:01:50.920 --> 00:01:54.670
+your local environment and
+see if you get this same error.
+
+26
+00:01:56.970 --> 00:01:58.880
+So let's try and do that.
+
+27
+00:02:02.390 --> 00:02:03.840
+Rails server.
+
+28
+00:02:10.380 --> 00:02:12.411
+And diet works, but sushi,
+
+29
+00:02:12.411 --> 00:02:18.830
+which is actually pulling from the same
+source as a remote application, does not.
+
+30
+00:02:18.830 --> 00:02:21.390
+Not only that, though, look at this.
+
+31
+00:02:21.390 --> 00:02:26.060
+It gives you the error, which is fine
+because this is a development environment
+
+32
+00:02:26.060 --> 00:02:27.340
+and you're the developer.
+
+33
+00:02:27.340 --> 00:02:28.664
+It's okay for you to see the error and
+
+34
+00:02:28.664 --> 00:02:31.080
+it's actually a good thing
+that you seen the error.
+
+35
+00:02:31.080 --> 00:02:32.560
+The error is colorized.
+
+36
+00:02:32.560 --> 00:02:36.060
+You see exactly which line
+the error happened on.
+
+37
+00:02:36.060 --> 00:02:37.980
+Not only that, check this out.
+
+38
+00:02:37.980 --> 00:02:39.950
+You get a console.
+
+39
+00:02:39.950 --> 00:02:44.250
+So your still in the browser on
+the webpage and you have a console,
+
+40
+00:02:44.250 --> 00:02:48.370
+an IRB console, a Rails console
+that your able to interact with.
+
+41
+00:02:49.440 --> 00:02:54.398
+So you could be like, I know there's
+a variable called search term, okay so
+
+42
+00:02:54.398 --> 00:02:57.740
+that's sushi,
+that's the one I was looking for.
+
+43
+00:02:59.010 --> 00:03:02.620
+And courses.
+
+44
+00:03:02.620 --> 00:03:08.190
+So what's wrong with courses,
+that's the problem, courses is nil.
+
+45
+00:03:08.190 --> 00:03:11.780
+So that's what the message was saying,
+that's what the message is saying here
+
+46
+00:03:11.780 --> 00:03:16.850
+that undefined method each for
+nil class because courses is nil.
+
+47
+00:03:18.190 --> 00:03:25.760
+Now if you look at your controller, so
+this would be the course's controller.
+
+48
+00:03:32.550 --> 00:03:34.350
+Right here.
+
+49
+00:03:34.350 --> 00:03:39.310
+You could see that the way to get the
+information is by searching Coursera for
+
+50
+00:03:40.310 --> 00:03:41.320
+the term.
+
+51
+00:03:41.320 --> 00:03:44.340
+So let's go back to the console.
+
+52
+00:03:44.340 --> 00:03:49.110
+Once we have the attention over here
+on the console, and try to do that.
+
+53
+00:03:49.110 --> 00:03:53.770
+So Coursera.for, looking for sushi.
+
+54
+00:03:57.360 --> 00:04:00.430
+And you get nil, and
+that is exactly our problem.
+
+55
+00:04:00.430 --> 00:04:04.080
+The problem is that our
+model when queried for
+
+56
+00:04:04.080 --> 00:04:08.860
+sushi returns nil, and
+because of that the application blows up.
+
+57
+00:04:08.860 --> 00:04:12.916
+But look how fast we figured all this out,
+because Rails zeroes in
+
+58
+00:04:12.916 --> 00:04:17.430
+exactly on what the error is,
+gives you a console and you're good to go.
+
+59
+00:04:19.800 --> 00:04:21.390
+So, how are we gonna fix this?
+
+60
+00:04:22.970 --> 00:04:28.380
+Well, one of the easiest ways to fix
+it is to actually fix it in the view.
+
+61
+00:04:28.380 --> 00:04:36.010
+So we could fix it in the model that, make
+sure that the model never returns a nil,
+
+62
+00:04:36.010 --> 00:04:41.920
+maybe returns an empty list, or we could
+fix it in the controller and say that
+
+63
+00:04:43.710 --> 00:04:48.950
+if a model ever gives you information
+that's nil, return an empty list.
+
+64
+00:04:48.950 --> 00:04:50.040
+That's another way to fix it.
+
+65
+00:04:52.490 --> 00:04:56.300
+And another way to fix it is
+just to fix it in the view, so
+
+66
+00:04:56.300 --> 00:04:58.190
+that's what we're going to do.
+
+67
+00:04:58.190 --> 00:05:00.030
+That's probably the easiest way to do it.
+
+68
+00:05:00.030 --> 00:05:03.500
+And so what do we want to happen?
+
+69
+00:05:03.500 --> 00:05:07.330
+What we want to happen is
+that if the information for
+
+70
+00:05:07.330 --> 00:05:13.160
+courses is nil, then we display
+that where no course is found.
+
+71
+00:05:13.160 --> 00:05:15.116
+So, let's go ahead and do that.
+
+72
+00:05:15.116 --> 00:05:17.600
+So, it looks something like this.
+
+73
+00:05:18.930 --> 00:05:21.670
+You have your ERB tags
+give courses that nil.
+
+74
+00:05:23.790 --> 00:05:24.530
+Some HTML.
+
+75
+00:05:24.530 --> 00:05:26.120
+No courses found with
+relevant information.
+
+76
+00:05:26.120 --> 00:05:27.350
+Sorry.
+
+77
+00:05:27.350 --> 00:05:33.590
+Else you do rest of it, which is the table
+and then you have to end it with
+
+78
+00:05:33.590 --> 00:05:40.140
+an ERB tag of end because we have our f,
+else, and end.
+
+79
+00:05:41.280 --> 00:05:42.370
+Go ahead and save it.
+
+80
+00:05:42.370 --> 00:05:44.120
+Go back to a browser.
+
+81
+00:05:44.120 --> 00:05:45.169
+Just reload it.
+
+82
+00:05:46.590 --> 00:05:47.600
+And look at that.
+
+83
+00:05:47.600 --> 00:05:48.100
+It's working.
+
+84
+00:05:48.100 --> 00:05:49.040
+Searching for sushi.
+
+85
+00:05:49.040 --> 00:05:51.250
+No courses found with information.
+
+86
+00:05:51.250 --> 00:05:51.770
+Sorry.
+
+87
+00:05:51.770 --> 00:05:57.540
+But if we're looking for,
+let's say, diet, we are good to go.
+
+88
+00:05:58.820 --> 00:06:04.470
+So at this point, our application on
+Heroku obviously still does not work.
+
+89
+00:06:05.670 --> 00:06:07.920
+So we're gonna fix that right now.
+
+90
+00:06:07.920 --> 00:06:12.694
+We're gonna stop the application, luckily,
+
+91
+00:06:12.694 --> 00:06:17.120
+and then we are gonna
+see what the status is.
+
+92
+00:06:17.120 --> 00:06:21.140
+The status is this one file that
+we fixed which is the view file.
+
+93
+00:06:22.420 --> 00:06:30.176
+We are gonna commit it with a -am which
+is gonna skip this stage in directory.
+
+94
+00:06:30.176 --> 00:06:32.926
+Fix for sushi.
+
+95
+00:06:38.136 --> 00:06:42.120
+And then we're gonna push it to heroku.
+
+96
+00:06:43.830 --> 00:06:45.260
+Git push heroku master.
+
+97
+00:06:50.120 --> 00:06:52.140
+This might take a few seconds.
+
+98
+00:06:52.140 --> 00:06:56.470
+Ruby app detected, that means that
+Heroku obviously knows who we are,
+
+99
+00:06:56.470 --> 00:07:01.548
+because we've already deployed
+the application to Heroku.
+
+100
+00:07:01.548 --> 00:07:07.377
+Now it's building our
+application in Heroku and
+
+101
+00:07:07.377 --> 00:07:12.270
+doing some other optimizations.
+
+102
+00:07:12.270 --> 00:07:19.660
+And in a few seconds we should be
+able to see that our change worked.
+
+103
+00:07:21.540 --> 00:07:23.970
+So we're gonna do refresh.
+
+104
+00:07:25.750 --> 00:07:27.080
+And what do you know.
+
+105
+00:07:27.080 --> 00:07:30.217
+The search [INAUDIBLE] it's working.
+
+106
+00:07:30.217 --> 00:07:34.387
+So now we're gonna do and do diet.
+
+107
+00:07:34.387 --> 00:07:35.587
+That still works as well.
+
+108
+00:07:40.217 --> 00:07:47.610
+So the way this works and the way this is
+enabled to work is because of two gems.
+
+109
+00:07:47.610 --> 00:07:49.700
+If you look at the gem file,
+
+110
+00:07:49.700 --> 00:07:54.928
+our development environment has
+a byebug gem and web-console gem.
+
+111
+00:07:54.928 --> 00:07:58.270
+So web-console is really the one
+that we've been seeing until now.
+
+112
+00:07:59.650 --> 00:08:04.550
+It's this ability to have your IRB
+console right there in your browser.
+
+113
+00:08:04.550 --> 00:08:05.350
+Which is pretty neat.
+
+114
+00:08:06.870 --> 00:08:11.230
+There's also the byebug gem,
+which enables full-fledged
+
+115
+00:08:11.230 --> 00:08:15.260
+debugging of your Rails application
+like setting a break point and
+
+116
+00:08:15.260 --> 00:08:18.010
+actually stepping through
+the lines of code.
+
+117
+00:08:18.010 --> 00:08:21.040
+And just gonna show you the two gems.
+
+118
+00:08:21.040 --> 00:08:22.600
+One is called web console.
+
+119
+00:08:25.330 --> 00:08:31.003
+And there's a pretty good documentation
+about it and actually if there's an error,
+
+120
+00:08:31.003 --> 00:08:35.590
+you pretty much just end up in
+the console and there's nothing to do.
+
+121
+00:08:35.590 --> 00:08:42.300
+Byebug gem is a little more,
+you have to do a little more.
+
+122
+00:08:42.300 --> 00:08:47.330
+You have to actually
+put in the byebug word.
+
+123
+00:08:48.510 --> 00:08:50.270
+So I'm gonna get the usage.
+
+124
+00:08:50.270 --> 00:08:56.000
+You simply drop the byebug word whenever
+you want to start the bug in and
+
+125
+00:08:56.000 --> 00:08:58.710
+the executional will stop there, and
+
+126
+00:08:58.710 --> 00:09:04.370
+then at that point you could step
+through code and do things like that.
+
+127
+00:09:04.370 --> 00:09:06.000
+I'm not gonna cover that in this lecture,
+but
+
+128
+00:09:06.000 --> 00:09:11.290
+that's something that you could do to
+step through your code and analyze it.
+
+129
+00:09:11.290 --> 00:09:16.790
+But If there's an error,
+as we saw, you are easily able to
+
+130
+00:09:16.790 --> 00:09:22.780
+use the console and perform whatever
+code you perform in your Ruby console.
+
+131
+00:09:22.780 --> 00:09:26.309
+You could query,
+you could look at the variable,
+
+132
+00:09:26.309 --> 00:09:30.020
+value, you could change
+a variable value and so on.

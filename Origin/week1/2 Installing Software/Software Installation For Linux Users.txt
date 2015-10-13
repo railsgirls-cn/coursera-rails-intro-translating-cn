@@ -1,0 +1,190 @@
+[MUSIC] Hello, this is Jim. I'm gonna be going through
+the software installation for module one on Linux Platforms,
+more specifically, Ubuntu and Fedora. In order to install Ruby,
+the language interpreter, Rails, our web application platform,
+PhantomJS used for headless Web testing support, and
+Sublime Text an optional text editor. I'm gonna be starting with some
+Docker Images and the source for those images are available in
+the module one repository. We'll be installing Mat'z original,
+Ruby MRI Interpreter it's based on C. Which means we are gonna be doing a lot
+of compiling on our Linux platform. Prerequisites you must have and Ubuntu or Fedora System,
+a non-root account with sudo privileges. When we install Ruby we have
+a decision to make right upfront. And luckily, if we're just going
+to keep with one version and not do a lot of bouncing around
+between different interpreters, we probably won't have to touch this
+layer all that much in the future. However we do have to
+install it in order to work. The installation manager,
+what it's responsible for is determining what gems work
+with what versions of Ruby. Installing different versions
+at different points in time. Now there are various managers
+you can install, and there's two, let's say, leading managers. There are others. You have the rvm, which is the older,
+more established but it's a heavyweight manager, it does
+some things to the shell that people, purists aren't really thinking of. So in a development environment it
+may not be an ideal choice by some. RBENV, thought to be a lighter
+weight solution, and it works much through more
+traditional UNIX pathing. Now when we go to the main Ruby site and
+click on Download, we get a page that says that we should
+be using a package management system. And they suggest RBENV or RVM. Okay, we'll go to the RAILS site,
+click on download. They're recommending RBENV. Okay, choices are a little simpler. And they link over to
+the Stevenson GitHub, which has the implementation or
+the installation for how we manage it. Doesn't have all the instructions. Has a good bit. So Google it around on the web, I found
+a decent article from Mitchell Atticus, on how to install Ruby on
+Rails with RBENV on Ubuntu. Well great, all we have to do is
+fill in some of the Fedora details. And we'll be coming back to this one, or
+breaking it down in other instructions. But before we get too far down the RBENV,
+if you really did want to use the RVM, I found that the Rails girl's website
+has some decent multi-platform and all kinds of other different ways for
+Ubuntu and Fedora. But their solution is based on RVM,
+so what I would suggest is that you don't just run the script,
+you don't actually open the script up, which is basically what we'll be doing
+today in procedures that I'm doing and actually look at the overall commands. So let's get started going through some
+of the information that's on Mitchell's page on how to install Rails with RBENV. So I go back to my two VMs. I have an Ubuntu on the top
+in green lettering. I have Fedora on the bottom in
+the white-on-black lettering. And one of the first
+things we're gonna do, is, we're going to update the existing
+packages that are on the system. It's something that we should do
+before we add new packages to it. And as you may know
+that Ubuntu uses AptGet as a package manager and Fedora uses Yum. And what's gonna, what we need
+to do when we run this package manager is to use the sudo command
+which is going to want a password and that password is going to be good for
+a period of time. So on follow on sudo commands. Until that timeout is elapsed, we will be able to just issue
+the future commands without issue. Next, we will install Git, and
+what we're gonna use Git initially for is to clone the RBNV and
+Ruby build repositories. That'll be a part of this installation. And we'll also use Git as a part of class. Both installations took roughly about
+between one and two minutes to complete. Next, we'll install the compiler and
+some of the libraries that it will use in order to build Ruby and
+the various gems that are out there. That installation probably took us
+about between three and five minutes. Fedora was a little bit faster
+in what I asked it to do. And Ubuntu,
+took about the five minute time. Next we have two very similar
+operations on both platforms. And we're going to clone/install
+the rbenv repository. And so we're going to, in our home
+directory check out clone from Git. The Stevenson repository and we're going to put that in
+a directory right below our own. The clone was placed in a directory
+below the home directory and what we are gonna do is use environment
+variables, a path variable, in order to point to that location. While we're on the topic
+of environment variables, let me make a slight side bar
+to describe what they're about. Let's say there's some text,
+recipepuppy.com running at port 80. And we don't want to hard code
+that in our application and we want to necessarily
+make a variable reference. But what we can do, is we can export that
+into our shell and assign it a value. And, we can make it a little more
+permanent if we put it into our bashrc. So, I am gonna to echo that, so
+that it goes into the bashrc. And if we do a tail on the bashrc,
+we'll see that it's at the very end. So what we'll do then is
+we will source bashrc in order to get that
+environment variable declared. And then what we can do is we can
+use that environment variable, let's say to bring up Chrome
+to launch that display. And as we see in our browsers
+sitting in the background, they are busily bringing up the actual
+website that the variable points to. So to get RV into our path, we're going to have to declare a variable
+that references the bin directory. And we do that through the same mechanism. We'll just extend our path in bashrc. We will source. Our bashrc. We will source our bashrc. And, at this point in time,
+rbenv should be in our path. There's another piece of environment
+information that gets added, which is this rb init. And what it does is it adds some
+command completion scripts. It gets those into your path as well,
+so that you can complete partial commands that you issued to Ruby. Once that's been in place,
+probably ought to just source it to be able to get what we just put in,
+into our shell. The next thing that we bring in
+is ruby-build, and ruby-build, it gives us the ability to actually
+install ruby inside of rbenv. It's going to be installed below home,
+below rbenv in a plugins directory. And like before it, that plugins
+directory needs to also be in your path, so let's go ahead and
+add that to the bashrc. Let's source our bashrc in both areas. Now, here's the step
+we've been looking for. This is where we're actually
+going to install Ruby. It's a lengthy step, and you'll notice, there's a lot of
+compilations that'll go on. You can pretty much bet that this is
+gonna be about a 20 to 30 minute install. So, make sure you get this command in,
+and then go ahead and go find a cup of coffee and
+a sandwich while it finishes up. If there are any errors or
+stoppages in it, it's more than likely that you're
+missing a package or two, and so maybe you didn't have
+the same starting point I did. Pretty much if you grab the error, Google
+it, you'll have an easy time at finding out what package maybe your system didn't
+have that mine already did have, and I didn't have to install it as a part
+of these installation instructions. Okay, that was just under 30 minutes. Hopefully you had a good lunch. The next thing we'll do, is we will set the default version of
+Ruby to be used from this point forward. We've got it installed so
+we might as well use it. So we're gonna be using 2.2.2
+with this installation. One of the options I suggest
+we set is to tell the gems to not generate local documentation. It'll just eat up disk space and
+time when they're downloading. And we'll just put that into a gemrc file. Next, we want to bring in
+the Rails Gem Manager. This will do a lot of
+the heavy lifting for us as we start putting gems
+into our applications. You'll hear a lot more
+about that later but just right now all we
+have to do is install it. Now here's another interesting step. Now we're going to be installing the rails
+now and we're going to be selecting specifically the 4.2.3 version which will
+be what we'll be base lining in class. This is another lengthy step,
+not as long as the Ruby install. It's about about a five-minute one, so all you have time to do is get
+a new cup of coffee for this one. So, come back when it's done. Okay, that wasn't so bad,
+that was about three to four minutes. And now we have our rails installed. After installing rails,
+what they suggest is after installing any
+gem that adds commands, that we do a rehash on rbenv. And where that it can reread all the
+different shims so that we can get command completion in whatever we're
+trying to type, related to Rails. Next, we're gonna install one of the
+JavaScript libraries that can be used in class, and here's where we need to catch
+Ubuntu up on some unique instructions. So I'm going to install
+a couple of packages that it needs in order
+to get everything ready. I'm also going to install
+a custom location for it to bring in the packages. Custom location is at chris-lea/node.js. Hit Enter. And on the Fedora side,
+it too has a little bit of setup to do. And now the finishing commands,
+let's do Ubuntu first. Bringing those in, and
+then pull out my yum commands for Fedora. And OJS is installed in both instances. Next we're going to install PhantomJS. PhantomJS is a library which allows us to
+do headless testing of web applications. We're gonna be able to do unit testing
+without users having to poke anything around, really neat. And what we're gonna do is we're gonna
+start off by making sure that we have bzip, because that's going to
+be part of our installation steps. We will then set an environment variable
+so we don't have to repeat ourselves so many times, for how we're going to
+reference the name of the library. And then let's go over
+to the temp directory to download it and
+get it ready for installation. Okay, once we're in the temp directory
+we can run a curl command to unzip it. And one of the things you'll notice is
+that we're downloading the 1.9.8 version. As of building these install instructions, the 2.0 version which is available
+in a compiled version for Windows and Mac, is not available in
+a pre-compiled version for Linux. Now you can download the source,
+done it, and compile it specifically for
+Ubuntu or Fedora, add in a few more libraries,
+and you too can use 2.0. but I'll have to warn you,
+that is about a four to five hour process, building phantom JS totally from source. So, what we're going to do is we're
+going to stick with the 198 version. And what we're going to do is we're
+going to get it into our path by moving things over,
+things into user share. And of course, creating a pace,
+creating a soft-link so that it automatically gets placed
+into our path with user local. [INAUDIBLE] There, both 198. The next install we'll do is
+a text editor, Sublime Text. So if you go to their website and do the download,
+you'll find it very much worth it. And once we've downloaded it
+it's pretty much ready to go. Now all we need to do is get
+the directory that it came from over in an area we can maintain it. I just happen to be putting it in /opt. And then we just need to expand our path. And [INAUDIBLE] And there's our sublime text. Okay we'll be bringing
+the editor up later. And if we were to sit back and
+look at our installation, we'll notice that there's really no files, no non-hidden files showing
+in our home directory. The files that I have there are part
+of the install that you can look at in the class repository. But, if you notice that the all
+the installs, Ruby wise, not the editor and things like that,
+are at below RBENV. Then what we can do, just to verify
+everything's the right version, that we're expecting. We can do a couple of repeated commands. And say that we have Git 1.9.1,
+PhantomJS 1.9.8, Ruby 2.2.2, and Rails 4.2.3. Now what I'd like to do is
+create a rails application. This isn't going to output a lot
+cuz I asked for it to be quiet. But we're having some Basically
+the overall application is being built in a test-installed
+directory, below this directory. And in a few seconds here
+it'll be ready to test out. Okay, now that the application is done,
+we can go in and start up the server. Make sure you see the into
+the directory that was just created. Before running the server command,
+we get the web brick server. And now,
+we need to leave the server running. Okay, now that our server's up,
+I want to run a different command. I want to bring up sublime text. And, I noticed I accidentally created
+my server in the temp directory. So, I need to cd over to
+the temp directory, and make sure that I've sourced my
+bash rc with that information. And then, what I can do is just
+open a folder, in the file system. Go over to temp, and my test install I can see, I can open up that. And now I can see my overall application. Same thing on Fedora,
+although I do notice that the fonts by default are not
+the greatest on Fedora. Out of the box. So I can open that folder. And it's looking at
+the application as well. Now the other thing I can do, let me
+just go ahead and open up another tab. Is I can bring up, and look a the web interface of
+the application that's running. And you see it notifying me that. Here comes my welcome page for
+the application we built, and I do that on Fedora I
+hopefully get the same thing. And here is my alert
+saying page is coming up. And here you go. We are done installing Ruby Rails,
+Phantom JS, Sublime Text, and then verifying that
+the overall installation is complete. It should be good to go. And not have to touch an install for
+quite a while. All right.
+Good luck.

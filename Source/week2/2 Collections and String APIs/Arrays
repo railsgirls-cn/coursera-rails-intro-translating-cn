@@ -1,0 +1,784 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:08.780
+[MUSIC]
+
+2
+00:00:08.780 --> 00:00:11.630
+Hi and welcome to lecture seven.
+
+3
+00:00:11.630 --> 00:00:14.450
+In this lecture we'll talk about Arrays.
+
+4
+00:00:14.450 --> 00:00:18.800
+You might be used to arrays from
+other programming languages, and
+
+5
+00:00:18.800 --> 00:00:22.790
+Ruby has great support for
+arrays as well, as we're gonna see.
+
+6
+00:00:22.790 --> 00:00:27.890
+So we'll talk about how arrays are
+created, how arrays can be modified and
+
+7
+00:00:27.890 --> 00:00:30.940
+how to access the elements inside varies.
+
+8
+00:00:32.450 --> 00:00:33.720
+So, basically,
+
+9
+00:00:33.720 --> 00:00:38.800
+in Ruby, what arrays are, they're just
+a collection of object references.
+
+10
+00:00:38.800 --> 00:00:42.540
+And unlike some other languages where
+arrays are fixed size, in Ruby,
+
+11
+00:00:42.540 --> 00:00:43.809
+arrays are expandable.
+
+12
+00:00:44.870 --> 00:00:50.800
+And you can access the elements inside
+the array using this index operator.
+
+13
+00:00:50.800 --> 00:00:53.380
+Now, a lot of these things,
+I'm calling them operators.
+
+14
+00:00:53.380 --> 00:00:55.630
+But really, they're methods.
+
+15
+00:00:55.630 --> 00:00:58.080
+They're methods in Ruby
+that could be overwritten.
+
+16
+00:00:58.080 --> 00:01:01.890
+Arrays can be indexed with
+negative numbers or ranges.
+
+17
+00:01:01.890 --> 00:01:02.800
+This is a cool feature.
+
+18
+00:01:02.800 --> 00:01:04.834
+I'm gonna show you in a minute.
+
+19
+00:01:04.834 --> 00:01:10.764
+Also arrays in Ruby are of
+heterogeneous types, it can be.
+
+20
+00:01:10.764 --> 00:01:12.623
+All right, so
+they don't have to be the same type,
+
+21
+00:01:12.623 --> 00:01:15.060
+they don't have to be all integers,
+or all strings.
+
+22
+00:01:15.060 --> 00:01:16.750
+They could be whatever.
+
+23
+00:01:16.750 --> 00:01:20.460
+It could have a string array,
+string integer or
+
+24
+00:01:20.460 --> 00:01:21.770
+something else in the same array.
+
+25
+00:01:22.870 --> 00:01:26.170
+And lastly you could use
+this interesting construct
+
+26
+00:01:27.890 --> 00:01:35.060
+of %w to have multiple strings and it will
+parse them out for you into an array.
+
+27
+00:01:35.060 --> 00:01:36.120
+So let's see how these things work.
+
+28
+00:01:37.950 --> 00:01:41.660
+So feature number one,
+heterogeneous arrays.
+
+29
+00:01:41.660 --> 00:01:44.410
+So array could have an integer,
+a string, and
+
+30
+00:01:44.410 --> 00:01:47.200
+a symbol all in the same array and
+that is completely fine.
+
+31
+00:01:48.230 --> 00:01:52.500
+And if you want to index one of those
+elements you just use the index operator.
+
+32
+00:01:52.500 --> 00:01:57.036
+And in this case it will index two because
+the array indexes start at zero not
+
+33
+00:01:57.036 --> 00:01:57.540
+at one.
+
+34
+00:01:59.470 --> 00:02:01.240
+Then you have an array of words.
+
+35
+00:02:01.240 --> 00:02:03.800
+What a great day today.
+
+36
+00:02:03.800 --> 00:02:07.940
+And it's gonna split it up for
+you into an array of words.
+
+37
+00:02:07.940 --> 00:02:15.170
+So arr_words now becomes a variable array
+which contains an array of these strings.
+
+38
+00:02:16.340 --> 00:02:21.570
+now here's an example of accessing
+an array element using a negative number.
+
+39
+00:02:21.570 --> 00:02:26.820
+So negative two in this case, what that
+means is don't start from the beginning,
+
+40
+00:02:26.820 --> 00:02:28.110
+start from the end.
+
+41
+00:02:28.110 --> 00:02:32.586
+So in this case it's gonna say not
+today because that's minus one,
+
+42
+00:02:32.586 --> 00:02:34.330
+minus two is day, great.
+
+43
+00:02:34.330 --> 00:02:40.230
+Then you could also have expressive
+methods of arrays like first,
+
+44
+00:02:40.230 --> 00:02:43.110
+last, give me the first element,
+give me the last element.
+
+45
+00:02:43.110 --> 00:02:50.960
+Another feature you could have is you
+could have a range of elements specified.
+
+46
+00:02:50.960 --> 00:02:54.330
+So in this case you're
+saying go back three.
+
+47
+00:02:54.330 --> 00:02:59.060
+So that would be one, two, three and
+then take two elements from that.
+
+48
+00:02:59.060 --> 00:02:59.860
+So you get great day.
+
+49
+00:03:01.060 --> 00:03:05.690
+You also have a similar feature
+where you're actually using that
+
+50
+00:03:05.690 --> 00:03:08.520
+range type which we haven't covered yet
+but that's coming up soon.
+
+51
+00:03:08.520 --> 00:03:14.250
+And you're basically saying,
+grab me all the elements
+
+52
+00:03:14.250 --> 00:03:19.180
+from two to four inclusive,
+that would be great day today.
+
+53
+00:03:19.180 --> 00:03:24.640
+And lastly we have Join, which is
+a method you could call on arrays,
+
+54
+00:03:24.640 --> 00:03:28.890
+which joins them and
+creates a string out of them and
+
+55
+00:03:28.890 --> 00:03:31.890
+uses whatever string you pass in here,
+as a separator.
+
+56
+00:03:31.890 --> 00:03:33.650
+So in this case it's a comma.
+
+57
+00:03:33.650 --> 00:03:35.230
+So we have what,a,great,day,today.
+
+58
+00:03:37.300 --> 00:03:39.820
+All right, let's see how to modify arrays.
+
+59
+00:03:39.820 --> 00:03:44.710
+You can modify arrays either by
+saying push or using this operator.
+
+60
+00:03:44.710 --> 00:03:47.690
+And that basically pushes
+to a back of an array.
+
+61
+00:03:48.760 --> 00:03:51.830
+You could remove from
+an array either pop or shift.
+
+62
+00:03:53.120 --> 00:03:58.690
+And you could modify specific element of
+an array by using the index operator.
+
+63
+00:04:01.050 --> 00:04:05.630
+Another feature of arrays,
+which I find real useful in Ruby,
+
+64
+00:04:05.630 --> 00:04:09.210
+is the idea to use a sample method.
+
+65
+00:04:09.210 --> 00:04:12.620
+You could sample either one element,
+or multiple elements.
+
+66
+00:04:12.620 --> 00:04:15.557
+Let's say you have a hundred elements and
+you say,
+
+67
+00:04:15.557 --> 00:04:19.527
+give me five elements from this array
+as a sample, you could do that.
+
+68
+00:04:19.527 --> 00:04:23.789
+That's great for
+testing as well as this great
+
+69
+00:04:23.789 --> 00:04:28.061
+feature to be able to sort or
+reverse an array.
+
+70
+00:04:28.061 --> 00:04:32.778
+And similarly to strings you have either
+the sort without the bean without
+
+71
+00:04:32.778 --> 00:04:36.340
+exclamation or sort with an exclamation.
+
+72
+00:04:36.340 --> 00:04:40.655
+And, as you probably could guess,
+this sort without the exclamation,
+
+73
+00:04:42.298 --> 00:04:46.620
+Actually sorts the array and
+returns a new copy of an array.
+
+74
+00:04:46.620 --> 00:04:51.380
+And sort with an exclamation and
+reverse actually modifies the array
+
+75
+00:04:51.380 --> 00:04:54.630
+in place as opposed to creating
+a new copy of an array.
+
+76
+00:04:56.270 --> 00:04:57.140
+So, let's see how these work.
+
+77
+00:04:58.950 --> 00:05:03.300
+So in some languages you have
+this special type called stack or
+
+78
+00:05:03.300 --> 00:05:05.640
+special type called queue.
+
+79
+00:05:05.640 --> 00:05:07.850
+In Ruby it's all an array.
+
+80
+00:05:07.850 --> 00:05:13.010
+And you can use, you can have methods that
+can make it look like a stack or a queue.
+
+81
+00:05:13.010 --> 00:05:16.360
+So for
+example let's say you want to use a stack.
+
+82
+00:05:16.360 --> 00:05:21.700
+You start an empty array,
+you push some elements on to the stack and
+
+83
+00:05:21.700 --> 00:05:26.620
+then when you pop off the stack,
+you get the last element of a stack.
+
+84
+00:05:27.790 --> 00:05:31.500
+That's called a last
+in/first out data structure.
+
+85
+00:05:31.500 --> 00:05:34.230
+Let's say you wanna use it as a queue,
+you could do that as well.
+
+86
+00:05:34.230 --> 00:05:38.020
+You push a bunch of elements
+on just to create an array and
+
+87
+00:05:38.020 --> 00:05:43.690
+then you wanna shift, would shift
+the first element out of an array.
+
+88
+00:05:43.690 --> 00:05:47.660
+So in this case it will be one which
+was the first element that went
+
+89
+00:05:47.660 --> 00:05:48.290
+into the array.
+
+90
+00:05:48.290 --> 00:05:50.260
+So that's first in, first out.
+
+91
+00:05:51.690 --> 00:05:55.290
+You also have like I
+mentioned sort in reverse.
+
+92
+00:05:55.290 --> 00:05:58.330
+So in this case you have five,
+three, four,
+
+93
+00:05:58.330 --> 00:06:01.550
+two which is just a bunch
+of random integers.
+
+94
+00:06:01.550 --> 00:06:03.160
+When you sort them.
+
+95
+00:06:03.160 --> 00:06:07.160
+It would sort them as two, three,
+four, five, and then you reverse them.
+
+96
+00:06:07.160 --> 00:06:09.720
+That would give you five,
+four, three, two.
+
+97
+00:06:09.720 --> 00:06:11.010
+And as I mentioned,
+
+98
+00:06:11.010 --> 00:06:15.650
+the exclamation in this case actually
+modifies the contents of an array.
+
+99
+00:06:15.650 --> 00:06:21.350
+And that's what you have, you have
+an array that got modified in place.
+
+100
+00:06:21.350 --> 00:06:25.760
+Sample, as I mentioned, just basically
+pulls out two random elements of an array.
+
+101
+00:06:25.760 --> 00:06:26.330
+Nice feature.
+
+102
+00:06:27.470 --> 00:06:32.070
+Now what happens, I mentioned
+that arrays are auto expandable,
+
+103
+00:06:32.070 --> 00:06:37.270
+what happens if you have this array
+which only has four elements and
+
+104
+00:06:37.270 --> 00:06:42.930
+you specify that you want
+to add 33 as a the sixth or
+
+105
+00:06:42.930 --> 00:06:44.910
+the seventh element of the array?
+
+106
+00:06:44.910 --> 00:06:49.950
+Well when I say seventh it's because
+arrays, again indexed with zero.
+
+107
+00:06:51.320 --> 00:06:55.082
+So what happens is,
+the array gets auto expanded.
+
+108
+00:06:55.082 --> 00:07:00.619
+So you have the first four
+elements that already existed,
+
+109
+00:07:00.619 --> 00:07:07.286
+and then it adds two nils to fill in for
+the two spaces that are missing,
+
+110
+00:07:07.286 --> 00:07:11.480
+and then the seventh element becomes 33.
+
+111
+00:07:11.480 --> 00:07:14.000
+There are also lots of
+other useful array methods.
+
+112
+00:07:14.000 --> 00:07:17.200
+For example, each, select, reject, map.
+
+113
+00:07:18.500 --> 00:07:21.900
+And we'll actually go
+through these in a minute.
+
+114
+00:07:21.900 --> 00:07:27.070
+But there are many, many others, and
+you should really check out the array API.
+
+115
+00:07:27.070 --> 00:07:31.488
+And I'll have the slide for
+what the URL for that is in a minute.
+
+116
+00:07:31.488 --> 00:07:33.450
+So let's go through each
+one of these methods.
+
+117
+00:07:33.450 --> 00:07:39.082
+You have the each, the each is
+basically an iterator over array.
+
+118
+00:07:39.082 --> 00:07:44.373
+And you guessed that because it's
+an iterator it takes a block.
+
+119
+00:07:44.373 --> 00:07:48.660
+Select is something you could
+use to filter an array.
+
+120
+00:07:48.660 --> 00:07:50.610
+And again, it takes a block and
+
+121
+00:07:50.610 --> 00:07:54.740
+in the block you specify the condition
+of how you want to fill the array.
+
+122
+00:07:54.740 --> 00:07:56.580
+We'll see that in a minute, as well.
+
+123
+00:07:56.580 --> 00:07:59.510
+Reject is the opposite of select.
+
+124
+00:07:59.510 --> 00:08:04.090
+It's saying, look at this array and based
+on a condition that I'm gonna provide you
+
+125
+00:08:04.090 --> 00:08:06.840
+reject some elements of an array.
+
+126
+00:08:06.840 --> 00:08:09.540
+And map, like it sounds,
+
+127
+00:08:09.540 --> 00:08:14.760
+basically maps every element
+in the array to a new element.
+
+128
+00:08:15.860 --> 00:08:18.810
+Again, based on the block on
+the condition that you wanna use.
+
+129
+00:08:18.810 --> 00:08:22.920
+And you get back out
+of map using a map and
+
+130
+00:08:22.920 --> 00:08:25.620
+new array that contains
+all those mapped elements.
+
+131
+00:08:26.960 --> 00:08:32.470
+So this is the URL for
+where to find the array API.
+
+132
+00:08:32.470 --> 00:08:37.470
+So let's see some examples of how to use
+the methods I covered in previous slide.
+
+133
+00:08:37.470 --> 00:08:40.700
+So let's say I have an array
+one through four and so on.
+
+134
+00:08:40.700 --> 00:08:48.120
+So loop through each element and perform
+some kind of something on each element.
+
+135
+00:08:48.120 --> 00:08:53.620
+You basically pass the element
+in as a parameter to a block.
+
+136
+00:08:53.620 --> 00:08:57.500
+And then in this case we're just
+printing out that element every time.
+
+137
+00:08:57.500 --> 00:09:01.630
+And when using print it actually
+doesn't print a new line, so
+
+138
+00:09:01.630 --> 00:09:03.910
+we'll get one, three, four, and so on.
+
+139
+00:09:06.140 --> 00:09:07.960
+The next feature is Select.
+
+140
+00:09:07.960 --> 00:09:09.760
+So you have an array.
+
+141
+00:09:11.010 --> 00:09:15.490
+And then you select from that array,
+which creates a new array.
+
+142
+00:09:15.490 --> 00:09:19.480
+And the condition that you're providing
+is a block, which basically says,
+
+143
+00:09:19.480 --> 00:09:23.210
+give me any element of that
+array that is greater than four.
+
+144
+00:09:23.210 --> 00:09:25.180
+And that creates a new array.
+
+145
+00:09:25.180 --> 00:09:27.960
+So the new array is gonna be seven,
+eight and ten.
+
+146
+00:09:27.960 --> 00:09:30.540
+It's a nice feature.
+
+147
+00:09:30.540 --> 00:09:35.000
+Not only that,
+you could chain all these methods.
+
+148
+00:09:35.000 --> 00:09:40.100
+So, for example,
+you could say give me, let's see,
+
+149
+00:09:40.100 --> 00:09:44.370
+a bunch of elements where each
+element is less than ten and
+
+150
+00:09:44.370 --> 00:09:48.180
+reject, filter out,
+any elements that are even.
+
+151
+00:09:48.180 --> 00:09:51.820
+So what you're left with is this
+array of one, three, and seven.
+
+152
+00:09:51.820 --> 00:09:56.750
+And lastly,
+with map method you have an array and
+
+153
+00:09:56.750 --> 00:10:00.930
+then you map each element based on
+the condition that you're gonna provide.
+
+154
+00:10:00.930 --> 00:10:04.707
+So in this case the condition
+is x multiply by three.
+
+155
+00:10:04.707 --> 00:10:09.030
+So you end up with a new array that
+says three, nine, 12 and so on.
+
+156
+00:10:11.440 --> 00:10:15.520
+In summary, Arrays API is very
+flexible and very powerful.
+
+157
+00:10:15.520 --> 00:10:17.180
+I just showed you guys a few methods, but
+
+158
+00:10:17.180 --> 00:10:20.060
+there are many more methods
+there that are very useful.
+
+159
+00:10:20.060 --> 00:10:26.470
+And I fell in love with the array API and
+Array the first time I saw it in Ruby.
+
+160
+00:10:26.470 --> 00:10:30.968
+And there are lots of
+ways to process elements.
+
+161
+00:10:30.968 --> 00:10:36.610
+So you could map them and
+you could do other tricks on the elements.
+
+162
+00:10:37.650 --> 00:10:40.050
+As well as you could sample them.
+
+163
+00:10:40.050 --> 00:10:41.980
+Right?
+To pull out a bunch of elements of array.
+
+164
+00:10:43.520 --> 00:10:45.050
+Next we're gonna cover ranges.
+
+165
+00:10:45.050 --> 00:10:48.350
+I know I may reference
+the ranges in a few places.
+
+166
+00:10:48.350 --> 00:10:50.873
+And we'll finally gonna cover
+them in the next lecture.

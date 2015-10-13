@@ -1,0 +1,145 @@
+[MUSIC] Hi, and welcome to lecture 10. In lecture 10, we'll talk about classes
+and how classes are used in Ruby. We'll talk about objects and
+how they are created, and we'll talk about how to
+access data within those objects. So, just to do a brief review
+of object-oriented programming. In OO, we identify with things that
+the program is gonna be dealing with. So, maybe a car, a book, and those things become classes,
+sort of the blueprints of the objects. And you create objects
+out of those classes, and those of instances of those classes. And each instance usually
+contains instance variables, which is the state of an object. So, for example, if you're talking
+about a car, a car might be driving. So driving would be a behavior which is
+a method that you call on the object. And the state might be
+that the car is red, so that's like a property of an object. The instance variables in
+Ruby begin with an @ symbol. So for example, @name would be your
+name instance variable for an object. The interesting thing is that, in Ruby,
+the instance variables are not declared. They, sort of, just spring into
+existence as we're gonna see. And once they spring into existence, they're available to all
+instance methods of class. They way objects are created in Ruby
+is by calling a new method on a class, and that actually calls
+the initialize method. The initialize method in Ruby is a special
+method that acts as a constructor, as we're gonna see in a minute. And all your state, the state of an object should be
+initialized inside the initialize method. So let's take a quick example which
+summarizes all these concepts. We have a Person class, yes? So we have a class and an end. That's how you define the class. And then inside the class
+you have methods, which initialize a special method, which
+I'm gonna be calling the constructor. And then you can have other methods, maybe get_info or drive or
+other instance methods. So, in this case, we're passing a name and age variables to the constructor,
+which assigns them to, in this case, a name instance variable and
+an age instance variable. So what's happening is that
+the Person class, by calling new and passing those parameters,
+creates an object of a Person class, which gets assigned to person1 variable,
+and at this point we could see
+that the person1 variable, which represents an object, has two
+instance variables, @name and@ age. Then we call the get_info instance
+method on this person1 variable. And at this point, we have three
+instance variables, @name, @age, and @additional_info, because
+the get_info also happens to define an additional
+info instance variable. Now to access the data,
+we can't just access it by referring to instance variables,
+because they are private. We can't get access to instance variables. What you have to do is, you have to define
+methods, and methods have public access, by default, so any method that's defined,
+an instance method is accessible and we are going to see later on
+how we can limit that access. But, if you don't do anything,
+methods have public access. So to be able to get the data
+out of instance variables, you need to create the "getter" and
+the "setter" methods. So, quick example of that. You have a same Person class
+with a name and an age. You have a name getter and a name setter. It's interesting that in Ruby
+there's no get name method and a set name method, the getters and the setters
+are just defined with the same name. Let's say in this case, happens to be
+name, to get it, and a name= to set it. Passing in the new value for
+what you want the name to be. In this case we have Joe and
+14, name is a getter. It's not directly accessing
+the instance variable. We access it through
+the instance method called name. A setter equals, and notice how you're
+allowed to have space in-between name and equals even though the method name
+is actually name=, which is fine. Now, if you say person1.age, it's gonna
+give you an undefined method age for person because you have not defined
+an age getter in this example. Many times the getter and the setter logic is really simple, you get
+existing value and you set a new value. So it'd be nice to have an easier
+syntax to be able to set and get your instance variable values. And what do you know? There is. So there's a syntax of attr_ and you can
+specify if you wanna atter_accessor, which basically creates a getter and
+a setter method for you automatically. Do you wanna attr_reader,
+which only creates a getter, or attr_writer, which creates only a setter? So a quick example of that they
+have the same person class but instead of having all those
+methods like name, for getter or name equals for setter, or age for
+getter and age equals for setter. What you have is you just
+have an attr_accessor and then you provide comma separated lists
+of which attribute you want access to. So in this case accessor means that
+you want both setter and a getter, so that's :name and :age, and those methods
+are automatically created for you. So in this case we're saying Person.new,
+which is a constructor. The constructor exists because
+it's a blank constructor, so we just say person.new which
+creates a new variable for you. And then we could do person.name, which will give you nil because you haven't assigned the name to it yet. Now we set it to a string, which is
+fine because Ruby's a dynamic language. It starts integer, then it goes to
+a string, and that's totally fine. Now the two issues though with
+previous example is that, number one, right when you create the person,
+he's in an uninitialized state because we haven't really assigned any
+properties, any values to the person. And at that point if you
+use the person1 variable, you're not gonna get anything out of
+it because it's completely blank. The second issue is that,
+we probably wanna control the age, cuz right now we have age as anything. You could assigned 200 and
+that's gonna be fine. And a lot of times you're not gonna
+have an issue of just setting or getting a value, but sometimes you do
+wanna have more control, in which case, the attr_accessor might not
+be what you're looking for. So the way we're gonna solve the issue is,
+we're gonna number one, use a constructor that actually
+passes the values in, and this so you don't just have a blank constructor
+that just creates a completely blank object that doesn't have any attributes,
+instead we wanna have a constructor that passes the values, and we also want
+to use a more intelligent age setter. But first let's talk about self. So self is a special keyword in Ruby, which when used inside an instance
+method refers to the object, itself. And we see, in a minute,
+why that's useful. Usually self for calling other
+methods of the same instance is extra. You're, obviously, if you're calling
+a method, and you're inside an instance, well, you're obviously referring to
+the same methods of the same instance, but sometimes calling self is required,
+and we're gonna see when that is when we
+see an example on the next slide. Outside of instance method,
+self refers to the class itself, so if you see it outside of a definition
+it refers to the class itself. And that's gonna be a topic when we
+discuss the class methods later on. So let's see an example. We're solving the issue of
+having an uninitialized person. We have attr_reader :age. When we get the age out, we don't really
+care, there's really no way to mess it up, I mean you're just getting the value back. So for the getter we're gonna
+define attr_reader to get the :age, but for setter we're gonna have
+a more controlled age definition, which is gonna be age gets assigned a
+new_age, so assign new_age unless the age is a high number, in which case you
+don't wanna assign the age, okay? And now a constructor, what we're gonna
+do is, we're gonna pass the name and the age variable as two
+parameters to the constructor. So the name is just gonna
+be whatever we pass it. For the age,
+we're actually gonna call the age = the age assignment method,
+where the value of it gets passed in. And in this case, what's gonna happen is,
+it's only gonna assign to an age instance variable if it
+is of a certain value. And puts age actually calls the age
+reader, which is the getter method. Now, why do we need, and it's absolutely a requirement to
+have a self in this case, why? Because, let's imagine for a second
+that you wouldn't have self dot here. You would just have age = ageVar. Well, what'd happen is,
+the Ruby interpreter would say oh, you're trying to create
+a new_age local variable? That's great. The ageVar would get assigned
+to a new local variable. And then by the time you got to
+the end of the initialized method that variable will go out of scope and you will never actually assign
+anything to the age instance variable. So to be able to really
+call a method in this case, we're saying self.age,
+which says @age = is not just a local variable, it's a method. So @age = the method,
+which is defined in this class. And hey, Ruby interpreter, don't
+interpret the age as a local variable, instead interpret it
+as a call to a method, to an instance method that's
+defined in this class. That's why when we assign
+the variable you absolutely have to call self.age otherwise the age
+is gonnabe mistaken as a local variable. So to see a full example here,
+we have a Person.new, we pass in the variables, and you could
+print out and see what's happening. Again, age in this case is
+calling the age getter. And then let's say we try to assign
+some kind of ridiculous value to an age, trying to change it. It's not gonna change because
+the setter is gonna say, I'm not executing this line
+because the new_age that's passed in is greater than 120, and
+you will be left with the old age. In summary, Objects are created with new,
+from classes so calling Person.new,
+creates a new person object. We can use the short form for setting and getting data when it's really
+simple kind of data like name. So you would have a attr_accessor for
+name, and assign a name to a person class
+when you actually use it. And don't forget to use
+the self when it's required. So basically any time you assign
+a variable, which basically means, you are calling a setter method,
+you wanna use a self, otherwise, you don't wanna use a self or
+you don't have to use a self, you could just use the actual method,
+itself without saying self.. Right, so what's next? Next we'll talk about Class
+inheritance and class methods.

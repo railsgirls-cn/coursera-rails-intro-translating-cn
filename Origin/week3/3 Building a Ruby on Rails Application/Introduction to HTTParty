@@ -1,0 +1,975 @@
+WEBVTT
+
+1
+00:00:00.423 --> 00:00:07.924
+[MUSIC]
+
+2
+00:00:07.924 --> 00:00:09.860
+Hi, and welcome to lecture seven.
+
+3
+00:00:09.860 --> 00:00:13.530
+In this lecture we'll talk about RubyGems,
+in general, and
+
+4
+00:00:13.530 --> 00:00:16.510
+a specific RubyGem called HTTParty.
+
+5
+00:00:18.250 --> 00:00:21.610
+So RubyGems is basically
+a package manager.
+
+6
+00:00:21.610 --> 00:00:24.450
+You could look it up on
+the website called RubyGems.org.
+
+7
+00:00:24.450 --> 00:00:30.541
+There are really hundreds and thousands of
+different third party RubyGems out there.
+
+8
+00:00:32.690 --> 00:00:38.100
+And Gem is just a package manager that
+comes installed with a Ruby installation.
+
+9
+00:00:38.100 --> 00:00:41.550
+And you could things like
+do gem install certain gem.
+
+10
+00:00:44.360 --> 00:00:49.470
+Now if you want to see if a gem is already
+installed, you could do gem list, and
+
+11
+00:00:49.470 --> 00:00:54.980
+in this case httparty, and you're gonna
+see that that gem is not yet installed.
+
+12
+00:00:56.410 --> 00:00:59.480
+So at that point,
+you could do gem install httparty.
+
+13
+00:00:59.480 --> 00:01:03.750
+You could also specify dash v for
+a particular version if you want,
+
+14
+00:01:03.750 --> 00:01:06.790
+or you could just get the latest
+one if you don't specify a version.
+
+15
+00:01:08.180 --> 00:01:11.640
+And it's going to go out to
+that rubygems.org web site and
+
+16
+00:01:11.640 --> 00:01:12.339
+grab a gem for you.
+
+17
+00:01:14.590 --> 00:01:23.060
+Now you could also see more details
+about the gem by providing a -d action.
+
+18
+00:01:23.060 --> 00:01:27.410
+And in this case it tells you who
+the authors are, what the license is, and
+
+19
+00:01:27.410 --> 00:01:29.000
+most importantly, what the gem does.
+
+20
+00:01:30.140 --> 00:01:33.110
+And it says that it makes http fun!
+
+21
+00:01:33.110 --> 00:01:34.990
+Okay, whatever that means.
+
+22
+00:01:34.990 --> 00:01:39.100
+Also, makes consuming restful
+web services dead easy.
+
+23
+00:01:39.100 --> 00:01:44.440
+So let's concentrate on this sentence over
+here, restful web services dead easy.
+
+24
+00:01:45.550 --> 00:01:48.820
+So what are restful web
+services altogether?
+
+25
+00:01:48.820 --> 00:01:54.240
+So restful web services are basically your
+web services that are implemented using
+
+26
+00:01:54.240 --> 00:01:59.660
+HTTP and the principles of REST,
+which means that they have a base URI.
+
+27
+00:02:00.880 --> 00:02:06.180
+They support a data exchange format
+like XML or JSON and possibly others.
+
+28
+00:02:07.370 --> 00:02:11.370
+And they support a set of HTTP
+operations like GET and POST.
+
+29
+00:02:11.370 --> 00:02:15.880
+And basically the idea behind this,
+without going too much into what REST is
+
+30
+00:02:15.880 --> 00:02:22.440
+and how it works, is that we're flipping
+the whole idea of the web on its head.
+
+31
+00:02:22.440 --> 00:02:28.120
+Instead of thinking of a web in
+general as a bunch of HTML pages,
+
+32
+00:02:28.120 --> 00:02:33.830
+think of it as more of in line to
+an MVC pattern we've been discussing.
+
+33
+00:02:33.830 --> 00:02:38.440
+A website is really something
+that just stores some resources.
+
+34
+00:02:38.440 --> 00:02:43.630
+When you go to the website, you could get
+those resources in any one of formats.
+
+35
+00:02:43.630 --> 00:02:45.800
+Maybe you'll get it back as HTML.
+
+36
+00:02:47.940 --> 00:02:49.287
+Maybe you'll get it back as JSON.
+
+37
+00:02:49.287 --> 00:02:50.557
+Maybe you'll get it back as XML.
+
+38
+00:02:50.557 --> 00:02:56.240
+And they're basically different
+formats representing the same thing.
+
+39
+00:02:56.240 --> 00:02:59.110
+Now some formats are easier
+to parse than others.
+
+40
+00:02:59.110 --> 00:03:04.640
+For example HTML is not so
+friendly to parse.
+
+41
+00:03:04.640 --> 00:03:06.360
+But XML and JSON are.
+
+42
+00:03:08.000 --> 00:03:11.690
+So, okay, so that means I have to now
+
+43
+00:03:11.690 --> 00:03:17.200
+learn a whole new format like JSON XML and
+actually write a parser for the Ruby.
+
+44
+00:03:17.200 --> 00:03:20.980
+Oh no, so that's where HTTParty comes in.
+
+45
+00:03:20.980 --> 00:03:24.640
+HTTParty is a restful web services client.
+
+46
+00:03:24.640 --> 00:03:26.870
+So, think your browser.
+
+47
+00:03:26.870 --> 00:03:32.830
+Your browser's essentially a client
+of a website, of a different server,
+
+48
+00:03:32.830 --> 00:03:39.010
+and most of the time you see
+HTML pages inside your browser.
+
+49
+00:03:39.010 --> 00:03:42.535
+So your browser requests something
+from the server, the server gives it
+
+50
+00:03:42.535 --> 00:03:46.400
+back to him, and the browser displays
+the information inside the browser and
+
+51
+00:03:46.400 --> 00:03:47.980
+usually that's HTML.
+
+52
+00:03:47.980 --> 00:03:49.210
+But again that is hard to parse.
+
+53
+00:03:49.210 --> 00:03:53.430
+So if you actually want to use that data,
+if you are doing a machine to machine
+
+54
+00:03:53.430 --> 00:03:59.150
+communication for example,
+then you want to request some information
+
+55
+00:03:59.150 --> 00:04:05.130
+via a rails application
+from a different server.
+
+56
+00:04:05.130 --> 00:04:10.058
+You would rather have that as
+a format that's easily to parse, and
+
+57
+00:04:10.058 --> 00:04:12.170
+not just easily to display.
+
+58
+00:04:14.450 --> 00:04:17.510
+So that's where HTTParty comes in.
+
+59
+00:04:17.510 --> 00:04:20.470
+HTTParty provides automatic
+parsing of JSON and
+
+60
+00:04:20.470 --> 00:04:23.350
+XML into your Ruby hashes or arrays.
+
+61
+00:04:23.350 --> 00:04:28.920
+So as long as the format that's coming
+back from somewhere is a valid JSON,
+
+62
+00:04:28.920 --> 00:04:34.130
+a valid XML,
+HTTParty has a very easy time parsing
+
+63
+00:04:34.130 --> 00:04:39.340
+that into your Ruby structures,
+and then you could just use it.
+
+64
+00:04:39.340 --> 00:04:40.810
+It also provides support for
+
+65
+00:04:40.810 --> 00:04:46.090
+things like authentication as well
+as default request query parameters.
+
+66
+00:04:47.990 --> 00:04:52.350
+And web services are really out
+there pretty much everywhere.
+
+67
+00:04:52.350 --> 00:04:57.030
+Every self-respecting website
+usually has a web service
+
+68
+00:04:57.030 --> 00:05:01.950
+that it provides in addition
+to the HTML pages it provides.
+
+69
+00:05:01.950 --> 00:05:07.513
+But again, we're flipping the whole
+idea of web services on its head,
+
+70
+00:05:07.513 --> 00:05:09.273
+of web on its head, and
+
+71
+00:05:09.273 --> 00:05:15.135
+saying that really HTML that you see in
+a browser is just one of the formats.
+
+72
+00:05:15.135 --> 00:05:18.335
+By the form it could be adJSONjacent, it
+could be XML, it could be anything else.
+
+73
+00:05:20.865 --> 00:05:23.715
+So how do you actually use the HTTParty?
+
+74
+00:05:23.715 --> 00:05:25.155
+Well, it's actually pretty simple.
+
+75
+00:05:25.155 --> 00:05:29.475
+You include the HTTParty module and
+at that point you are ready to go.
+
+76
+00:05:31.400 --> 00:05:35.148
+And then you can specify the base_uri for
+your requests.
+
+77
+00:05:35.148 --> 00:05:39.430
+Because the base_uri is gonna
+be pretty much the same across
+
+78
+00:05:39.430 --> 00:05:41.520
+many different requests.
+
+79
+00:05:41.520 --> 00:05:44.020
+You could specify default_params.
+
+80
+00:05:44.020 --> 00:05:45.030
+So for example,
+
+81
+00:05:45.030 --> 00:05:48.870
+let's say in your class you're gonna
+have many different types of requests.
+
+82
+00:05:48.870 --> 00:05:52.850
+But all of them are going to have
+a API developer key, for example.
+
+83
+00:05:52.850 --> 00:05:57.150
+If that's what the web service
+provider requires you to put in.
+
+84
+00:05:57.150 --> 00:06:00.110
+So you could just specify
+that at the default parameter
+
+85
+00:06:00.110 --> 00:06:01.670
+that applies to all your requests.
+
+86
+00:06:03.100 --> 00:06:05.330
+And then you could also specify,
+
+87
+00:06:05.330 --> 00:06:09.740
+you should specify the format to tell
+us which format the data is coming in.
+
+88
+00:06:12.140 --> 00:06:12.900
+And, what do you know?
+
+89
+00:06:12.900 --> 00:06:18.290
+Coursera itself has a restful
+API that it exposes.
+
+90
+00:06:18.290 --> 00:06:20.790
+So you could go on
+the Coursera website and
+
+91
+00:06:20.790 --> 00:06:25.420
+search for courses, and
+you see the information in HTML,
+
+92
+00:06:25.420 --> 00:06:31.070
+which is how Coursera would
+prefer to display its courses.
+
+93
+00:06:31.070 --> 00:06:36.810
+But Coursera will also give you
+raw information via a JSON format,
+
+94
+00:06:36.810 --> 00:06:41.490
+which you yourself could figure out
+how do display or what to do with.
+
+95
+00:06:41.490 --> 00:06:44.640
+This over here is the URL that describes
+
+96
+00:06:44.640 --> 00:06:48.700
+in detail how the Coursera's
+restful API works.
+
+97
+00:06:51.220 --> 00:06:55.830
+So before I even jump into
+how this works in HTTParty,
+
+98
+00:06:55.830 --> 00:06:59.900
+a lot of times, it's useful to
+see how it works in a browser.
+
+99
+00:07:01.170 --> 00:07:04.530
+So this would be your base URI, and then,
+
+100
+00:07:04.530 --> 00:07:09.190
+these are your request parameters
+which return back JSON.
+
+101
+00:07:09.190 --> 00:07:13.070
+And as you could see here,
+JSON actually is very nicely formatted.
+
+102
+00:07:13.070 --> 00:07:15.980
+And you can even collapse it and
+expand it, which is really nice.
+
+103
+00:07:15.980 --> 00:07:20.870
+So this particular behavior
+you could get by installing
+
+104
+00:07:20.870 --> 00:07:26.200
+an JSONView browser plugin, and this is
+actually available for both Chrome and
+
+105
+00:07:26.200 --> 00:07:31.780
+Firefox, possibly other
+browsers out there and.
+
+106
+00:07:32.950 --> 00:07:37.160
+So again, basically, it's a base URI,
+which has some request parameters.
+
+107
+00:07:37.160 --> 00:07:42.120
+In this particular case,
+if you don't specify any extra fields,
+
+108
+00:07:42.120 --> 00:07:44.110
+you'll get a certain subset of fields.
+
+109
+00:07:44.110 --> 00:07:48.990
+But in this case, I also want to get
+the small icon as a field coming back
+
+110
+00:07:48.990 --> 00:07:54.250
+from Coursera and a short description
+of a course which are not available
+
+111
+00:07:54.250 --> 00:08:00.440
+as the actual subset of fields, but I
+want those extra fields in there as well.
+
+112
+00:08:00.440 --> 00:08:04.350
+You also specify a q request parameter.
+
+113
+00:08:04.350 --> 00:08:08.770
+Oh yeah, and by the way, I should also
+mention that whenever you specify multiple
+
+114
+00:08:08.770 --> 00:08:14.820
+request parameters, so the first one,
+you just specify after question mark.
+
+115
+00:08:14.820 --> 00:08:17.650
+And any additional ones,
+if you do anything in the browser,
+
+116
+00:08:17.650 --> 00:08:22.840
+you specify with this @,
+I'm sorry, this ampersand symbol.
+
+117
+00:08:24.710 --> 00:08:29.130
+So the second parameter that Coursera
+expects if you're searching for
+
+118
+00:08:29.130 --> 00:08:35.120
+something on its website
+is gonna be this q=search.
+
+119
+00:08:35.120 --> 00:08:38.250
+And then a third parameter,
+if you're searching,
+
+120
+00:08:38.250 --> 00:08:43.610
+it also wants the query parameter with the
+actual value of what are you looking for.
+
+121
+00:08:43.610 --> 00:08:45.030
+What kind of courses are you looking for?
+
+122
+00:08:46.270 --> 00:08:50.110
+Once you put this in
+you'll get back this JSON.
+
+123
+00:08:51.330 --> 00:08:56.260
+And I'm not gonna go into the exact
+format of what a JSON format looks like,
+
+124
+00:08:56.260 --> 00:09:01.910
+because, again, HTTParty's gonna take care
+of it for us, actually parsing it into its
+
+125
+00:09:01.910 --> 00:09:06.720
+native Ruby format of hashes and arrays.
+
+126
+00:09:06.720 --> 00:09:08.960
+But in this case, as you can see,
+
+127
+00:09:08.960 --> 00:09:13.610
+it's basically something that comes
+back that has an elements key, right.
+
+128
+00:09:13.610 --> 00:09:18.560
+So it's gonna be a hash, a Ruby hash
+that's gonna have an elements key.
+
+129
+00:09:18.560 --> 00:09:22.990
+And under that elements key, there's
+gonna be an array of different elements.
+
+130
+00:09:22.990 --> 00:09:26.040
+So this is course one that came back,
+course two.
+
+131
+00:09:26.040 --> 00:09:31.310
+And each one of those courses
+in turn is gonna have its own.
+
+132
+00:09:31.310 --> 00:09:34.030
+It's gonna be represented as its own hash.
+
+133
+00:09:34.030 --> 00:09:38.590
+So in this case the hash is gonna
+be a key ID and a value, and
+
+134
+00:09:38.590 --> 00:09:40.660
+a key and a value, and so on.
+
+135
+00:09:40.660 --> 00:09:45.150
+So all of these guys become your keys and
+these are the values.
+
+136
+00:09:47.880 --> 00:09:51.620
+So, let's actually see a full example
+of how you do this in HTTParty.
+
+137
+00:09:51.620 --> 00:09:53.780
+Again, it's very simple.
+
+138
+00:09:53.780 --> 00:09:58.950
+You have to require HTTParty
+because this is not a gem
+
+139
+00:09:58.950 --> 00:10:00.930
+that's part of Ruby, you installed it.
+
+140
+00:10:00.930 --> 00:10:02.980
+And anything that's not part of Ruby,
+
+141
+00:10:02.980 --> 00:10:05.690
+you actually have to require
+with a require statement.
+
+142
+00:10:07.040 --> 00:10:10.920
+Not only that, even things which
+are part of Ruby, for example with pp,
+
+143
+00:10:10.920 --> 00:10:16.880
+which is pretty print, is part of Ruby,
+but it's not used so often.
+
+144
+00:10:17.890 --> 00:10:21.080
+So you also have to require
+it by saying require pp.
+
+145
+00:10:22.510 --> 00:10:27.910
+Okay so this is our Coursera class,
+we include the HTTParty module.
+
+146
+00:10:27.910 --> 00:10:33.340
+And that will specify, again, based on
+what we got, based on what we figured out,
+
+147
+00:10:33.340 --> 00:10:38.237
+based on this URL which we put into a
+browser, our base_uri is going to be this.
+
+148
+00:10:38.237 --> 00:10:42.900
+That our default_params
+assuming that we actually want
+
+149
+00:10:42.900 --> 00:10:47.730
+to always get back all of these fields for
+all the requests.
+
+150
+00:10:47.730 --> 00:10:52.200
+We specify a fields request
+parameter which is comma separated.
+
+151
+00:10:52.200 --> 00:10:56.190
+In this case,
+it's just smallIcon,shortDescription, and
+
+152
+00:10:56.190 --> 00:11:04.700
+we also wanna tell it that we're gonna
+be searching the Coursera web service,
+
+153
+00:11:04.700 --> 00:11:08.520
+so we specify a q request
+parameter of search.
+
+154
+00:11:09.890 --> 00:11:12.360
+Okay so that's our default_params.
+
+155
+00:11:12.360 --> 00:11:17.570
+And lastly, we want to tell it,
+we want to tell HTTParty that the stuff
+
+156
+00:11:17.570 --> 00:11:22.860
+we're getting back from Coursera is
+actually a JSON format as opposed to XML.
+
+157
+00:11:22.860 --> 00:11:27.210
+So this class happens to have
+just one method, and that's fine.
+
+158
+00:11:27.210 --> 00:11:29.190
+But you could have multiple methods.
+
+159
+00:11:29.190 --> 00:11:34.160
+And if you have multiple methods,
+these three lines would apply to
+
+160
+00:11:34.160 --> 00:11:38.160
+all of those methods, base_uri,
+default_params, and a format.
+
+161
+00:11:38.160 --> 00:11:43.005
+So, in this case we have
+a class method called for.
+
+162
+00:11:43.005 --> 00:11:46.425
+Which takes a term for
+what we're looking for.
+
+163
+00:11:46.425 --> 00:11:50.355
+So in this case it would be
+Ruby that we're using here.
+
+164
+00:11:51.455 --> 00:11:53.525
+And then we make a get request.
+
+165
+00:11:53.525 --> 00:11:56.075
+Get is something that
+HTTParty provides you with.
+
+166
+00:11:56.075 --> 00:11:56.942
+It's a method.
+
+167
+00:11:56.942 --> 00:12:00.720
+And we're not really passing anything
+else, that's pretty much it.
+
+168
+00:12:00.720 --> 00:12:04.280
+The base_uri and
+the default_params is all we need.
+
+169
+00:12:05.940 --> 00:12:10.540
+And then as a second parameter,
+we pass some more request parameters.
+
+170
+00:12:10.540 --> 00:12:13.242
+So more request parameters, this case,
+
+171
+00:12:13.242 --> 00:12:17.960
+are gonna be the query request
+parameters and it's a little confusing.
+
+172
+00:12:17.960 --> 00:12:22.772
+So the query key here is HTTParty key, but
+
+173
+00:12:22.772 --> 00:12:28.685
+the query here is this key
+over here that we provided
+
+174
+00:12:28.685 --> 00:12:33.925
+as a last request parameter, query=ruby.
+
+175
+00:12:33.925 --> 00:12:40.320
+So we're telling HTTParty that there's
+a bunch of more request parameters.
+
+176
+00:12:40.320 --> 00:12:41.986
+In this case just one.
+
+177
+00:12:41.986 --> 00:12:45.330
+Which we pass in as a hash, and
+
+178
+00:12:45.330 --> 00:12:49.510
+the only one we actually pass then is
+this query parameter which is gonna be
+
+179
+00:12:49.510 --> 00:12:53.900
+the value of term, which is
+a parameter we pass into the method.
+
+180
+00:12:54.920 --> 00:13:00.480
+Now once we get this back,
+we're gonna get back a big hash,
+
+181
+00:13:00.480 --> 00:13:05.190
+which is gonna have elements as its key,
+as you could see from a previous page.
+
+182
+00:13:05.190 --> 00:13:11.620
+And to pull stuff out of a hash,
+we're gonna use the index
+
+183
+00:13:11.620 --> 00:13:16.270
+elements, and that's just the typical
+Ruby way to pull stuff out of a hash.
+
+184
+00:13:17.430 --> 00:13:22.328
+And as you could see, the actual values
+
+185
+00:13:22.328 --> 00:13:27.380
+of the hash is an array of Ruby elements.
+
+186
+00:13:28.820 --> 00:13:34.650
+That's what we would get back for
+the for method.
+
+187
+00:13:34.650 --> 00:13:37.140
+So to test this out,
+maybe we could do Coursera,
+
+188
+00:13:37.140 --> 00:13:40.690
+which is a class name,
+.for because it is a class method.
+
+189
+00:13:40.690 --> 00:13:43.840
+So we're not actually
+instantiating a Coursera class,
+
+190
+00:13:43.840 --> 00:13:48.940
+we just call it for class method and
+passing the parameter, let's say python.
+
+191
+00:13:49.990 --> 00:13:53.770
+So what this would bring back,
+is it would bring back an array,
+
+192
+00:13:53.770 --> 00:13:58.730
+where each element in
+the array would be a hash, and
+
+193
+00:13:59.830 --> 00:14:04.580
+each pair in that hash
+would be the key value,
+
+194
+00:14:04.580 --> 00:14:08.130
+of, let's say id, shortName,
+with its value and so on.
+
+195
+00:14:09.370 --> 00:14:16.420
+So this is how you use HTTParty To parse,
+to request stuff from a web service,
+
+196
+00:14:16.420 --> 00:14:22.320
+and parse it into a hash and arrays,
+your native Ruby structures.
+
+197
+00:14:22.320 --> 00:14:24.130
+And then that's how it answer coming back.
+
+198
+00:14:25.300 --> 00:14:32.252
+So in summary, HTTParty makes it extremely
+easy to ingest Restful web services.
+
+199
+00:14:32.252 --> 00:14:36.520
+Converting them Ruby Hashes or arrays,
+or whatever appropriate structure is,
+
+200
+00:14:37.570 --> 00:14:40.790
+and the JSON and
+XML formats are supported.
+
+201
+00:14:42.300 --> 00:14:43.140
+So what's next?
+
+202
+00:14:43.140 --> 00:14:47.490
+Next we'll talk about Bundler
+because right now we know how to
+
+203
+00:14:47.490 --> 00:14:52.180
+develop a Rails web application,
+we also know how to use HTTParty, but
+
+204
+00:14:52.180 --> 00:14:57.740
+how do you actually put a gem, a third
+party gem into your Rails application?
+
+205
+00:14:57.740 --> 00:15:02.753
+And, actually, how do all those other gems
+inside the Rails application already,
+
+206
+00:15:02.753 --> 00:15:05.372
+how did their dependencies get synched up?

@@ -1,0 +1,74 @@
+[MUSIC] Hi, and welcome to this lecture
+on introduction to Git. We'll talk about what Git is and
+some good Git resources and references. So, Git is a version control system, which basically means it's a system that
+keeps track of changes made to files. Think of it as a way to snapshot
+your code changes as you make them. So you work on the project,
+things work, great. You commit this stuff to some system,
+and it keeps track of them, so that, as you keep on working, if things
+all of a sudden stop working, you're able to go back to that last version
+where you know things used to work. It's also known as SCM which
+is a Source Code Management. But basically VCS and
+SCM too are the same terms. A lot of you might be used to a concept
+of a centralized version system, something like a CVS which is a real old
+one or subversion, also known as SVN, and, in those systems, the repository or your code storage resides in
+some central server out there. And client only has one
+version of a trunk or branch. So as you're working on your laptop, if you need a different version you would
+either ask the essential server or you could commit a new version yourself to the
+central server and the central server will know that that is the new version, either
+of it on the trunk or on the branch. Well in Git, things are different. Git is a distributed
+version control system. Actually another example of
+a distributed VCS Mercurial. And in those systems the full repository
+resides locally on your system. It's not sitting on some server out there. And the full history of all the commits
+that were ever made also resides locally on your system, which means that
+the server is almost not involved. You could commit often, and those
+commits go to your local storage system, which is stored right
+there on your laptop. Now, you're still gonna be pushing and pulling between repositories to sync up,
+but really, with full history of everything is going to be on your
+local system or the other system. So, each repository is its own unit,
+its own independent unit that contains all the code and
+all the history of all the commits, which means the backups are kind of
+trivial and readily available because it's not a question of backing up
+some central server out there. Every single repository is it's own unit. The repositories are distributed, which
+means that every repository is it's own unit, which is readily
+available to be backed up. Some good basics, you only have one
+.git directory at the top level. If you are working or something if you
+worked with something like SVN you'll know that SVN for
+example sprinkles with .SVN directory all over the place pretty much in
+every directory that you work with. Git doesn't do that, git just has one .git directory, which
+is at the top level of your repository. The general workflow is you got
+to have to have a repositories, you either create one,
+initialize a new one, or you, if it's an existing one, you could clone
+an existing one from remote source. And at that point if you clone one,
+you have two identical repositories, one in the server, and
+one locally on your laptop, which contains a full
+history as we just discussed. At that point you add
+changes to a staging area. And then from that staging area you commit
+the changes to your local repository, which means again that all the interaction
+happens locally in your system. Now at some point you might also
+want to do step number four, which is pushing the changes out from your
+local repository to remove the repository, but really the snapshotting is happening
+on your system as you're committing to your local repository way before you
+push your changes to a mode repository. Also, some terminology when it comes to
+git, when you commit, you commit locally and when you push, you push remotely,
+as opposed to the SVN, you are committing. When you're committing, you're committing
+to a central server out there, and there is no push step. Git's official website is git-scm.com,
+where you could download git. But of course you already installed
+it as part of a installation video, and the interesting part about this
+is that there is a link to learn Git in your browser for free with Try Git,
+which I highly encourage. It's a good way to get your
+hands dirty with Git and do that right in the browser
+without having to install anything. There's a free git book out
+there on the same website, git-scm.com/book, which is available for
+free online. You could also buy it as a hard
+copy from Amazon, if you want. Another good Git reference out
+there is called gitref.org. What I find interesting about
+this particular reference is that Git really has many different commands and
+many different use cases. This particular reference tries to pick
+out the commands that are being used on an everyday basis and
+explain just those commands, which makes it easier to break into Git. In summary, Git lets you snapshot
+changes to your code really nicely. And it promotes committing changes often,
+because all the changes I've been snapshotting right
+there on your system locally. What's next? Next we'll actually go through
+a working example of a git, of how to manage git's local repository,
+and you guys will get used to seeing some
+of git's commands and what they do.

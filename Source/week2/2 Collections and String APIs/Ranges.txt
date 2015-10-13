@@ -1,0 +1,52 @@
+[MUSIC] Hi, and welcome to Lecture 8. In this lecture, we will talk
+about ranges, what ranges are and how they are useful in Ruby. So ranges are essentially just data type in Ruby that are used to express
+natural consecutive sequences. So for example, you wanna express
+1 through 20 or a through z, you could do that using ranges. And really there are two
+rules to keep in mind. If there are two dots
+in-between the beginning and end that you're trying to express,
+so for example 1 and 10. Two dots means all inclusive,
+1 is included, 10 is included and, obviously, all the numbers
+in between are included. If I have three dots,
+three dots means end-exclusive. So 1 is included, 1 through 9
+are included, but 10 is not included. In my mind I always confuse them,
+so the way I remember them is that the more dots you have,
+the less you have at the end. Which is kind of counterintuitive,
+but that's just how I remember them. So two dots is all-inclusive, and
+three dots is last one not included. What's so special about the ranges? Can't we do this already using arrays? Well, first of all,
+they are very easy to create. You just need the first and the last part
+of a sequence, of a consecutive sequence. But number two which is more important,
+they are very efficient. You're only storing the start and
+the end and Ruby knows what to do with the rest of it. So let's say you have a sequence of
+a million numbers from one to a million, you're not gonna be storing a million
+elements of your array in memory. You're just gonna store the first number
+and the last number, which is great. Now, if you do need more methods out
+of this range that you're creating, you could always convert it to an array
+by calling to_a method on the range. And boom, now you have a full blown array,
+and you could do whatever you could do with arrays,
+which we covered in the previous lecture. And, another thing that ranges
+are used for, and probably what they're most used for, are conditions and
+intervals, as we'll see in a minute. So, let's say you have some range from 1
+to 3, and two dots, so it's all inclusive. 1 is included, 3 is included,
+and obviously 2 is included. So let's see what methods
+can you call in the ranges. You could call a max and
+see what the max element. You could call include, and
+say does this range include 2? Sure, it does. Now here's our little friend,
+the triple equals. So there's a range of 1 through 10, it's really 1 through 9 because
+it's 1 through 10 exclusive. Does that include 5.3? Sure it does. Does the range of a through r exclusive, does that include r? It does not because it's end-exclusive
+cuz there are three dots here, it does not include r. Now, here's the converting to
+the array that I was talking about. Grab a sequence from k to z, and then convert it to an array,
+and pull out 2 elements. So you could see how in one line of code,
+we have something that creates an array of 2 random elements from k to z. It's useful. And, this is just an example
+in the context of how you use the ranges in a case statement. So let's say you have age
+variable which is 55, and you have a case flavor that says case age,
+where age is right next to the case. And you have,
+when a range of 0 through 12, and remember that the case statement
+uses a triple equals by default. And then puts whatever
+you wanna put there, so, the condition and
+the result and so on. You could have else in the areas as well,
+and that's how ranges work. Okay, so ranges are useful for
+consecutive sequences. That's what you use them for. You create them by
+specifying the beginning and the end of the consecutive sequence. And you could convert a range to
+an array for more functionality if you need to exercise more
+functionality on what you are creating. Next, we'll talk about hashes, which in some other languages may be known
+as dictionaries or maps or whatever.

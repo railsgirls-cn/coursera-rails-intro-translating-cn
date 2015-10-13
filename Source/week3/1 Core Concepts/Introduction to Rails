@@ -1,0 +1,503 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:06.317
+[MUSIC]
+
+2
+00:00:06.317 --> 00:00:08.240
+Hi.
+
+3
+00:00:08.240 --> 00:00:10.390
+And welcome to Lecture 1 of Module 3.
+
+4
+00:00:11.700 --> 00:00:15.150
+In this lecture,
+we'll talk about some brief Rails history,
+
+5
+00:00:15.150 --> 00:00:18.670
+some benefits of using Rails and
+a Model View Controller pattern.
+
+6
+00:00:20.510 --> 00:00:22.580
+So what is Rails?
+
+7
+00:00:22.580 --> 00:00:26.580
+Rails is a framework for
+making dynamic web applications.
+
+8
+00:00:26.580 --> 00:00:31.480
+So the idea is that you are trying
+to generate some dynamic
+
+9
+00:00:31.480 --> 00:00:34.560
+content that's gonna be
+passed back to a browser.
+
+10
+00:00:35.650 --> 00:00:39.376
+And by dynamic, I mean content that
+maybe is gotten from a database or
+
+11
+00:00:39.376 --> 00:00:40.350
+some other ways.
+
+12
+00:00:41.390 --> 00:00:46.248
+If you have an HTML page that is
+always gonna look the same and
+
+13
+00:00:46.248 --> 00:00:52.963
+it's not gonna be dynamic, then Rails is
+probably an overkill framework to use.
+
+14
+00:00:52.963 --> 00:00:57.595
+It was created in 2004, 2005 by this guy,
+David Heinemeier Hansson.
+
+15
+00:00:57.595 --> 00:01:00.690
+Who is picture below and yes,
+he is also a race car driver.
+
+16
+00:01:02.470 --> 00:01:03.590
+So who is using Rails?
+
+17
+00:01:03.590 --> 00:01:10.272
+A lot of big, as well as medium websites
+like Hulu, Groupon, LivingSocial, Twitter.
+
+18
+00:01:10.272 --> 00:01:15.710
+And startups in general,
+love Rails because of its idea
+
+19
+00:01:15.710 --> 00:01:19.630
+of being able to rapidly prototype and
+develop applications quickly.
+
+20
+00:01:21.140 --> 00:01:23.070
+Now how does it do this?
+
+21
+00:01:23.070 --> 00:01:28.480
+Well, one of the principles Rails uses
+is called Convention Over Configuration.
+
+22
+00:01:28.480 --> 00:01:29.920
+And basically the idea is,
+
+23
+00:01:29.920 --> 00:01:34.070
+that you could approach application
+development in one of two ways.
+
+24
+00:01:34.070 --> 00:01:37.400
+You could either configure everything
+you're doing from scratch.
+
+25
+00:01:37.400 --> 00:01:41.040
+Or you could rely on conventions
+that have been established.
+
+26
+00:01:41.040 --> 00:01:44.990
+Maybe some Best Practices out there and
+follow those conventions.
+
+27
+00:01:46.540 --> 00:01:50.790
+And if you could assume certain
+conventions, then there's less code
+
+28
+00:01:50.790 --> 00:01:55.830
+to write because the framework can assume
+that you're following certain conventions.
+
+29
+00:01:55.830 --> 00:01:58.320
+Which means that it could
+either generate that code for
+
+30
+00:01:58.320 --> 00:02:02.650
+you or sometimes there is
+no code to write at all.
+
+31
+00:02:02.650 --> 00:02:06.530
+Because again, the framework can
+assume the conventions for you.
+
+32
+00:02:07.580 --> 00:02:12.000
+Another benefit of this pattern of
+conventional configuration is that
+
+33
+00:02:12.000 --> 00:02:15.260
+you learn the project development once.
+
+34
+00:02:15.260 --> 00:02:21.140
+And you could apply those same concepts on
+the next Rails project that you work on.
+
+35
+00:02:22.420 --> 00:02:24.000
+So you know what to expect the next time.
+
+36
+00:02:26.180 --> 00:02:30.730
+The other benefit of Rails is that
+you have Database Abstraction Layer.
+
+37
+00:02:30.730 --> 00:02:36.956
+Is that Ruby on Rails lets you interact to
+the database not by writing SQL queries.
+
+38
+00:02:36.956 --> 00:02:42.530
+But by sort of extracting your code
+
+39
+00:02:42.530 --> 00:02:48.580
+in Ruby and interacting with your
+database using your Ruby code.
+
+40
+00:02:48.580 --> 00:02:52.480
+Which is sometimes called ORM,
+which is Object-Relational Mapping.
+
+41
+00:02:52.480 --> 00:02:56.490
+You map your database
+to your Ruby Classes.
+
+42
+00:02:58.150 --> 00:03:02.810
+Rails is also agile-friendly,
+cross-platform, open-source and
+
+43
+00:03:02.810 --> 00:03:07.700
+modular which means that you could
+swap out different components.
+
+44
+00:03:07.700 --> 00:03:12.930
+So if you don't like a certain component,
+you could swap it out for a different one.
+
+45
+00:03:12.930 --> 00:03:15.230
+And Rails makes that pretty easy to do.
+
+46
+00:03:16.480 --> 00:03:22.110
+Another interesting built-in feature
+of Rails is that it uses SQLite.
+
+47
+00:03:22.110 --> 00:03:25.611
+SQLite is a self-contained, serverless,
+
+48
+00:03:25.611 --> 00:03:30.330
+zero-configuration, transactional
+SQL database engine.
+
+49
+00:03:30.330 --> 00:03:36.193
+Which basically means that it's just
+a file sitting on your file system,
+
+50
+00:03:36.193 --> 00:03:39.800
+but it acts as a relational
+database engine.
+
+51
+00:03:39.800 --> 00:03:44.356
+And the benefit of this, is that you don't
+have to configure a complicated database
+
+52
+00:03:44.356 --> 00:03:47.460
+engine to start developing
+the application.
+
+53
+00:03:47.460 --> 00:03:50.270
+Right when you create
+your Rails application,
+
+54
+00:03:50.270 --> 00:03:54.040
+the ability to interact to
+the database is right there.
+
+55
+00:03:54.040 --> 00:03:59.050
+Now because the database development
+is abstracted, you are able to
+
+56
+00:03:59.050 --> 00:04:05.000
+switch to a different database engine
+later on if you wish to do so.
+
+57
+00:04:05.000 --> 00:04:06.720
+But right at the beginning,
+
+58
+00:04:06.720 --> 00:04:10.650
+you don't have to go through those
+details of configuring a database engine.
+
+59
+00:04:12.120 --> 00:04:16.600
+And the claim is that SQLite is
+actually the most widely deployed
+
+60
+00:04:16.600 --> 00:04:18.900
+SQL engine in the world.
+
+61
+00:04:18.900 --> 00:04:23.170
+Because the browsers use it,
+iPhone, Android uses it.
+
+62
+00:04:23.170 --> 00:04:26.690
+And different other big
+applications use it.
+
+63
+00:04:26.690 --> 00:04:29.770
+Again, because it feels
+like a realtional database.
+
+64
+00:04:29.770 --> 00:04:31.210
+When in reality, it's just a file.
+
+65
+00:04:32.480 --> 00:04:37.310
+Another concept that Rails heavily uses
+is this idea of Model View Controller.
+
+66
+00:04:37.310 --> 00:04:42.189
+And the Model View Controller is
+something that was invented by
+
+67
+00:04:42.189 --> 00:04:44.958
+Professor Reenskaug in 1979.
+
+68
+00:04:44.958 --> 00:04:48.170
+And it's a well-established
+software pattern used by many web,
+
+69
+00:04:48.170 --> 00:04:49.730
+as well as desktop frameworks.
+
+70
+00:04:50.760 --> 00:04:54.315
+And the idea is,
+this idea of separation of concerns.
+
+71
+00:04:54.315 --> 00:05:00.330
+You have a model layer which represents
+the data of application is working with.
+
+72
+00:05:00.330 --> 00:05:04.140
+So think of this maybe as
+something to start a new database.
+
+73
+00:05:04.140 --> 00:05:10.710
+And the Ruby code that gets that
+data out of a database for example.
+
+74
+00:05:11.830 --> 00:05:15.640
+Then you have a View, which is
+a visual representation of that data.
+
+75
+00:05:15.640 --> 00:05:19.030
+And this could be, maybe an HTML file or
+
+76
+00:05:19.030 --> 00:05:22.510
+this could be a JSON, or
+this could be an XML file.
+
+77
+00:05:22.510 --> 00:05:24.000
+That's a representation of that data.
+
+78
+00:05:25.100 --> 00:05:27.080
+And the last one is the Controller,
+
+79
+00:05:27.080 --> 00:05:29.680
+that sort of marries
+together the model and view.
+
+80
+00:05:30.730 --> 00:05:33.150
+And you might ask, how is this useful?
+
+81
+00:05:33.150 --> 00:05:38.530
+Well again, the idea is the separation of
+concerns that where view doesn't have to
+
+82
+00:05:38.530 --> 00:05:40.970
+be the one getting the data
+out of a database.
+
+83
+00:05:40.970 --> 00:05:43.180
+So this facilitates your use.
+
+84
+00:05:43.180 --> 00:05:46.570
+You could have a model that gets
+the data out of a database and
+
+85
+00:05:46.570 --> 00:05:51.020
+then the controller is saying, hey,
+display the data maybe as HTML.
+
+86
+00:05:51.020 --> 00:05:55.280
+Or no, display that data as JSON,
+or display that data as XML.
+
+87
+00:05:56.580 --> 00:06:00.520
+And what you do is,
+what you'll use, the part
+
+88
+00:06:00.520 --> 00:06:04.750
+of an application that gets data out of a
+database for many different presentations.
+
+89
+00:06:06.940 --> 00:06:12.850
+And the way this specifically works in
+Rails is, you have a, let's say a website,
+
+90
+00:06:12.850 --> 00:06:17.240
+you have a browser that makes
+a query to a Rails application and
+
+91
+00:06:17.240 --> 00:06:19.200
+it goes to the controller.
+
+92
+00:06:19.200 --> 00:06:22.060
+And the controller says okay,
+so what am I gonna do now?
+
+93
+00:06:22.060 --> 00:06:26.216
+I'm gonna interact to the model and
+maybe get some data from a database.
+
+94
+00:06:26.216 --> 00:06:29.606
+And then the controller,
+once it has that data,
+
+95
+00:06:29.606 --> 00:06:34.990
+is gonna pass that data over to
+the view which might be your HTML page.
+
+96
+00:06:34.990 --> 00:06:39.140
+And that HTML page gets
+displayed back to a browser.
+
+97
+00:06:40.220 --> 00:06:43.890
+So in summary, Rails is very good for
+Rapid Prototyping.
+
+98
+00:06:43.890 --> 00:06:46.180
+Because of all these different concepts.
+
+99
+00:06:46.180 --> 00:06:49.571
+And specifically MVC,
+the Model View Controller and
+
+100
+00:06:49.571 --> 00:06:54.394
+the Convention Over Configuration
+are great concepts to enable you to think
+
+101
+00:06:54.394 --> 00:06:55.546
+less and do more.
+
+102
+00:06:55.546 --> 00:06:59.860
+You just follow a certain conventions,
+so you follow a certain patterns and
+
+103
+00:06:59.860 --> 00:07:04.220
+you're able to write your application
+without thinking, how am I gonna do this?
+
+104
+00:07:04.220 --> 00:07:05.690
+So where does this fit?
+
+105
+00:07:07.580 --> 00:07:08.670
+What's next?
+
+106
+00:07:08.670 --> 00:07:11.998
+Next, we're gonna talk about creating
+your first Rails application.

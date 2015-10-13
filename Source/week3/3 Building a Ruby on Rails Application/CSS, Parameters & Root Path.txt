@@ -1,0 +1,77 @@
+[MUSIC] Hi.
+And welcome to Lecture 10. In the previous lecture, we've integrated
+the Rails application of HP party. But it looks kind of horrible. So we're gonna add some basic styling and
+this will actually fix that. We're also gonna make
+the application more dynamic and allow you to specify your request
+parameter, cuz right now, the data is always being pulled for
+GHU, but we wanna make that dynamic. And let you specify what
+you're looking for as a user. And we're gonna talk about
+routing a root path. So before talking about
+the view while making the changes to how pretty
+the application is. It's a good place to talk
+about where is the view? So I mentioned before that we saw the
+elements that actually go inside the body. But we've never seen the doc type and
+the HTML and the body element. So it turns out,
+that's located in the views, layouts, application.html.erb. So this is a layout that's specified and each individual page gets
+displayed inside the body. So this way,
+you only get to write this page once, specifying what is
+the title of application. And which CSS files you wanna include and
+that applies to all of your views. Now you can override that, you can specify
+that this view should get this way out and you could have multiple layouts, but
+I'm not gonna cover that in this course. So what are we trying to improve? This is how our page looks right now, so number one, the border looks
+kind of weird for a table. Also the padding for each field, for each column, really there is no padding,
+so it's very close to the edge. And also,
+all the rows are sort of the same and it would be nice to what's
+called zebrify them. Make them alternate, maybe a colors, so
+maybe make one a white color background. Maybe one different color background. So how would you do that? So that's where CSS comes in. And when you generate the controller, you get a file called with
+a control name.SCSS created for you under the stylesheets directory. Now SCSS is really not CSS, it's Sass which we're not gonna
+talk about in this course. But the good news is that Sass
+is just a superset of CSS. So it supports everything
+that CSS supports and more. So you could use regular CSS
+inside of your sass files. So we're gonna have three different rules,
+CSS rules. Number one for table element,
+we're gonna say collapse the border. For the table column we're
+gonna say add some padding and we are also gonna have a class,
+an even class which the background of that even
+class is gonna be some color. If you're not familiar with CSS, specifically CSS classes and
+how they work, do check out course four
+when we cover that. So, now in our index, that html.erb, what we have,
+is we have an ability to specify. I guess what we wanna specify
+is that every other class, every other row gets an even or
+an odd class. And you could do that to
+the cycle Rails helper basically to specify that this
+table row should have a class. And the class should be either even or
+odd and it's gonna Cycle through. And you can have multiple of these,
+not just two, you could have four or five classes, for whatever reason, you wanna
+cycle through many more values than two. But in this case,
+I'm just cycling through even and odd. And every other row is gonna
+get either even or odd value. So this way every other row
+will have even class in it. And look at that, the borders collapsed,
+the padding is in place, and the table. Every other row in the table is
+a different color, which is great. Now, the next thing we wanna do is we
+wanna be able to specify the search term. The params Hash in Rails is just
+the help that we're looking for. And it's basically just a hash that parses the value of a parameter, and
+becomes either symbol, or key, in hash. If the key does not exist,
+the nil is returned, which is the standard hash behavior. So in this case,
+we're gonna be looking for a request parameter called looking_for. So Params, looking for if this value
+exists, use that as a search term. If not, use a default which
+we're going to keep as jhu. That's what this is saying. Use the one found in the Params hash. Otherwise, use the default, and
+actually if only change we have to make is a change in the controller because
+the model doesn't really care what the search term is passed in to
+it as long as there is a search term. And the view doesn't care which elements
+it gets back as part of courses. So in this case, what we're doing is we're
+passing the request parameter of looking underscore forr equals python which goes to this params hash and
+gets parsed as python. And now it's looking for python and then the courses you
+get back are the python courses. If you don't specify anything then
+it uses the default of jhu and you get the jhu courses. Now, right now, every time, in our application we have
+to type in /course, /index. Our application is really only
+dealing with searching courses, so it would be great if
+we could just save it. The default, the root path. Could just point to the courses
+controller and the index action. And you could do that by specifying in the route that are B, root, courses index. Which means that the root path your application is gonna go to courses
+controller and the index action. So now if we don't specify course's index, we just specify looking for, which is our
+request parameter, equals I don't know, let's say diet, we get these courses. So in summary, minor CSS changes
+can dramatically enhance the app. Params helper is what you need for
+being able to extract the request parameters and
+use them in your Rails application. And it is very easy to change the root
+path by tweaking the routes.rb file. What's next? Alright the application's ready to go,
+now we just need to deploy it to Heroku.

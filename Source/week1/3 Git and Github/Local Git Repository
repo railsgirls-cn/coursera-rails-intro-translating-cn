@@ -1,0 +1,672 @@
+WEBVTT
+
+1
+00:00:00.473 --> 00:00:08.553
+[MUSIC]
+
+2
+00:00:08.553 --> 00:00:09.893
+Hi and welcome.
+
+3
+00:00:09.893 --> 00:00:14.423
+In this lecture we'll talk about how to
+interact with your local Git repository.
+
+4
+00:00:14.423 --> 00:00:18.965
+Before you are able to interact
+with your Git repository,
+
+5
+00:00:18.965 --> 00:00:21.473
+you have to tell Git who you are.
+
+6
+00:00:21.473 --> 00:00:26.893
+So that when you commit your snapshots,
+Git knows how to accurately track that.
+
+7
+00:00:26.893 --> 00:00:31.808
+So, specifically with the two
+properties you have to tell Git about,
+
+8
+00:00:31.808 --> 00:00:34.330
+is user.name, and user.email.
+
+9
+00:00:34.330 --> 00:00:38.208
+For you do that as follows,
+git config --global,
+
+10
+00:00:38.208 --> 00:00:42.439
+if you want this to apply to
+all of your Git repositories,
+
+11
+00:00:42.439 --> 00:00:46.690
+and specify a property name,
+space, the actual value.
+
+12
+00:00:47.690 --> 00:00:50.630
+To check that that actually worked,
+you could do git config and
+
+13
+00:00:50.630 --> 00:00:51.690
+then the action name.
+
+14
+00:00:51.690 --> 00:00:52.780
+For example, user.name,
+
+15
+00:00:52.780 --> 00:00:56.520
+and hopefully you'll get back
+what the value that you put in.
+
+16
+00:00:58.870 --> 00:01:02.470
+Also you can get help on any git command
+by doing git help and the command name.
+
+17
+00:01:03.820 --> 00:01:09.920
+Okay great, so now we have, we interact
+with repository, where is the repository?
+
+18
+00:01:09.920 --> 00:01:14.820
+Well, you could create a new repository
+by going to a directory whose files you
+
+19
+00:01:14.820 --> 00:01:21.040
+wanted to track and then do git init and
+that will create an repository.
+
+20
+00:01:21.040 --> 00:01:26.160
+Then you could do git add .,
+which will add all the current
+
+21
+00:01:27.660 --> 00:01:34.730
+files in the current directory with
+its subdirectories to a staging area.
+
+22
+00:01:34.730 --> 00:01:39.110
+Now, you could have this
+.gitgnore file where
+
+23
+00:01:39.110 --> 00:01:42.400
+you could specify the files
+that you don't want added.
+
+24
+00:01:42.400 --> 00:01:44.540
+For example, some temporary files or
+
+25
+00:01:44.540 --> 00:01:48.150
+some other files that maybe you don't
+want to keep track in the repository.
+
+26
+00:01:49.480 --> 00:01:53.977
+Then once the files are in the staging
+area after this git add .,
+
+27
+00:01:53.977 --> 00:01:58.573
+you could do git commit -m for
+the initial commit to repository.
+
+28
+00:01:58.573 --> 00:02:03.060
+And yay, your files are now
+in the local repository.
+
+29
+00:02:03.060 --> 00:02:08.098
+The other action is to clone a repository,
+for example from GitHub, and
+
+30
+00:02:08.098 --> 00:02:13.480
+you can do it by saying, git clone and
+then the URL of your GitHub repository.
+
+31
+00:02:13.480 --> 00:02:17.860
+And that's gonna pull the GitHub
+repository onto your local system.
+
+32
+00:02:20.370 --> 00:02:22.000
+The next thing you want to do is,
+
+33
+00:02:22.000 --> 00:02:26.730
+you always want to be checking
+the current status of your repository.
+
+34
+00:02:26.730 --> 00:02:29.242
+So in this case you'll do git status, and
+
+35
+00:02:29.242 --> 00:02:32.010
+it's gonna tell you that
+there's nothing to commit.
+
+36
+00:02:32.010 --> 00:02:34.800
+Working directory is clean
+because you have just committed.
+
+37
+00:02:34.800 --> 00:02:38.664
+So there are no differences
+between the working directory,
+
+38
+00:02:38.664 --> 00:02:43.830
+which is the directory in which you are
+working, and your local git repository.
+
+39
+00:02:43.830 --> 00:02:48.220
+Now you are also gonna see
+you're on branch master.
+
+40
+00:02:48.220 --> 00:02:52.820
+And branches is a complicated topic and
+I wanna try to avoid that.
+
+41
+00:02:52.820 --> 00:02:56.950
+Even though once you start getting
+comfortable with git, definitely research,
+
+42
+00:02:56.950 --> 00:03:02.350
+how branches work, and
+git branch as a local, not just remote.
+
+43
+00:03:02.350 --> 00:03:06.029
+And it's a very cool topic, but it's not
+needed for the Ruby on Rails developing
+
+44
+00:03:06.029 --> 00:03:09.180
+we're gonna be doing in this course,
+and I'm gonna skip it for now.
+
+45
+00:03:09.180 --> 00:03:13.839
+[BLANK AUDIO]
+>> So
+
+46
+00:03:13.839 --> 00:03:19.180
+we saw before that you could add files,
+so it's a git add command.
+
+47
+00:03:19.180 --> 00:03:22.910
+And actually git add,
+it does one of two things.
+
+48
+00:03:22.910 --> 00:03:24.579
+It either,
+well actually both of those things.
+
+49
+00:03:25.740 --> 00:03:29.670
+It either adds untracked files,
+which means files that have
+
+50
+00:03:29.670 --> 00:03:33.250
+never been tracked from a repository
+area to a staging area.
+
+51
+00:03:33.250 --> 00:03:38.155
+Or it adds a modified but
+already tracked file to the staging area.
+
+52
+00:03:40.665 --> 00:03:46.225
+So for example, let's say we're
+working on a file called test.rb and
+
+53
+00:03:46.225 --> 00:03:49.325
+we are ready to stage it.
+
+54
+00:03:49.325 --> 00:03:52.765
+We're gonna do git add,
+that's gonna add it to the staging area.
+
+55
+00:03:52.765 --> 00:03:59.120
+So this section up here, it says, changes
+to be committed, is a staging area.
+
+56
+00:03:59.120 --> 00:04:02.640
+It's basically telling you,
+green means that it's ready to go,
+
+57
+00:04:02.640 --> 00:04:04.200
+it's in the staging area.
+
+58
+00:04:04.200 --> 00:04:12.800
+If you do a git commit now, this file
+test.rb will go into the git repository.
+
+59
+00:04:12.800 --> 00:04:15.260
+There are also files which
+are completely untracked.
+
+60
+00:04:15.260 --> 00:04:16.650
+So, for example,
+
+61
+00:04:16.650 --> 00:04:22.490
+we're working on a file called another.txt
+that has never been tracked by repository.
+
+62
+00:04:22.490 --> 00:04:26.840
+The git repository picks up on the fact
+that, well, the file was in this
+
+63
+00:04:26.840 --> 00:04:32.200
+directory, so maybe you wanna be tracking
+it, but right now it's untracked.
+
+64
+00:04:32.200 --> 00:04:34.030
+Now here is a very interesting thing.
+
+65
+00:04:34.030 --> 00:04:39.630
+There's a third section,
+which it changes not staged for commit.
+
+66
+00:04:39.630 --> 00:04:44.398
+Which basically means the test.rb is
+modified, but if you do git commit now,
+
+67
+00:04:44.398 --> 00:04:49.490
+the test.rb file will not
+go into your repository.
+
+68
+00:04:49.490 --> 00:04:54.090
+But that's preposterous because this
+section, which is the staging area,
+
+69
+00:04:54.090 --> 00:04:57.610
+says that it will go into repository.
+
+70
+00:04:57.610 --> 00:04:58.690
+So it doesn't make any sense.
+
+71
+00:05:00.140 --> 00:05:04.540
+So this is something that
+confuses a lot of people, but
+
+72
+00:05:04.540 --> 00:05:11.500
+mods made to a file after give add need
+to be re-added by doing git add again.
+
+73
+00:05:11.500 --> 00:05:17.200
+So if you were working on the file
+test.rb and you did git add,
+
+74
+00:05:17.200 --> 00:05:20.030
+which put it into the staging area,
+which is this section right here.
+
+75
+00:05:21.080 --> 00:05:24.640
+And you continued working on
+that file before you committed,
+
+76
+00:05:26.150 --> 00:05:30.980
+before you did ,git commit on this
+test.rb file, now you have a change set,
+
+77
+00:05:30.980 --> 00:05:35.600
+you have a snapshot of this file
+inside of your staging area.
+
+78
+00:05:35.600 --> 00:05:41.420
+And you also have a snapshot of this
+file in the section that's not staged.
+
+79
+00:05:41.420 --> 00:05:46.670
+So basically, at this point,
+you do git add on this test.rb file.
+
+80
+00:05:46.670 --> 00:05:49.970
+The whole file would go
+into the staging area.
+
+81
+00:05:49.970 --> 00:05:51.940
+There will be nothing in this section.
+
+82
+00:05:51.940 --> 00:05:55.970
+So you'll have a section for
+untracked files and another.txt and
+
+83
+00:05:55.970 --> 00:05:59.890
+you'll have a section that says,
+which is the staging area section,
+
+84
+00:05:59.890 --> 00:06:03.010
+which says test.rb is
+ready to be committed.
+
+85
+00:06:03.010 --> 00:06:09.824
+Then you do git.commit to commit this
+test.rb file to your local repository.
+
+86
+00:06:11.950 --> 00:06:13.470
+Git diff is another command.
+
+87
+00:06:14.600 --> 00:06:18.916
+And again based on where you are,
+based on what differences you want to see,
+
+88
+00:06:18.916 --> 00:06:20.210
+it's gonna show you.
+
+89
+00:06:20.210 --> 00:06:24.737
+So git diff, just doing that, the simple
+git diff will show you the difference
+
+90
+00:06:24.737 --> 00:06:27.840
+between the staging area and
+the working directors.
+
+91
+00:06:27.840 --> 00:06:31.361
+So what's been staged already and
+what's currently in the working directory,
+
+92
+00:06:31.361 --> 00:06:32.820
+which is where you're working.
+
+93
+00:06:34.000 --> 00:06:38.920
+Then you could do a git
+diff with a --staged, which
+
+94
+00:06:38.920 --> 00:06:43.080
+shows the changes in the HEAD, which is
+the latest commit on the current branch.
+
+95
+00:06:43.080 --> 00:06:47.600
+That's already in the repository and
+the staging directory.
+
+96
+00:06:47.600 --> 00:06:51.610
+And then git diff HEAD will show
+you the deltas between the HEAD,
+
+97
+00:06:51.610 --> 00:06:55.490
+which is the latest commit to repository,
+and the working directory.
+
+98
+00:06:55.490 --> 00:06:58.320
+So again, just keep in mind that
+there's a working directory,
+
+99
+00:06:58.320 --> 00:07:00.530
+where you're working right now.
+
+100
+00:07:00.530 --> 00:07:02.294
+There is a repository and
+
+101
+00:07:02.294 --> 00:07:07.510
+then there's also this in-between
+directory called the staging area.
+
+102
+00:07:07.510 --> 00:07:10.720
+So git commit is a command that
+commits your changes to repo.
+
+103
+00:07:10.720 --> 00:07:13.478
+If you just do it git
+commit without any flags,
+
+104
+00:07:13.478 --> 00:07:17.960
+it will prompt you for a commit message
+in an editor which is inconvenient.
+
+105
+00:07:19.390 --> 00:07:24.620
+So it's better just to pass it the -m flag
+and then you could specify the message.
+
+106
+00:07:24.620 --> 00:07:27.890
+So you do, git commit -m,
+and the message after that.
+
+107
+00:07:29.640 --> 00:07:34.740
+Now, if you wanna skip the staging area,
+what you would do is,
+
+108
+00:07:34.740 --> 00:07:39.800
+you would say git commit and
+then -a, which
+
+109
+00:07:41.110 --> 00:07:45.780
+is like all, or -am,
+which is the a and then message.
+
+110
+00:07:45.780 --> 00:07:49.550
+Either -a and -m separate, or
+-am together, it doesn't matter.
+
+111
+00:07:50.580 --> 00:07:55.000
+And in this case, we have if test.rb file,
+
+112
+00:07:55.000 --> 00:08:00.170
+which has not yet been staged, so
+changes not staged, it's modified.
+
+113
+00:08:00.170 --> 00:08:04.363
+So the repository knows it's modified and
+it's keeping track on it.
+
+114
+00:08:04.363 --> 00:08:11.039
+But you haven't staged it yet, which
+is fine because you're doing git commit
+
+115
+00:08:11.039 --> 00:08:15.960
+-am, you're able to skip the staging
+area and go straight to repository.
+
+116
+00:08:15.960 --> 00:08:24.710
+Now, this only works if you're
+already tracking this test.rb file.
+
+117
+00:08:24.710 --> 00:08:28.570
+So you have to at least once do a git add.
+
+118
+00:08:29.730 --> 00:08:33.980
+And now that the file is in
+the repository, or in the staging area and
+
+119
+00:08:33.980 --> 00:08:37.520
+then goes to repository,
+after it's been tracked.
+
+120
+00:08:37.520 --> 00:08:43.270
+The repository,
+you're able to just do git commit -am,
+
+121
+00:08:43.270 --> 00:08:45.790
+which lets you skip the staging area.
+
+122
+00:08:45.790 --> 00:08:51.490
+But, at least the first time, you have to
+add the file to be tracked by repository.
+
+123
+00:08:51.490 --> 00:08:57.760
+Otherwise, doing git commit -am is not
+gonna put that file into repository.
+
+124
+00:08:59.770 --> 00:09:02.040
+You could also go back in time.
+
+125
+00:09:02.040 --> 00:09:07.550
+So for example, before you committed
+something, if you wanna do git checkout,
+
+126
+00:09:07.550 --> 00:09:11.550
+that will recheck out, which basically
+pull all the changes from your local
+
+127
+00:09:11.550 --> 00:09:15.770
+repository and overwrite your local
+changes in the working directory.
+
+128
+00:09:15.770 --> 00:09:20.880
+You could also do git checkout -- <file>,
+which will just overwrite
+
+129
+00:09:20.880 --> 00:09:25.560
+that one specific file </file>, with the
+latest changes in your local repository.
+
+130
+00:09:26.930 --> 00:09:29.330
+Now, if you already committed
+to your local repository,
+
+131
+00:09:29.330 --> 00:09:34.280
+you could always do git revert HEAD and
+that's gonna revert the most recent commit
+
+132
+00:09:34.280 --> 00:09:39.020
+and put you back right before
+you commit the last time.
+
+133
+00:09:41.050 --> 00:09:44.060
+In summary, you have to add a file for
+
+134
+00:09:44.060 --> 00:09:47.100
+tracking at least once before
+it can make it into repo.
+
+135
+00:09:47.100 --> 00:09:48.700
+This is something that
+confuses a lot of people.
+
+136
+00:09:50.720 --> 00:09:56.880
+And you can easily go back in time to
+a snapshot, that it's before time.
+
+137
+00:09:56.880 --> 00:09:58.960
+That's before you committed the last time.
+
+138
+00:10:00.500 --> 00:10:01.720
+What's next?
+
+139
+00:10:01.720 --> 00:10:05.231
+Next we'll talk about GitHub and
+remote repositories in Git and
+
+140
+00:10:05.231 --> 00:10:06.800
+how to interact with those.
