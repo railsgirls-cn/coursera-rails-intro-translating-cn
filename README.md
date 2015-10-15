@@ -34,7 +34,7 @@
 2. Week 2
 	- Getting to Know Ruby
 		- 0 Introduction to Ruby
-		- 1 Ruby Basics by @runajiang
+		- 1 Ruby Basics by [@runajiang](https://github.com/runajiang)
 		- 2 Flow of Control
 		- 3 Functions
 		- 4 Blocks
@@ -93,8 +93,6 @@
 修改之后，首先push到你的库，然后登录GitHub，在你的库的首页可以看到一个 `pull request` 按钮，点击它，填写一些说明信息，然后提交即可。
 
 
-# 开源协议
-基于[WTFPL](http://en.wikipedia.org/wiki/WTFPL)协议开源。
 
 
 
