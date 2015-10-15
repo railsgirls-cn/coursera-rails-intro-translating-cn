@@ -26,11 +26,21 @@
 
 
 # 译者记录
-- Week 1 
-	- Course Introduction
-	- Setting Up the Development Environment
-- Week 2
-- Week 3
+1.  Week 1 
+	- Welcome to Ruby on Rails An Introduction
+		- Course Introduction
+	- Installing Software
+		- Setting Up the Development Environment
+2. Week 2
+	- Getting to Know Ruby
+		- 0 Introduction to Ruby
+		- 1 Ruby Basics by @runajiang
+		- 2 Flow of Control
+		- 3 Functions
+		- 4 Blocks
+		- 5 Files
+	- Collectios and String APIs
+3. Week 3
 
 
 # 贡献力量
