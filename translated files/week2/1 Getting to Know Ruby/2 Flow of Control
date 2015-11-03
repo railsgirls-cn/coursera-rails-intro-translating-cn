@@ -49,13 +49,13 @@ is this === operator?
 00:00:38.240 --> 00:00:42.850
 So, the if, the elsif are probably
 structures with which
-
+if和elsif都常和
 
 10
 00:00:42.850 --> 00:00:45.340
 a lot of us are familiar from
 other programming languages.
-我们熟悉的其他变成语言
+我们熟悉的其他编程语言一起使用
 
 11
 00:00:46.510 --> 00:00:51.260
@@ -67,14 +67,14 @@ parentheses or curly braces when you find
 00:00:51.260 --> 00:00:56.390
 those, and you use end to
 close the flow control block.
-用end来作为控制流块的结束
+用end来作为控制流代码块的结束
 
 13
 00:00:56.390 --> 00:00:59.849
 So whether it's just if statement,
 or if and else statement,
-所以，不管是只用if的陈述
-还是用if和else的陈述
+所以，不管是只用if的语句
+还是用if和else的语句
 
 14
 00:00:59.849 --> 00:01:02.476
@@ -86,13 +86,13 @@ have the end at the end.
 00:01:04.076 --> 00:01:09.450
 So in this case you have the a variable
 which gets assigned a value of five.
-在这个例子里面，你有一个变量，赋予的数值是5
+在这个例子里面，你有一个变量，赋值是5
 
 16
 00:01:09.450 --> 00:01:12.055
 So when you assign it,
 it's a single equals.
-所以当你赋值时，这就是个单等号
+当你赋值时，用单等号
 
 17
 00:01:12.055 --> 00:01:14.905
@@ -135,7 +135,7 @@ that's what's printed out.
 23
 00:01:37.680 --> 00:01:38.420
 A is not six.
-A不是6
+a不是6
 
 24
 00:01:40.520 --> 00:01:42.530
@@ -153,7 +153,7 @@ which gets assigned a value of ten.
 00:01:47.670 --> 00:01:53.110
 And while a is greater than nine, you keep
 on executing the contents of the loop.
-当a大于9的时候，你就执行内容的循环
+当a大于9的时候，你就执行这个的循环
 
 27
 00:01:54.680 --> 00:02:00.270
@@ -171,7 +171,7 @@ once because the second time,
 29
 00:02:04.470 --> 00:02:07.480
 a is going to be not greater than nine.
-A就不会大于9了
+a就不会大于9了
 
 30
 00:02:07.480 --> 00:02:09.894
@@ -188,7 +188,7 @@ Ruby里面特有的，意思正好和while相反，就是until
 32
 00:02:19.400 --> 00:02:20.490
 So a is nine.
-A等于9
+a等于9
 
 33
 00:02:20.490 --> 00:02:27.280
@@ -213,48 +213,50 @@ it will not execute.
 00:02:37.550 --> 00:02:44.280
 Now Ruby gets even more expressive
 in that there's this modifier form,
-Ruby会更有表现力
-这有个
+在下面这两个modifier form的例子里
+Ruby就更贴近日常语言的表达了
 
 37
 00:02:44.280 --> 00:02:48.270
 so the modifier form lets you
 print things out in one line.
-modifier form会让你输出在一行里
+这是个if  modifier form
+在modifier form里，你可以在一行代码里输入所有的条件
 
 38
 00:02:48.270 --> 00:02:51.890
 So puts one liner if A is five and
-所以，puts一行，如果a等于5
+如果a等于5，b等于0，就输出“one liner”
 
 39
 00:02:51.890 --> 00:02:56.720
 B is zero, so
 it almost reads like very natural English.
-B等于0，读起来就跟故事会一样
+读起来就跟大白话一样
 
 40
 00:02:56.720 --> 00:02:58.640
 And this applies to while as well.
-对于while来说也一样
+对于while也一样
 
 41
 00:02:58.640 --> 00:03:03.990
 So you have a variable called times two
 which initially gets assigned to two,
-你有一个变量，乘以二
-就被分配给了2
+你有一个变量名为“times_2” 
+赋值是2
 
 42
 00:03:03.990 --> 00:03:10.138
 and you keep on multiplying this variable
-然后你就再乘以二
+然后你把这个变量反复乘以2
 
 43
 00:03:10.138 --> 00:03:17.760
 by two as long as this variable
 times two is less than a hundred.
-一直乘以二，只要这个变量小于100
+只要这个变量小于100
+就一直乘以2
 
 44
 00:03:17.760 --> 00:03:20.688
@@ -271,12 +273,12 @@ If you guessed 128, you are correct.
 00:03:28.197 --> 00:03:30.800
 Now, the next thing we'll talk
 about is the true and false.
-接着，我该讲真和假了。
+接着，我该讲true和false了。
 
 47
 00:03:30.800 --> 00:03:32.480
 What is true and what is false in Ruby?
-在Ruby里，什么是真，什么是假呢？
+在Ruby里，什么是true，什么是false呢？
 
 48
 00:03:34.160 --> 00:03:38.220
@@ -287,14 +289,14 @@ are false are gonna be your false
 49
 00:03:39.280 --> 00:03:44.480
 literal or false object and nil object.
-或者出现假对象或者空对象的时候，才会出现假
+或者出现false对象或者nil对象的时候，才会出现false
 
 50
 00:03:44.480 --> 00:03:48.360
 Everything else is true, so
 if you're used to from other languages for
-其他所有的都是真，
-所以如果你用过其他语言里，0是假
+其他所有的都是true，
+你用过其他语言里，0是false
 
 51
 00:03:48.360 --> 00:03:52.210
@@ -305,12 +307,12 @@ Ruby里可不这样
 52
 00:03:52.210 --> 00:03:54.130
 In Ruby, zero is true.
-在Ruby里，0是真
+在Ruby里，0是true
 
 53
 00:03:54.130 --> 00:03:58.380
 Or a false literal string is false?
-那么false字符串是假吗？
+那么字符串“false”是假吗？
 
 54
 00:03:58.380 --> 00:03:59.320
@@ -326,12 +328,12 @@ to from some other languages that
 56
 00:04:05.576 --> 00:04:08.270
 empty string is a false value.
-空的字符串可能是假值
+空的字符串可能是false
 
 57
 00:04:08.270 --> 00:04:09.460
 That's not true either.
-在Ruby里它也是真
+在Ruby里它也是true
 
 58
 00:04:10.470 --> 00:04:15.910
@@ -342,19 +344,19 @@ So the only things which are false in Ruby
 00:04:15.910 --> 00:04:22.160
 are going to be a false literal or
 a nil object.
-唯一可能是假的，要么是个错误，或者是空/假对象
+唯一可能是false的，要么是个错误，或者是空对象
 
 60
 00:04:22.160 --> 00:04:25.040
 Everything else is going to be true.
-其他所有东西都是真
+其他所有东西都是true
 
 61
 00:04:25.040 --> 00:04:29.160
 Now if you're using a string literal,
 for example, nil or
 如果你现在在你的表达式里
-使用一个字符串
+使用字符串
 
 62
 00:04:29.160 --> 00:04:34.140
@@ -366,7 +368,7 @@ in your if statement, you are going to get
 00:04:34.140 --> 00:04:39.340
 a warning from an interpreter that
 says string literal in condition.
-你会从解释器里得到一个警告
+你会从编译器得到一个警告
 
 64
 00:04:39.340 --> 00:04:44.590
@@ -378,30 +380,31 @@ if false equals false or
 00:04:44.590 --> 00:04:48.760
 doing any other comparisons, so if
 the interpreter says to you really did you
-或者
+或者进行比较
+所以你的编译器在问你
 
 66
 00:04:48.760 --> 00:04:54.550
 really mean to just say a string as
 your condition of your if statement.
+“真的吗？你真的是打算在if表达式里写个字符串作为条件么？”
 
 67
 00:04:54.550 --> 00:04:57.290
 That's always gonna be true so
 why would do that?
-那永远会是真
-为什么呢？
+“那结果永远会是真，你这是逗我吗？”
 
 68
 00:04:57.290 --> 00:05:00.000
 So it's almost like it's clueing
 you in that there's an issue.
-这就像它
+这时候它就在提示你，你可能犯了个错
 
 69
 00:05:02.490 --> 00:05:03.370
 Triple equals.
-三个等号
+我们来看三个等号
 
 70
 00:05:04.640 --> 00:05:08.520
@@ -412,7 +415,7 @@ So you're gonna see this in some cases.
 00:05:08.520 --> 00:05:12.570
 So most of the time,
 you should be using a double equals and
-大多数时候，你应该用两个等号
+大多数时候，你会用两个等号
 
 72
 00:05:12.570 --> 00:05:18.130
@@ -456,7 +459,7 @@ pretty cool so you should check them out.
 You have a regular expression,
 sera, which is === to coursera.
 你有个正则表达式sera
-sera===courser
+/sera/===courser
 
 79
 00:05:47.320 --> 00:05:49.030
@@ -546,13 +549,13 @@ and the triple equal lets you do that.
 00:06:47.550 --> 00:06:50.090
 Next, we'll talk about case expressions,
 And
-下一节，我们会说case表达式
+接下来，我们要说case表达式
 
 94
 00:06:50.090 --> 00:06:54.640
 the case expressions
 have two flavors in Ruby.
-Ruby里面有两种case表达式
+Ruby里面有两种case表达式的用法
 
 95
 00:06:54.640 --> 00:07:00.890
@@ -570,7 +573,8 @@ that we already saw in previous slides.
 00:07:06.370 --> 00:07:11.550
 And this is just sort of a different
 keyword, it's case instead of if else.
-这个只是关键词不同，它是用case而不是if else
+这个只是叫法不同
+它是用case而不是if else
 
 98
 00:07:11.550 --> 00:07:13.420
@@ -582,18 +586,17 @@ So, that's the first flavor.
 The second flavor is more interesting
 in that you actually specify the target
 第二种更有趣
-在这里，你实际上制定了一个目标
 
 100
 00:07:19.020 --> 00:07:24.150
 next to the case key word, and then
-在case关键词边上
+实际上你在case后指定了一个目标
 
 101
 00:07:24.150 --> 00:07:29.250
 what happens is that each clause inside
 the when gets compared to that target.
-每一个when中的子句都会和目标做比较
+每一个when中的子句都会和目标进行比较
 
 102
 00:07:29.250 --> 00:07:31.020
@@ -605,25 +608,25 @@ that in the next slide.
 00:07:32.360 --> 00:07:35.900
 And that's actually where the triple
 equals, which we just covered in
-这个就是三个等号的用法
+这个就是三个等号登场的时候了
 
 104
 00:07:35.900 --> 00:07:40.140
 the previous slide, comes in, it's also
 called the case equality operator.
-我们前一张幻灯片讲过了
+我们在前面的幻灯片讲过三个等号运算符
 它也叫做case相等运算符
 
 105
 00:07:40.140 --> 00:07:44.490
 So, when things are being compared for
-所以，当一个东西被用于比较when子句时
+当某个东西被用于和when子句比较时
 
 106
 00:07:44.490 --> 00:07:49.210
 an each when clause, it's actually using
 the triple equals operator for that.
-实际上就是用三个等号的运算符
+实际上就是用三个等号的运算方式
 
 107
 00:07:50.450 --> 00:07:55.770
@@ -637,23 +640,24 @@ expressions is that if you're
 used to the C style,
 the C family of languages where
 如果你习惯了C的风格
-C
 
 109
 00:08:00.360 --> 00:08:05.200
 you have a fall-through logic inside your
 case statements, that's not the case.
+在C里面，如果case后面没有遇到break语句就会一直往下执行
+这种fall-through逻辑在Ruby里是不适用的
 
 110
 00:08:05.200 --> 00:08:10.440
 Ruby, one case, the only case that
 actually matches gets executed and
-Ruby，一个case，唯一匹配的case被执行
+在Ruby里，只有唯一匹配的case才会被执行
 
 111
 00:08:10.440 --> 00:08:11.110
 no other cases.
-而不是其他的case
+其他的case是不会的
 
 112
 00:08:12.820 --> 00:08:17.170
@@ -676,21 +680,21 @@ but then the actual
 00:08:23.400 --> 00:08:28.140
 comparisons inside the case have
 nothing to do with that variable.
-Case里面的比较和变量没有一毛钱关系
+case里面的比较和变量没有一毛钱关系
 
 116
 00:08:28.140 --> 00:08:31.560
 I mean you can compare that variable, you
 could compare other statements, you could
-你可以比较变量
-你可以比较其他的语句
+这里面的子句可以和变量比较
+也可以和其他不相关的语句比较
 
 117
 00:08:31.560 --> 00:08:35.670
 have a default statement, really has
 nothing to do with the actual variable.
 你可以有一个默认的语句
-和变量真的没关系
+总之这些子句和变量真的没关系
 
 118
 00:08:35.670 --> 00:08:36.830
@@ -706,7 +710,7 @@ That's the first flavor.
 00:08:38.300 --> 00:08:45.050
 The second flavor, you have the actual
 target right next to the case
-第二种方法，你的目标就在case旁边
+第二种方法，你的目标就在case之后
 
 121
 00:08:45.050 --> 00:08:49.395
@@ -722,47 +726,48 @@ itself to actual targets.
 123
 00:08:54.870 --> 00:08:56.660
 In this case, you have
-在这个例子里，
+在这个case里，
 
 124
 00:08:57.920 --> 00:09:03.160
 regular expression doing the triple
 equals, that's what case uses,
-你有用三个等号运算正则表达式
+你有个正则表达式
 这是case的用法
 
 125
 00:09:03.160 --> 00:09:08.980
 uses the triple equals operator to
 compare itself to a name target.
-用三个等号运算符来将自身与目标进行比较
+用三个等号运算符来将正则表达式与目标进行比较
 
 126
 00:09:11.880 --> 00:09:15.710
 For loop I did say we're going
 to talk about it, but I lied.
-我前面跟你们说我要讲循环
-我骗你们的
+我前面跟你们说我要讲for循环
+我骗你们的，哈哈
 
 127
 00:09:17.140 --> 00:09:25.050
 For loop is hardly used in Ruby and
 preference is given to each and times.
-在Ruby里面基本不用循环
+在Ruby里面基本不用for循环
+大家比较喜欢用each和times
 
 
 128
 00:09:25.050 --> 00:09:27.530
 So the times we already
 saw all the way back
-
+关于times的用法
+在上节课我们就讲了
 
 129
 00:09:29.060 --> 00:09:34.040
 in beginning of the last lecture,
 and we also going to see each, and
-在上节课开始时
-
+接下来我们会讲each
 
 130
 00:09:34.040 --> 00:09:39.210
@@ -774,13 +779,13 @@ talk about blocks, which is coming up.
 00:09:40.980 --> 00:09:46.290
 Now if you do want to see an example
 of a for loop, Ruby does have one.
-如果你真的先给看下循环的例子
+如果你真的想看for循环的例子
 Ruby倒是有一个
 
 132
 00:09:46.290 --> 00:09:51.820
 So you have a for some integer in a range,
-你有一些整数，它们在一个范围里
+你有一个for，在一个范围里的整数
 
 133
 00:09:51.820 --> 00:09:55.880
@@ -793,7 +798,7 @@ which we haven't talked about, so
 00:09:55.880 --> 00:10:00.880
 you could say for
 i in this range of 0 to 2,
-你可以说，i在0到2之间
+你可以说，在这个for里，i在0到2之间
 
 135
 00:10:00.880 --> 00:10:05.250
@@ -806,14 +811,14 @@ you have 0, 1, and 2.
 00:10:05.250 --> 00:10:08.440
 So this is your typical for
 loop, but like I said, for
-这就是一个典型的循环
+这就是一个典型的for循环
 但是我刚才也说
 
 137
 00:10:08.440 --> 00:10:12.090
 loops exist in Ruby, but
 they are not used much.
-Ruby里面的确有循环
+Ruby里面的确有for循环
 但是基本上不使用
 
 138
@@ -821,7 +826,7 @@ Ruby里面的确有循环
 So in summary, there are lots
 of options for flow of control.
 总结一下
-控制流有很多种方法
+流程控制有很多种方法
 
 139
 00:10:17.170 --> 00:10:24.030
@@ -832,7 +837,7 @@ the while loops, the until, the unless.
 140
 00:10:24.030 --> 00:10:26.120
 And then you also have the modifier form,
-
+你还可以用modifier form
 
 141
 00:10:26.120 --> 00:10:29.620
@@ -844,20 +849,20 @@ to be very expressive in Ruby.
 00:10:29.620 --> 00:10:33.829
 And what you should remember
 is that non-nil and
-你永远要记住的是
-一个既不是nil也不是false的值
+你要记住的是
+如果一个值既不是nil也不是false
 
 143
 00:10:33.829 --> 00:10:37.740
 non-false values are always gonna be true.
-永远是true值
+那么这个值永远是true
 
 144
 00:10:37.740 --> 00:10:44.180
 And the only things which are gonna be
 false are your false and your nil object.
 唯一可能出现false值的情况是
-你犯错了，或者是nil值
+你出错了，或者是nil值
 
 145
 00:10:44.180 --> 00:10:45.270
