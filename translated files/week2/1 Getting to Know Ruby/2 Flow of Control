@@ -785,13 +785,13 @@ Ruby倒是有一个
 132
 00:09:46.290 --> 00:09:51.820
 So you have a for some integer in a range,
-你有一个for，在一个范围里的整数
+你有一个for，在一个区间里的整数
 
 133
 00:09:51.820 --> 00:09:55.880
 a range again is a data type
 which we haven't talked about, so
-范围是一种数据形式
+区间是一种数据形式
 我们还没说过
 
 134
