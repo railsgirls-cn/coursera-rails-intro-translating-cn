@@ -28,7 +28,7 @@ call them, what and how do they return.
 We'll also talk about this interesting
 concept of default args in ruby,
 我们还会讲到一个有趣的概念
-Ruby里的参数（args）
+Ruby里的默认实参
 
 6
 00:00:24.377 --> 00:00:30.570
@@ -147,7 +147,7 @@ if you want to, but you don't have to.
 00:01:45.074 --> 00:01:51.630
 The method simple1(), we're using
 parentheses over here to define it,
-这个方法叫simple1()
+这个方法叫“simple1()”
 我们在定义它的时候用了括号
 
 25
@@ -316,13 +316,14 @@ the number which an integer,
 00:03:48.080 --> 00:03:52.490
 if it's an integer it has a method
 called zero with a question mark.
-如果它是个整数，那么它就有一个方法叫做“zero?”
+那么它就有一个方法叫做“zero?”
+以问好结尾的
 
 53
 00:03:52.490 --> 00:03:58.270
 So the integer itself, Ruby has a method
 called zero which is a predicate.
-对于整数，Ruby有一个方法叫做“zero”
+对于整数，Ruby有一个方法叫做“zero？”
 这是个断言
 
 54
@@ -334,7 +335,7 @@ here to be able to bail out of a method
 55
 00:04:04.790 --> 00:04:08.040
 earlier than the last executed line.
-
+来确保最后一行执行命令适用这个方法
 
 56
 00:04:08.040 --> 00:04:12.570
@@ -382,12 +383,12 @@ one later when we talk about strings.
 63
 00:04:39.520 --> 00:04:41.110
 Default arguments.
-默认参数
+默认实参
 
 64
 00:04:41.110 --> 00:04:44.010
 Methods can have default arguments.
-方法可以有默认参数
+方法可以有默认实参
 
 65
 00:04:44.010 --> 00:04:48.020
@@ -456,185 +457,238 @@ to have a default in your method.
 00:05:27.990 --> 00:05:33.460
 So for example, in this case we have an n,
 which by default is five.
+例如，在这个例子里，我们有一个n
+默认值是5
 
 76
 00:05:34.520 --> 00:05:37.530
 So if you call factorial and
 you pass the five,
+所以如果你调用方法“factorial”
+你传递5
 
 77
 00:05:37.530 --> 00:05:41.210
 which is this first method,
 that returns 120.
+这是第一种方法
+返回值是120
 
 78
 00:05:41.210 --> 00:05:46.136
 But maybe you want to call the method
 factorial with default and
+如果你调用的是方法“factorial_with_default”
 
 79
 00:05:46.136 --> 00:05:52.000
 not pass anything, and
 that will automatically plug in
+什么都不传递
 
 80
 00:05:52.000 --> 00:05:56.960
 the value of 5 and still return 120.
+你会发现这里自动就用了5，并且返回值是120
 
 81
 00:05:56.960 --> 00:05:59.970
 Splat, this is an interesting concept.
+Splat,这是个有趣的概念
 
 82
 00:06:01.060 --> 00:06:04.433
 It almost looks like a pointer,
 like a C pointer but it's not.
+它看起来很像指针
+很像C指针,但它不是
 
 83
 00:06:04.433 --> 00:06:11.420
 It's similar to how var args,
 variable arguments works in say Java.
+它和Java里面var args（变量参数）的工作原理类似
 
 84
 00:06:12.870 --> 00:06:17.300
 So you have a bunch of parameters
 that you want to pass but
+你有一堆希望传递的参数
 
 85
 00:06:17.300 --> 00:06:20.440
 you don't know how many or
 you don't care how many.
+但你不知道有多少
+或者说，你压根不关心有多少
 
 86
 00:06:20.440 --> 00:06:25.430
 You want all the parameters to
 be treated as one parameter, and
+你希望把所有参数都当成一个参数来看
 
 87
 00:06:25.430 --> 00:06:30.060
 all those parameters become one
 big array inside the method.
+所有这些参数变成这个方法里面的一个大数组
 
 88
 00:06:31.070 --> 00:06:35.540
 And the interesting part about Ruby, about
 how this is used in Ruby is that this
+有趣的是
+这在Ruby里
 
 89
 00:06:35.540 --> 00:06:39.260
 could even apply to a middle parameter,
 not just the last parameter in the method.
+这里对于一个在中间的参数也是适用的
+而不仅仅是方法里的最后一个参数
 
 90
 00:06:40.800 --> 00:06:43.290
 So in this case,
 we have one_param, another param,
+在这个例子里，
+我们有一个参数，又一个参数
 
 91
 00:06:43.290 --> 00:06:46.070
 and we have a bunch of
 parameters in the middle.
+我们有许多参数在中间
 
 92
 00:06:46.070 --> 00:06:47.990
 How many?
 I don't know.
+有多少？
+我不知道
 
 93
 00:06:47.990 --> 00:06:51.240
 So in this case, it happens to
 be 3 parameters, 7, 32, and -4,
+在这个例子里有3个参数
+分别是7，32，-4
 
 94
 00:06:51.240 --> 00:06:53.122
 and we take a max,
+我们要取最大值
 
 95
 00:06:53.122 --> 00:06:59.370
 we want to find out the max of those
 parameters and that's what gets returned.
+我们要找出这些参数中的最大值
+这就是返回值
 
 96
 00:06:59.370 --> 00:07:03.840
 Now it happens to be
 that all those parameters
+现在，这些所有的参数
 
 97
 00:07:04.870 --> 00:07:09.474
 become one big array, called numbers in
 this case, because that's what we call in
+变成了一个大的数组
+名字是“numbers”
 
 98
 00:07:09.474 --> 00:07:14.840
 the parameter method, and
 the array already has a method called max.
+这是因为我们用了参数的方法
+而数组自带了取最高值的方法
 
 99
 00:07:14.840 --> 00:07:17.410
 And actually arrays have many
 more interesting methods
+事实上，数组有其他很多有趣的方法
 
 100
 00:07:17.410 --> 00:07:19.930
 as we're gonna see later.
+我们后面会看
 
 101
 00:07:19.930 --> 00:07:24.590
 So in summary, there is no need to
 declare parameter type passed in or
+总而言之，没有必要声明传递的参数类型或者返回值
 
 102
 00:07:24.590 --> 00:07:27.120
 returned, because Ruby is dynamic, and
+因为Ruby是动态的
 
 103
 00:07:27.120 --> 00:07:32.120
 because it's dynamic, you don't need
 to tell it what parameter it is.
+因为它是动态的，你不需要告诉它参数是什么
 
 104
 00:07:32.120 --> 00:07:37.430
 And it makes for some very interesting
 use cases of how you could use methods,
+这倒是了你在使用方法的时候会出现一些有趣的情况
 
 105
 00:07:37.430 --> 00:07:41.510
 unlike in other languages where you know
 exactly what the method is returning and
+不像在其他语言里，你对于方法会返回什么很清楚
 
 106
 00:07:41.510 --> 00:07:45.030
 sometimes you have to bend that somehow.
+所以你要自己调整
 
 107
 00:07:45.030 --> 00:07:49.260
 In Ruby you could pass in or
 return really anything,
+在Ruby里面，你可以传递或者返回任何值
 
 108
 00:07:49.260 --> 00:07:52.330
 as long as it doesn't break
 what's defined inside the method.
+只要它不会破坏方法定义的东西
 
 109
 00:07:54.470 --> 00:07:57.510
 Return is optional, and
 how does it know what to return?
+返回不是必须的
+那么它怎么知道返回什么呢
 
 110
 00:07:57.510 --> 00:07:58.090
 Well, that's simple.
+很简单
 
 111
 00:07:58.090 --> 00:08:02.340
 The last executable line
 inside the method is returned.
+返回方法里最后一行执行命令
 
 112
 00:08:04.360 --> 00:08:07.944
 You can construct the methods with
 variable number of arguments,
+你可以在方法里建很多的实参
 
 113
 00:08:07.944 --> 00:08:10.250
 and you could also use default arguments.
+你也可以使用默认的实参
