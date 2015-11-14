@@ -35,10 +35,10 @@
 	- Getting to Know Ruby
 		- 0 Introduction to Ruby
 		- 1 Ruby Basics by [@runajiang](https://github.com/runajiang)
-		- 2 Flow of Control
-		- 3 Functions
-		- 4 Blocks
-		- 5 Files
+		- 2 Flow of Control [@runajiang](https://github.com/runajiang)
+		- 3 Functions [@runajiang](https://github.com/runajiang)
+		- 4 Blocks [@runajiang](https://github.com/runajiang)
+		- 5 Files [@runajiang](https://github.com/runajiang)
 	- Collectios and String APIs
 3. Week 3
 
