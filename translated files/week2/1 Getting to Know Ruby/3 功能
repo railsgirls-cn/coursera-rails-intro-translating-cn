@@ -7,536 +7,688 @@ WEBVTT
 2
 00:00:07.142 --> 00:00:10.280
 Hi and welcome to lecture three.
+欢迎各位同学，我们现在上第三节课
 
 3
 00:00:10.280 --> 00:00:12.620
 In this lecture we'll
 discuss functions and
+在这节课里，我们要讨论函数和方法
+
 
 4
 00:00:12.620 --> 00:00:18.390
 methods, their definitions, how do you
 call them, what and how do they return.
+它们的定义，如何调用
+它们的返回值是什么，原理是什么
 
 5
 00:00:18.390 --> 00:00:24.377
 We'll also talk about this interesting
 concept of default args in ruby,
+我们还会讲到一个有趣的概念
+Ruby里的默认实参
 
 6
 00:00:24.377 --> 00:00:30.570
 we'll talk about how to make methods
 more expressive, and what is a splat.
+我们还会讲，如何让方法变得更直观
+什么是splat
 
 7
 00:00:30.570 --> 00:00:35.005
 So, usually, when we talk about functions
 and methods in other languages,
+通常，在其他语言里
 
 8
 00:00:35.005 --> 00:00:38.555
 a function is something that's
 written outside of a class and
+函数会写在类之外
 
 9
 00:00:38.555 --> 00:00:42.190
 a method is something
 that belongs to a class.
+而方法是属于一个类的
 
 10
 00:00:42.190 --> 00:00:47.340
 Now, in Ruby, every function or method
 has at least one class it belongs to
+在Ruby里面，每个函数和方法
+至少都属于一个类
 
 11
 00:00:47.340 --> 00:00:50.240
 although you won't always see
 it written inside a class,
+虽然它们不总是被写在类里
 
 12
 00:00:51.550 --> 00:00:55.110
 every function or
 method in Ruby belongs to a class.
+但是每个函数或者方法都属于一个类
 
 13
 00:00:56.690 --> 00:01:00.240
 Because of this,
 I'm not gonna talk about functions.
+因此，我不会说函数
 
 14
 00:01:00.240 --> 00:01:02.905
 From now on,
 we refer even to functions as methods.
-
+从现在开始
+我们将函数比作方法
 15
 00:01:02.905 --> 00:01:07.695
 So let's talk methods.
+让我们来看看方法
 
 16
 00:01:07.695 --> 00:01:12.518
 Methods can have parentheses but
 they are completely optional both
+方法可以加括号
+但是括号不是必要的
 
 17
 00:01:12.518 --> 00:01:17.090
 when defining the method and
 when calling a method.
+无论是定义方法，还是调用方法
+都可以不用括号
 
 18
 00:01:17.090 --> 00:01:23.110
 Now if you feel that using
 of parentheses makes it more
+如果你觉得加括号能帮你把代码写得更直观
 
 19
 00:01:23.110 --> 00:01:28.960
 clear to you how the method is written,
 sure, go ahead and use parentheses.
+那就加呗
 
 20
 00:01:28.960 --> 00:01:30.830
 But there's no need to do so.
+但是括号不是必要的
 
 21
 00:01:30.830 --> 00:01:36.120
 So let's take, for example,
 a method called simple, for no parens.
+让我们来看看例子
+我们有一个方法，名字叫simple，没有括号
 
 22
 00:01:36.120 --> 00:01:42.020
 When you define it for a no parens
 when calling it, no parens at all.
+如果你定义的时候没用括号
+那么当调用的时候，也没有括号
 
 23
 00:01:42.020 --> 00:01:45.074
 Now, you could use parens to call it,
 if you want to, but you don't have to.
+如果你用了括号来调用
+你可以这么做，但是不是必要的
 
 24
 00:01:45.074 --> 00:01:51.630
 The method simple1(), we're using
 parentheses over here to define it,
+这个方法叫“simple1()”
+我们在定义它的时候用了括号
 
 25
 00:01:51.630 --> 00:01:55.640
 but we're not using parentheses to
 call it, and that's perfectly legal.
+但是我们在调用的时候没有用括号
+你们看，这是完全可以的
 
 26
 00:01:57.410 --> 00:02:02.790
 Methods also, there's no need to declare
 the type of parameter so one and
+你没有必要声明括号的类型
+所以，这里的one和two没有声明类型
 
 27
 00:02:02.790 --> 00:02:07.620
 two don't have a declaration of type,
 you know, it's not an int one and
+这不是整数one和two
 
 28
 00:02:07.620 --> 00:02:09.870
 two, a long or anything else.
+或者其他什么
 
 29
 00:02:09.870 --> 00:02:11.810
 It's just one and two and
 whatever you pass there,
+就是one和two
+你说是什么就是什么
 
 30
 00:02:11.810 --> 00:02:16.250
 if you decide to pass two strings
 into a method called add,
+如果你想说它们是字符串
+把它们放进一个叫做add的方法里
 
 31
 00:02:16.250 --> 00:02:22.440
 that's fine as well because strings
 also have a way of adding each other.
+是完全可以的
+因为字符串也可以加在一起
 
 32
 00:02:24.450 --> 00:02:26.220
 You could also return whatever you want.
+你也可以返回任何你想要的东西
 
 33
 00:02:27.240 --> 00:02:31.160
 So the method add doesn't
 tell you what it returns.
+方法add并不能告诉你返回值是什么
 
 34
 00:02:32.190 --> 00:02:36.190
 It could return an integer,
 it could return a string, or
+它可以返回一个整数或者一个字符串
 
 35
 00:02:36.190 --> 00:02:41.260
 it could have two different paths inside
 the method where one returns an integer,
+或者，这个方法里可以有两个路径
+一个返回的是整数，一个返回的是字符
 
 36
 00:02:41.260 --> 00:02:45.910
 and another one returns string and
 that's perfectly legal.
+怎么来都可以
 
 37
 00:02:45.910 --> 00:02:48.040
 The return keyword is optional in Ruby.
+在Ruby里面，你也可以不写return
 
 38
 00:02:50.570 --> 00:02:53.445
 Now, so if you are not saying
 what you're gonna return,
+如果你不说你想返回什么
 
 39
 00:02:53.445 --> 00:02:55.240
 how does it know what to return?
+那么它怎么知道你想返回什么呢？
 
 40
 00:02:55.240 --> 00:02:55.920
 Oh, that's simple.
+很简单嘛
 
 41
 00:02:56.930 --> 00:03:01.400
 The last,
 because in Ruby everything is evaluated,
+在Ruby里面，任何东西都是可以求值的
 
 42
 00:03:01.400 --> 00:03:06.930
 the last executed line returned in
 the method is gonna return the value.
+在方法里面，最后一行执行代码会返回值
 
 43
 00:03:06.930 --> 00:03:11.540
 So if it's a comment, that's not executed
 line, that's just a comment, but
+如果这是个注释，而不是执行代码，就不会返回
 
 44
 00:03:11.540 --> 00:03:16.770
 anything else just gets evaluated and that
 value that gets evaluated gets returned.
+但是任何其他可求值的东西，都会返回对应的值
 
 45
 00:03:18.900 --> 00:03:20.790
 Methods could be very expressive in ruby.
+在Ruby里，方法可以非常直观
 
 46
 00:03:22.050 --> 00:03:25.870
 You could have methods that
 end with a question mark, and
+你可以以问号作为方法的结尾
 
 47
 00:03:25.870 --> 00:03:29.070
 these are called predicate methods and
 usually these return Boolean values.
+这种方法叫做断言方法
+通常返回的是布尔值
 
 48
 00:03:29.070 --> 00:03:34.370
 For example, you have a method that says,
 can divide by a certain number.
+例如，你有一个方法名为“can_divide_by?(number)”
 
 49
 00:03:34.370 --> 00:03:35.920
 Can you divide this by a certain number?
+某个数能被除吗？
 
 50
 00:03:35.920 --> 00:03:41.475
 So the method might return
 false if the number is zero.
+如果这个数是0，那么方法的返回值就是false
 
 51
 00:03:41.475 --> 00:03:48.080
 And it's interesting to look at
 the number which an integer,
+看这个number，它是个整数
 
 52
 00:03:48.080 --> 00:03:52.490
 if it's an integer it has a method
 called zero with a question mark.
+那么它就有一个方法叫做“zero?”
+以问好结尾的
 
 53
 00:03:52.490 --> 00:03:58.270
 So the integer itself, Ruby has a method
 called zero which is a predicate.
+对于整数，Ruby有一个方法叫做“zero？”
+这是个断言
 
 54
 00:03:59.700 --> 00:04:04.790
 And we're using the return statement
 here to be able to bail out of a method
+我们在这里用了返回语句
 
 55
 00:04:04.790 --> 00:04:08.040
 earlier than the last executed line.
+来确保最后一行执行命令适用这个方法
 
 56
 00:04:08.040 --> 00:04:12.570
 So, return false if number.zero, because
 we don't wanna be dividing by zero,
+如果数是零的话，返回false，因为0是不能被除的
 
 57
 00:04:12.570 --> 00:04:16.470
 otherwise, true, which means return true,
 even though we're not saying return,
+否则的话，就是true，意思就是返回true
+这里连返回“return”都不用写
 
 58
 00:04:16.470 --> 00:04:19.990
 that's the implication of
 what's happening here.
+不用写也知道是这个意思
 
 59
 00:04:19.990 --> 00:04:24.240
 You could also have methods
 that ends with exclamation,
+你也可以用感叹号作为方法的结尾
 
 60
 00:04:25.700 --> 00:04:28.920
 and what this usually signals is some
 kind of a dangerous side effect.
+这通常都表示该方法有危险的副作用
 
 61
 00:04:28.920 --> 00:04:33.330
-Maybe in place, or placement,
+Maybe in place, replacement,
 or something like that.
+可能是就地的操作，重置这类的
 
 62
 00:04:33.330 --> 00:04:36.950
 We'll get into examples of this particular
 one later when we talk about strings.
+后面我们说字符串的时候会详细讲
 
 63
 00:04:39.520 --> 00:04:41.110
 Default arguments.
+默认实参
 
 64
 00:04:41.110 --> 00:04:44.010
 Methods can have default arguments.
+方法可以有默认实参
 
 65
 00:04:44.010 --> 00:04:48.020
 So maybe you want to
 provide a certain value,
+也许你想有某一个值
 
 66
 00:04:48.020 --> 00:04:52.810
 that if no value is passed in,
 that value will be used.
+当其他值都不通过时
+这个值就会被用到
 
 67
 00:04:52.810 --> 00:04:53.560
 So, for example,
+举个例子
 
 68
 00:04:53.560 --> 00:04:58.340
 we have a factorial method which
 does not use default arguments.
+我们有一个方法叫做“factorial”
+没有默认参数
 
 69
 00:04:58.340 --> 00:05:01.790
 A regular factorial method,
 which by the way it's interesting,
+一个常规的“factorial”方法
 
 70
 00:05:01.790 --> 00:05:03.230
 it's written as just a one liner in Ruby.
+在Ruby里面只写一行
 
 71
 00:05:05.010 --> 00:05:11.090
 So if n equals zero,
 then return one, otherwise return n
+如果n等于0
+那么就返回1，否则返回“n* factorial(n-1)”
 
 72
 00:05:11.090 --> 00:05:16.990
 times a factorial of n minus one,
 which recursively calls this method.
+这就递归地调用了这个方法
+
 
 73
 00:05:16.990 --> 00:05:22.360
 Again, notice no return statements, it
 just knows what to do and it just works.
+注意看，没有返回语句
+但是Ruby就知道该怎么做
 
 74
 00:05:23.530 --> 00:05:27.990
 Now there may be some times you want
 to have a default in your method.
+有的时候，你可能希望方法里有个默认值
 
 75
 00:05:27.990 --> 00:05:33.460
 So for example, in this case we have an n,
 which by default is five.
+例如，在这个例子里，我们有一个n
+默认值是5
 
 76
 00:05:34.520 --> 00:05:37.530
 So if you call factorial and
 you pass the five,
+所以如果你调用方法“factorial”
+你传递5
 
 77
 00:05:37.530 --> 00:05:41.210
 which is this first method,
 that returns 120.
+这是第一种方法
+返回值是120
 
 78
 00:05:41.210 --> 00:05:46.136
 But maybe you want to call the method
 factorial with default and
+如果你调用的是方法“factorial_with_default”
 
 79
 00:05:46.136 --> 00:05:52.000
 not pass anything, and
 that will automatically plug in
+什么都不传递
 
 80
 00:05:52.000 --> 00:05:56.960
 the value of 5 and still return 120.
+你会发现这里自动就用了5，并且返回值是120
 
 81
 00:05:56.960 --> 00:05:59.970
 Splat, this is an interesting concept.
+Splat,这是个有趣的概念
 
 82
 00:06:01.060 --> 00:06:04.433
 It almost looks like a pointer,
 like a C pointer but it's not.
+它看起来很像指针
+很像C指针,但它不是
 
 83
 00:06:04.433 --> 00:06:11.420
 It's similar to how var args,
 variable arguments works in say Java.
+它和Java里面var args（变量参数）的工作原理类似
 
 84
 00:06:12.870 --> 00:06:17.300
 So you have a bunch of parameters
 that you want to pass but
+你有一堆希望传递的参数
 
 85
 00:06:17.300 --> 00:06:20.440
 you don't know how many or
 you don't care how many.
+但你不知道有多少
+或者说，你压根不关心有多少
 
 86
 00:06:20.440 --> 00:06:25.430
 You want all the parameters to
 be treated as one parameter, and
+你希望把所有参数都当成一个参数来看
 
 87
 00:06:25.430 --> 00:06:30.060
 all those parameters become one
 big array inside the method.
+所有这些参数变成这个方法里面的一个大数组
 
 88
 00:06:31.070 --> 00:06:35.540
 And the interesting part about Ruby, about
 how this is used in Ruby is that this
+有趣的是
+这在Ruby里
 
 89
 00:06:35.540 --> 00:06:39.260
 could even apply to a middle parameter,
 not just the last parameter in the method.
+这里对于一个在中间的参数也是适用的
+而不仅仅是方法里的最后一个参数
 
 90
 00:06:40.800 --> 00:06:43.290
 So in this case,
 we have one_param, another param,
+在这个例子里，
+我们有一个参数，又一个参数
 
 91
 00:06:43.290 --> 00:06:46.070
 and we have a bunch of
 parameters in the middle.
+我们有许多参数在中间
 
 92
 00:06:46.070 --> 00:06:47.990
 How many?
 I don't know.
+有多少？
+我不知道
 
 93
 00:06:47.990 --> 00:06:51.240
 So in this case, it happens to
 be 3 parameters, 7, 32, and -4,
+在这个例子里有3个参数
+分别是7，32，-4
 
 94
 00:06:51.240 --> 00:06:53.122
 and we take a max,
+我们要取最大值
 
 95
 00:06:53.122 --> 00:06:59.370
 we want to find out the max of those
 parameters and that's what gets returned.
+我们要找出这些参数中的最大值
+这就是返回值
 
 96
 00:06:59.370 --> 00:07:03.840
 Now it happens to be
 that all those parameters
+现在，这些所有的参数
 
 97
 00:07:04.870 --> 00:07:09.474
 become one big array, called numbers in
 this case, because that's what we call in
+变成了一个大的数组
+名字是“numbers”
 
 98
 00:07:09.474 --> 00:07:14.840
 the parameter method, and
 the array already has a method called max.
+这是因为我们用了参数的方法
+而数组自带了取最高值的方法
 
 99
 00:07:14.840 --> 00:07:17.410
 And actually arrays have many
 more interesting methods
+事实上，数组有其他很多有趣的方法
 
 100
 00:07:17.410 --> 00:07:19.930
 as we're gonna see later.
+我们后面会看
 
 101
 00:07:19.930 --> 00:07:24.590
 So in summary, there is no need to
 declare parameter type passed in or
+总而言之，没有必要声明传递的参数类型或者返回值
 
 102
 00:07:24.590 --> 00:07:27.120
 returned, because Ruby is dynamic, and
+因为Ruby是动态的
 
 103
 00:07:27.120 --> 00:07:32.120
 because it's dynamic, you don't need
 to tell it what parameter it is.
+因为它是动态的，你不需要告诉它参数是什么
 
 104
 00:07:32.120 --> 00:07:37.430
 And it makes for some very interesting
 use cases of how you could use methods,
+这倒是了你在使用方法的时候会出现一些有趣的情况
 
 105
 00:07:37.430 --> 00:07:41.510
 unlike in other languages where you know
 exactly what the method is returning and
+不像在其他语言里，你对于方法会返回什么很清楚
 
 106
 00:07:41.510 --> 00:07:45.030
 sometimes you have to bend that somehow.
+所以你要自己调整
 
 107
 00:07:45.030 --> 00:07:49.260
 In Ruby you could pass in or
 return really anything,
+在Ruby里面，你可以传递或者返回任何值
 
 108
 00:07:49.260 --> 00:07:52.330
 as long as it doesn't break
 what's defined inside the method.
+只要它不会破坏方法定义的东西
 
 109
 00:07:54.470 --> 00:07:57.510
 Return is optional, and
 how does it know what to return?
+返回不是必须的
+那么它怎么知道返回什么呢
 
 110
 00:07:57.510 --> 00:07:58.090
 Well, that's simple.
+很简单
 
 111
 00:07:58.090 --> 00:08:02.340
 The last executable line
 inside the method is returned.
+返回方法里最后一行执行命令
 
 112
 00:08:04.360 --> 00:08:07.944
 You can construct the methods with
 variable number of arguments,
+你可以在方法里建很多的实参
 
 113
 00:08:07.944 --> 00:08:10.250
 and you could also use default arguments.
+你也可以使用默认的实参
