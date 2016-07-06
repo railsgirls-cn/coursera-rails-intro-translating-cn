@@ -21,7 +21,7 @@
 3. 使用 github 作为翻译工具。 Why Github? 给大家看一篇北京教练[翟英昌](http://weibo.com/u/2682424731?topnav=1&amp;wvr=5&amp;topsug=1)的文章[『协同写作的力量——中国开发者 9 天完成《Swift 语言》中文版』](http://36kr.com/p/212811.html?vt=0)
 4. 校对
 
-**如果想帮忙翻译或者校对，请联系「翻译小组」管理员文洋[@sundevilyang](https://github.com/sundevilyang)：[ywen8@asu.edu](mailto:ywen8@asu.edu)，谢谢！**
+**如果想帮忙翻译或者校对，请联系「翻译小组」管理员文洋[@sundevilyang](https://github.com/sundevilyang)：**
 
 
 
