@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/railsgirls-cn/coursera-rails-intro-translating-cn.png?label=ready&title=Ready)](https://waffle.io/railsgirls-cn/coursera-rails-intro-translating-cn)
 《Ruby on Rails: An Introduction by Johns Hopkins University》in Chinese
 =============================================
 
